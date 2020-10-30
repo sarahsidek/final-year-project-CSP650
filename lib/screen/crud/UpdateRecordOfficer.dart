@@ -46,7 +46,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Record Officer'),
+        title: Text("Kemaskini Maklumat Penyelia"),
         backgroundColor: Colors.redAccent,
       ),
       body: Form(
@@ -59,7 +59,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               SizedBox(height: 25.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Name',
+                    hintText: 'Nama',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
@@ -68,7 +68,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Email',
+                    hintText: 'E-mel',
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.emailAddress,
@@ -77,7 +77,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Number Phone',
+                    hintText: 'Nombor Telefon',
                     prefixIcon: Icon(Icons.phone),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
@@ -86,7 +86,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Unique ID ',
+                    hintText: 'Unik ID ',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
@@ -104,7 +104,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Pegawain Zon',
+                    hintText: 'Pegawai Zon',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
@@ -114,7 +114,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               RaisedButton(
                   color: Colors.redAccent,
                   textColor: Colors.black,
-                  child: Text("Update"),
+                  child: Text("Kemaskini"),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
                       DatabaseService().updateData2(RecordOfficer(
@@ -143,8 +143,8 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Done'),
-            content: Text('Update Success'),
+            title: Text('Tahniah'),
+            content: Text('Berjaya Kemaskini'),
             actions: <Widget>[
               FlatButton(
                 child: Text('Ok'),

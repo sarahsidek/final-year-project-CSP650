@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fyp/screen/home/HomeRecordOfficer.dart';
 import 'package:fyp/screen/home/HomeRoadGang.dart';
 import 'package:fyp/screen/home/HomeSupervisor.dart';
+import 'package:fyp/screen/updateProfile.dart';
 
 
 
@@ -40,19 +41,18 @@ class _HomeState extends State<Home> {
                 items: [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.supervised_user_circle),
-                    label: ('Supervisor'),
+                    label: ('Penyelia'),
                     backgroundColor: Colors.blueAccent,
 
                   ),
-
                   BottomNavigationBarItem(
                       icon: Icon(Icons.person),
-                      label: ('Road Gang'),
+                      label: ('Buruh kakitangan'),
                       backgroundColor: Colors.redAccent
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.person),
-                    label: ('Record Officer'),
+                    label: ('Pegawai merekod'),
                     backgroundColor: Colors.orangeAccent,
                   ),
                 ],

@@ -12,13 +12,13 @@ class _RoadGangState extends State<RoadGang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('RoadGang'),
+        title: Text('Buruh Kakitangan'),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           FlatButton(
               child: Row(
                 children: <Widget>[
-                  Text("Logout"),
+                  Text("Keluar"),
                 ],
               ),
               textColor: Colors.black87,

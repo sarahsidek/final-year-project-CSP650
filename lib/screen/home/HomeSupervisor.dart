@@ -1,9 +1,9 @@
 
-
 import 'package:fyp/screen/crud/listSupervisor.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/crud/AddSupervisor.dart';
 import 'package:fyp/sidebar/AdminDrawer.dart';
+
 
 
 class HomeSupervisor extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomeSupervisor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
-        title: Text('Supervisor'),
+        title: Text('Penyelia'),
         actions: <Widget>[
           IconButton(
               icon: Icon(

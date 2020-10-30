@@ -16,14 +16,14 @@ class _SupervisorState extends State<Supervisor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Supervisor'),
+        title: Text('Penyelia'),
         backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         actions: <Widget>[
           FlatButton(
             child: Row(
               children: <Widget>[
-                Text("Logout"),
+                Text("Keluar"),
               ],
             ),
               textColor: Colors.black87,

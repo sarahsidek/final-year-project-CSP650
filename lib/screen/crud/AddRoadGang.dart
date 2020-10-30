@@ -22,7 +22,7 @@ class _AddRoadGangState extends State<AddRoadGang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Road Gang'),
+        title: Text('Kakitangan Buruh'),
         backgroundColor: Colors.redAccent,
       ),
       body: Form(
@@ -35,11 +35,11 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 25.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Name',
+                    hintText: 'Nama',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
-                validator: (value) => value.isEmpty ? 'Name cannot be empty!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan nama dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => name = value);
                 },
@@ -47,11 +47,11 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Email',
+                    hintText: 'E-mel',
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.emailAddress,
-                validator: (value) => value.isEmpty ? 'Email cannot be empty!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => email = value);
                 },
@@ -59,11 +59,11 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Number Phone',
+                    hintText: 'Nombor Telefon',
                     prefixIcon: Icon(Icons.phone),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Number Phone cannot be empty!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => phone = value);
                 },
@@ -71,11 +71,11 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Unique ID ',
+                    hintText: 'Unik ID ',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Ic number cannot be empty!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => uniqueID = value);
                 },
@@ -84,7 +84,7 @@ class _AddRoadGangState extends State<AddRoadGang> {
               RaisedButton(
                   color: Colors.redAccent,
                   textColor: Colors.black,
-                  child: Text("Save"),
+                  child: Text("Hantar"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
                       _authRoadGang.registerRoadGang(name, email, uniqueID, phone).then((value) async{
@@ -105,8 +105,8 @@ class _AddRoadGangState extends State<AddRoadGang> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Done'),
-            content: Text('Add Success'),
+            title: Text('Tahniah'),
+            content: Text('Berjaya Hantar'),
             actions: <Widget>[
               FlatButton(
                 child: Text('Ok'),

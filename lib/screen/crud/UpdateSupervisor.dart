@@ -46,7 +46,7 @@ void initState(){
     Widget build(BuildContext context) {
       return Scaffold(
           appBar: AppBar(
-            title: Text('Edit Supervisor'),
+            title: Text('Kemaskini Maklumat Penyelia'),
             backgroundColor: Colors.redAccent,
           ),
           body: Form(
@@ -59,7 +59,7 @@ void initState(){
                   SizedBox(height: 25.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Name',
+                        hintText: 'Nama',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.text,
@@ -68,7 +68,7 @@ void initState(){
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Email',
+                        hintText: 'E-mel',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.emailAddress,
@@ -78,7 +78,7 @@ void initState(){
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Number Phone',
+                        hintText: 'Nombor Telefon',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
@@ -88,7 +88,7 @@ void initState(){
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Unique ID ',
+                        hintText: 'Unik ID ',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
@@ -98,7 +98,7 @@ void initState(){
                   RaisedButton(
                       color: Colors.redAccent,
                       textColor: Colors.black,
-                      child: Text( "Update"),
+                      child: Text( "Kemaskini"),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           DatabaseService().updateData(NewUser(name: _name.text, email: _email.text, nophone: _nophone.text,
@@ -121,8 +121,8 @@ void initState(){
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Done'),
-            content: Text('Update Success'),
+            title: Text('Tahniah'),
+            content: Text('Berjaya Kemaskini'),
             actions: <Widget>[
               FlatButton(
                 child: Text('Ok'),
@@ -134,5 +134,5 @@ void initState(){
           );
         });
   }
-  }
+}
 

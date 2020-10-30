@@ -37,6 +37,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             children: <Widget>[
               Text("Welcome to admin"),
             Text("Your email is ${admin.email}"),
+              Text("Name is ${admin.uid}"),
             ],
           ),
       )

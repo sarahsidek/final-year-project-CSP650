@@ -56,14 +56,14 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'Email',
+                              decoration: InputDecoration(labelText: 'E-mel',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value)
                               {
                                 if(value.isEmpty || !value.contains('@'))
                                 {
-                                  return 'invalid email';
+                                  return 'E-mel tidak sah!';
                                 }
                                 return null;
                               },
@@ -74,14 +74,14 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                           ),
                           //password
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Password',
+                            decoration: InputDecoration(labelText: 'Kata Laluan',
                                 prefixIcon: Icon(Icons.vpn_key)),
                             obscureText: true,
                             validator: (value)
                             {
                               if(value.isEmpty || value.length<=6)
                               {
-                                return 'invalid password';
+                                return 'Kata Laluan tidak sah!';
                               }
                               return null;
                             },
@@ -97,7 +97,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                             children: <Widget>[
                               RaisedButton(
                                 child: Text(
-                                    'Login'
+                                    'Log Masuk'
                                 ),
                                 onPressed: () async {
                                   if( _formKey.currentState.validate()){
@@ -106,7 +106,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => Supervisor()));
                                     if (result == null){
                                       setState(() {
-                                        error = 'Please supply a valid email';
+                                        error = 'Pastikan e-mel anda sah!';
                                         loading = false;
                                       });
                                     }

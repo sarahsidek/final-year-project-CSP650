@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
           FlatButton(
             child: Row(
               children: <Widget>[
-                Text('Supervisor'),
+                Text('Penyelia'),
               ],
             ),
             textColor: Colors.black87,
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
           FlatButton(
             child: Row(
               children: <Widget>[
-                Text('Record Officer'),
+                Text('Pegawai Merekod'),
               ],
             ),
             textColor: Colors.black87,
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
           FlatButton(
             child: Row(
               children: <Widget>[
-                Text('Road Gang'),
+                Text('Buruh kakitangan'),
               ],
             ),
             textColor: Colors.black87,
@@ -101,14 +101,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'Email',
+                              decoration: InputDecoration(labelText: 'E-mel',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value)
                               {
                                 if(value.isEmpty || !value.contains('@'))
                                 {
-                                  return 'invalid email';
+                                  return 'E-mel tidak sah!';
                                 }
                                 return null;
                               },
@@ -119,14 +119,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           //password
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Password',
+                            decoration: InputDecoration(labelText: 'Kata Laluan',
                                 prefixIcon: Icon(Icons.vpn_key)),
                             obscureText: true,
                             validator: (value)
                             {
                               if(value.isEmpty || value.length<=5)
                               {
-                                return 'invalid password';
+                                return 'Kata Laluan tidak sah!';
                               }
                               return null;
                             },
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: <Widget>[
                               RaisedButton(
                                 child: Text(
-                                    'Login'
+                                    'Log Masuk'
                                 ),
                                 onPressed: () async {
                                   if( _formKey.currentState.validate()){
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                                     if (result == null){
                                       setState(() {
-                                        error = 'Please supply a valid email';
+                                        error = 'Pastikan e-mel anda sah!';
                                         loading = false;
                                       });
                                     }
@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               RaisedButton(
                                 child: Text(
-                                    'Register'
+                                    'Daftar'
                                 ),
                                 onPressed: () {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));

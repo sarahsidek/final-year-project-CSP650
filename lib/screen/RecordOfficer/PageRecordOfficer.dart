@@ -17,19 +17,21 @@ class _RecordOfficerState extends State<RecordOfficer> {
     return Scaffold(
       floatingActionButton:   FloatingActionButton(
           child: Icon(Icons.add),
+          backgroundColor: Colors.redAccent,
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder:
                 (context) => AddTask()));
           }
       ),
       appBar: AppBar(
-        title: Text('Record Officer'),
+        title: Text('Pegawai Merekod'),
+        backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         actions: <Widget>[
           FlatButton(
               child: Row(
                 children: <Widget>[
-                  Text("Logout"),
+                  Text("Keluar"),
                 ],
               ),
               textColor: Colors.black87,

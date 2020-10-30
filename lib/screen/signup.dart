@@ -60,20 +60,20 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: <Widget>[
                           //full name
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Full name',
+                            decoration: InputDecoration(labelText: 'Name penuh',
                                 prefixIcon: Icon(Icons.person)),
                             keyboardType: TextInputType.text,
-                            validator: (value) => value.isEmpty ? 'Enter a Full name': null,
+                            validator: (value) => value.isEmpty ? 'Pastikan nama penuh dilengkapkan!': null,
                             onChanged: (value)
                             {
                               setState(() => name = value);
                             },
                           ),
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Number Phone',
+                            decoration: InputDecoration(labelText: 'Nombor Telefon',
                                 prefixIcon: Icon(Icons.call)),
                             keyboardType: TextInputType.number,
-                            validator: (value) => value.isEmpty ? 'Enter a number phone': null,
+                            validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
                             onChanged: (value)
                             {
                               setState(() => nophone = value);
@@ -82,14 +82,14 @@ class _SignupScreenState extends State<SignupScreen> {
 
                           //email
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Email',
+                            decoration: InputDecoration(labelText: 'E-mel',
                                 prefixIcon: Icon(Icons.email)),
                             keyboardType: TextInputType.emailAddress,
                             validator: (value)
                             {
                               if(value.isEmpty || !value.contains('@'))
                               {
-                                return 'invalid email';
+                                return 'E-mel tidak sah!';
                               }
                               return null;
                             },
@@ -100,14 +100,14 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           //password
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Password',
+                            decoration: InputDecoration(labelText: 'Kata Laluan',
                                 prefixIcon: Icon(Icons.vpn_key)),
                             obscureText: true,
                             validator: (value)
                             {
                               if(value.isEmpty || value.length<=5)
                               {
-                                return 'invalid password';
+                                return 'Kata Laluan tidak sah!';
                               }
                               return null;
                             },
@@ -118,10 +118,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           //confirmation password
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Confirmation Password',
+                            decoration: InputDecoration(labelText: 'kata laluan pengesahan',
                                 prefixIcon: Icon(Icons.vpn_key)),
                             obscureText: true,
-                            validator: (value) => value.isEmpty ? 'Enter a confirmation password' : null,
+                            validator: (value) => value.isEmpty ? 'Pastikan kata laluan pengesahan dilengkapkan!' : null,
                             onChanged: (value)
                             {
                               setState(() => confrimpass = value);
@@ -132,7 +132,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           RaisedButton(
                             child: Text(
-                                'Register'
+                                'Daftar'
                             ),
                             onPressed: ()  async {
                               if(_formKey.currentState.validate()){
@@ -141,7 +141,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Navigator.pop(context);
                                 if(result == null){
                                   setState(() {
-                                    error = 'Error logging in';
+                                    error = 'Log masuk tidak sah!';
                                     loading = false;
                                   });
                                 }

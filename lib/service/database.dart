@@ -32,7 +32,7 @@ class DatabaseService{
   final String pegawaiZon;
   final String kategori;
   final String uniqueID;
-  //final FirebaseStorage _storage = FirebaseStorage(storageBucket: 'gs://finalyearproject-5c689.appspot.com');
+
 
   DatabaseService({this.id, this.uid,this.name,this.email,this.password,this.confrimpass,this.nophone, this.gender,
   this.imageUrl, this.usertype, this.uniqueID, this.sumberAduan, this.noAduan, this.kerosakan, this.zon, this.pegawaiZon, this.kategori});

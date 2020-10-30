@@ -51,14 +51,14 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'Email',
+                              decoration: InputDecoration(labelText: 'E-mel',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value)
                               {
                                 if(value.isEmpty || !value.contains('@'))
                                 {
-                                  return 'invalid email';
+                                  return 'Pastikan e-mel anda sah!';
                                 }
                                 return null;
                               },
@@ -69,10 +69,10 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                           ),
                           //password
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Password',
+                            decoration: InputDecoration(labelText: 'Kata Laluan',
                                 prefixIcon: Icon(Icons.vpn_key)),
                             obscureText: true,
-                            validator: (value) => value.isEmpty ? 'Password cannot be null': null,
+                            validator: (value) => value.isEmpty ? 'Kata Laluan tidak sah!': null,
                             onChanged: (value)
                             {
                               setState(() => uniqueID = value);
@@ -85,7 +85,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                             children: <Widget>[
                               RaisedButton(
                                 child: Text(
-                                    'Login'
+                                    'Log Masuk'
                                 ),
                                 onPressed: () async {
                                   if( _formKey.currentState.validate()){
@@ -94,7 +94,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => RoadGang()));
                                     if (result == null){
                                       setState(() {
-                                        error = 'Please supply a valid email';
+                                        error = 'Pastikan e-mel anda sah!';
                                         loading = false;
                                       });
                                     }
