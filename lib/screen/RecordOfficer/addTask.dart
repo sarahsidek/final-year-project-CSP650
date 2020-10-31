@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 
 class AddTask extends StatefulWidget {
@@ -13,7 +13,7 @@ class _AddTaskState extends State<AddTask> {
   // text field state
 
   int noAduan;
-  DateTime _dateTime;
+  //DateTime _dateTime;
   String kerosakan = " ";
   String kategori = " ";
   String sumberAduan;
@@ -57,8 +57,8 @@ class _AddTaskState extends State<AddTask> {
                     hintText: 'Nombor Aduan ',
                     prefixIcon: Icon(Icons.confirmation_number_sharp),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) => value.isEmpty ? 'Email cannot be empty!': null,
+                keyboardType: TextInputType.number,
+                validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
                 onChanged: (value) {
 
                 },
@@ -66,7 +66,7 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Number Phone',
+                    hintText: 'Kategori',
                     prefixIcon: Icon(Icons.phone),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
@@ -75,23 +75,11 @@ class _AddTaskState extends State<AddTask> {
 
                 },
               ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Unique ID ',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Ic number cannot be empty!': null,
-                onChanged: (value) {
-
-                },
-              ),
               const SizedBox(height: 20.0),
               RaisedButton(
                   color: Colors.redAccent,
                   textColor: Colors.black,
-                  child: Text("Save"),
+                  child: Text("Hantar"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
 

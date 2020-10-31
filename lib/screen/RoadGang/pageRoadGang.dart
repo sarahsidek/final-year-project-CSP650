@@ -13,6 +13,7 @@ class _RoadGangState extends State<RoadGang> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Buruh Kakitangan'),
+        backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
         actions: <Widget>[
           FlatButton(
