@@ -36,7 +36,7 @@ dependencies:
   fluttertoast: ^5.0.0
   firebase_messaging: ^6.0.7
   geofencing: ^0.1.0
-  google_maps_flutter: ^0.2.0
+  google_maps_flutter: ^0.5.26
   geoflutterfire: ^2.0.2
 
 dev_dependencies:

@@ -11,7 +11,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
 
   GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  final LatLng _center = const LatLng(3.126613, 101.598443);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
