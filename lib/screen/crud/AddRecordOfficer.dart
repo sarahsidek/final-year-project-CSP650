@@ -14,10 +14,13 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
   //text field
   String name = ' ';
   String email = ' ';
-  String uniqueID = ' ';
+  String icnumber = ' ';
   String phone = ' ';
   String zon = ' ';
   String pegawaiZon =' ';
+  String selectZon;
+  List<String> noZon = <String> ['Zon 1', 'Zon 2', 'Zon 3', 'Zon 4', 'Zon 5', 'Zon 6', 'Zon 7', 'Zon 8'];
+  List<String> namaPegawai = <String> ['Ahmad Fadzil', 'Ahmad Abu', 'Encik Hariz', 'Encik Ali', 'Encik Akif', 'Encik Daniel', 'Encik Sani', 'Encik Razak'];
   final AuthRecordOfficer _officer = new AuthRecordOfficer();
   final GlobalKey<FormState> _formKey = GlobalKey();
 
@@ -50,6 +53,18 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
+                    hintText: 'No Kad Pengenalan ',
+                    prefixIcon: Icon(Icons.perm_contact_calendar),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                keyboardType: TextInputType.number,
+                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
+                onChanged: (value) {
+                  setState(() => icnumber = value);
+                },
+              ),
+              SizedBox(height: 10.0),
+              TextFormField(
+                decoration: InputDecoration(
                     hintText: 'E-mel',
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -72,28 +87,22 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
                 },
               ),
               SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Unik ID ',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
-                onChanged: (value) {
-                  setState(() => uniqueID = value);
+              DropdownButtonFormField(
+                    hint:Text('Zon'),
+                    isExpanded: true,
+                    value: selectZon,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectZon = newValue;
+                    zon = selectZon;
+                  });
                 },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Zon',
-                    prefixIcon: Icon(Icons.add_location),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan Zon dilengkapkan!': null,
-                onChanged: (value) {
-                  setState(() => zon = value);
-                },
+                items: noZon.map((zon){
+                  return DropdownMenuItem(
+                    value: zon,
+                    child: new Text(zon),
+                  );
+                }).toList(),
               ),
               SizedBox(height: 10.0),
               TextFormField(
@@ -111,10 +120,10 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               RaisedButton(
                   color: Colors.redAccent,
                   textColor: Colors.black,
-                  child: Text("Hantar"),
+                  child: Text("Simpan"),
                   onPressed: () async {
                           if(_formKey.currentState.validate()){
-                          _officer.registerRecordOfficer(name, email, uniqueID, phone, zon, pegawaiZon).then((value) async{
+                          _officer.registerRecordOfficer(name, email, icnumber, phone, zon, pegawaiZon).then((value) async{
                           await alertDialog(context);
                           Navigator.pop(context);
                           });

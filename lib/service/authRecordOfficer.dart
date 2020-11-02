@@ -17,9 +17,9 @@ class AuthRecordOfficer{
     return _firebaseAuth.onAuthStateChanged.map( _record);
   }
 
-  Future signInRecordOfficer(String email, String uniqueID) async {
+  Future signInRecordOfficer(String email, String icnumber) async {
     try {
-      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: uniqueID);
+      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
       return _record(user);
     }
@@ -28,9 +28,9 @@ class AuthRecordOfficer{
     }
   }
 
-  Future registerRecordOfficer(String name, String email, String uniqueID, String nophone, String zon, String pegawaiZon) async{
+  Future registerRecordOfficer(String name, String email, String icnumber, String nophone, String zon, String pegawaiZon) async{
     try{
-      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: uniqueID);
+      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
 
       _user = RecordOfficer (
@@ -38,7 +38,7 @@ class AuthRecordOfficer{
           name: name,
           email: email,
           nophone: nophone,
-          uniqueID: uniqueID,
+          icnumber: icnumber,
            zon:zon,
         pegawaiZon: pegawaiZon
       );

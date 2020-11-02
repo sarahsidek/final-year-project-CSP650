@@ -38,7 +38,7 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(rd.uniqueID),
+                                  child: Text(rd.icnumber),
                                 ),
                               ],
                             ),

@@ -24,7 +24,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
   TextEditingController _name;
   TextEditingController _email;
   TextEditingController _nophone;
-  TextEditingController _uniqueID;
+  TextEditingController _icnumber;
   TextEditingController _zon;
   TextEditingController _pegawaiZon;
 
@@ -35,7 +35,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
     _name = TextEditingController(text:  widget.rd.name);
     _email = TextEditingController(text:  widget.rd.email);
     _nophone = TextEditingController(text: widget.rd.nophone);
-    _uniqueID= TextEditingController(text: widget.rd.uniqueID);
+    _icnumber= TextEditingController(text: widget.rd.icnumber);
     _zon = TextEditingController(text: widget.rd.zon);
     _pegawaiZon = TextEditingController(text: widget.rd.pegawaiZon);
 
@@ -90,7 +90,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
-                controller: _uniqueID,
+                controller: _icnumber,
               ),
               SizedBox(height: 10.0),
               TextFormField(
@@ -121,7 +121,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
                           name: _name.text,
                           email: _email.text,
                           nophone: _nophone.text,
-                          uniqueID: _uniqueID.text,
+                          icnumber: _icnumber.text,
                           zon: _zon.text,
                           pegawaiZon: _pegawaiZon.text,
                           uid: rd.uid)).then((value) async{

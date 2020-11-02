@@ -47,6 +47,18 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
+                    hintText: 'No Kad Pengenalan ',
+                    prefixIcon: Icon(Icons.perm_contact_calendar),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                keyboardType: TextInputType.number,
+                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
+                onChanged: (value) {
+                  setState(() => uniqueID = value);
+                },
+              ),
+              SizedBox(height: 10.0),
+              TextFormField(
+                decoration: InputDecoration(
                     hintText: 'E-mel',
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -68,23 +80,11 @@ class _AddRoadGangState extends State<AddRoadGang> {
                   setState(() => phone = value);
                 },
               ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Unik ID ',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
-                onChanged: (value) {
-                  setState(() => uniqueID = value);
-                },
-              ),
               const SizedBox(height: 20.0),
               RaisedButton(
                   color: Colors.redAccent,
                   textColor: Colors.black,
-                  child: Text("Hantar"),
+                  child: Text("Simpan"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
                       _authRoadGang.registerRoadGang(name, email, uniqueID, phone).then((value) async{
