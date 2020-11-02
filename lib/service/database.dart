@@ -85,6 +85,12 @@ class DatabaseService{
        }
     }
 
+    Stream<List<Admin>> getAdmin()  {
+       return userCollection.snapshots().map((snapshot) => snapshot.documents.map(
+               (doc) => Admin.fromData(doc.data),
+       ).toList(),
+       );
+    }
 
     // read the supervisor
     Stream<List<NewUser>> getSupervisor(){
@@ -123,6 +129,8 @@ class DatabaseService{
       print("Update Profile");
     });
  }
+
+
 
 
     // update data supervisor

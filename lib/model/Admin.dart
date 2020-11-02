@@ -8,8 +8,8 @@ class Admin{
 
   Admin({this.id,this.name, this.email, this.password,  this.confirmpass, this.nophone});
 
-  Admin.fromData(Map<String, dynamic> data, String id)
-  : id = data['id'],
+  Admin.fromData(Map<String, dynamic> data)
+  : id = data['uid'],
   name = data['name'],
   email = data['email'],
   password = data['password'],

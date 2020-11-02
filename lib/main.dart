@@ -1,7 +1,7 @@
-import 'package:fyp/maps/google_maps.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fyp/screen/login.dart';
 
 
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GoogleMaps(),
+      home: LoginScreen(),
     );
 
   }

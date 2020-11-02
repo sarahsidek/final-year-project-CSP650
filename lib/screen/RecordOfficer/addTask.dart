@@ -11,13 +11,28 @@ class AddTask extends StatefulWidget {
 class _AddTaskState extends State<AddTask> {
 
   // text field state
-
+  DateTime _dateTime = DateTime.now();
   int noAduan;
-  //DateTime _dateTime;
   String kerosakan = " ";
-  String kategori = " ";
+  String kategori;
   String sumberAduan;
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
+  List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
+
+  void _selectDate(BuildContext context) async{
+    DateTime _datepicker = await showDatePicker(
+      context: context,
+      initialDate: _dateTime,
+      firstDate: DateTime(1990),
+      lastDate: DateTime(2040),
+    );
+    if (_datepicker != null && _datepicker != _dateTime){
+         setState(() {
+           _dateTime = _datepicker;
+           print(_dateTime.toString());
+         });
+    }
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   @override
@@ -35,6 +50,21 @@ class _AddTaskState extends State<AddTask> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               SizedBox(height: 25.0),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: "Pilih Tarikh",
+                    prefixIcon: Icon(Icons.calendar_today),
+                    hintText: _dateTime.toString(),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
+                readOnly: true,
+                onTap: (){
+                  setState(() {
+                    _selectDate(context);
+                  });
+                },
+              ),
+              SizedBox(height: 10.0),
               DropdownButton(
                 hint: Text("Sumber Aduan"),
                 isExpanded: true,
@@ -60,20 +90,24 @@ class _AddTaskState extends State<AddTask> {
                 keyboardType: TextInputType.number,
                 validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
                 onChanged: (value) {
-
                 },
               ),
               SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Kategori',
-                    prefixIcon: Icon(Icons.phone),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Number Phone cannot be empty!': null,
+              DropdownButton(
+                    hint: Text('Kategori'),
+                   isExpanded: true,
+                value: kategori,
                 onChanged: (value) {
-
+                      setState(() {
+                        kategori = value;
+                      });
                 },
+                items: kate.map((value) {
+                  return DropdownMenuItem(
+                    value: value,
+                    child: new Text(value),
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 20.0),
               RaisedButton(

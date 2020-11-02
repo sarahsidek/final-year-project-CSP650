@@ -29,8 +29,12 @@ class _GoogleMapsState extends State<GoogleMaps> {
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
             target: _center,
-            zoom: 11.0,
+            zoom: 15.0,
           ),
+          myLocationButtonEnabled: true,
+          mapType: MapType.normal,
+          compassEnabled: true,
+          zoomControlsEnabled: true,
         ),
       ),
     );

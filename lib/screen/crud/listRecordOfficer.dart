@@ -77,17 +77,17 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Attention!'),
-            content: Text('Do you want to delete? '),
+            title: Text('Perhatian!'),
+            content: Text('Adakah anda mahu menghapuskan? '),
             actions: <Widget>[
               FlatButton(
-                child: Text('Yes', style: TextStyle(color: Colors.red),),
+                child: Text('Ya', style: TextStyle(color: Colors.red),),
                 onPressed: ()  async {
                   DatabaseService().deleteRecordOfficer(id);
                 },
               ),
               FlatButton(
-                child: Text("No"),
+                child: Text("Tidak"),
                 onPressed: () {
                   Navigator.pop(context);
                 },
