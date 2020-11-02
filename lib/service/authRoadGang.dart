@@ -18,9 +18,9 @@ class AuthRoadGang {
   }
 
 
-  Future signInRoadGang(String email, String uniqueID) async {
+  Future signInRoadGang(String email, String icnumber) async {
     try {
-      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: uniqueID);
+      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
       return _newUser(user);
     }
@@ -29,9 +29,9 @@ class AuthRoadGang {
     }
   }
 
-  Future registerRoadGang(String name, String email, String uniqueID, String nophone) async{
+  Future registerRoadGang(String name, String email, String icnumber, String nophone) async{
     try{
-      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: uniqueID);
+      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
 
       _user = NewUser (
@@ -39,7 +39,7 @@ class AuthRoadGang {
           name: name,
           email: email,
           nophone: nophone,
-          uniqueID: uniqueID
+          icnumber: icnumber
       );
 
       await DatabaseService().addRoadGang(_user);

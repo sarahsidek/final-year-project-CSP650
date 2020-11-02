@@ -21,7 +21,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
   TextEditingController _name;
   TextEditingController _email;
   TextEditingController _nophone;
-  TextEditingController _uniqueID;
+  TextEditingController _icnumber;
 
 
   @override
@@ -30,7 +30,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
     _name = TextEditingController(text:  widget.rg.name);
     _email = TextEditingController(text:  widget.rg.email);
     _nophone = TextEditingController(text: widget.rg.nophone);
-    _uniqueID= TextEditingController(text: widget.rg.uniqueID);
+    _icnumber= TextEditingController(text: widget.rg.icnumber);
   }
 
   @override
@@ -83,7 +83,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
                   keyboardType: TextInputType.number,
-                  controller: _uniqueID,
+                  controller: _icnumber,
                 ),
                 const SizedBox(height: 20.0),
                 RaisedButton(
@@ -93,7 +93,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         DatabaseService().updateData1(NewUser(name: _name.text, email: _email.text,
-                            nophone: _nophone.text, uniqueID: _uniqueID.text, uid: rg.uid)).then((value) async{
+                            nophone: _nophone.text, icnumber: _icnumber.text, uid: rg.uid)).then((value) async{
                           await alertDialog(
                               context);
                           Navigator.pop(context);

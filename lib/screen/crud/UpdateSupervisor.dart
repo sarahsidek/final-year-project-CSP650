@@ -29,7 +29,7 @@ class _UpdateSupervisorState extends State<UpdateSupervisor> {
   TextEditingController _name;
   TextEditingController _email;
   TextEditingController _nophone;
-  TextEditingController _uniqueID;
+  TextEditingController _icnumber;
 
 
 
@@ -39,7 +39,7 @@ void initState(){
      _name = TextEditingController(text:  widget.sv.name);
      _email = TextEditingController(text:  widget.sv.email);
      _nophone = TextEditingController(text: widget.sv.nophone);
-     _uniqueID= TextEditingController(text: widget.sv.uniqueID);
+     _icnumber= TextEditingController(text: widget.sv.icnumber);
 
 }
     @override
@@ -92,7 +92,7 @@ void initState(){
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
-                    controller: _uniqueID,
+                    controller: _icnumber,
                   ),
                   const SizedBox(height: 20.0),
                   RaisedButton(
@@ -102,7 +102,7 @@ void initState(){
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           DatabaseService().updateData(NewUser(name: _name.text, email: _email.text, nophone: _nophone.text,
-                              uniqueID: _uniqueID.text, uid: sv.uid)).then((value) async{
+                              icnumber: _icnumber.text, uid: sv.uid)).then((value) async{
                                 print(sv.uid);
                                 await alertDialog(context);
                                 Navigator.pop(context);

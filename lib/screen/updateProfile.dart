@@ -21,13 +21,18 @@ class _UpdateProfileState extends State<UpdateProfile> {
         title: Text('Edit Profile'),
         backgroundColor: Colors.redAccent,
       ),
-      body:StreamBuilder<DocumentSnapshot>(
-        stream: Firestore.instance.collection('Admin').document(admin.uid).snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot>snapshot) {
-          if(snapshot.hasError) {
-            return Text('Error: ${snapshot.error}' );
+      body:StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance.collection('Admin').snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
+          if(!snapshot.hasData) {
+            return Text('Loading data... Please wait..');
           }
-            return Text(snapshot.data['name']);
+           return Column(
+             children: <Widget>[
+               Text(snapshot.data.documents[0]['email']),
+               Text(snapshot.data.documents[0]['nophone']),
+             ],
+           );
           }
       )
     );

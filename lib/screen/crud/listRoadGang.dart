@@ -38,7 +38,7 @@ class _ListRoadGangState extends State<ListRoadGang> {
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(rg.uniqueID),
+                                  child: Text(rg.icnumber),
                                 ),
                               ],
                             ),

@@ -50,7 +50,7 @@ class _ListSupervisorState extends State<ListSupervisor> {
                             ],
                           ),
                         ),
-                        subtitle: Text(sv.uniqueID),
+                        subtitle: Text(sv.icnumber),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[

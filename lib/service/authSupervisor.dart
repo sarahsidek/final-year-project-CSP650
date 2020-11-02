@@ -18,9 +18,9 @@ class AuthSupervisor{
   }
 
 
-  Future signInSupervisor(String email, String uniqueID) async {
+  Future signInSupervisor(String email, String icnumber) async {
     try {
-      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: uniqueID);
+      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
       return _newUser(user);
     }
@@ -29,9 +29,9 @@ class AuthSupervisor{
     }
   }
 
-  Future registerSupervisor(String name, String email, String uniqueID, String nophone) async{
+  Future registerSupervisor(String name, String email, String icnumber, String nophone) async{
     try{
-      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: uniqueID);
+      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
 
       _user = NewUser (
@@ -39,7 +39,7 @@ class AuthSupervisor{
           name: name,
           email: email,
           nophone: nophone,
-          uniqueID: uniqueID
+          icnumber: icnumber
       );
 
       await DatabaseService().addSupervisor(_user);
