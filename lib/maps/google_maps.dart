@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -8,35 +9,64 @@ class GoogleMaps extends StatefulWidget {
 }
 
 class _GoogleMapsState extends State<GoogleMaps> {
+  GoogleMapController myController;
+  Map<MarkerId , Marker> markers = <MarkerId , Marker>{};
 
-  GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(3.126613, 101.598443);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  void initMarker(specify, specifyId) async{
+    var markerIdVal = specifyId;
+    final MarkerId markerId = MarkerId(markerIdVal);
+    final Marker marker = Marker(
+      markerId: markerId,
+      position: LatLng(specify['location'].latitude , specify['location'].longitude),
+      infoWindow: InfoWindow(title: 'Im here', snippet: specify['address'])
+    );
+    setState(() {
+      markers[markerId] = marker;
+    });
+  }
+  getMarketData() async {
+    Firestore.instance.collection('location').getDocuments().then((myMockData) {
+      if(myMockData.documents.isNotEmpty){
+        for(int i = 0; i<myMockData.documents.length; i++){
+          initMarker(myMockData.documents[i].data, myMockData.documents[i].documentID);
+        }
+      }
+    });
   }
 
+  void initState() {
+    getMarketData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
+    Set<Marker> getMarker(){
+      return <Marker>[
+        Marker(
+          markerId: MarkerId('I am Here'),
+          position: LatLng(3.126613, 101.598443),
+          icon: BitmapDescriptor.defaultMarker,
+          infoWindow: InfoWindow(title: 'Worker')
+        )
+      ].toSet();
+    }
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Maps Sample App'),
+          title: Text('Geolocation'),
           backgroundColor: Colors.redAccent
         ),
         body: GoogleMap(
-          onMapCreated: _onMapCreated,
+          markers: getMarker(),
           initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 15.0,
-          ),
-          myLocationButtonEnabled: true,
-          mapType: MapType.normal,
-          compassEnabled: true,
-          zoomControlsEnabled: true,
-        ),
+            target: LatLng(3.126613, 101.598443),
+            zoom: 14.0),
+          onMapCreated: (GoogleMapController controller){
+            myController = controller;
+          }
+        )
       ),
     );
   }
 }
+

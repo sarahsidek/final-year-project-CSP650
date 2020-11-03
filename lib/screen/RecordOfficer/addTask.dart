@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
+import 'package:fyp/maps/google_maps.dart';
 
 class AddTask extends StatefulWidget {
 
@@ -91,6 +91,16 @@ class _AddTaskState extends State<AddTask> {
                 validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
                 onChanged: (value) {
                 },
+              ),
+              SizedBox(height: 10.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Lokasi',
+                  prefixIcon: Icon(Icons.location_on),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps()));
+                }
               ),
               SizedBox(height: 10.0),
               DropdownButton(
