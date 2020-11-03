@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/maps/google_maps.dart';
+
 
 class AddTask extends StatefulWidget {
 
@@ -99,7 +99,7 @@ class _AddTaskState extends State<AddTask> {
                   prefixIcon: Icon(Icons.location_on),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps()));
                 }
               ),
               SizedBox(height: 10.0),

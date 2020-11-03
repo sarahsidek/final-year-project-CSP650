@@ -85,13 +85,9 @@ class DatabaseService{
        }
     }
 
-    Stream<List<Admin>> getAdmin()  {
-       return userCollection.snapshots().map((snapshot) => snapshot.documents.map(
-               (doc) => Admin.fromData(doc.data),
-       ).toList(),
-       );
+    Future getAdmin (uid) {
+    return userCollection.document(uid).get();
     }
-
     // read the supervisor
     Stream<List<NewUser>> getSupervisor(){
     return supervisorCollection.snapshots().map(
