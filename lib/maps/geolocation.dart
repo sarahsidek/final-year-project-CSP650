@@ -1,6 +1,5 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -46,51 +45,47 @@ class _GeolocationState extends State<Geolocation> {
     super.initState();
   }
 
-  FirebaseUser user;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.redAccent,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 600.0,
-              child: GoogleMap(
-                  onTap: (tapped) async {
-                    final coordinated = new geoCo.Coordinates(
-                        tapped.latitude, tapped.longitude);
-                    var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
-                    var firstAddress = address.first;
-                    addressLocation = firstAddress.addressLine;
-                    print(addressLocation);
-                    getMarkers(tapped.latitude, tapped.longitude);
-                    await Firestore.instance
-                        .collection('Location').add({
-                      'latitude': tapped.latitude,
-                      'longitude': tapped.longitude,
-                      'Address': firstAddress.addressLine,
-                    });
-                  },
-                  mapType: MapType.normal,
-                  compassEnabled: true,
-                  trafficEnabled: true,
-                  onMapCreated: (GoogleMapController controller) {
-                    setState(() {
-                      googleMapController = controller;
-                    });
-                  },
-                  initialCameraPosition: CameraPosition(
-                      target: LatLng(4.2105,101.9758),
-                      zoom: 15.0),
-                  markers: Set<Marker>.of(markers.values)),
-            ),
-            Text('Address : $addressLocation'),
-          ],
-        ),
-      ),
+      body:  Stack(
+        children: [
+          GoogleMap(
+              onTap: (tapped) async {
+                final coordinated = new geoCo.Coordinates(
+                    tapped.latitude, tapped.longitude);
+                var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
+                var firstAddress = address.first;
+                addressLocation = firstAddress.addressLine;
+                print(addressLocation);
+                getMarkers(tapped.latitude, tapped.longitude);
+                await Firestore.instance
+                    .collection('Location').add({
+                  'latitude': tapped.latitude,
+                  'longitude': tapped.longitude,
+                  'Address': firstAddress.addressLine,
+                });
+              },
+              mapType: MapType.normal,
+              compassEnabled: true,
+              trafficEnabled: true,
+              onMapCreated: (GoogleMapController controller) {
+                setState(() {
+                  googleMapController = controller;
+                });
+              },
+              initialCameraPosition: CameraPosition(
+                  target: LatLng(4.2105,101.9758),
+                  zoom: 15.0),
+              markers: Set<Marker>.of(markers.values)
+          ),
+          Text("Address: $addressLocation"),
+        ],
+      )
     );
   }
 
