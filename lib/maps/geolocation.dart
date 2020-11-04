@@ -65,15 +65,13 @@ class _GeolocationState extends State<Geolocation> {
                     var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
                     var firstAddress = address.first;
                     addressLocation = firstAddress.addressLine;
+                    print(addressLocation);
                     getMarkers(tapped.latitude, tapped.longitude);
                     await Firestore.instance
-                        .collection('Location').document().setData({
+                        .collection('Location').add({
                       'latitude': tapped.latitude,
                       'longitude': tapped.longitude,
                       'Address': firstAddress.addressLine,
-                    });
-                    setState(() {
-                      addressLocation = firstAddress.addressLine;
                     });
                   },
                   mapType: MapType.normal,

@@ -79,7 +79,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
                 SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Unik ID ',
+                      hintText: 'No kad Pengenalan',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
                   keyboardType: TextInputType.number,

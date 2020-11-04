@@ -38,10 +38,11 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
     _icnumber= TextEditingController(text: widget.rd.icnumber);
     _zon = TextEditingController(text: widget.rd.zon);
     _pegawaiZon = TextEditingController(text: widget.rd.pegawaiZon);
-
-
   }
-
+  String selectZon;
+  String selectPegawaiZon;
+  List<String> noZon = <String> ['Zon 1', 'Zon 2', 'Zon 3', 'Zon 4', 'Zon 5', 'Zon 6', 'Zon 7', 'Zon 8'];
+  List<String> namaPegawai = <String> ['Ahmad Fadzil', 'Ahmad Abu', 'Encik Hariz', 'Encik Ali', 'Encik Akif', 'Encik Daniel', 'Encik Sani', 'Encik Razak'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,29 +87,63 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Unik ID ',
+                    hintText: 'No kad Pengenalan',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
                 controller: _icnumber,
               ),
               SizedBox(height: 10.0),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
                     hintText: 'Zon',
-                    prefixIcon: Icon(Icons.add_location),
+                    prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
                 controller: _zon,
               ),
+              DropdownButtonFormField(
+                hint:Text('Zon'),
+                isExpanded: true,
+                value: selectZon,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectZon = newValue;
+                    _zon.text = selectZon;
+                  });
+                },
+                items: noZon.map((zon){
+                  return DropdownMenuItem(
+                    value: zon,
+                    child: new Text(zon),
+                  );
+                }).toList(),
+              ),
               SizedBox(height: 10.0),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
                     hintText: 'Pegawai Zon',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
                 controller: _pegawaiZon,
+              ),
+              DropdownButtonFormField(
+                hint:Text('Pegawai Zon'),
+                isExpanded: true,
+                value: selectPegawaiZon,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectPegawaiZon = newValue;
+                    _pegawaiZon.text = selectPegawaiZon;
+                  });
+                },
+                items: namaPegawai.map((pegawaiZon){
+                  return DropdownMenuItem(
+                    value: pegawaiZon,
+                    child: new Text(pegawaiZon),
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 20.0),
               RaisedButton(

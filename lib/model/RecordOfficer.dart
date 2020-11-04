@@ -17,7 +17,7 @@ class RecordOfficer {
         icnumber = data['icnumber'],
         nophone = data['nophone'],
         zon = data['zon'],
-        pegawaiZon = data['pegawaiZon'];
+        pegawaiZon = data['pegawaiZon'].toString();
 
   Map<String,dynamic> toJson(){
     return{

@@ -19,6 +19,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
   String zon = ' ';
   String pegawaiZon =' ';
   String selectZon;
+  String selectPegawaiZon;
   List<String> noZon = <String> ['Zon 1', 'Zon 2', 'Zon 3', 'Zon 4', 'Zon 5', 'Zon 6', 'Zon 7', 'Zon 8'];
   List<String> namaPegawai = <String> ['Ahmad Fadzil', 'Ahmad Abu', 'Encik Hariz', 'Encik Ali', 'Encik Akif', 'Encik Daniel', 'Encik Sani', 'Encik Razak'];
   final AuthRecordOfficer _officer = new AuthRecordOfficer();
@@ -86,7 +87,9 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
                   setState(() => phone = value);
                 },
               ),
+
               SizedBox(height: 10.0),
+              Text("Pilih Zon"),
               DropdownButtonFormField(
                     hint:Text('Zon'),
                     isExpanded: true,
@@ -105,16 +108,23 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
                 }).toList(),
               ),
               SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Pegawai Zon',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan Pegawai Zon dilengkapkan!': null,
-                onChanged: (value) {
-                  setState(() => pegawaiZon = value);
+              Text("Pilih Pegawai Zon"),
+              DropdownButtonFormField(
+                hint:Text('Pegawai Zon'),
+                isExpanded: true,
+                value: selectPegawaiZon,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectPegawaiZon = newValue;
+                    pegawaiZon = selectPegawaiZon;
+                  });
                 },
+                items: namaPegawai.map((pegawaiZon){
+                  return DropdownMenuItem(
+                    value: pegawaiZon,
+                    child: new Text(pegawaiZon),
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 20.0),
               RaisedButton(
