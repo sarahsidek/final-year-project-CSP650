@@ -35,9 +35,10 @@ dependencies:
   flutter_spinkit: 3.1.0
   fluttertoast: ^5.0.0
   firebase_messaging: ^6.0.7
-  geocoder: ^0.2.1
+  geocoder: 0.2.1
   geolocator: ^6.1.4
   google_maps_flutter: ^1.0.0
+  location : 3.0.2
 
 
 

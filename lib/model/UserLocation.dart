@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:geocoder/geocoder.dart';
+
 
 class UserLocation{
 
