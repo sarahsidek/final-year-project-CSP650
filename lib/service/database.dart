@@ -13,7 +13,7 @@ class DatabaseService{
   final CollectionReference roadGangCollection  = Firestore.instance.collection('Road Gang');
   final CollectionReference recordOfficerCollection  = Firestore.instance.collection('RecordOfficer');
   final CollectionReference supervisorCollection  = Firestore.instance.collection('Supervisor');
-
+  final CollectionReference addTaskCollection  = Firestore.instance.collection('Task');
 
   final String uid;
   final String id;
@@ -32,10 +32,11 @@ class DatabaseService{
   final String pegawaiZon;
   final String kategori;
   final String icnumber;
+  final DateTime time;
 
 
   DatabaseService({this.id, this.uid,this.name,this.email,this.password,this.confrimpass,this.nophone, this.gender,
-  this.imageUrl, this.usertype, this.icnumber, this.sumberAduan, this.noAduan, this.kerosakan, this.zon, this.pegawaiZon, this.kategori});
+  this.imageUrl, this.usertype, this.icnumber, this.sumberAduan, this.noAduan, this.kerosakan, this.zon, this.pegawaiZon, this.kategori, this.time});
 
 
 
@@ -59,30 +60,42 @@ class DatabaseService{
   }
 
 
+
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  Future addNewTask(DateTime dateTime, String sumberAduan, String noAduan, String kategori) async{
+    final FirebaseUser rd = await auth.currentUser();
+    final uid = rd.uid;
+    final String email = rd.email;
+    return addTaskCollection.document().setData({
+           'date' : DateTime.now(),
+           'sumberAduan': sumberAduan,
+           'noAduan': noAduan,
+           'kategori': kategori,
+           'uid': uid,
+           'email' : email
+         });
+  }
+
   // create user supervisor
   Future  addSupervisor(NewUser supervisor)async{
-    
-       if (isLoggedIn() !=null)
          return  supervisorCollection.document(supervisor.uid).setData(supervisor.toJson());
     }
     
     // create user record officer 
     Future addRecordOfficer(RecordOfficer recordOfficer) async {
-       if (isLoggedIn() != null){
          return recordOfficerCollection.document(recordOfficer.uid).setData(recordOfficer.toJson())
              .whenComplete(() {
                print("User created!");
          });
-       }
+
     }
     
     // create user road gang 
     Future addRoadGang(NewUser roadGang) async {
-       if(isLoggedIn() != null){
          return roadGangCollection.document(roadGang.uid).setData(roadGang.toJson()).whenComplete(() {
            print("User Created!");
          });
-       }
     }
 
     Future getAdmin (uid) {
@@ -169,7 +182,7 @@ class DatabaseService{
       return recordOfficerCollection.document(uid).delete();
    }
 
-  // get email, pegawai zon and zon data from record officer
+
    
 
 

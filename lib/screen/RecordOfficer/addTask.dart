@@ -1,39 +1,36 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/maps/geolocation.dart';
+import 'package:fyp/model/RecordOfficer.dart';
+import 'package:fyp/service/database.dart';
 
 
 class AddTask extends StatefulWidget {
 
+  final RecordOfficer rd;
+
+  const AddTask({Key key, this.rd}) : super(key: key);
   @override
-  _AddTaskState createState() => _AddTaskState();
+  _AddTaskState createState() => _AddTaskState(rd);
 }
 
 class _AddTaskState extends State<AddTask> {
-
+    RecordOfficer rd;
+    _AddTaskState(RecordOfficer result){
+      this.rd = rd;
+    }
   // text field state
   DateTime _dateTime = DateTime.now();
-  int noAduan;
+  String noAduan;
   String kerosakan = " ";
   String kategori;
   String sumberAduan;
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
 
-  void _selectDate(BuildContext context) async{
-    DateTime _datepicker = await showDatePicker(
-      context: context,
-      initialDate: _dateTime,
-      firstDate: DateTime(1990),
-      lastDate: DateTime(2040),
-    );
-    if (_datepicker != null && _datepicker != _dateTime){
-         setState(() {
-           _dateTime = _datepicker;
-           print(_dateTime.toString());
-         });
-    }
-  }
+
+    RecordOfficer _user;
+    RecordOfficer get currentRecordOfficer => _user;
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   @override
@@ -52,16 +49,16 @@ class _AddTaskState extends State<AddTask> {
             children: <Widget>[
               SizedBox(height: 25.0),
               TextFormField(
-                decoration: InputDecoration(
+                   decoration: InputDecoration(
                     labelText: "Pilih Tarikh",
-                    prefixIcon: Icon(Icons.calendar_today),
+                   prefixIcon: Icon(Icons.calendar_today),
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
                 readOnly: true,
-                onTap: (){
+                onChanged: (value){
                   setState(() {
-                    _selectDate(context);
+                    _dateTime = value as DateTime;
+                    print(_dateTime);
                   });
                 },
               ),
@@ -91,17 +88,8 @@ class _AddTaskState extends State<AddTask> {
                 keyboardType: TextInputType.number,
                 validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
                 onChanged: (value) {
+                  setState(() => noAduan = value );
                 },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Lokasi',
-                  prefixIcon: Icon(Icons.location_on),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Geolocation()));
-                }
               ),
               SizedBox(height: 10.0),
               DropdownButton(
@@ -127,7 +115,12 @@ class _AddTaskState extends State<AddTask> {
                   child: Text("Hantar"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
-
+                      DatabaseService().addNewTask(_dateTime, sumberAduan, noAduan, kategori).then((value) async{
+                        await alertDialog(
+                            context);
+                        Navigator.pop(context);
+                      });
+                      print("Successful");
                     }
                   }
               ),
