@@ -1,3 +1,6 @@
+
+
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/model/Admin.dart';
@@ -24,7 +27,6 @@ class DatabaseService{
   final String nophone;
   final String gender;
   final String imageUrl;
-  final String usertype;
   final String sumberAduan;
   final int noAduan;
   final String kerosakan;
@@ -36,7 +38,7 @@ class DatabaseService{
 
 
   DatabaseService({this.id, this.uid,this.name,this.email,this.password,this.confrimpass,this.nophone, this.gender,
-  this.imageUrl, this.usertype, this.icnumber, this.sumberAduan, this.noAduan, this.kerosakan, this.zon, this.pegawaiZon, this.kategori, this.time});
+  this.imageUrl, this.icnumber, this.sumberAduan, this.noAduan, this.kerosakan, this.zon, this.pegawaiZon, this.kategori, this.time});
 
 
 
@@ -63,19 +65,22 @@ class DatabaseService{
 
 
   final FirebaseAuth auth = FirebaseAuth.instance;
-  Future addNewTask(DateTime dateTime, String sumberAduan, String noAduan, String kategori) async{
-    final FirebaseUser rd = await auth.currentUser();
-    final uid = rd.uid;
-    final String email = rd.email;
-    return addTaskCollection.document().setData({
-           'date' : DateTime.now(),
-           'sumberAduan': sumberAduan,
-           'noAduan': noAduan,
-           'kategori': kategori,
-           'uid': uid,
-           'email' : email
-         });
-  }
+  Future addNewTask(DateTime dateTime, String sumberAduan, String noAduan, String kategori) async {
+      final FirebaseUser rd = await auth.currentUser();
+      final uid = rd.uid;
+      final String email = rd.email;
+      return addTaskCollection.document().setData({
+        'date': DateTime.now(),
+        'sumberAduan': sumberAduan,
+        'noAduan': noAduan,
+        'kategori': kategori,
+        'uid': uid,
+        'email': email
+      });
+    }
+
+
+
 
   // create user supervisor
   Future  addSupervisor(NewUser supervisor)async{
@@ -98,9 +103,6 @@ class DatabaseService{
          });
     }
 
-    Future getAdmin (uid) {
-    return userCollection.document(uid).get();
-    }
     // read the supervisor
     Stream<List<NewUser>> getSupervisor(){
     return supervisorCollection.snapshots().map(

@@ -1,7 +1,8 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoder/services/base.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoder/geocoder.dart' as geoCo;
@@ -45,17 +46,12 @@ class _GeolocationState extends State<Geolocation> {
   void initState() {
     super.initState();
   }
-
-
-
+  String searchAddr;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-      ),
-      body:  Stack(
-        children: [
+
+    return   Stack(
+        children: <Widget>[
           GoogleMap(
               onTap: (tapped) async {
                 final coordinated = new geoCo.Coordinates(
@@ -91,11 +87,39 @@ class _GeolocationState extends State<Geolocation> {
                   zoom: 15.0),
               markers: Set<Marker>.of(markers.values)
           ),
-          Text("Address: $addressLocation"),
+          Positioned(
+            top: 30.0,
+            right: 15.0,
+            left: 15.0,
+            child: Container(
+              height: 50.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.white
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Enter Address",
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(left: 15.0, top: 15.0),
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: (){},
+                    iconSize: 30.0),
+                    ),
+                   onChanged: (val){
+                  setState(() {
+                    searchAddr = val;
+                  });
+                    },
+                ),
+              )
+              ),
         ],
-      )
-    );
+      );
   }
+
 
   @override
   void dispose() {

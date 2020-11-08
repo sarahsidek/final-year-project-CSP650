@@ -51,7 +51,7 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'E-mel',
+                              decoration: InputDecoration(labelText: 'Pegawai Merekod: E-mel ',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value)

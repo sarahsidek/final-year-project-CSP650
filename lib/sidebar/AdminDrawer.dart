@@ -1,14 +1,12 @@
 import 'package:fyp/screen/login.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/screen/updateProfile.dart';
+
 import 'package:fyp/service/auth.dart';
 
 
 
 
 class AdminDrawer extends StatefulWidget {
-
-
 
 
   @override
@@ -43,14 +41,6 @@ class _AdminDrawerState extends State<AdminDrawer> {
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 5.0),
-              ListTile(
-                leading: Icon(Icons.person_pin),
-                title: Text('Profile Admin'),
-                onTap: () async{
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateProfile()));
-                },
               ),
               SizedBox(height: 5.0),
               ListTile(

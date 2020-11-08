@@ -1,38 +1,128 @@
-
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/model/RecordOfficer.dart';
-import 'package:fyp/service/database.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
+
+
 
 
 class AddTask extends StatefulWidget {
 
-  final RecordOfficer rd;
 
-  const AddTask({Key key, this.rd}) : super(key: key);
   @override
-  _AddTaskState createState() => _AddTaskState(rd);
+  _AddTaskState createState() => _AddTaskState();
 }
 
 class _AddTaskState extends State<AddTask> {
-    RecordOfficer rd;
-    _AddTaskState(RecordOfficer result){
-      this.rd = rd;
-    }
+
   // text field state
   DateTime _dateTime = DateTime.now();
   String noAduan;
   String kerosakan = " ";
   String kategori;
   String sumberAduan;
+  String imageUrl;
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
+  File image;
+
+  List<Asset> images = List<Asset>();
+  List<String> imageUrls = <String>[];
+  String error = "No error Detected";
+
+  @override
+  void initState(){
+    super.initState();
+  }
+
+  Widget buildGridView() {
+    return GridView.count(
+      crossAxisCount: 2,
+      children: List.generate(images.length, (index) {
+        Asset asset = images[index];
+        return Container(
+          child: AssetThumb(
+            asset: asset,
+            width: 100,
+            height: 100,
+          ),
+        );
+      }),
+    );
+  }
 
 
-    RecordOfficer _user;
-    RecordOfficer get currentRecordOfficer => _user;
+  Future<void> loadAssets() async {
+    List<Asset> resultList = List<Asset>();
+    String error = 'No Error Dectected';
 
-  final GlobalKey<FormState> _formKey = GlobalKey();
+    try {
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: 300,
+        enableCamera: true,
+        selectedAssets: images,
+        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
+        materialOptions: MaterialOptions(
+          actionBarColor: "#abcdef",
+          actionBarTitle: "Example App",
+          allViewTitle: "All Photos",
+          useDetailsView: false,
+          selectCircleStrokeColor: "#000000",
+        ),
+      );
+    } on Exception catch (e) {
+      error = e.toString();
+    }
+    if (!mounted) return;
+
+    setState(() {
+      images = resultList;
+      error = error;
+    });
+  }
+  final FirebaseAuth auth = FirebaseAuth.instance;
+   uploadImage(DateTime dateTime, String sumberAduan, String noAduan, String kategori){
+    for ( var imageFile in images) {
+      postImage(imageFile).then((downloadUrl) async {
+        imageUrls.add(downloadUrl.toString());
+        if(imageUrls.length==images.length){
+          final FirebaseUser rd = await auth.currentUser();
+          final uid = rd.uid;
+          final String email = rd.email;
+          Firestore.instance.collection('Task').document().setData({
+            'date': DateTime.now(),
+            'sumberAduan': sumberAduan,
+            'noAduan': noAduan,
+            'kategori': kategori,
+            'uid': uid,
+            'email': email,
+            'urls':imageUrls,
+            'verified' : "Dalam proses kelulusan"
+          }, merge: true).then((_){
+            setState(() {
+              images = [];
+              imageUrls = [];
+            });
+          });
+        }
+      }).catchError((err) {
+        print(err);
+      });
+    }
+  }
+    postImage(Asset imageFile) async {
+    String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+    StorageReference reference = FirebaseStorage.instance.ref().child(fileName);
+    StorageUploadTask uploadTask = reference.putData((await imageFile.getByteData()).buffer.asUint8List());
+    StorageTaskSnapshot storageTaskSnapshot = await uploadTask.onComplete;
+    print(storageTaskSnapshot.ref.getDownloadURL());
+    return storageTaskSnapshot.ref.getDownloadURL();
+  }
+
+    final GlobalKey<FormState> _formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,6 +198,23 @@ class _AddTaskState extends State<AddTask> {
                   );
                 }).toList(),
               ),
+              SizedBox(height: 15.0),
+              Container(
+                height: 200,
+                child: Column(
+                  children: <Widget>[
+                    RaisedButton(
+                      child: Text("Pilih Gambar"),
+                      color: Colors.redAccent,
+                      textColor: Colors.black,
+                      onPressed: loadAssets,
+                    ),
+                    Expanded(
+                      child: buildGridView(),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 20.0),
               RaisedButton(
                   color: Colors.redAccent,
@@ -115,12 +222,12 @@ class _AddTaskState extends State<AddTask> {
                   child: Text("Hantar"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
-                      DatabaseService().addNewTask(_dateTime, sumberAduan, noAduan, kategori).then((value) async{
+                      uploadImage(_dateTime, sumberAduan, noAduan, kategori).then((value) async{
                         await alertDialog(
                             context);
                         Navigator.pop(context);
                       });
-                      print("Successful");
+                      print("Berjaya");
                     }
                   }
               ),
@@ -136,8 +243,8 @@ class _AddTaskState extends State<AddTask> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Done'),
-            content: Text('Add Success'),
+            title: Text('Berjaya'),
+            content: Text('Borang Aduan berjaya disimpan!'),
             actions: <Widget>[
               FlatButton(
                 child: Text('Ok'),
