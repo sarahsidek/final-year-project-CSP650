@@ -26,7 +26,7 @@ class _AddTaskState extends State<AddTask> {
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
 
 
-    final GlobalKey<FormState> _formKey = GlobalKey();
+  final GlobalKey<FormState> _formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +43,9 @@ class _AddTaskState extends State<AddTask> {
             children: <Widget>[
               SizedBox(height: 25.0),
               TextFormField(
-                   decoration: InputDecoration(
+                decoration: InputDecoration(
                     labelText: "Pilih Tarikh",
-                   prefixIcon: Icon(Icons.calendar_today),
+                    prefixIcon: Icon(Icons.calendar_today),
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 readOnly: true,
@@ -62,10 +62,10 @@ class _AddTaskState extends State<AddTask> {
                 isExpanded: true,
                 value:sumberAduan,
                 onChanged: (value) {
-                    setState(() {
+                  setState(() {
                     sumberAduan = value;
-                    });
-                    },
+                  });
+                },
                 items: sumber.map((value){
                   return DropdownMenuItem(
                     value: value,
@@ -87,13 +87,13 @@ class _AddTaskState extends State<AddTask> {
               ),
               SizedBox(height: 10.0),
               DropdownButton(
-                    hint: Text('Kategori'),
-                   isExpanded: true,
+                hint: Text('Kategori'),
+                isExpanded: true,
                 value: kategori,
                 onChanged: (value) {
-                      setState(() {
-                        kategori = value;
-                      });
+                  setState(() {
+                    kategori = value;
+                  });
                 },
                 items: kate.map((value) {
                   return DropdownMenuItem(
@@ -109,7 +109,7 @@ class _AddTaskState extends State<AddTask> {
                   child: Text("Seterusnya"),
                   onPressed: () async {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AddTask1(
-                      _dateTime,sumberAduan, kategori, noAduan)));
+                        _dateTime,sumberAduan, kategori, noAduan)));
                   }
               ),
             ],
@@ -119,4 +119,3 @@ class _AddTaskState extends State<AddTask> {
     );
   }
 }
-

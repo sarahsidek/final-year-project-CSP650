@@ -2,6 +2,7 @@ import 'package:fyp/model/RecordOfficer.dart';
 import 'package:fyp/screen/crud/UpdateRecordOfficer.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/shared/Loading.dart';
 
 class ListRecordOfficer extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
           stream: DatabaseService().getRecordOfficer(),
           builder: (BuildContext context, AsyncSnapshot<List<RecordOfficer>> snapshot) {
             if (snapshot.hasError || !snapshot.hasData) {
-              return CircularProgressIndicator();
+              return Loading();
             } else {
               return ListView.builder(
                   itemCount: snapshot.data.length,

@@ -21,7 +21,8 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
   String selectZon;
   String selectPegawaiZon;
   List<String> noZon = <String> ['Zon 1', 'Zon 2', 'Zon 3', 'Zon 4', 'Zon 5', 'Zon 6', 'Zon 7', 'Zon 8'];
-  List<String> namaPegawai = <String> ['Ahmad Fadzil', 'Ahmad Abu', 'Encik Hariz', 'Encik Ali', 'Encik Akif', 'Encik Daniel', 'Encik Sani', 'Encik Razak'];
+  List<String> namaPegawai = <String> ['1-Ahmad Fadzil', '2-Ahmad Abu',
+    '3-Encik Hariz', '4-Encik Ali', '5-Encik Akif', '6-Encik Daniel', '7-Encik Sani', '8-Encik Razak'];
   final AuthRecordOfficer _officer = new AuthRecordOfficer();
   final GlobalKey<FormState> _formKey = GlobalKey();
 
@@ -39,7 +40,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 25.0),
+              SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
                     hintText: 'Nama',
@@ -89,9 +90,12 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               ),
 
               SizedBox(height: 10.0),
-              Text("Pilih Zon"),
               DropdownButtonFormField(
                     hint:Text('Zon'),
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.add_location),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
+                    ),
                     isExpanded: true,
                     value: selectZon,
                 onChanged: (newValue) {
@@ -108,9 +112,12 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
                 }).toList(),
               ),
               SizedBox(height: 10.0),
-              Text("Pilih Pegawai Zon"),
               DropdownButtonFormField(
                 hint:Text('Pegawai Zon'),
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
+                ),
                 isExpanded: true,
                 value: selectPegawaiZon,
                 onChanged: (newValue) {

@@ -131,37 +131,37 @@ class _AddTask1State extends State<AddTask1> {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-     appBar: AppBar(
-     title: Text('Borang Aduan'),
-     backgroundColor: Colors.redAccent,
-   ),
-    body: Container(
-      color: Colors.white,
-      height: 500,
-      child: Column(
-        children: <Widget>[
-          RaisedButton(
-            child: Text("Pilih Gambar"),
-            color: Colors.redAccent,
-            textColor: Colors.black,
-            onPressed: loadAssets,
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Borang Aduan'),
+          backgroundColor: Colors.redAccent,
+        ),
+        body: Container(
+          color: Colors.white,
+          height: 500,
+          child: Column(
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Pilih Gambar"),
+                color: Colors.redAccent,
+                textColor: Colors.black,
+                onPressed: loadAssets,
+              ),
+              Expanded(
+                child: buildGridView(),
+              ),
+              const SizedBox(height: 10.0),
+              RaisedButton(
+                child: Text("Simpan"),
+                color: Colors.redAccent,
+                textColor: Colors.black,
+                onPressed: () async{
+                  alertDialog(context);
+                },
+              ),
+            ],
           ),
-          Expanded(
-            child: buildGridView(),
-          ),
-          const SizedBox(height: 10.0),
-          RaisedButton(
-            child: Text("Simpan"),
-            color: Colors.redAccent,
-            textColor: Colors.black,
-            onPressed: () async{
-              alertDialog(context);
-            },
-          ),
-        ],
-      ),
-    )
+        )
     );
   }
   Future<bool> alertDialog( BuildContext context) {

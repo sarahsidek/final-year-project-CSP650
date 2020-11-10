@@ -8,8 +8,6 @@ import 'package:fyp/model/RecordOfficer.dart';
 import 'package:fyp/model/NewUser.dart';
 
 
-
-
 class DatabaseService{
   // collection reference
   final CollectionReference userCollection  = Firestore.instance.collection('Admin');
@@ -37,6 +35,7 @@ class DatabaseService{
   final DateTime time;
 
 
+
   DatabaseService({this.id, this.uid,this.name,this.email,this.password,this.confrimpass,this.nophone, this.gender,
   this.imageUrl, this.icnumber, this.sumberAduan, this.noAduan, this.kerosakan, this.zon, this.pegawaiZon, this.kategori, this.time});
 
@@ -62,28 +61,8 @@ class DatabaseService{
   }
 
 
-
-
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  Future addNewTask(DateTime dateTime, String sumberAduan, String noAduan, String kategori) async {
-      final FirebaseUser rd = await auth.currentUser();
-      final uid = rd.uid;
-      final String email = rd.email;
-      return addTaskCollection.document().setData({
-        'date': DateTime.now(),
-        'sumberAduan': sumberAduan,
-        'noAduan': noAduan,
-        'kategori': kategori,
-        'uid': uid,
-        'email': email
-      });
-    }
-
-
-
-
   // create user supervisor
-  Future  addSupervisor(NewUser supervisor)async{
+    Future  addSupervisor(NewUser supervisor)async{
          return  supervisorCollection.document(supervisor.uid).setData(supervisor.toJson());
     }
     

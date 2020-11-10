@@ -57,7 +57,6 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 25.0),
               TextFormField(
                 decoration: InputDecoration(
                     hintText: 'Nama',
@@ -102,8 +101,12 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
                 keyboardType: TextInputType.number,
                 controller: _zon,
               ),
+              SizedBox(height: 10.0),
               DropdownButtonFormField(
                 hint:Text('Zon'),
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.perm_contact_calendar),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,
                 value: selectZon,
                 onChanged: (newValue) {
@@ -123,13 +126,16 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               TextField(
                 decoration: InputDecoration(
                     hintText: 'Pegawai Zon',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
                 controller: _pegawaiZon,
               ),
+              SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Pegawai Zon'),
+                hint:Text('$_pegawaiZon'),
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,
                 value: selectPegawaiZon,
                 onChanged: (newValue) {

@@ -1,4 +1,5 @@
 
+import 'package:fyp/model/Task.dart';
 import 'package:fyp/screen/RecordOfficer/ListTask.dart';
 import 'package:fyp/screen/RecordOfficer/addTask.dart';
 
@@ -11,10 +12,8 @@ class RecordOfficer extends StatefulWidget {
   @override
   _RecordOfficerState createState() => _RecordOfficerState();
 }
+
 class _RecordOfficerState extends State<RecordOfficer> {
-
-
-
 
   @override
   Widget build(BuildContext context) {

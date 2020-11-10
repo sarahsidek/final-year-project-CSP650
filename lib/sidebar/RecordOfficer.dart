@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/maps/geolocation.dart';
+import 'package:fyp/maps/geolocation_maps.dart';
+import 'package:fyp/maps/google_maps_address.dart';
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
 import 'package:fyp/service/authRecordOfficer.dart';
 
@@ -40,9 +42,25 @@ class _RecordOfficerDrawerState extends State<RecordOfficerDrawer> {
           SizedBox(height: 5.0),
           ListTile(
             leading: Icon(Icons.add_location_alt),
-            title: Text('Address'),
+            title: Text('Address1'),
             onTap: () async{
               Navigator.push(context, MaterialPageRoute(builder: (context) => Geolocation()));
+            },
+          ),
+          SizedBox(height: 5.0),
+          ListTile(
+            leading: Icon(Icons.add_location_alt),
+            title: Text('Address2'),
+            onTap: () async{
+              Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps()));
+            },
+          ),
+          SizedBox(height: 5.0),
+          ListTile(
+            leading: Icon(Icons.add_location_alt),
+            title: Text('Address3'),
+            onTap: () async{
+              Navigator.push(context, MaterialPageRoute(builder: (context) => GeolocationMaps()));
             },
           ),
           SizedBox(height: 5.0),
