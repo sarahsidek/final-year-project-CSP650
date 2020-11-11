@@ -9,7 +9,7 @@ class LoginRecordOfficer extends StatefulWidget {
 
 class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
   // text field state
-  String email = '', uniqueID = '', error = '';
+  String email = '', icnumber = '', error = '';
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool loading = false;
   final AuthRecordOfficer _officer = new AuthRecordOfficer();
@@ -75,7 +75,7 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
                             validator: (value) => value.isEmpty ? 'Kata Laluan tidak sah!': null,
                             onChanged: (value)
                             {
-                              setState(() => uniqueID = value);
+                              setState(() => icnumber = value);
                             },
                           ),
                           SizedBox(
@@ -90,7 +90,7 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
                                 onPressed: () async {
                                   if( _formKey.currentState.validate()){
                                     setState(() => loading = true);
-                                    dynamic result = await _officer.signInRecordOfficer(email, uniqueID);
+                                    dynamic result = await _officer.signInRecordOfficer(email, icnumber);
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => RecordOfficer()));
                                     if (result == null){
                                       setState(() {

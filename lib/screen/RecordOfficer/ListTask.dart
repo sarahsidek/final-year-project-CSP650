@@ -1,6 +1,6 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fyp/shared/Loading.dart';
@@ -16,7 +16,7 @@ Stream<QuerySnapshot> getUserRd(BuildContext context) async* {
   final FirebaseUser rd = await auth.currentUser();
   yield* Firestore.instance.collection("Task").where('uid',isEqualTo: rd.uid).snapshots();
 }
-
+List<NetworkImage> _listOfImages = <NetworkImage>[];
 class _ListTaskState extends State<ListTask> {
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,10 @@ class _ListTaskState extends State<ListTask> {
               return ListView.builder(
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (BuildContext context, int index){
+                    _listOfImages =[];
+                    for(int i =0; i <snapshot.data.documents[index].data['urls'].length; i++){
+                      _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['urls'][i]));
+                    }
                     final ba = snapshot.data.documents[index];
                     return Card(
                         child:ListTile(
@@ -53,13 +57,34 @@ class _ListTaskState extends State<ListTask> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Text(ba['verified']),
                                 ),
+                                Column(
+                                  children: [
+                                      Container(
+                                        margin: EdgeInsets.all(10.0),
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white
+                                        ),
+                                         width: MediaQuery.of(context).size.width,
+                                        child: Carousel(
+                                          boxFit: BoxFit.cover,
+                                          images: _listOfImages,
+                                          autoplay: false,
+                                          indicatorBgPadding: 5.0,
+                                          dotPosition: DotPosition.bottomCenter,
+                                          animationCurve: Curves.fastLinearToSlowEaseIn,
+                                          animationDuration: Duration(milliseconds: 2000),
+                                        ),
+                                      )
+                                  ],
+                                )
                               ],
                             ),
                           ),
                         )
                     );
                   });
-            }
+               }
           }),
     );
   }

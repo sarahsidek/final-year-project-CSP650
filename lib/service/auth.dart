@@ -58,6 +58,7 @@ class AuthService {
         AuthResult  result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
         FirebaseUser user = result.user;
 
+
         _admin = Admin(
           id: user.uid,
           name: name,
@@ -68,6 +69,7 @@ class AuthService {
         );
 
         await DatabaseService().createUser(_admin);
+        print(_admin.id);
 
         return _userFromFirebaseUser(user);
       }

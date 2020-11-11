@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,17 +45,17 @@ class _GoogleMapsState extends State<GoogleMaps> {
         _streamSubscription.cancel();
       }
       _streamSubscription = _locationTracker.onLocationChanged.listen((locationData) {
-            if (googleMapController != null) {
-              googleMapController.animateCamera(
-                  CameraUpdate.newCameraPosition(new CameraPosition(
-                      bearing: 192.83,
-                      target: LatLng(
-                          locationData.latitude, locationData.longitude),
-                      tilt: 0,
-                      zoom: 10.00)));
-              updateMarker(locationData);
-            }
-          });
+        if (googleMapController != null) {
+          googleMapController.animateCamera(
+              CameraUpdate.newCameraPosition(new CameraPosition(
+                  bearing: 192.83,
+                  target: LatLng(
+                      locationData.latitude, locationData.longitude),
+                  tilt: 0,
+                  zoom: 10.00)));
+          updateMarker(locationData);
+        }
+      });
     } on PlatformException catch (e) {
       if(e.code == 'PERMISSION_DENIED') {
         debugPrint("Permission Denied");
@@ -73,30 +72,27 @@ class _GoogleMapsState extends State<GoogleMaps> {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
-     appBar: AppBar(
-       title: Text("Google Maps"),
-       backgroundColor: Colors.redAccent,
-     ),
-     body: GoogleMap(
-       mapType: MapType.normal,
-       initialCameraPosition: initialLocation,
-       markers: Set.of((marker!= null) ? [marker] : []),
-       circles: Set.of((circle != null) ? [circle] : []),
-       onMapCreated: (GoogleMapController controller){
-         googleMapController = controller;
-       },
-     ),
-     floatingActionButton: FloatingActionButton(
-       child: Icon(Icons.location_searching),
-       onPressed: (){
-         getCurrentLocation();
-       },
-     ),
-   );
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Google Maps"),
+        backgroundColor: Colors.redAccent,
+      ),
+      body: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: initialLocation,
+        markers: Set.of((marker!= null) ? [marker] : []),
+        circles: Set.of((circle != null) ? [circle] : []),
+        onMapCreated: (GoogleMapController controller){
+          googleMapController = controller;
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.location_searching),
+        onPressed: (){
+          getCurrentLocation();
+        },
+      ),
+    );
   }
 
-  }
-
-
-
+}

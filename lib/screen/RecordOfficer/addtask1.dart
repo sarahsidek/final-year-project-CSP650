@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/screen/RecordOfficer/ListTask.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 class AddTask1 extends StatefulWidget {
 
@@ -176,7 +177,7 @@ class _AddTask1State extends State<AddTask1> {
                 child: Text('Ok'),
                 onPressed: () async {
                   uploadImage(dateTime, sumberAduan, noAduan, kategori);
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
                 },
               ),
             ],

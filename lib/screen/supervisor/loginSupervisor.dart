@@ -14,7 +14,7 @@ class LoginSupervisor extends StatefulWidget {
 class _LoginSupervisorState extends State<LoginSupervisor> {
 
   // text field state
-  String email = '', uniqueID = '', error = '';
+  String email = '', icnumber = '', error = '';
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool loading = false;
   final AuthSupervisor _auth = AuthSupervisor();
@@ -56,7 +56,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'E-mel',
+                              decoration: InputDecoration(labelText: 'Penyelia: E-mel',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value)
@@ -87,7 +87,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                             },
                             onChanged: (value)
                             {
-                              setState(() => uniqueID = value);
+                              setState(() => icnumber = value);
                             },
                           ),
                           SizedBox(
@@ -102,7 +102,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                                 onPressed: () async {
                                   if( _formKey.currentState.validate()){
                                     setState(() => loading = true);
-                                    dynamic result = await _auth.signInSupervisor(email, uniqueID);
+                                    dynamic result = await _auth.signInSupervisor(email, icnumber);
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => Supervisor()));
                                     if (result == null){
                                       setState(() {
