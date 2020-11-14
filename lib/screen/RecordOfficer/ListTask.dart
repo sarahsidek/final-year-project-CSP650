@@ -16,8 +16,9 @@ Stream<QuerySnapshot> getUserRd(BuildContext context) async* {
   final FirebaseUser rd = await auth.currentUser();
   yield* Firestore.instance.collection("Task").where('uid',isEqualTo: rd.uid).snapshots();
 }
-List<NetworkImage> _listOfImages = <NetworkImage>[];
+
 class _ListTaskState extends State<ListTask> {
+  List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,23 +60,23 @@ class _ListTaskState extends State<ListTask> {
                                 ),
                                 Column(
                                   children: [
-                                      Container(
-                                        margin: EdgeInsets.all(10.0),
-                                        height: 200,
-                                        decoration: BoxDecoration(
+                                    Container(
+                                      margin: EdgeInsets.all(10.0),
+                                      height: 200,
+                                      decoration: BoxDecoration(
                                           color: Colors.white
-                                        ),
-                                         width: MediaQuery.of(context).size.width,
-                                        child: Carousel(
-                                          boxFit: BoxFit.cover,
-                                          images: _listOfImages,
-                                          autoplay: false,
-                                          indicatorBgPadding: 5.0,
-                                          dotPosition: DotPosition.bottomCenter,
-                                          animationCurve: Curves.fastLinearToSlowEaseIn,
-                                          animationDuration: Duration(milliseconds: 2000),
-                                        ),
-                                      )
+                                      ),
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Carousel(
+                                        boxFit: BoxFit.cover,
+                                        images: _listOfImages,
+                                        autoplay: false,
+                                        indicatorBgPadding: 5.0,
+                                        dotPosition: DotPosition.bottomCenter,
+                                        animationCurve: Curves.fastLinearToSlowEaseIn,
+                                        animationDuration: Duration(milliseconds: 2000),
+                                      ),
+                                    )
                                   ],
                                 )
                               ],
@@ -84,7 +85,7 @@ class _ListTaskState extends State<ListTask> {
                         )
                     );
                   });
-               }
+            }
           }),
     );
   }

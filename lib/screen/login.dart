@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
           FlatButton(
             child: Row(
               children: <Widget>[
-                Text('Buruh kakitangan'),
+                Text('Buruh '),
               ],
             ),
             textColor: Colors.black87,

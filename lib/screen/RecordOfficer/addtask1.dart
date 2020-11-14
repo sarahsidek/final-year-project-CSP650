@@ -59,7 +59,7 @@ class _AddTask1State extends State<AddTask1> {
   }
 
 
-  Future<void> loadAssets() async {
+     loadAssets() async {
     List<Asset> resultList = List<Asset>();
     String error = 'No Error Dectected';
 
@@ -89,9 +89,9 @@ class _AddTask1State extends State<AddTask1> {
   }
 
   final FirebaseAuth auth = FirebaseAuth.instance;
-
+  final String id = Firestore.instance.collection("Task").id;
   uploadImage(DateTime dateTime, String sumberAduan, String noAduan,
-      String kategori) {
+      String kategori,String id) {
     for (var imageFile in images) {
       postImage(imageFile).then((downloadUrl) async {
         imageUrls.add(downloadUrl.toString());
@@ -99,16 +99,18 @@ class _AddTask1State extends State<AddTask1> {
           final FirebaseUser rd = await auth.currentUser();
           final uid = rd.uid;
           final String email = rd.email;
-          Firestore.instance.collection('Task').document().setData({
+          String id = Firestore.instance.collection("Task").document().documentID;
+          Firestore.instance.collection('Task').document(id).setData({
+            'id': id,
             'date': DateTime.now(),
             'sumberAduan': sumberAduan,
             'noAduan': noAduan,
             'kategori': kategori,
-            'uid': uid,
+            'recordOfficerId': uid,
             'email': email,
             'urls': imageUrls,
             'verified': "Dalam proses kelulusan"
-          }, merge: true).then((_) {
+          }).then((_) {
             setState(() {
               images = [];
               imageUrls = [];
@@ -176,7 +178,7 @@ class _AddTask1State extends State<AddTask1> {
               FlatButton(
                 child: Text('Ok'),
                 onPressed: () async {
-                  uploadImage(dateTime, sumberAduan, noAduan, kategori);
+                  uploadImage(dateTime, sumberAduan, noAduan, kategori, id);
                   Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
                 },
               ),
