@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fyp/maps/display_geolocation.dart';
 import 'package:fyp/screen/login.dart';
 import 'package:fyp/screen/supervisor/ListOfTaskApprove.dart';
+import 'package:fyp/screen/supervisor/ListOfTaskNotApprove.dart';
 import 'package:fyp/service/authSupervisor.dart';
 
 
@@ -47,9 +48,17 @@ class _SupervisorDrawerState extends State<SupervisorDrawer> {
           SizedBox(height: 5.0),
           ListTile(
             leading: Icon(Icons.home),
-            title: Text('Senarai Aduan '),
+            title: Text('Senarai Aduan Yang Telah Di Sah '),
             onTap: () async{
               Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskApprove()));
+            },
+          ),
+          SizedBox(height: 5.0),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Senarai Aduan Yang Telah Di Tidak Sah '),
+            onTap: () async{
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotApprove()));
             },
           ),
           SizedBox(height: 5.0),

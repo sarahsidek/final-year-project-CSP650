@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:geocoder/geocoder.dart' as geoCo;
 class GoogleMaps extends StatefulWidget {
   @override
   _GoogleMapsState createState() => _GoogleMapsState();
@@ -22,16 +25,13 @@ class _GoogleMapsState extends State<GoogleMaps> {
     zoom: 15.00,
   );
 
-  void updateMarker(LocationData locationData) {
-    LatLng latLng = LatLng(locationData.latitude, locationData.longitude);
+  void updateMarker(double latitude, double longitude) {
+    LatLng latLng = LatLng(latitude, longitude);
     this.setState(() {
       marker = Marker(
         markerId: MarkerId("Im here"),
         position: latLng,
-        rotation: locationData.heading,
         draggable: false,
-        zIndex: 2,
-        flat: true,
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan),);
     });
   }
@@ -39,7 +39,23 @@ class _GoogleMapsState extends State<GoogleMaps> {
   void getCurrentLocation() async {
     try {
       var location = await _locationTracker.getLocation();
-      updateMarker(location);
+      final coordinated = new geoCo.Coordinates(location.latitude, location.longitude);
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      final FirebaseUser rd = await auth.currentUser();
+      final uid = rd.uid;
+      final String email = rd.email;
+      var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
+      var firstAddress = address.first;
+      //String id = Firestore.instance.collection("Task").getDocuments();
+      addressLocation = firstAddress.addressLine;
+      updateMarker(location.latitude, location.longitude);
+      await Firestore.instance.collection('Location').document().setData({
+        'latitude': location.latitude,
+        'longitude': location.longitude,
+        'Address': firstAddress.addressLine,
+        'uid':uid,
+        'email': email,
+      }, merge: true);
 
       if (_streamSubscription != null) {
         _streamSubscription.cancel();
@@ -53,7 +69,6 @@ class _GoogleMapsState extends State<GoogleMaps> {
                       locationData.latitude, locationData.longitude),
                   tilt: 0,
                   zoom: 10.00)));
-          updateMarker(locationData);
         }
       });
     } on PlatformException catch (e) {

@@ -41,8 +41,40 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
   }
   String selectZon;
   String selectPegawaiZon;
-  List<String> noZon = <String> ['Zon 1', 'Zon 2', 'Zon 3', 'Zon 4', 'Zon 5', 'Zon 6', 'Zon 7', 'Zon 8'];
-  List<String> namaPegawai = <String> ['Ahmad Fadzil', 'Ahmad Abu', 'Encik Hariz', 'Encik Ali', 'Encik Akif', 'Encik Daniel', 'Encik Sani', 'Encik Razak'];
+  List<String> noZon = <String> ['Zon 1', 'Zon 2', 'Zon 3',
+                                  'Zon 4', 'Zon 5', 'Zon 6',
+                                  'Zon 7', 'Zon 8', 'Zon 9',
+                                  'Zon 10', 'Zon 11', 'Zon 12',
+                                  'Zon 13', 'Zon 14', 'Zon 15',
+                                  'Zon 16', 'Zon 17', 'Zon 18',
+                                  'Zon 19', 'Zon 20', 'Zon 21',
+                                  'Zon 22', 'Zon 23', 'Zon 24'];
+  List<String> namaPegawai = <String> ['1-JEFRI IZMIL BIN ABDUL SAMAT',
+                                       '1-MOHAMAD RATNO KARNO BIN KASRO' ,
+                                       '2-NURUL AZREEN BINTI ROSNI',
+                                       '3-MOHAMAD RATNO KARNO BIN KASRO',
+                                       '4-MUHAMMAD IZZHAR BIN KHAIRUDIN',
+                                       '4-AMINUL RASYID BIN HUSIN',
+                                       '5-MUHAMAD NIKMAN BIN HAMDAN',
+                                       '6-MUHAMAD NIKMAN BIN HAMDAN',
+                                       '7-MUHAMMAD IZZHAR BIN KHAIRUDIN',
+                                       '8-NURUL HIDAYU BINTI SAHRONI',
+                                       '9-NURUL HIDAYU BINTI SAHRONI'
+                                       '10-AQILAH BINTI ALIAS',
+                                       '11-AQILAH BINTI ALIAS',
+                                       '12-SHAIPU AL BAHRI BIN MOHAMAD',
+                                       '13-SHAIPU AL BAHRI BIN MOHAMAD',
+                                       '14-MUHAMAD AZAD BIN ZAINAL',
+                                       '15-MOHD AKMAL HAKIM BIN AB HALIM',
+                                       '16-MOHD AKMAL HAKIM BIN AB HALIM'
+                                       '17-NORZALINA BINTI ABDUL WAHAB',
+                                       '18-NORZALINA BINTI ABDUL WAHAB',
+                                       '19-SYARIFUDDIN BIN MUSTAKIM',
+                                       '20-SYARIFUDDIN BIN MUSTAKIM'
+                                       '21-NURIZZATUL ASHIQIN BINTI AZMAN',
+                                       '22-NURIZZATUL ASHIQIN BINTI AZMAN'
+                                       '23-AMINUL RASYID BIN HUSIN',
+                                       '24-MAZIAN BINTI AHMAD TERMIZI'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,7 +164,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('$_pegawaiZon'),
+                hint:Text('Pegawai Zon'),
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),

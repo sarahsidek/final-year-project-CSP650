@@ -2,28 +2,30 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:fyp/shared/Loading.dart';
 
-class ListTask extends StatefulWidget {
+
+class ListOfTaskNotAccepted extends StatefulWidget {
   @override
-  _ListTaskState createState() => _ListTaskState();
+  _ListOfTaskNotAcceptedState createState() => _ListOfTaskNotAcceptedState();
 }
-
-
 final FirebaseAuth auth = FirebaseAuth.instance;
-Stream<QuerySnapshot> getUserRd(BuildContext context) async* {
+Stream<QuerySnapshot> getUser(BuildContext context) async* {
   final FirebaseUser rd = await auth.currentUser();
-  yield* Firestore.instance.collection("Task").where('recordOfficerId',isEqualTo: rd.uid).snapshots();
+  yield* Firestore.instance.collection("Task").where('recordOfficerId',isEqualTo: rd.uid).where("verified", isEqualTo: 'TidakSah').snapshots();
 }
-
-class _ListTaskState extends State<ListTask> {
+class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Aduan Tidak Diterima"),
+          backgroundColor: Colors.redAccent,
+        ),
+      body: Container(
       child: StreamBuilder(
-          stream: getUserRd(context),
+          stream: getUser(context),
           builder: (context, snapshot){
             if (snapshot.hasError || !snapshot.hasData) {
               return Loading();
@@ -35,7 +37,7 @@ class _ListTaskState extends State<ListTask> {
                     for(int i =0; i <snapshot.data.documents[index].data['urls'].length; i++){
                       _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['urls'][i]));
                     }
-                    final ba = snapshot.data.documents[index];
+                    final d = snapshot.data.documents[index];
                     return Card(
                         child:ListTile(
                           title: Container(
@@ -44,19 +46,19 @@ class _ListTaskState extends State<ListTask> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['sumberAduan']),
+                                  child: Text(d['sumberAduan']),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['noAduan']),
+                                  child: Text(d['noAduan']),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['kategori']),
+                                  child: Text(d['kategori']),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['verified']),
+                                  child: Text(d['verified']),
                                 ),
                                 Column(
                                   children: [
@@ -87,6 +89,7 @@ class _ListTaskState extends State<ListTask> {
                   });
             }
           }),
+       )
     );
   }
 }

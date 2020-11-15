@@ -1,29 +1,30 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
-class ListOfTaskApprove extends StatefulWidget {
+
+class ListOfTaskAccepted extends StatefulWidget {
   @override
-  _ListOfTaskApproveState createState() => _ListOfTaskApproveState();
+  _ListOfTaskAcceptedState createState() => _ListOfTaskAcceptedState();
 }
-
-
-
-Stream<QuerySnapshot> getListTask(BuildContext context){
-  return Firestore.instance.collection("Task").where('verified',isEqualTo: "Sah" ).snapshots();
+final FirebaseAuth auth = FirebaseAuth.instance;
+Stream<QuerySnapshot> getUser(BuildContext context) async* {
+  final FirebaseUser rd = await auth.currentUser();
+  yield* Firestore.instance.collection("Task").where('recordOfficerId',isEqualTo: rd.uid).where("verified", isEqualTo: 'Sah').snapshots();
 }
-class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
+class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Senarai Aduan telah Diluluskan"),
+        title: Text("Aduan Diterima"),
         backgroundColor: Colors.redAccent,
       ),
       body: Container(
         child: StreamBuilder(
-            stream: getListTask(context),
+            stream: getUser(context),
             builder: (context, snapshot){
               if (snapshot.hasError || !snapshot.hasData) {
                 return Loading();
@@ -35,7 +36,7 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                       for(int i =0; i <snapshot.data.documents[index].data['urls'].length; i++){
                         _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['urls'][i]));
                       }
-                      final a = snapshot.data.documents[index];
+                      final c = snapshot.data.documents[index];
                       return Card(
                           child:ListTile(
                             title: Container(
@@ -44,19 +45,19 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['sumberAduan']),
+                                    child: Text(c['sumberAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['noAduan']),
+                                    child: Text(c['noAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['kategori']),
+                                    child: Text(c['kategori']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['verified']),
+                                    child: Text(c['verified']),
                                   ),
                                   Column(
                                     children: [
@@ -89,6 +90,5 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
             }),
       ),
     );
-
   }
 }

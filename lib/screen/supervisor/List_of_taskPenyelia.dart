@@ -115,7 +115,7 @@ class _List_ofTaskState extends State<List_ofTask> {
                   return Loading();
                 }
                 return new Container(
-                  height: 250.0,
+                  height: 300.0,
                   child: new Container(
                     padding: EdgeInsets.fromLTRB(20.0, 3, 30.0, 5.0),
                     child: Column(
@@ -162,16 +162,37 @@ class _List_ofTaskState extends State<List_ofTask> {
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color: Colors.redAccent,
-                                    child: Text("Lengkap", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
+                                    child: Text("Sah", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'Lengkap'
+                                        'verified': 'Sah'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });
                                     },
                                   )
-                              )],
+                              ),
+                              SizedBox(height: 10.0),
+                              SizedBox(
+                                  height: 55.0,
+                                  width: 300.0,
+                                  child: RaisedButton(
+                                    elevation: 0.0,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(2.0)
+                                    ),
+                                    color: Colors.redAccent,
+                                    child: Text("TidakSah", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
+                                    onPressed: () async {
+                                      Firestore.instance.collection('Task').document(id).updateData({
+                                        'verified': 'TidakSah'
+                                      }).whenComplete((){
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                  )
+                              )
+                            ],
                           ),
                         ),
                       ],
