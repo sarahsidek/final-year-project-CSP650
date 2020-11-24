@@ -2,16 +2,12 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
+
 class ListOfTaskApprove extends StatefulWidget {
   @override
   _ListOfTaskApproveState createState() => _ListOfTaskApproveState();
 }
 
-
-
-Stream<QuerySnapshot> getListTask(BuildContext context){
-  return Firestore.instance.collection("Task").where('verified',isEqualTo: "Sah" ).snapshots();
-}
 class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
@@ -23,7 +19,7 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
       ),
       body: Container(
         child: StreamBuilder(
-            stream: getListTask(context),
+            stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Sah').snapshots(),
             builder: (context, snapshot){
               if (snapshot.hasError || !snapshot.hasData) {
                 return Loading();
@@ -31,11 +27,11 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                 return ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (BuildContext context, int index){
+                      final List<DocumentSnapshot> tk = snapshot.data.documents;
                       _listOfImages =[];
-                      for(int i =0; i <snapshot.data.documents[index].data['urls'].length; i++){
-                        _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['urls'][i]));
+                      for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
+                        _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
                       }
-                      final a = snapshot.data.documents[index];
                       return Card(
                           child:ListTile(
                             title: Container(
@@ -44,19 +40,19 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['sumberAduan']),
+                                    child: Text(tk[index].data['sumberAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['noAduan']),
+                                    child: Text(tk[index].data['noAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['kategori']),
+                                    child: Text(tk[index].data['kategori']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(a['verified']),
+                                    child: Text(tk[index].data['verified']),
                                   ),
                                   Column(
                                     children: [
@@ -82,6 +78,7 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                                 ],
                               ),
                             ),
+                            subtitle: Text(tk[index].data['comments']),
                           )
                       );
                     });

@@ -11,7 +11,7 @@ class ListOfTaskAccepted extends StatefulWidget {
 final FirebaseAuth auth = FirebaseAuth.instance;
 Stream<QuerySnapshot> getUser(BuildContext context) async* {
   final FirebaseUser rd = await auth.currentUser();
-  yield* Firestore.instance.collection("Task").where('recordOfficerId',isEqualTo: rd.uid).where("verified", isEqualTo: 'Sah').snapshots();
+  yield* Firestore.instance.collection("Task").where('uid',isEqualTo: rd.uid).where("verified", isEqualTo: 'Sah').snapshots();
 }
 class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
@@ -32,11 +32,11 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                 return ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (BuildContext context, int index){
+                      final List<DocumentSnapshot> ca = snapshot.data.documents;
                       _listOfImages =[];
-                      for(int i =0; i <snapshot.data.documents[index].data['urls'].length; i++){
-                        _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['urls'][i]));
+                      for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
+                        _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
                       }
-                      final c = snapshot.data.documents[index];
                       return Card(
                           child:ListTile(
                             title: Container(
@@ -45,19 +45,19 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(c['sumberAduan']),
+                                    child: Text(ca[index].data['sumberAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(c['noAduan']),
+                                    child: Text(ca[index].data['noAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(c['kategori']),
+                                    child: Text(ca[index].data['kategori']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(c['verified']),
+                                    child: Text(ca[index].data['verified']),
                                   ),
                                   Column(
                                     children: [
@@ -83,6 +83,16 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                 ],
                               ),
                             ),
+                                subtitle: Container(
+                                  child: Row(
+                                    children: [
+                                      SizedBox(height: 5.0),
+                                      Container(alignment: Alignment.centerLeft,
+                                    child: Text(ca[index].data['comments']),
+                                 ),
+                               ],
+                               ),
+                          )
                           )
                       );
                     });

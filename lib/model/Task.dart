@@ -1,34 +1,47 @@
 
-
-
 class Task {
   final String noAduan;
   final String sumberAduan;
   final String kategori;
-  final String urls;
+  final List<String> imageUrls;
   final DateTime dateTime;
   final String verified;
   final String email;
+  final String comments;
   final String uid;
+  final String id;
+  final String landMark;
 
-  Task(this.noAduan, this.sumberAduan, this.kategori, this.urls, this.dateTime, this.verified, this.email, this.uid);
 
-  Map<String,dynamic> toJson(){
+
+  Task({this.landMark,this.comments,this.noAduan, this.sumberAduan, this.kategori, this.dateTime, this.verified, this.email, this.uid, this.id, this.imageUrls});
+
+  Task.fromData(Map<String, dynamic> data)
+      : noAduan = data['noAduan'],
+        kategori = data['kategori'],
+        sumberAduan = data['sumberAduan'],
+        dateTime = DateTime.parse(data['date'].toDate().toString()),
+        verified = data['verified'],
+        email = data['email'],
+        uid = data['uid'],
+        imageUrls = data['url'],
+        comments = data['comments'],
+        landMark = data['landmark'],
+        id = data['id'];
+
+    Map<String,dynamic> toJson(){
     return{
       'noAduan' : noAduan,
       'kategori' : kategori,
       'sumberAduan' : sumberAduan,
       'date' : dateTime,
-      'verified': verified
+      'verified': verified,
+      'email': email,
+      'uid': uid,
+      'url':imageUrls,
+      'id':id,
+      'comments':comments,
+      'landmarks':landMark
     };
   }
-  Task.fromData(Map<String, dynamic> data)
-      : noAduan = data['noAduan'],
-        kategori = data['kategori'],
-        sumberAduan = data['sumberAduan'],
-        dateTime = data['date'],
-        verified = data['verified'],
-        email = data['email'],
-        uid = data['uid'],
-        urls = data['urls'];
 }

@@ -4,8 +4,12 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/model/Admin.dart';
+import 'package:fyp/model/Location.dart';
 import 'package:fyp/model/RecordOfficer.dart';
 import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/Task.dart';
+
+
 
 
 class DatabaseService{
@@ -14,7 +18,8 @@ class DatabaseService{
   final CollectionReference roadGangCollection  = Firestore.instance.collection('Road Gang');
   final CollectionReference recordOfficerCollection  = Firestore.instance.collection('RecordOfficer');
   final CollectionReference supervisorCollection  = Firestore.instance.collection('Supervisor');
-  final CollectionReference addTaskCollection  = Firestore.instance.collection('Task');
+  final CollectionReference addTaskCollection = Firestore.instance.collection("Task");
+  final CollectionReference addLocationCollection = Firestore.instance.collection("Location");
 
   final String uid;
   final String id;
@@ -82,6 +87,16 @@ class DatabaseService{
          });
     }
 
+    // create add task
+    Future addTask(Task task) async{
+    return addTaskCollection.document(task.id).setData(task.toJson()).whenComplete(() {
+      print("Task created");
+      });
+    }
+
+    Future addlocation(LocationTask location) async {
+    return addLocationCollection.document(location.docId).setData(location.toJson());
+    }
     // read the supervisor
     Stream<List<NewUser>> getSupervisor(){
     return supervisorCollection.snapshots().map(
@@ -91,6 +106,36 @@ class DatabaseService{
         );
     }
 
+    //get current User of record officer
+     getCurrentUser() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseUser rd = await auth.currentUser();
+    return rd;
+  }
+
+  // get list of task
+  Stream<List<Task>> getTask(){
+       return addTaskCollection.snapshots().map((snapshot) =>
+           snapshot.documents.map((doc) => Task.fromData(doc.data),
+           ).toList(),
+         );
+    }
+
+  
+  // get list of task (get approve from supervisor)
+  Stream<QuerySnapshot> getApprove(){
+    if(getCurrentUser()!= null){
+      return addTaskCollection.where('verified',isEqualTo: "Sah" ).snapshots();
+    }
+  }
+
+  //get list of task (get not approval from supervisor)
+  Stream<QuerySnapshot> getNotApprove(){
+    if(getCurrentUser()!= null){
+      return addTaskCollection.where('verified',isEqualTo: "TidakSah" ).snapshots();
+    }
+  }
+
   // read the road gang
   Stream<List<NewUser>> getRoadGang(){
     return roadGangCollection.snapshots().map(
@@ -99,7 +144,7 @@ class DatabaseService{
       ).toList(),
     );
   }
-
+  
   // read the road gang
   Stream<List<RecordOfficer>> getRecordOfficer(){
     return recordOfficerCollection.snapshots().map(
@@ -108,6 +153,10 @@ class DatabaseService{
       ).toList(),
     );
   }
+
+
+
+
 
   // update profile admin
  Future updateProfile(String name, String email, String nophone) async {
@@ -119,7 +168,6 @@ class DatabaseService{
       print("Update Profile");
     });
  }
-
 
 
 
@@ -164,7 +212,8 @@ class DatabaseService{
    }
 
 
-   
+
+
 
 
 }

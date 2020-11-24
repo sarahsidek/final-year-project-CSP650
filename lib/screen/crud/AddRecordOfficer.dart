@@ -77,7 +77,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Nama',
+                    hintText: 'Name',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,

@@ -1,5 +1,3 @@
-
-
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,84 +14,85 @@ class List_ofTask extends StatefulWidget {
 
 
 String id;
-List<NetworkImage> _listOfImages = <NetworkImage>[];
+
 class _List_ofTaskState extends State<List_ofTask> {
+  List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
     return Container(
       child: StreamBuilder(
-        stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Dalam proses kelulusan').snapshots(),
-        builder: (context, snapshot){
-          if(snapshot.hasError || !snapshot.hasData){
-            return Loading();
-          } else {
-            final List<DocumentSnapshot> document = snapshot.data.documents;
-            return ListView.builder(
-              itemCount: document.length,
-              itemBuilder: (BuildContext context, int index){
-                _listOfImages =[];
-                for(int i =0; i <snapshot.data.documents[index].data['urls'].length; i++){
-                  _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['urls'][i]));
-                }
-                return Card(
-                    child:ListTile(
-                      title: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Column(
-                          children: <Widget>[
-                            SizedBox(height: 5.0),
-                            Container(alignment: Alignment.centerLeft,
-                              child: Text(document[index].data['sumberAduan']),
-                            ),
-                            SizedBox(height: 5.0),
-                            Container(alignment: Alignment.centerLeft,
-                              child: Text(document[index].data['noAduan']),
-                            ),
-                            SizedBox(height: 5.0),
-                            Container(alignment: Alignment.centerLeft,
-                              child: Text(document[index].data['kategori']),
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.all(10.0),
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white
+          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Dalam Proses Kelulusan').snapshots(),
+          builder: (context, snapshot){
+            if(snapshot.hasError || !snapshot.hasData){
+              return Loading();
+            } else {
+              final List<DocumentSnapshot> document = snapshot.data.documents;
+              return ListView.builder(
+                  itemCount: document.length,
+                  itemBuilder: (BuildContext context, int index){
+                    _listOfImages =[];
+                    for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
+                      _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
+                    }
+                    return Card(
+                        child:ListTile(
+                            title: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Text(document[index].data['sumberAduan']),
                                   ),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Carousel(
-                                    boxFit: BoxFit.cover,
-                                    images: _listOfImages,
-                                    autoplay: false,
-                                    indicatorBgPadding: 5.0,
-                                    dotPosition: DotPosition.bottomCenter,
-                                    animationCurve: Curves.fastLinearToSlowEaseIn,
-                                    animationDuration: Duration(milliseconds: 2000),
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Text(document[index].data['noAduan']),
                                   ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      subtitle: Container(
-                        child: Row(
-                          children: [
-                            SizedBox(height: 5.0),
-                            Container(alignment: Alignment.centerLeft,
-                              child: Text(document[index].data['email']),
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Text(document[index].data['kategori']),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.all(10.0),
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white
+                                        ),
+                                        width: MediaQuery.of(context).size.width,
+                                        child: Carousel(
+                                          boxFit: BoxFit.cover,
+                                          images: _listOfImages,
+                                          autoplay: false,
+                                          indicatorBgPadding: 5.0,
+                                          dotPosition: DotPosition.bottomCenter,
+                                          animationCurve: Curves.fastLinearToSlowEaseIn,
+                                          animationDuration: Duration(milliseconds: 2000),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {verifyTask(document[index].data['id']);}
-                    )
-                );
-              }
-            );
+                            subtitle: Container(
+                              child: Row(
+                                children: [
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Text(document[index].data['email']),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {verifyTask(document[index].data['id']);}
+                        )
+                    );
+                  }
+              );
+            }
           }
-        }
       ),
     );
   }
@@ -150,7 +149,7 @@ class _List_ofTaskState extends State<List_ofTask> {
                         ),
                         SizedBox(height: 20.0,),
                         Visibility(
-                          visible: (snapshot.data['verified'].toString() == 'Dalam proses kelulusan')? true : false,
+                          visible: (snapshot.data['verified'].toString() == 'Dalam Proses Kelulusan')? true : false,
                           child: Column(
                             children: <Widget>[
                               SizedBox(
@@ -165,7 +164,8 @@ class _List_ofTaskState extends State<List_ofTask> {
                                     child: Text("Sah", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'Sah'
+                                        'verified': 'Sah',
+                                        'comments' : 'Lengkap'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });
@@ -191,7 +191,7 @@ class _List_ofTaskState extends State<List_ofTask> {
                                       });
                                     },
                                   )
-                              )
+                              ),
                             ],
                           ),
                         ),

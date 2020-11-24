@@ -5,8 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/screen/RecordOfficer/PageRecordOfficer.dart';
+import 'package:fyp/maps/geolocation.dart';
+import 'package:fyp/maps/google_maps_address.dart';
+import 'package:fyp/model/Task.dart';
+
+import 'package:fyp/service/database.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
+
 
 
 
@@ -28,11 +33,12 @@ class _AddTaskState extends State<AddTask> {
   String kategori;
   String sumberAduan;
   String imageUrl;
+  String landmark;
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
 
   File image;
-
+  Task tk;
   List<Asset> images = List<Asset>();
   List<String> imageUrls = <String>[];
   String error = "No error Detected";
@@ -90,32 +96,30 @@ class _AddTaskState extends State<AddTask> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final String id = Firestore.instance.collection("Task").id;
-  uploadImage(DateTime dateTime, String sumberAduan, String noAduan,
-      String kategori,String id) {
+  uploadImage(DateTime dateTime, String sumberAduan, String noAduan, String kategori,String uid) {
+
     for (var imageFile in images) {
       postImage(imageFile).then((downloadUrl) async {
         imageUrls.add(downloadUrl.toString());
         if (imageUrls.length == images.length) {
           final FirebaseUser rd = await auth.currentUser();
-          final uid = rd.uid;
+          final String uid = rd.uid;
           final String email = rd.email;
           String id = Firestore.instance.collection("Task").document().documentID;
-          Firestore.instance.collection('Task').document(id).setData({
-            'id': id,
-            'date': DateTime.now(),
-            'sumberAduan': sumberAduan,
-            'noAduan': noAduan,
-            'kategori': kategori,
-            'recordOfficerId': uid,
-            'email': email,
-            'urls': imageUrls,
-            'verified': "Dalam proses kelulusan"
-          }).then((_) {
-            setState(() {
-              images = [];
-              imageUrls = [];
-            });
-          });
+          tk = Task(
+            uid: uid,
+            email: email,
+            sumberAduan: sumberAduan,
+            noAduan: noAduan,
+            kategori: kategori,
+            dateTime: _dateTime,
+            imageUrls: imageUrls,
+            id:id,
+            verified: "Dalam Proses Kelulusan",
+            comments: "Tiada catatan",
+              landMark: landmark
+          );
+           await DatabaseService().addTask(tk);
         }
       }).catchError((err) {
         print(err);
@@ -218,6 +222,17 @@ class _AddTaskState extends State<AddTask> {
                 }).toList(),
               ),
               SizedBox(height: 10.0),
+              TextFormField(
+                decoration: InputDecoration(
+                    hintText: "Landmark",
+                    prefixIcon: Icon(Icons.add_location),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                keyboardType: TextInputType.text,
+                onChanged: (value) {
+                  setState(() => landmark = value);
+                },
+              ),
+              SizedBox(height: 10.0),
               Container(
               color: Colors.white,
               height: 400,
@@ -243,11 +258,11 @@ class _AddTaskState extends State<AddTask> {
                       ),
                       const SizedBox(height: 10.0),
                       RaisedButton(
-                        child: Text("Keluar"),
+                        child: Text("Alamat"),
                         color: Colors.redAccent,
                         textColor: Colors.black,
                         onPressed: () async{
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => RecordOfficer()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Geolocation(task: tk)));
                         },
                       ),
                     ]

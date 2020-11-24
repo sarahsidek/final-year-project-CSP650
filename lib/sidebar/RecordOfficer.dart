@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-
-import 'package:fyp/maps/google_maps_address.dart';
+import 'package:fyp/maps/geolocation.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskAccepted.dart';
+import 'package:fyp/screen/RecordOfficer/ListOfTaskNotAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
 import 'package:fyp/service/authRecordOfficer.dart';
 
@@ -42,14 +41,6 @@ class _RecordOfficerDrawerState extends State<RecordOfficerDrawer> {
           ),
           SizedBox(height: 5.0),
           ListTile(
-            leading: Icon(Icons.add_location_alt),
-            title: Text('Alamat'),
-            onTap: () async{
-              Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps()));
-            },
-          ),
-          SizedBox(height: 5.0),
-          ListTile(
             leading: Icon(Icons.home_filled),
             title: Text('Aduan Diterima'),
             onTap: () async{
@@ -61,7 +52,7 @@ class _RecordOfficerDrawerState extends State<RecordOfficerDrawer> {
             leading: Icon(Icons.home_filled),
             title: Text('Aduan Tidak Diterima'),
             onTap: () async{
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
             },
           ),
           SizedBox(height: 5.0),
