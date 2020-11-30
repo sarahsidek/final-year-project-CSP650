@@ -1,4 +1,5 @@
 
+
 class Task {
   final String noAduan;
   final String sumberAduan;
@@ -11,10 +12,14 @@ class Task {
   final String uid;
   final String id;
   final String landMark;
+  final String progress;
+  final String emailRoadgang;
 
 
 
-  Task({this.landMark,this.comments,this.noAduan, this.sumberAduan, this.kategori, this.dateTime, this.verified, this.email, this.uid, this.id, this.imageUrls});
+  Task({this.emailRoadgang, this.progress, this.landMark,
+    this.comments,this.noAduan, this.sumberAduan, this.kategori,
+    this.dateTime, this.verified, this.email, this.uid, this.id, this.imageUrls});
 
   Task.fromData(Map<String, dynamic> data)
       : noAduan = data['noAduan'],
@@ -27,7 +32,10 @@ class Task {
         imageUrls = data['url'],
         comments = data['comments'],
         landMark = data['landmark'],
+        progress = data['progress'],
+        emailRoadgang = data['emailRoadGang'],
         id = data['id'];
+
 
     Map<String,dynamic> toJson(){
     return{
@@ -41,7 +49,10 @@ class Task {
       'url':imageUrls,
       'id':id,
       'comments':comments,
-      'landmarks':landMark
+      'landmarks':landMark,
+      'progress': progress,
+      'emailRoadGang': emailRoadgang,
+      'dateCompleteTask': dateTime,
     };
   }
 }

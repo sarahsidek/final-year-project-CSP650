@@ -125,17 +125,8 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
                 controller: _icnumber,
               ),
               SizedBox(height: 10.0),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: 'Zon',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                controller: _zon,
-              ),
-              SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Zon'),
+                hint:Text(widget.rd.zon),
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -155,16 +146,8 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
                 }).toList(),
               ),
               SizedBox(height: 10.0),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: 'Pegawai Zon',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                controller: _pegawaiZon,
-              ),
-              SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Pegawai Zon'),
+                hint:Text(widget.rd.pegawaiZon),
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),

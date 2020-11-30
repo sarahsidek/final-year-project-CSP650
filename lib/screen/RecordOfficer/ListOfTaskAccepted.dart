@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListOfTaskAccepted extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ Stream<QuerySnapshot> getUser(BuildContext context) async* {
 }
 class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                 return ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (BuildContext context, int index){
-                      final List<DocumentSnapshot> ca = snapshot.data.documents;
+                      DocumentSnapshot ca = snapshot.data.documents[index];
                       _listOfImages =[];
                       for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
                         _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
@@ -45,19 +47,19 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca[index].data['sumberAduan']),
+                                    child: Text(ca['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca[index].data['noAduan']),
+                                    child: Text(ca['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca[index].data['kategori']),
+                                    child: Text(ca['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca[index].data['verified']),
+                                    child: Text(ca['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                   ),
                                   Column(
                                     children: [
@@ -88,12 +90,13 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                     children: [
                                       SizedBox(height: 5.0),
                                       Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca[index].data['comments']),
+                                    child: Text(ca['comments'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
                                  ),
                                ],
                                ),
-                          )
-                          )
+                            ),
+
+                        )
                       );
                     });
               }

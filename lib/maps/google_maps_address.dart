@@ -1,15 +1,9 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fyp/model/Task.dart';
 import 'package:fyp/model/Location.dart';
-import 'package:fyp/service/database.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:geocoder/geocoder.dart' as geoCo;
 class GoogleMaps extends StatefulWidget {
 
 
@@ -24,8 +18,6 @@ class _GoogleMapsState extends State<GoogleMaps> {
   Location _locationTracker = new Location();
   Marker marker;
   Circle circle;
-  String addressLocation;
-  LocationTask loc;
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(4.2105, 101.9758),
     zoom: 18.00,
@@ -52,29 +44,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
   void getCurrentLocation() async {
     try {
       var location = await _locationTracker.getLocation();
-      final coordinated = new geoCo.Coordinates(location.latitude, location.longitude);
-      var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
-      GeoFirePoint firePoint = new GeoFirePoint(location.latitude, location.longitude);
-      final FirebaseAuth auth = FirebaseAuth.instance;
-      final FirebaseUser rd = await auth.currentUser();
-      final String email = rd.email;
-      var firstAddress = address.first;
-      addressLocation = firstAddress.addressLine;
-      DateTime _dateTime = DateTime.now();
-      String id = Firestore.instance
-          .collection("Location")
-          .document()
-          .documentID;
-      loc = LocationTask(
-        dateTime: _dateTime,
-        email: email,
-        docId: id,
-        address: addressLocation,
-        position: firePoint.geoPoint,
-        //noAduan: task.noAduan,
-        //kategori: task.kategori
-      );
-      await DatabaseService().addlocation(loc);
+      updateMarker(location);
+
       if (_streamSubscription != null) {
         _streamSubscription.cancel();
       }
@@ -130,15 +101,15 @@ class _GoogleMapsState extends State<GoogleMaps> {
             top: 10.0,
             left: 10.0,
             child: Container(
-              height: 125,
-              width: MediaQuery.of(context).size.width,
-              child: Text("Address: $addressLocation",style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-                fontSize: 25.0,
-              ),
-              textAlign: TextAlign.center,
-              )
+                height: 125,
+                width: MediaQuery.of(context).size.width,
+                child: Text("Your Tasks:",style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                ),
+                  textAlign: TextAlign.center,
+                )
             ),
           )
         ],

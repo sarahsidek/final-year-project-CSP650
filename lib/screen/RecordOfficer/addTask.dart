@@ -6,16 +6,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/maps/geolocation.dart';
-import 'package:fyp/maps/google_maps_address.dart';
 import 'package:fyp/model/Task.dart';
-
 import 'package:fyp/service/database.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
-
-
-
-
-
 
 class AddTask extends StatefulWidget {
 
@@ -117,7 +110,9 @@ class _AddTaskState extends State<AddTask> {
             id:id,
             verified: "Dalam Proses Kelulusan",
             comments: "Tiada catatan",
-              landMark: landmark
+            landMark: landmark,
+            progress: "Tiada",
+            emailRoadgang:"roadgang",
           );
            await DatabaseService().addTask(tk);
         }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fyp/maps/geolocation.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskNotAccepted.dart';
-import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
+import 'package:fyp/screen/login.dart';
 import 'package:fyp/service/authRecordOfficer.dart';
 
 
@@ -63,7 +62,7 @@ class _RecordOfficerDrawerState extends State<RecordOfficerDrawer> {
                 await _officer.signOut();
                 Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context) => LoginRecordOfficer()));
+                        builder: (context) => LoginScreen()));
               }
                   ),
         ],

@@ -26,12 +26,12 @@ class _List_ofTaskState extends State<List_ofTask> {
             if(snapshot.hasError || !snapshot.hasData){
               return Loading();
             } else {
-              final List<DocumentSnapshot> document = snapshot.data.documents;
               return ListView.builder(
-                  itemCount: document.length,
+                  itemCount: snapshot.data.documents.length,
                   itemBuilder: (BuildContext context, int index){
+                    DocumentSnapshot document = snapshot.data.documents[index];
                     _listOfImages =[];
-                    for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
+                    for(int i =0; i <document['url'].length; i++){
                       _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
                     }
                     return Card(
@@ -42,15 +42,15 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document[index].data['sumberAduan']),
+                                    child: Text(document['sumberAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document[index].data['noAduan']),
+                                    child: Text(document['noAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document[index].data['kategori']),
+                                    child: Text(document['kategori']),
                                   ),
                                   Column(
                                     children: [
@@ -81,12 +81,12 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: [
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document[index].data['email']),
+                                    child: Text(document['email']),
                                   ),
                                 ],
                               ),
                             ),
-                            onTap: () {verifyTask(document[index].data['id']);}
+                            onTap: () {verifyTask(document['id']);}
                         )
                     );
                   }

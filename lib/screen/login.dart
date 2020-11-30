@@ -1,4 +1,5 @@
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
+import 'package:fyp/screen/RoadGang/loginRoadGang.dart';
 import 'package:fyp/screen/supervisor/loginSupervisor.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/signup.dart';
@@ -67,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             textColor: Colors.black87,
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRecordOfficer()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRoadGang()));
             },
           ),
         ],

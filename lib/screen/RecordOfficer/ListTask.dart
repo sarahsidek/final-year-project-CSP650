@@ -2,8 +2,9 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/rendering.dart';
 import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListTask extends StatefulWidget {
   @override
@@ -31,10 +32,10 @@ class _ListTaskState extends State<ListTask> {
               return ListView.builder(
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (BuildContext context, int index){
-                    final List<DocumentSnapshot> ba = snapshot.data.documents;
+                    DocumentSnapshot ba = snapshot.data.documents[index];
                     _listOfImages =[];
-                    for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
-                      _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
+                    for(int i =0; i <ba['url'].length; i++){
+                      _listOfImages.add(NetworkImage(ba['url'][i]));
                     }
                     return Card(
                         child:ListTile(
@@ -44,19 +45,19 @@ class _ListTaskState extends State<ListTask> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba[index].data['sumberAduan']),
+                                  child: Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba[index].data['noAduan']),
+                                  child: Text(ba['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba[index].data['kategori']),
+                                  child: Text(ba['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba[index].data['verified']),
+                                  child: Text(ba['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                 ),
                                 Column(
                                   children: [
@@ -87,16 +88,63 @@ class _ListTaskState extends State<ListTask> {
                               children: [
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba[index].data['comments']),
+                                  child: Text(ba['comments'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
                                 ),
                               ],
                             ),
                           ),
+                            onTap: () {listAddress(ba['taskID']);}
                         )
                     );
                   });
-            }
-          }),
+              }
+           }),
+    );
+  }
+  void listAddress(String taskID) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(10.0),
+                topRight: const Radius.circular(10.0)
+            )
+        ),
+        context: context,
+        builder: (builder){
+          return StreamBuilder(
+              stream:Firestore.instance.collection("Location").where("taskID", isEqualTo: taskID).snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Loading();
+                } else {
+                        return Container(
+                          height: 150,
+                          child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                              alignment: Alignment.topLeft,
+                                              width: 220,
+                                              child: Text(snapshot.data['address'].toString())
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                      }
+                 }
+            );
+        }
     );
   }
 }

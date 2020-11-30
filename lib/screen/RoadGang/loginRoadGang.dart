@@ -51,7 +51,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'E-mel',
+                              decoration: InputDecoration(labelText: 'Buruh: E-mel',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value)
@@ -91,7 +91,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                                   if( _formKey.currentState.validate()){
                                     setState(() => loading = true);
                                     dynamic result = await _auth.signInRoadGang(email, uniqueID);
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RoadGang()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RoadGangHome()));
                                     if (result == null){
                                       setState(() {
                                         error = 'Pastikan e-mel anda sah!';

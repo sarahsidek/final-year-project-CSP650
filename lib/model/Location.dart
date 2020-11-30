@@ -12,9 +12,11 @@ class LocationTask{
   final String noAduan;
   final String kategori;
   final String landmark;
+  final String progress;
+  final String taskID;
 
 
-  LocationTask({this.landmark,this.noAduan, this.kategori, this.dateTime, this.email, this.position, this.address, this.docId});
+  LocationTask({this.taskID,this.progress, this.landmark,this.noAduan, this.kategori, this.dateTime, this.email, this.position, this.address, this.docId});
 
   LocationTask.fromData(Map<String, dynamic> data, )
       : position = data['position'],
@@ -24,6 +26,8 @@ class LocationTask{
         address = data['address'],
         noAduan = data['noAduan'],
         landmark = data['landmark'],
+        progress = data['progress'],
+        taskID = data['taskID'],
         kategori =data['kategori'];
 
    Map<String, dynamic> toJson(){
@@ -35,7 +39,9 @@ class LocationTask{
        'date': dateTime,
        'noAduan': noAduan,
        'kategori':kategori,
-        'landmark':landmark
+        'landmark':landmark,
+       'progress': progress,
+       'taskID': taskID
      };
    }
 

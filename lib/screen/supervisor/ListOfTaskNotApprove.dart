@@ -117,7 +117,8 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                return Loading();
              }
              return new Container(
-               height: 250,
+               height: 500,
+               padding: EdgeInsets.all(10),
                child: Visibility(
                  visible: (snapshot.data['comments'].toString() == 'Tiada catatan')? true:false,
                  child: Column(

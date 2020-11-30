@@ -1,13 +1,13 @@
-import 'package:fyp/service/authRoadGang.dart';
+import 'package:fyp/screen/RoadGang/listTaskFromSupervisor.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/sidebar/RoadGang.dart';
 
-class RoadGang extends StatefulWidget {
+class RoadGangHome extends StatefulWidget {
   @override
-  _RoadGangState createState() => _RoadGangState();
+  _RoadGangHomeState createState() => _RoadGangHomeState();
 }
 
-class _RoadGangState extends State<RoadGang> {
-  final AuthRoadGang _authRoadGang = new AuthRoadGang();
+class _RoadGangHomeState extends State<RoadGangHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,21 +15,9 @@ class _RoadGangState extends State<RoadGang> {
         title: Text('Buruh Kakitangan'),
         backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          FlatButton(
-              child: Row(
-                children: <Widget>[
-                  Text("Keluar"),
-                ],
-              ),
-              textColor: Colors.black87,
-              onPressed: () async {
-                await _authRoadGang.signOut();
-                Navigator.pop(context);
-              }
-          )
-        ],
       ),
+      drawer: RoadGangDrawer(),
+      body: ListTaskFromSupervisor(),
     );
   }
 }

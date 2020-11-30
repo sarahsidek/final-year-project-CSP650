@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/model/Location.dart';
@@ -69,24 +68,24 @@ class _GeolocationState extends State<Geolocation> {
                           tapped.latitude, tapped.longitude);
                       var address = await geoCo.Geocoder.local
                           .findAddressesFromCoordinates(coordinated);
-                      final FirebaseAuth auth = FirebaseAuth.instance;
-                      final FirebaseUser rd = await auth.currentUser();
                       GeoFirePoint firePoint = new GeoFirePoint(
                           tapped.latitude, tapped.longitude);
-                      final String email = rd.email;
                       var firstAddress = address.first;
                       addressLocation = firstAddress.addressLine;
                       DateTime _dateTime = DateTime.now();
                       String id = Firestore.instance.collection("Location").document().documentID;
                       loc = LocationTask(
                           dateTime: _dateTime,
-                          email: email,
+                          email: task.email,
                           docId: id,
                           address: addressLocation,
                           position: firePoint.geoPoint,
                           noAduan: task.noAduan,
                           kategori: task.kategori,
-                          landmark: task.landMark
+                          landmark: task.landMark,
+                         progress: task.progress,
+                        taskID: task.id
+
                       );
                       await DatabaseService().addlocation(loc);
                       Text("Alamat: $addressLocation");
