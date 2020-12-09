@@ -1,18 +1,31 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fyp/model/CompleteTask.dart';
 import 'package:fyp/model/Location.dart';
+import 'package:fyp/service/database.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:geocoder/geocoder.dart' as geoCo;
 class GoogleMaps extends StatefulWidget {
 
+  final CompleteTask ctk;
 
-  @override
-  _GoogleMapsState createState() => _GoogleMapsState();
+  GoogleMaps({Key key, this.ctk}) : super(key: key);
+
+    @override
+  _GoogleMapsState createState() => _GoogleMapsState(ctk);
 }
 
 class _GoogleMapsState extends State<GoogleMaps> {
-
+  CompleteTask ctk;
+  _GoogleMapsState(CompleteTask ctk){
+    this.ctk = ctk;
+  }
+  LocationTask loc;
   StreamSubscription _streamSubscription;
   GoogleMapController googleMapController;
   Location _locationTracker = new Location();
@@ -44,7 +57,23 @@ class _GoogleMapsState extends State<GoogleMaps> {
   void getCurrentLocation() async {
     try {
       var location = await _locationTracker.getLocation();
-      updateMarker(location);
+      final coordinated = new geoCo.Coordinates(location.latitude, location.longitude);
+      var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
+      GeoFirePoint firePoint = new GeoFirePoint(location.latitude, location.longitude);
+      var firstAddress = address.first;
+      String addressLocation = firstAddress.addressLine;
+      String id = Firestore.instance.collection("Location").document().documentID;
+      loc = LocationTask(
+        email: ctk.email,
+        docId: id,
+       address: addressLocation,
+       position: firePoint.geoPoint,
+        noAduan: ctk.noAduan,
+        kategori: ctk.kategori,
+        kawasan: ctk.kawasan,
+        naJalan: ctk.jalan,
+      );
+       DatabaseService().addlocation(loc);
 
       if (_streamSubscription != null) {
         _streamSubscription.cancel();
@@ -98,17 +127,33 @@ class _GoogleMapsState extends State<GoogleMaps> {
             ),
           ),
           Positioned(
-            top: 10.0,
-            left: 10.0,
             child: Container(
-                height: 125,
-                width: MediaQuery.of(context).size.width,
-                child: Text("Your Tasks:",style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.0,
+                height: 50,
+                margin: EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(3.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2
+                  )
                 ),
-                  textAlign: TextAlign.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(ctk.kawasan + " ", style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(ctk.jalan + " " , style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 )
             ),
           )

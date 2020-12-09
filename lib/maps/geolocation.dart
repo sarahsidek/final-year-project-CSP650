@@ -74,20 +74,14 @@ class _GeolocationState extends State<Geolocation> {
                       addressLocation = firstAddress.addressLine;
                       DateTime _dateTime = DateTime.now();
                       String id = Firestore.instance.collection("Location").document().documentID;
-                      loc = LocationTask(
-                          dateTime: _dateTime,
-                          email: task.email,
-                          docId: id,
-                          address: addressLocation,
-                          position: firePoint.geoPoint,
-                          noAduan: task.noAduan,
-                          kategori: task.kategori,
-                          landmark: task.landMark,
-                         progress: task.progress,
-                        taskID: task.id
-
-                      );
-                      await DatabaseService().addlocation(loc);
+                      //loc = LocationTask(
+                          //dateTime: _dateTime,
+                         // email: task.email,
+                         // docId: id,
+                       //   address: addressLocation,
+                         // position: firePoint.geoPoint,
+                      //);
+                     // await DatabaseService().addlocation(loc);
                       Text("Alamat: $addressLocation");
                     },
                     mapType: MapType.normal,

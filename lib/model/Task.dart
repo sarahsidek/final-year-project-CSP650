@@ -5,19 +5,20 @@ class Task {
   final String sumberAduan;
   final String kategori;
   final List<String> imageUrls;
+  final String kawasan;
+  final String naJalan;
   final DateTime dateTime;
   final String verified;
   final String email;
   final String comments;
   final String uid;
   final String id;
-  final String landMark;
-  final String progress;
   final String emailRoadgang;
+  final String kerosakan;
 
 
 
-  Task({this.emailRoadgang, this.progress, this.landMark,
+  Task({this.kerosakan, this.kawasan, this.naJalan, this.emailRoadgang,
     this.comments,this.noAduan, this.sumberAduan, this.kategori,
     this.dateTime, this.verified, this.email, this.uid, this.id, this.imageUrls});
 
@@ -25,15 +26,16 @@ class Task {
       : noAduan = data['noAduan'],
         kategori = data['kategori'],
         sumberAduan = data['sumberAduan'],
-        dateTime = DateTime.parse(data['date'].toDate().toString()),
+        dateTime = data['date'],
+        kawasan = data['kawasan'],
+        naJalan = data['naJalan'],
         verified = data['verified'],
         email = data['email'],
         uid = data['uid'],
         imageUrls = data['url'],
         comments = data['comments'],
-        landMark = data['landmark'],
-        progress = data['progress'],
         emailRoadgang = data['emailRoadGang'],
+        kerosakan = data['kerosakan'],
         id = data['id'];
 
 
@@ -49,10 +51,10 @@ class Task {
       'url':imageUrls,
       'id':id,
       'comments':comments,
-      'landmarks':landMark,
-      'progress': progress,
       'emailRoadGang': emailRoadgang,
-      'dateCompleteTask': dateTime,
+      'kawasan': kawasan,
+      'naJalan': naJalan,
+      'kerosakan': kerosakan
     };
   }
 }

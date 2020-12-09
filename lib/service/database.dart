@@ -1,9 +1,8 @@
-
-
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/model/Admin.dart';
+import 'package:fyp/model/CompleteTask.dart';
 import 'package:fyp/model/Location.dart';
 import 'package:fyp/model/RecordOfficer.dart';
 import 'package:fyp/model/NewUser.dart';
@@ -20,6 +19,7 @@ class DatabaseService{
   final CollectionReference supervisorCollection  = Firestore.instance.collection('Supervisor');
   final CollectionReference addTaskCollection = Firestore.instance.collection("Task");
   final CollectionReference addLocationCollection = Firestore.instance.collection("Location");
+  final CollectionReference addCompleteTaskCollection = Firestore.instance.collection("CompleteTask");
 
   final String uid;
   final String id;
@@ -93,10 +93,18 @@ class DatabaseService{
       print("Task created");
       });
     }
-
+    // create add location
     Future addlocation(LocationTask location) async {
     return addLocationCollection.document(location.docId).setData(location.toJson());
     }
+
+    // create add Completion Task
+  Future addCompleteAdd(CompleteTask completeTask) async {
+    return addCompleteTaskCollection.document(completeTask.id).setData(completeTask.toJson()).whenComplete((){
+      print("Task Complete Success!");
+    });
+  }
+
     // read the supervisor
     Stream<List<NewUser>> getSupervisor(){
     return supervisorCollection.snapshots().map(
@@ -193,6 +201,13 @@ class DatabaseService{
     return recordOfficerCollection.document(recordOfficer.uid).updateData(
         recordOfficer.toJson()).whenComplete(() {
       print("Update success!");
+    });
+  }
+
+  Future updateTask(Task tak)async {
+    return addTaskCollection.document(tak.id).updateData(
+      tak.toJson()).whenComplete(() {
+        print("Update Task Success!");
     });
   }
 

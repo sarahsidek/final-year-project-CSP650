@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -42,15 +43,15 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['sumberAduan']),
+                                    child: Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['noAduan']),
+                                    child: Text(document['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['kategori']),
+                                    child: Text(document['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
                                   ),
                                   Column(
                                     children: [
@@ -81,7 +82,7 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: [
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['email']),
+                                    child: Text(document['email'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                   ),
                                 ],
                               ),
@@ -130,18 +131,13 @@ class _List_ofTaskState extends State<List_ofTask> {
                                     alignment: Alignment.topLeft,
                                     width: 220,
                                     margin: EdgeInsets.only(top:26, left: 14),
-                                    child: Text(snapshot.data['noAduan'], textAlign: TextAlign.left,style: TextStyle( fontSize: 24, fontFamily: 'Poppins')),
+                                    child: Text(snapshot.data['kawasan'], textAlign: TextAlign.left,style: TextStyle( fontSize: 24, fontFamily: 'Poppins')),
                                   ),
                                   Container(
                                     width: 220,
                                     margin: EdgeInsets.only(top:4, left: 15),
-                                    child: Text(snapshot.data['kategori'], style: TextStyle( fontSize: 16)),
+                                    child: Text(snapshot.data['naJalan'], style: TextStyle( fontSize: 16)),
                                   ),
-                                  Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top:3, left: 15),
-                                    child: Text(snapshot.data['sumberAduan'], style: TextStyle( fontSize: 16)),
-                                  )
                                 ],
                               ),
                             )

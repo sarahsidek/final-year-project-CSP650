@@ -66,13 +66,13 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
                                        '13-SHAIPU AL BAHRI BIN MOHAMAD',
                                        '14-MUHAMAD AZAD BIN ZAINAL',
                                        '15-MOHD AKMAL HAKIM BIN AB HALIM',
-                                       '16-MOHD AKMAL HAKIM BIN AB HALIM'
+                                       '16-MOHD AKMAL HAKIM BIN AB HALIM',
                                        '17-NORZALINA BINTI ABDUL WAHAB',
                                        '18-NORZALINA BINTI ABDUL WAHAB',
                                        '19-SYARIFUDDIN BIN MUSTAKIM',
-                                       '20-SYARIFUDDIN BIN MUSTAKIM'
+                                       '20-SYARIFUDDIN BIN MUSTAKIM',
                                        '21-NURIZZATUL ASHIQIN BINTI AZMAN',
-                                       '22-NURIZZATUL ASHIQIN BINTI AZMAN'
+                                       '22-NURIZZATUL ASHIQIN BINTI AZMAN',
                                        '23-AMINUL RASYID BIN HUSIN',
                                        '24-MAZIAN BINTI AHMAD TERMIZI'];
   @override

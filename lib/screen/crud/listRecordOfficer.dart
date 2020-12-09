@@ -3,6 +3,7 @@ import 'package:fyp/screen/crud/UpdateRecordOfficer.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListRecordOfficer extends StatefulWidget {
   @override
@@ -31,20 +32,39 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(rd.name),
+                                  child: Row(
+                                    children: [
+                                      Text("Nama: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(rd.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child:Text(rd.email),
+                                  child: Row(
+                                    children: [
+                                      Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(rd.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(rd.icnumber),
+                                  child: Row(
+                                    children: [
+                                      Text("Zon:" , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(rd.zon, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          subtitle: Text(rd.pegawaiZon),
+                          subtitle: Row(
+                            children: [
+                              Text(rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            ],
+                          ),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[

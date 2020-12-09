@@ -30,10 +30,10 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                 return ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (BuildContext context, int index){
-                      final List<DocumentSnapshot> ba = snapshot.data.documents;
+                      DocumentSnapshot ba = snapshot.data.documents[index];
                       _listOfImages =[];
-                      for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
-                        _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
+                      for(int i =0; i <ba['url'].length; i++){
+                        _listOfImages.add(NetworkImage(ba['url'][i]));
                       }
                       return Card(
                           child:ListTile(
@@ -43,19 +43,19 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ba[index].data['sumberAduan']),
+                                    child: Text(ba['sumberAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ba[index].data['noAduan']),
+                                    child: Text(ba['noAduan']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ba[index].data['kategori']),
+                                    child: Text(ba['kategori']),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                   child: Text(ba[index].data['verified']),
+                                   child: Text(ba['verified']),
                                   ),
                                   Column(
                                     children: [
@@ -86,12 +86,12 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   children: [
                                     SizedBox(height: 5.0),
                                     Container(alignment: Alignment.centerLeft,
-                                      child: Text(ba[index].data['comments']),
+                                      child: Text(ba['comments']),
                                     ),
                                   ],
                                 ),
                               ),
-                              onTap: () {updateComments(ba[index].data['id']);}
+                              onTap: () {updateComments(ba['id']);}
                           )
                       );
                     });

@@ -47,19 +47,39 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    child: Row(
+                                      children: [
+                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(ca['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                    child: Row(
+                                      children: [
+                                        Text("Nombor Aduan: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                        Text(ca['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    child: Row(
+                                      children: [
+                                        Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text(ca['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    child: Row(
+                                      children: [
+                                        Text("Status : ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(ca['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   Column(
                                     children: [
@@ -90,18 +110,98 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                     children: [
                                       SizedBox(height: 5.0),
                                       Container(alignment: Alignment.centerLeft,
-                                    child: Text(ca['comments'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    child: Row(
+                                      children: [
+                                        Text("Catatan : ",style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text(ca['comments'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
                                  ),
                                ],
                                ),
                             ),
-
+                              onTap: () {listAddress(ca['id']);}
                         )
                       );
                     });
               }
             }),
       ),
+    );
+  }
+  void listAddress(String id) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(10.0),
+                topRight: const Radius.circular(10.0)
+            )
+        ),
+        context: context,
+        builder: (builder){
+          return StreamBuilder(
+              stream:Firestore.instance.collection("Task").document(id).snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Loading();
+                } else {
+                  return Container(
+                    height: 150,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(20.0, 3, 30.0, 5.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.topLeft,
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:26, left: 14),
+                                      child: Row(
+                                        children: [
+                                          Text("Kawasan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text( snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:4, left: 15),
+                                      child: Row(
+                                        children: [
+                                          Text("Nama Jalan :", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text(snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:4, left: 15),
+                                      child: Row(
+                                        children: [
+                                          Text("Kategori : ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text(snapshot.data['kategori'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              }
+          );
+        }
     );
   }
 }

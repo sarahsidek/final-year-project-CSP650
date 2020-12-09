@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:fyp/screen/RecordOfficer/EditTaskNotApprove.dart';
 import 'package:fyp/shared/Loading.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
 
 
 class ListOfTaskNotAccepted extends StatefulWidget {
@@ -21,22 +18,6 @@ Stream<QuerySnapshot> getUser(BuildContext context) async* {
 }
 class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
-  String comments;
-  DateTime _dateTime = DateTime.now();
-  String noAduan;
-  String kerosakan = " ";
-  String kategori;
-  String sumberAduan;
-  String imageUrl;
-  String landmark;
-  List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
-  List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
-
-  File image;
-  List<Asset> images = List<Asset>();
-  List<String> imageUrls = <String>[];
-  String error = "No error Detected";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +40,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                     for(int i =0; i <da['url'].length; i++){
                       _listOfImages.add(NetworkImage(da['url'][i]));
                     }
+                     DateTime myDateTime = (da['date']).toDate();
                     return Card(
                         child:ListTile(
                           title: Container(
@@ -67,19 +49,39 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(da['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(da['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(da['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Nombor Aduan: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                      Text(da['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(da['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                  child: Row(
+                                    children: [
+                                      Text("Lokasi: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                      Text(da['kawasan'] + " " + da['naJalan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(da['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      Text(da['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    ],
+                                  ),
                                 ),
                                 Column(
                                   children: [
@@ -106,18 +108,21 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                             ),
                           ),
                           subtitle: Container(
-                          child: Row(
+                          child: Column(
                             children: [
                               SizedBox(height: 5.0),
                               Container(alignment: Alignment.centerLeft,
-                                child: Text(da['comments'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                child: Row(
+                                  children: [
+                                    Text("Catatan: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    Text(da['comments'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => EditTask(da:da)));
-                          },
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => EditTask(da:da)));}
                         )
                     );
                   });
@@ -125,11 +130,6 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
           }),
        )
     );
-  }
-
-  void updateTask(String id) {
-
-
   }
 }
 

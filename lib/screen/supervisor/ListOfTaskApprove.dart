@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class ListOfTaskApprove extends StatefulWidget {
@@ -38,10 +39,10 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                 return ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (BuildContext context, int index){
-                      final List<DocumentSnapshot> tk = snapshot.data.documents;
+                      DocumentSnapshot tk = snapshot.data.documents[index];
                       _listOfImages =[];
-                      for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
-                        _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
+                      for(int i =0; i <tk['url'].length; i++){
+                        _listOfImages.add(NetworkImage(tk['url'][i]));
                       }
                       return Card(
                           child:ListTile(
@@ -51,19 +52,38 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(tk[index].data['sumberAduan']),
+                                    child: Row(
+                                      children: [
+                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(tk['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(tk[index].data['noAduan']),
+                                    child: Row(
+                                      children: [
+                                        Text("Nombor Aduan: ", style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                        Text(tk['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(tk[index].data['kategori']),
+                                    child: Row(
+                                      children: [
+                                        Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text(tk['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(tk[index].data['verified']),
+                                    child: Row(
+                                      children: [
+                                        Text(tk['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   Column(
                                     children: [
@@ -94,16 +114,21 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                                   children: [
                                     SizedBox(height: 5.0),
                                     Container(alignment: Alignment.centerLeft,
-                                      child: Text(tk[index].data['comments']),
+                                      child: Row(
+                                        children: [
+                                          Text("Catatan: ",style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                          Text(tk['comments'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                              onTap: () {getListRoadGang(tk[index].data['id']);}
+                              onTap: () {getListRoadGang(tk['id']);}
                           )
                       );
                     });
-              }
+                  }
             }),
       ),
     );

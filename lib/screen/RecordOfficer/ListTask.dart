@@ -34,8 +34,8 @@ class _ListTaskState extends State<ListTask> {
                   itemBuilder: (BuildContext context, int index){
                     DocumentSnapshot ba = snapshot.data.documents[index];
                     _listOfImages =[];
-                    for(int i =0; i <ba['url'].length; i++){
-                      _listOfImages.add(NetworkImage(ba['url'][i]));
+                    for(int i =0; i <snapshot.data.documents[index].data['url'].length; i++){
+                      _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
                     }
                     return Card(
                         child:ListTile(
@@ -45,19 +45,30 @@ class _ListTaskState extends State<ListTask> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Nombor Aduan: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                      Text(ba['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                ),
-                                SizedBox(height: 5.0),
-                                Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ba['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 Column(
                                   children: [
@@ -83,17 +94,7 @@ class _ListTaskState extends State<ListTask> {
                               ],
                             ),
                           ),
-                          subtitle: Container(
-                            child: Row(
-                              children: [
-                                SizedBox(height: 5.0),
-                                Container(alignment: Alignment.centerLeft,
-                                  child: Text(ba['comments'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                ),
-                              ],
-                            ),
-                          ),
-                            onTap: () {listAddress(ba['taskID']);}
+                            onTap: () {listAddress(ba['id']);}
                         )
                     );
                   });
@@ -101,7 +102,7 @@ class _ListTaskState extends State<ListTask> {
            }),
     );
   }
-  void listAddress(String taskID) {
+  void listAddress(String id) {
     showModalBottomSheet(
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.only(
@@ -112,34 +113,63 @@ class _ListTaskState extends State<ListTask> {
         context: context,
         builder: (builder){
           return StreamBuilder(
-              stream:Firestore.instance.collection("Location").where("taskID", isEqualTo: taskID).snapshots(),
+              stream:Firestore.instance.collection("Task").document(id).snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Loading();
                 } else {
                         return Container(
                           height: 150,
-                          child: Column(
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(20.0, 3, 30.0, 5.0),
+                            child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
                                               alignment: Alignment.topLeft,
                                               width: 220,
-                                              child: Text(snapshot.data['address'].toString())
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
+                                              margin: EdgeInsets.only(top:26, left: 14),
+                                              child: Row(
+                                                children: [
+                                                  Text("Kawasan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                                  Text( snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 220,
+                                              margin: EdgeInsets.only(top:4, left: 15),
+                                              child: Row(
+                                                children: [
+                                                  Text("Nama Jalan :", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                                  Text(snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 220,
+                                              margin: EdgeInsets.only(top:4, left: 15),
+                                              child: Row(
+                                                children: [
+                                                  Text("Kategori : ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                                  Text(snapshot.data['kategori'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                          ),
                           );
                       }
                  }

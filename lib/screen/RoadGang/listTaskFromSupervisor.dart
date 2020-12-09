@@ -43,19 +43,40 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ra['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Sumber Aduan: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ra['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                  child: Row(
+                                    children: [
+                                      Text("Nombor Aduan: ", style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                      Text(ra['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ra['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                  child: Row(
+                                    children: [
+                                      Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      Text(ra['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Text(ra['verified'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  child: Row(
+                                    children: [
+                                      Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 ),
                                 Column(
                                   children: [
@@ -86,9 +107,6 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                             children: [
                                Column(
                                  children: [
-                                   Container(alignment: Alignment.centerLeft,
-                                     child: Text(ra['comments'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                   ),
                                    SizedBox(height: 10.0),
                                    Container(alignment: Alignment.centerLeft,
                                      child: Text(ra['emailRoadGang'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),

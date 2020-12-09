@@ -1,6 +1,8 @@
 import 'package:fyp/model/NewUser.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'UpdateSupervisor.dart';
 
 class ListSupervisor extends StatefulWidget {
@@ -23,7 +25,7 @@ class _ListSupervisorState extends State<ListSupervisor> {
           stream: DatabaseService().getSupervisor(),
           builder: (BuildContext context, AsyncSnapshot<List<NewUser>> snapshot) {
             if (snapshot.hasError || !snapshot.hasData) {
-              return CircularProgressIndicator();
+              return Loading();
             }
             return ListView.builder(
                 itemCount: snapshot.data.length,
@@ -37,20 +39,40 @@ class _ListSupervisorState extends State<ListSupervisor> {
                             children: <Widget>[
                               SizedBox(height: 5.0),
                               Container(alignment: Alignment.centerLeft,
-                                child: Text(sv.name),
+                                child: Row(
+                                  children: [
+                                    Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 5.0),
                               Container(alignment: Alignment.centerLeft,
-                                child: Text(sv.email),
+                                child: Row(
+                                  children: [
+                                    Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    Text(sv.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 5.0),
                               Container(alignment: Alignment.centerLeft,
-                                child: Text(sv.nophone),
+                                child: Row(
+                                  children: [
+                                    Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
                               )
                             ],
                           ),
                         ),
-                        subtitle: Text(sv.icnumber),
+                        subtitle: Row(
+                          children: [
+                            Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
