@@ -40,7 +40,6 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                     for(int i =0; i <da['url'].length; i++){
                       _listOfImages.add(NetworkImage(da['url'][i]));
                     }
-                     DateTime myDateTime = (da['date']).toDate();
                     return Card(
                         child:ListTile(
                           title: Container(

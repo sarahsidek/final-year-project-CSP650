@@ -1,45 +1,64 @@
 class CompleteTask{
   final DateTime time;
-  final String  jenisPenambaikan;
+  final String  coldmix;
+  final String crusherRun;
+  final String hotmix;
+  final String pasir;
+  final String catPutih;
+  final String catKuning;
   final List<String> CompeleteimageUrls;
   final String noAduan;
+  final String catatan;
   final String id;
-  final String progress;
+  final String verified;
   final String email;
   final String sumberAduan;
   final String kategori;
   final String kawasan;
   final String jalan;
 
-  CompleteTask({this.kawasan, this.jalan, this.kategori, this.sumberAduan, this.email,this.progress,
-    this.time, this.jenisPenambaikan, this.CompeleteimageUrls,  this.noAduan, this.id});
+  CompleteTask({this.coldmix, this.crusherRun, this.hotmix, this.pasir, this.catPutih, this.catKuning,
+    this.kawasan, this.jalan, this.kategori, this.sumberAduan, this.email,this.verified,
+    this.time, this.CompeleteimageUrls,  this.noAduan, this.id, this.catatan});
 
   CompleteTask.fromData(Map<String, dynamic> data)
   : time = data['time'],
-    jenisPenambaikan = data['jenisPenambaikan'],
+    coldmix = data['coldmix'],
+    crusherRun = data['crusherRun'],
+    hotmix = data['hotmix'],
+    pasir = data['pasir'],
+    catPutih = data['catPutih'],
+    catKuning = data['catKuning'],
     CompeleteimageUrls = data['completeTask'],
     id = data['id'],
-    noAduan = data['completeTask'],
+    noAduan = data['noAduan'],
     email = data['email'],
     kategori = data['kategori'],
     sumberAduan = data['sumberAduan'],
-    progress = data['progress'],
+    verified = data['verified'],
     kawasan = data['kawasan'],
+    catatan = data['catatan'],
     jalan = data['jalan'];
 
     Map<String , dynamic>toJson(){
        return {
          'time': time,
-         'jenisPenambaikan' : jenisPenambaikan,
+         'coldmix' : coldmix,
+         'crusherRun': crusherRun,
+         'hotmix': hotmix,
+         'pasir': pasir,
+         'catPutih': catPutih,
+         'catKuning': catKuning,
          'completeTask': CompeleteimageUrls,
          'id': id,
          'noAduan': noAduan,
-         'progress': progress,
+         'verified': verified,
          'email': email,
          'kategori': kategori,
          'sumberAduan': sumberAduan,
          'naJalan': jalan,
-         'kawasan': kawasan
+         'kawasan': kawasan,
+         'catatan': catatan
        };
     }
   }

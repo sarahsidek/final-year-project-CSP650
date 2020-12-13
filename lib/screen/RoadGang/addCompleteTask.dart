@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -25,10 +24,16 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   File image;
   List<Asset> images = List<Asset>();
   List<String> imageUrls = <String>[];
+  String coldmix;
+  String crusherRun;
+  String hotmix;
+  String pasir;
+  String catKuning;
+  String catPutih;
   DateTime _dateTime = DateTime.now();
-  String jenisPenambaikan;
   String imageUrl;
   CompleteTask ct;
+
   Widget buildGridView() {
     return GridView.count(
       crossAxisCount: 2,
@@ -72,30 +77,41 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   }
 
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final String id = Firestore.instance.collection("CompleteTask").id;
-  uploadCompleteImage(DateTime dateTime, String jenisPenambaikan, String uid) {
+  final String id = Firestore.instance
+      .collection("CompleteTask")
+      .id;
 
+  uploadCompleteImage(DateTime dateTime, String uid) {
     for (var imageFile in images) {
       postImage(imageFile).then((downloadUrl) async {
         imageUrls.add(downloadUrl.toString());
         if (imageUrls.length == images.length) {
           final FirebaseUser rd = await auth.currentUser();
           final String email = rd.email;
-          String id = Firestore.instance.collection("CompleteTask").document().documentID;
+          String id = Firestore.instance
+              .collection("CompleteTask")
+              .document()
+              .documentID;
           ct = CompleteTask(
-            id:id,
-            jenisPenambaikan: jenisPenambaikan,
-            CompeleteimageUrls: imageUrls,
-            time: _dateTime,
-            noAduan: ra.data['noAduan'],
-            email: email,
-            progress: "Tiada",
-            kawasan: ra.data['kawasan'],
-            jalan: ra.data['naJalan'],
-            sumberAduan: ra.data['sumberAduan'],
-            kategori: ra.data['kategori']
+              id: id,
+              CompeleteimageUrls: imageUrls,
+              time: _dateTime,
+              noAduan: ra.data['noAduan'],
+              email: email,
+              verified: "Dalam Proses Kelulusan",
+              catatan: "Lengkap",
+              kawasan: ra.data['kawasan'],
+              jalan: ra.data['naJalan'],
+              sumberAduan: ra.data['sumberAduan'],
+              kategori: ra.data['kategori'],
+              pasir: pasir,
+              coldmix: coldmix,
+              crusherRun: crusherRun,
+              hotmix: hotmix,
+              catKuning: catKuning,
+              catPutih: catPutih
           );
-         await DatabaseService().addCompleteAdd(ct);
+          await DatabaseService().addCompleteAdd(ct);
         }
       }).catchError((err) {
         print(err);
@@ -104,19 +120,23 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   }
 
   postImage(Asset imageFile) async {
-    String fileName = DateTime.now().millisecondsSinceEpoch.toString();
-    StorageReference reference = FirebaseStorage.instance.ref().child("uploadCompleteTask/$fileName");
+    String fileName = DateTime.now()
+        .millisecondsSinceEpoch
+        .toString();
+    StorageReference reference = FirebaseStorage.instance.ref().child(
+        "uploadCompleteTask/$fileName");
     StorageUploadTask uploadTask = reference.putData(
         (await imageFile.getByteData()).buffer.asUint8List());
     StorageTaskSnapshot storageTaskSnapshot = await uploadTask.onComplete;
     print(storageTaskSnapshot.ref.getDownloadURL());
     return storageTaskSnapshot.ref.getDownloadURL();
   }
+
   DocumentSnapshot ra;
-  _AddCompleteTaskState(DocumentSnapshot ra){
+
+  _AddCompleteTaskState(DocumentSnapshot ra) {
     this.ra = ra;
   }
-
 
 
   @override
@@ -135,30 +155,39 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                  Text(ra.data['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text("Sumber Aduan: ",
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text(ra.data['sumberAduan'],
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                  Text(ra.data['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text("Nombor Aduan: ",
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text(ra.data['noAduan'],
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Lokasi: " + " ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                  Text(ra.data['kawasan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                  Text(ra.data['naJalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text("Lokasi: " + " ",
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text(ra.data['kawasan'],
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text(ra.data['naJalan'],
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Kerosakan ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                  Text(ra.data['kerosakan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text("Kerosakan ",
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                  Text(ra.data['kerosakan'],
+                      style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 ],
               ),
               SizedBox(height: 5.0),
@@ -167,27 +196,87 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                     labelText: "Pilih Tarikh Penambaikan : ",
                     prefixIcon: Icon(Icons.calendar_today),
                     hintText: _dateTime.toString(),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.datetime,
-                onChanged: (value){
+                onChanged: (value) {
                   setState(() {
                     _dateTime = value as DateTime;
                   });
                 },
               ),
               SizedBox(height: 5.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Jenis Penambaikan: ",
-                  prefixIcon: Icon(Icons.merge_type),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.text,
-                validator: (value) => value.isEmpty ? 'Pastikan jenis penambaikan lengkap!': null,
-                onChanged: (value){
-                   setState(() {
-                     jenisPenambaikan = value;
-                   });
-                  },
+              Container(
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text("Jenis Bahan Penambaikan", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     Text("ColdMix:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     TextField(decoration: InputDecoration(
+                        hintText: "Jumlah:"
+                       ),
+                       onChanged: (value){
+                       setState(() {
+                         coldmix = value;
+                         });
+                       },
+                     ),
+                     SizedBox(height: 5.0),
+                     Text("Crusher Run:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     TextField(decoration: InputDecoration(
+                         hintText: "Jumlah:"
+                     ),
+                       onChanged: (value){
+                         setState(() {
+                           crusherRun = value;
+                         });
+                       },
+                     ),
+                     SizedBox(height: 5.0),
+                     Text("Hotmix:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     TextField(decoration: InputDecoration(
+                         hintText: "Jumlah:"
+                     ),
+                       onChanged: (value){
+                         setState(() {
+                           hotmix = value;
+                         });
+                       },
+                     ),
+                     SizedBox(height: 5.0),
+                     Text("Pasir:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     TextField(decoration: InputDecoration(
+                         hintText: "Jumlah:"
+                     ),
+                       onChanged: (value){
+                         setState(() {
+                           pasir = value;
+                         });
+                       },
+                     ),
+                     SizedBox(height: 5.0),
+                     Text("Cat Kuning:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     TextField(decoration: InputDecoration(
+                         hintText: "Jumlah:"
+                     ),
+                       onChanged: (value){
+                         setState(() {
+                           catKuning = value;
+                         });
+                       },
+                     ),
+                     Text("Cat Putih:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                     TextField(decoration: InputDecoration(
+                         hintText: "Jumlah:"
+                     ),
+                       onChanged: (value){
+                         setState(() {
+                           catPutih = value;
+                         });
+                       },
+                     ),
+                   ],
+                 ),
                 ),
               SizedBox(height: 5.0),
               Container(
@@ -204,23 +293,24 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                         Expanded(
                           child: buildGridView(),
                         ),
-                        Row(
+                        Column(
                           children: [
                             RaisedButton(
                               child: Text("Simpan"),
                               color: Colors.redAccent,
                               textColor: Colors.black,
-                              onPressed: () async{
+                              onPressed: () async {
                                 alertDialog(context);
                               },
                             ),
-                            SizedBox(height: 30.0),
+                            SizedBox(height: 10.0),
                             RaisedButton(
                               child: Text("Dapatkan lokasi anda"),
                               color: Colors.redAccent,
                               textColor: Colors.black87,
-                              onPressed: () async{
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => GoogleMaps(ctk: ct)));
+                              onPressed: () async {
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => GoogleMaps(ctk: ct)));
                               },
                             )
                           ],
@@ -235,7 +325,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
     );
   }
 
-  Future<bool> alertDialog( BuildContext context) {
+  Future<bool> alertDialog(BuildContext context) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -246,7 +336,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               FlatButton(
                 child: Text('Ok'),
                 onPressed: () async {
-                  uploadCompleteImage(_dateTime, jenisPenambaikan, id);
+                  uploadCompleteImage(_dateTime, id);
                   Navigator.pop(context);
                 },
               ),

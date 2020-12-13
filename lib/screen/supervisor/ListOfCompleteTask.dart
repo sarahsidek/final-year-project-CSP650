@@ -2,27 +2,27 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:fyp/shared/Loading.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
-class List_ofTask extends StatefulWidget {
+class ListOfCompleteTask extends StatefulWidget {
   @override
-  _List_ofTaskState createState() => _List_ofTaskState();
+  _ListOfCompleteTaskState createState() => _ListOfCompleteTaskState();
 }
 
-
-String id;
-
-class _List_ofTaskState extends State<List_ofTask> {
+class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
+  String id;
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Senarai Aduan daripada Road Gang"),
+          backgroundColor: Colors.redAccent,
+        ),
+      body: Container(
       child: StreamBuilder(
-          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Dalam Proses Kelulusan').snapshots(),
+          stream: Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'Dalam Proses Kelulusan').snapshots(),
           builder: (context, snapshot){
             if(snapshot.hasError || !snapshot.hasData){
               return Loading();
@@ -32,8 +32,8 @@ class _List_ofTaskState extends State<List_ofTask> {
                   itemBuilder: (BuildContext context, int index){
                     DocumentSnapshot document = snapshot.data.documents[index];
                     _listOfImages =[];
-                    for(int i =0; i <document['url'].length; i++){
-                      _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
+                    for(int i =0; i <document['completeTask'].length; i++){
+                      _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['completeTask'][i]));
                     }
                     return Card(
                         child:ListTile(
@@ -43,15 +43,30 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    child: Row(
+                                      children: [
+                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                    child: Row(
+                                      children: [
+                                        Text("Nombor Aduan: ", style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                        Text(document['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    child: Row(
+                                      children: [
+                                        Text("Kategori:", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text(document['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
                                   ),
                                   Column(
                                     children: [
@@ -77,24 +92,15 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 ],
                               ),
                             ),
-                            subtitle: Container(
-                              child: Row(
-                                children: [
-                                  SizedBox(height: 5.0),
-                                  Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['email'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                  ),
-                                ],
-                              ),
-                            ),
                             onTap: () {verifyTask(document['id']);}
                         )
                     );
                   }
               );
-            }
+            }//
           }
       ),
+    )
     );
   }
 
@@ -109,7 +115,7 @@ class _List_ofTaskState extends State<List_ofTask> {
         context: context,
         builder: (builder){
           return StreamBuilder(
-              stream: Firestore.instance.collection('Task').document(id).snapshots(),
+              stream: Firestore.instance.collection('CompleteTask').document(id).snapshots(),
               builder: (context, snapshot){
                 if(!snapshot.hasData){
                   return Loading();
@@ -157,11 +163,11 @@ class _List_ofTaskState extends State<List_ofTask> {
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color: Colors.redAccent,
-                                    child: Text("Sah", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
+                                    child: Text("Lengkap", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
                                     onPressed: () async {
-                                      Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'Sah',
-                                        'comments' : 'Lengkap'
+                                      Firestore.instance.collection('CompleteTask').document(id).updateData({
+                                        'verified': 'Lengkap',
+                                        'catatan' : 'Lengkap'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });
@@ -178,10 +184,10 @@ class _List_ofTaskState extends State<List_ofTask> {
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color: Colors.redAccent,
-                                    child: Text("TidakSah", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
+                                    child: Text("Penambaikan Semula", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'TidakSah'
+                                        'verified': 'Penambaikan Semula'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });

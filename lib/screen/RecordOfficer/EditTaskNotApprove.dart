@@ -1,8 +1,8 @@
-import 'dart:io';
 
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 
 
 class EditTask extends StatefulWidget {
@@ -22,7 +22,6 @@ class _EditTaskState extends State<EditTask> {
  TextEditingController _noAduan;
  TextEditingController _sumberAduan;
  TextEditingController _kategori;
-  List<String> imageUrls;
   DateTime myDateTime = DateTime.now();
  @override
  void initState(){
@@ -31,13 +30,16 @@ class _EditTaskState extends State<EditTask> {
    _sumberAduan =TextEditingController(text: widget.da.data['sumberAduan']);
    _kategori = TextEditingController(text: widget.da.data['kategori']);
    myDateTime = (da.data['date']).toDate();
+   _listOfImages = [ NetworkImage(da.data['url']) ];
+
 }
 
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
   String kategori;
   String sumberAduan;
-  File image;
+  List <NetworkImage> _listOfImages = <NetworkImage>[];
+
 
   @override
   Widget build(BuildContext context) {
@@ -114,27 +116,22 @@ class _EditTaskState extends State<EditTask> {
                   );
                 }).toList(),
               ),
-              SizedBox(height: 10.0),
-              Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: 200,
-                    decoration: BoxDecoration(
-                        color: Colors.white
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: Carousel(
-                      boxFit: BoxFit.cover,
-                      autoplay: false,
-                      indicatorBgPadding: 5.0,
-                      //images:_listOfImages,
-                      dotPosition: DotPosition.bottomCenter,
-                      animationCurve: Curves.fastLinearToSlowEaseIn,
-                      animationDuration: Duration(milliseconds: 2000),
-                    ),
-                  )
-                ],
+              Container(
+                margin: EdgeInsets.all(10.0),
+                height: 200,
+                decoration: BoxDecoration(
+                    color: Colors.white
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Carousel(
+                  boxFit: BoxFit.cover,
+                  autoplay: false,
+                 // images: _listOfImages,
+                  indicatorBgPadding: 5.0,
+                  dotPosition: DotPosition.bottomCenter,
+                  animationCurve: Curves.fastLinearToSlowEaseIn,
+                  animationDuration: Duration(milliseconds: 2000),
+                ),
               )
             ],
           ),

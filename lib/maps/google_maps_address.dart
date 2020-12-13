@@ -31,6 +31,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
   Location _locationTracker = new Location();
   Marker marker;
   Circle circle;
+  String addressLocation;
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(4.2105, 101.9758),
     zoom: 18.00,
@@ -61,7 +62,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
       var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
       GeoFirePoint firePoint = new GeoFirePoint(location.latitude, location.longitude);
       var firstAddress = address.first;
-      String addressLocation = firstAddress.addressLine;
+      addressLocation = firstAddress.addressLine;
       String id = Firestore.instance.collection("Location").document().documentID;
       loc = LocationTask(
         email: ctk.email,
@@ -105,7 +106,6 @@ class _GoogleMapsState extends State<GoogleMaps> {
     }
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,25 +132,15 @@ class _GoogleMapsState extends State<GoogleMaps> {
                 margin: EdgeInsets.all(15.0),
                 padding: EdgeInsets.all(3.0),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 2
-                  )
+                  border: Border.all(width: 2)
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Column(
                   children: [
-                    Text(ctk.kawasan + " ", style: TextStyle(
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(ctk.jalan + " " , style: TextStyle(
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
+                    Text("Kawasan: "+ ctk.kawasan + " Jalan " + ctk.jalan, style: TextStyle(
+                     color: Colors.black87,
+                     fontWeight: FontWeight.bold,
+                     fontSize: 20.0,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -163,10 +153,28 @@ class _GoogleMapsState extends State<GoogleMaps> {
         child: Icon(Icons.location_searching),
         backgroundColor: Colors.redAccent,
         onPressed: () {
-          getCurrentLocation();
+         alertDialog(context);
         },
       ),
     );
   }
-
+  Future<bool> alertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Alamat'),
+            content: Text('$addressLocation'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Ok'),
+                onPressed: () async {
+                  getCurrentLocation();
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
 }

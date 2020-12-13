@@ -1,6 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fyp/shared/Loading.dart';
@@ -10,12 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 class ListOfTaskApprove extends StatefulWidget {
   @override
   _ListOfTaskApproveState createState() => _ListOfTaskApproveState();
-}
-final FirebaseAuth auth = FirebaseAuth.instance;
-
-Stream<QuerySnapshot> getUserRd1(BuildContext context) async* {
-  final FirebaseUser rd = await auth.currentUser();
-  yield* Firestore.instance.collection("Road Gang").where('uid',isEqualTo: rd.email).snapshots();
 }
 
 class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
