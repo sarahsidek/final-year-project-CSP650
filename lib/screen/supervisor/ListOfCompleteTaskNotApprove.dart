@@ -139,7 +139,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                             textColor: Colors.black,
                             child: Text("Hantar"),
                             onPressed: () async {
-                              Firestore.instance.collection('Task').document(id).updateData({
+                              Firestore.instance.collection('CompleteTask').document(id).updateData({
                                 'catatan':catatan
                               }).whenComplete((){
                                 Navigator.pop(context);

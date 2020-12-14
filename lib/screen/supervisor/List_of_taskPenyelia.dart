@@ -20,7 +20,12 @@ class _List_ofTaskState extends State<List_ofTask> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Senarai Aduan (Pegawai Merekod) "),
+          backgroundColor: Colors.redAccent,
+        ),
+     body:Container(
       child: StreamBuilder(
           stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Dalam Proses Kelulusan').snapshots(),
           builder: (context, snapshot){
@@ -43,15 +48,30 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    child: Row(
+                                      children: [
+                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                    child: Row(
+                                      children: [
+                                        Text("Nombor Aduan: ", style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                        Text(document['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                    child: Row(
+                                      children: [
+                                        Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text(document['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
                                   ),
                                   Column(
                                     children: [
@@ -82,7 +102,12 @@ class _List_ofTaskState extends State<List_ofTask> {
                                 children: [
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(document['email'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    child: Row(
+                                      children: [
+                                        Text("Email: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(document['email'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -95,6 +120,7 @@ class _List_ofTaskState extends State<List_ofTask> {
             }
           }
       ),
+     )
     );
   }
 
@@ -131,12 +157,12 @@ class _List_ofTaskState extends State<List_ofTask> {
                                     alignment: Alignment.topLeft,
                                     width: 220,
                                     margin: EdgeInsets.only(top:26, left: 14),
-                                    child: Text("Kawasan "+ snapshot.data['kawasan'], textAlign: TextAlign.left,style: TextStyle( fontSize: 24, fontFamily: 'Poppins')),
+                                    child: Text("Kawasan: "+ snapshot.data['kawasan'], textAlign: TextAlign.left,style: TextStyle( fontSize: 24, fontFamily: 'Poppins')),
                                   ),
                                   Container(
                                     width: 220,
                                     margin: EdgeInsets.only(top:4, left: 15),
-                                    child: Text("Nama Jalan" + snapshot.data['naJalan'], style: TextStyle( fontSize: 16)),
+                                    child: Text("Nama Jalan: " + snapshot.data['naJalan'], style: TextStyle( fontSize: 16)),
                                   ),
                                 ],
                               ),
