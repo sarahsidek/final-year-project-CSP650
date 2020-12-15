@@ -8,15 +8,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-class List_ofTask extends StatefulWidget {
+class ListOfTask extends StatefulWidget {
   @override
-  _List_ofTaskState createState() => _List_ofTaskState();
+  _ListOfTaskState createState() => _ListOfTaskState();
 }
 
 
 String id;
 
-class _List_ofTaskState extends State<List_ofTask> {
+class _ListOfTaskState extends State<ListOfTask> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {

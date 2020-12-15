@@ -1,19 +1,19 @@
-import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/Supervisor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'database.dart';
 
 class AuthSupervisor{
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  NewUser _user;
-  NewUser get currentSupervisor => _user;
+  Supervisor _sv;
+  Supervisor get currentSupervisor => _sv;
 
 
   // create user object based on firebaseUser (Supervisor)
-  NewUser _newUser(FirebaseUser user) {
-    return user != null ? NewUser(uid: user.uid) : null;
+  Supervisor _newUser(FirebaseUser user) {
+    return user != null ? Supervisor(uid: user.uid) : null;
   }
 
-  Stream<NewUser> get supervisor{
+  Stream<Supervisor> get supervisor{
     return _firebaseAuth.onAuthStateChanged.map(_newUser);
   }
 
@@ -34,7 +34,7 @@ class AuthSupervisor{
       AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
 
-      _user = NewUser (
+      _sv = Supervisor (
           uid: user.uid,
           name: name,
           email: email,
@@ -42,7 +42,7 @@ class AuthSupervisor{
           icnumber: icnumber
       );
 
-      await DatabaseService().addSupervisor(_user);
+      await DatabaseService().addSupervisor(_sv);
       return _newUser(user);
     }
     catch(e){

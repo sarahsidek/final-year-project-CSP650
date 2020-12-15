@@ -1,4 +1,4 @@
-import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/RoadGang.dart';
 import 'package:fyp/screen/crud/UpdateRoadGang.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +16,14 @@ class _ListRoadGangState extends State<ListRoadGang> {
     return Container(
       child: StreamBuilder(
           stream: DatabaseService().getRoadGang(),
-          builder: (BuildContext context, AsyncSnapshot<List<NewUser>> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<List<RoadGang>> snapshot) {
             if (snapshot.hasError || !snapshot.hasData) {
               return Loading();
             } else {
               return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index){
-                    NewUser rg = snapshot.data[index];
+                    RoadGang rg = snapshot.data[index];
                     return Card(
                       child: ListTile(
                           title: Container(
@@ -32,39 +32,25 @@ class _ListRoadGangState extends State<ListRoadGang> {
                               children: <Widget>[
                                 SizedBox(height: 5.0),
                                 Container(alignment: Alignment.centerLeft,
-                                  child: Row(
-                                    children: [
-                                      Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                      Text(rg.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: 5.0),
-                                Container(alignment: Alignment.centerLeft,
-                                  child:Row(
+                                  child: Column(
                                     children: [
                                       Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                      Text(rg.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: 5.0),
-                                Container(alignment: Alignment.centerLeft,
-                                  child: Row(
-                                    children: [
-                                      Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                      Text(rg.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(rg.username, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          subtitle: Row(
-                            children: [
-                              Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                              Text(rg.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                            ],
+                          subtitle:
+                            Container(
+                              alignment: Alignment.centerLeft,
+                            child:Column(
+                              children: [
+                                Text("Password: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                Text(rg.password, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                              ],
+                            ),
                           ),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,

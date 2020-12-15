@@ -1,10 +1,11 @@
-import 'package:fyp/model/NewUser.dart';
+
+import 'package:fyp/model/RoadGang.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
 
 class UpdateRoadGang extends StatefulWidget {
 
-  final NewUser rg;
+  final RoadGang rg;
 
    UpdateRoadGang({Key key, this.rg}) : super(key: key);
 
@@ -13,24 +14,22 @@ class UpdateRoadGang extends StatefulWidget {
 }
 
 class _UpdateRoadGangState extends State<UpdateRoadGang> {
-  NewUser rg;
-  _UpdateRoadGangState(NewUser rg){
+  RoadGang rg;
+  _UpdateRoadGangState(RoadGang rg){
     this.rg = rg;
   }
   final GlobalKey<FormState> _formKey = GlobalKey();
   TextEditingController _name;
-  TextEditingController _email;
-  TextEditingController _nophone;
-  TextEditingController _icnumber;
+  TextEditingController _password;
+
 
 
   @override
   void initState(){
     super.initState();
-    _name = TextEditingController(text:  widget.rg.name);
-    _email = TextEditingController(text:  widget.rg.email);
-    _nophone = TextEditingController(text: widget.rg.nophone);
-    _icnumber= TextEditingController(text: widget.rg.icnumber);
+    _name = TextEditingController(text:  widget.rg.username);
+    _password = TextEditingController(text:  widget.rg.password);
+
   }
 
   @override
@@ -63,27 +62,8 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
                   keyboardType: TextInputType.emailAddress,
-                  controller: _email,
+                  controller: _password,
 
-                ),
-                SizedBox(height: 10.0),
-                TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'Nombor Telefon',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                  keyboardType: TextInputType.number,
-                  controller: _nophone,
-
-                ),
-                SizedBox(height: 10.0),
-                TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'No kad Pengenalan',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5))),
-                  keyboardType: TextInputType.number,
-                  controller: _icnumber,
                 ),
                 const SizedBox(height: 20.0),
                 RaisedButton(
@@ -92,8 +72,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
                     child: Text( "Kemaskini"),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        DatabaseService().updateData1(NewUser(name: _name.text, email: _email.text,
-                            nophone: _nophone.text, icnumber: _icnumber.text, uid: rg.uid)).then((value) async{
+                        DatabaseService().updateData1(RoadGang(username: _name.text, password: _password.text, uid: rg.uid)).then((value) async{
                           await alertDialog(
                               context);
                           Navigator.pop(context);

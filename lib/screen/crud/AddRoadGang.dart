@@ -1,4 +1,3 @@
-
 import 'package:fyp/service/authRoadGang.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +11,7 @@ class AddRoadGang extends StatefulWidget {
 class _AddRoadGangState extends State<AddRoadGang> {
   //text field
   String name = ' ';
-  String email = ' ';
-  String uniqueID = ' ';
-  String phone = ' ';
+  String password = ' ';
   final AuthRoadGang _authRoadGang = new AuthRoadGang();
   final GlobalKey<FormState> _formKey = GlobalKey();
 
@@ -32,14 +29,14 @@ class _AddRoadGangState extends State<AddRoadGang> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 25.0),
+              SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Nama',
+                    hintText: 'Nama Pengguna',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
-                validator: (value) => value.isEmpty ? 'Pastikan nama dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan name pengguna dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => name = value);
                 },
@@ -47,37 +44,13 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'No Kad Pengenalan ',
-                    prefixIcon: Icon(Icons.perm_contact_calendar),
+                    hintText: 'Password',
+                    prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
+                keyboardType: TextInputType.visiblePassword,
+                validator: (value) => value.isEmpty ? 'Pastikan password dilengkapkan!': null,
                 onChanged: (value) {
-                  setState(() => uniqueID = value);
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'E-mel',
-                    prefixIcon: Icon(Icons.email),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
-                onChanged: (value) {
-                  setState(() => email = value);
-                },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Nombor Telefon',
-                    prefixIcon: Icon(Icons.phone),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
-                onChanged: (value) {
-                  setState(() => phone = value);
+                  setState(() => password = value);
                 },
               ),
               const SizedBox(height: 20.0),
@@ -87,7 +60,7 @@ class _AddRoadGangState extends State<AddRoadGang> {
                   child: Text("Simpan"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
-                      _authRoadGang.registerRoadGang(name, email, uniqueID, phone).then((value) async{
+                      _authRoadGang.registerRoadGang(name, password).then((value) async{
                         await alertDialog(context);
                         Navigator.pop(context);
                       });

@@ -1,4 +1,4 @@
-import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/Supervisor.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
@@ -23,14 +23,14 @@ class _ListSupervisorState extends State<ListSupervisor> {
     return Container(
       child: StreamBuilder(
           stream: DatabaseService().getSupervisor(),
-          builder: (BuildContext context, AsyncSnapshot<List<NewUser>> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<List<Supervisor>> snapshot) {
             if (snapshot.hasError || !snapshot.hasData) {
               return Loading();
             }
             return ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
-                  NewUser sv = snapshot.data[index];
+                  Supervisor sv = snapshot.data[index];
                   return Card(
                     child: ListTile(
                         title: Container(

@@ -10,19 +10,18 @@ class ListTaskFromSupervisor extends StatefulWidget {
   @override
   _ListTaskFromSupervisorState createState() => _ListTaskFromSupervisorState();
 }
-
-final FirebaseAuth auth = FirebaseAuth.instance;
-Stream<QuerySnapshot> getRoadGang(BuildContext context) async* {
-  final FirebaseUser rd = await auth.currentUser();
-  yield* Firestore.instance.collection("Task").where('emailRoadGang',isEqualTo: rd.email).snapshots();
-}
 class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Senarai Tugasan "),
+          backgroundColor: Colors.redAccent,
+       ),
+    body: Container(
       child: StreamBuilder(
-          stream: getRoadGang(context),
+          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Sah').snapshots(),
           builder: (context, snapshot){
             if (snapshot.hasError || !snapshot.hasData) {
               return Loading();
@@ -68,16 +67,6 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 5.0),
-                                Container(alignment: Alignment.centerLeft,
-                                  child: Row(
-                                    children: [
-                                      Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                      Text(ra['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                      Text(ra['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                ),
                                 Column(
                                   children: [
                                     Container(
@@ -109,7 +98,13 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                  children: [
                                    SizedBox(height: 10.0),
                                    Container(alignment: Alignment.centerLeft,
-                                     child: Text(ra['emailRoadGang'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                     child: Row(
+                                       children: [
+                                         Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                         Text(ra['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                         Text(ra['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                       ],
+                                     ),
                                    ),
                                  ],
                                )
@@ -121,8 +116,9 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                         )
                     );
                   });
-            }
+               }
           }),
+       )
     );
   }
 }

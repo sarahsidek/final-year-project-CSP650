@@ -5,7 +5,8 @@ import 'package:fyp/model/Admin.dart';
 import 'package:fyp/model/CompleteTask.dart';
 import 'package:fyp/model/Location.dart';
 import 'package:fyp/model/RecordOfficer.dart';
-import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/RoadGang.dart';
+import 'package:fyp/model/Supervisor.dart';
 import 'package:fyp/model/Task.dart';
 
 
@@ -67,7 +68,7 @@ class DatabaseService{
 
 
   // create user supervisor
-    Future  addSupervisor(NewUser supervisor)async{
+    Future  addSupervisor(Supervisor supervisor)async{
          return  supervisorCollection.document(supervisor.uid).setData(supervisor.toJson());
     }
     
@@ -81,7 +82,7 @@ class DatabaseService{
     }
     
     // create user road gang 
-    Future addRoadGang(NewUser roadGang) async {
+    Future addRoadGang(RoadGang roadGang) async {
          return roadGangCollection.document(roadGang.uid).setData(roadGang.toJson()).whenComplete(() {
            print("User Created!");
          });
@@ -106,10 +107,10 @@ class DatabaseService{
   }
 
     // read the supervisor
-    Stream<List<NewUser>> getSupervisor(){
+    Stream<List<Supervisor>> getSupervisor(){
     return supervisorCollection.snapshots().map(
             (snapshot) => snapshot.documents.map(
-                    (doc) => NewUser.fromData(doc.data),
+                    (doc) => Supervisor.fromData(doc.data),
             ).toList(),
         );
     }
@@ -145,10 +146,10 @@ class DatabaseService{
   }
 
   // read the road gang
-  Stream<List<NewUser>> getRoadGang(){
+  Stream<List<RoadGang>> getRoadGang(){
     return roadGangCollection.snapshots().map(
           (snapshot) => snapshot.documents.map(
-            (doc) => NewUser.fromData(doc.data),
+            (doc) => RoadGang.fromData(doc.data),
       ).toList(),
     );
   }
@@ -180,7 +181,7 @@ class DatabaseService{
 
 
     // update data supervisor
-    Future updateData(NewUser newUser) async {
+    Future updateData(Supervisor newUser) async {
         return supervisorCollection.document(newUser.uid).updateData(
             newUser.toJson()).whenComplete(() {
           print("Update success!");
@@ -189,7 +190,7 @@ class DatabaseService{
 
 
      // update data road gang
-    Future updateData1(NewUser newUser) async {
+    Future updateData1(RoadGang newUser) async {
       return roadGangCollection.document(newUser.uid).updateData(
         newUser.toJson()).whenComplete(() {
       print("Update success!");

@@ -99,7 +99,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               noAduan: ra.data['noAduan'],
               email: email,
               verified: "Dalam Proses Kelulusan",
-              catatan: "Lengkap",
+              catatan: "Tiada Catatan",
               kawasan: ra.data['kawasan'],
               jalan: ra.data['naJalan'],
               sumberAduan: ra.data['sumberAduan'],

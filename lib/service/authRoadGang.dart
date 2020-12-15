@@ -1,26 +1,26 @@
-import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/RoadGang.dart';
 import 'package:fyp/service/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRoadGang {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  NewUser _user;
-  NewUser get currentRoadGang => _user;
+  RoadGang _rg;
+  RoadGang get currentRoadGang => _rg;
 
-  // create user object based on firebaseUser (Supervisor)
-  NewUser _newUser(FirebaseUser user) {
-    return user != null ? NewUser(uid: user.uid) : null;
+  // create user object based on firebaseUser (Road Gang)
+  RoadGang _newUser(FirebaseUser user) {
+    return user != null ? RoadGang(uid: user.uid) : null;
   }
 
 
-  Stream<NewUser> get roadGang{
+  Stream<RoadGang> get roadGang{
     return _firebaseAuth.onAuthStateChanged.map(_newUser);
   }
 
 
-  Future signInRoadGang(String email, String icnumber) async {
+  Future signInRoadGang(String name, String password) async {
     try {
-      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: icnumber);
+      AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: name, password: password);
       FirebaseUser user = result.user;
       return _newUser(user);
     }
@@ -29,20 +29,18 @@ class AuthRoadGang {
     }
   }
 
-  Future registerRoadGang(String name, String email, String icnumber, String nophone) async{
+  Future registerRoadGang(String username, String password) async{
     try{
-      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: icnumber);
+      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: username, password: password);
       FirebaseUser user = result.user;
 
-      _user = NewUser (
+      _rg = RoadGang (
           uid: user.uid,
-          name: name,
-          email: email,
-          nophone: nophone,
-          icnumber: icnumber
+          username: username,
+          password :password
       );
 
-      await DatabaseService().addRoadGang(_user);
+      await DatabaseService().addRoadGang(_rg);
       return _newUser(user);
     }
     catch(e){

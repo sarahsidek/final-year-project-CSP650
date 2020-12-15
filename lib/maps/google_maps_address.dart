@@ -128,7 +128,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
           ),
           Positioned(
             child: Container(
-                height: 50,
+                height: 100,
                 margin: EdgeInsets.all(15.0),
                 padding: EdgeInsets.all(3.0),
                 decoration: BoxDecoration(
@@ -136,13 +136,14 @@ class _GoogleMapsState extends State<GoogleMaps> {
                 ),
                 child: Column(
                   children: [
-                    Text("Kawasan: "+ ctk.kawasan + " Jalan " + ctk.jalan, style: TextStyle(
-                     color: Colors.black87,
-                     fontWeight: FontWeight.bold,
-                     fontSize: 20.0,
+                    Container(
+                      child: Text("Lokasi Anda:" + "$addressLocation", style: TextStyle(color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                   ],
                 )
             ),
@@ -153,28 +154,9 @@ class _GoogleMapsState extends State<GoogleMaps> {
         child: Icon(Icons.location_searching),
         backgroundColor: Colors.redAccent,
         onPressed: () {
-         alertDialog(context);
+        getCurrentLocation();
         },
       ),
     );
-  }
-  Future<bool> alertDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Alamat'),
-            content: Text('$addressLocation'),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Ok'),
-                onPressed: () async {
-                  getCurrentLocation();
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
   }
 }

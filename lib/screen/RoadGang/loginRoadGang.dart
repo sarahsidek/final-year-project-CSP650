@@ -9,7 +9,7 @@ class LoginRoadGang extends StatefulWidget {
 
 class _LoginRoadGangState extends State<LoginRoadGang> {
   // text field state
-  String email = '', uniqueID = '', error = '';
+  String name = '', password = '', error = '';
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool loading = false;
   final AuthRoadGang _auth = AuthRoadGang();
@@ -51,20 +51,20 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'Buruh: E-mel',
+                              decoration: InputDecoration(labelText: 'Buruh: Nama Pengguna',
                                   prefixIcon: Icon(Icons.person)),
-                              keyboardType: TextInputType.emailAddress,
+                              keyboardType: TextInputType.text,
                               validator: (value)
                               {
-                                if(value.isEmpty || !value.contains('@'))
+                                if(value.isEmpty)
                                 {
-                                  return 'Pastikan e-mel anda sah!';
+                                  return 'Pastikan nama pengguna anda sah!';
                                 }
                                 return null;
                               },
                               onChanged: (value)
                               {
-                                setState(() => email = value);
+                                setState(() => name = value);
                               }
                           ),
                           //password
@@ -75,7 +75,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                             validator: (value) => value.isEmpty ? 'Kata Laluan tidak sah!': null,
                             onChanged: (value)
                             {
-                              setState(() => uniqueID = value);
+                              setState(() => password = value);
                             },
                           ),
                           SizedBox(
@@ -90,7 +90,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                                 onPressed: () async {
                                   if( _formKey.currentState.validate()){
                                     setState(() => loading = true);
-                                    dynamic result = await _auth.signInRoadGang(email, uniqueID);
+                                    dynamic result = await _auth.signInRoadGang(name, password);
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => RoadGangHome()));
                                     if (result == null){
                                       setState(() {

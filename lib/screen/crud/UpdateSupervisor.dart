@@ -1,4 +1,4 @@
-import 'package:fyp/model/NewUser.dart';
+import 'package:fyp/model/Supervisor.dart';
 
 import 'package:fyp/service/database.dart';
 
@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 class UpdateSupervisor extends StatefulWidget {
 
-  final NewUser sv;
+  final Supervisor sv;
 
   UpdateSupervisor({Key key, this.sv}) : super(key: key);
 
@@ -21,8 +21,8 @@ class UpdateSupervisor extends StatefulWidget {
 
 
 class _UpdateSupervisorState extends State<UpdateSupervisor> {
-  NewUser sv;
-  _UpdateSupervisorState(NewUser sv){
+  Supervisor sv;
+  _UpdateSupervisorState(Supervisor sv){
     this.sv = sv;
   }
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -101,7 +101,7 @@ void initState(){
                       child: Text( "Kemaskini"),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          DatabaseService().updateData(NewUser(name: _name.text, email: _email.text, nophone: _nophone.text,
+                          DatabaseService().updateData(Supervisor(name: _name.text, email: _email.text, nophone: _nophone.text,
                               icnumber: _icnumber.text, uid: sv.uid)).then((value) async{
                                 print(sv.uid);
                                 await alertDialog(context);

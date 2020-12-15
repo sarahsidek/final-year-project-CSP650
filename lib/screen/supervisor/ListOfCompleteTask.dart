@@ -17,7 +17,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Aduan daripada Road Gang"),
+          title: Text("Senarai Tugasan daripada Road Gang"),
           backgroundColor: Colors.redAccent,
         ),
       body: Container(
@@ -167,7 +167,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     onPressed: () async {
                                       Firestore.instance.collection('CompleteTask').document(id).updateData({
                                         'verified': 'Lengkap',
-                                        'catatan' : 'Lengkap'
+                                        'catatan' : 'Tiada Catatan'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });
@@ -187,8 +187,8 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     child: Text("Penambaikan Semula", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'Penambaikan Semula',
-                                        'catatan' : 'Tiada Catatan'
+                                        'verified': 'TidakSah',
+                                        'catatan' : 'Ulasan'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });

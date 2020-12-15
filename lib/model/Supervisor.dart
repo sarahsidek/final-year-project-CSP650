@@ -1,6 +1,6 @@
 
 
-class NewUser{
+class Supervisor{
   final String uid;
   final String name;
   final String email;
@@ -8,10 +8,9 @@ class NewUser{
   final String nophone;
 
 
+  Supervisor({this.uid, this.name, this.email,this.nophone, this.icnumber});
 
-  NewUser({this.uid, this.name, this.email,this.nophone, this.icnumber});
-
-  NewUser.fromData(Map<String, dynamic> data)
+  Supervisor.fromData(Map<String, dynamic> data)
      : uid = data['uid'],
         name = data['name'],
         email = data['email'],

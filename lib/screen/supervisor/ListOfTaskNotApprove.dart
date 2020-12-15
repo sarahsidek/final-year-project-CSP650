@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fyp/shared/Loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListOfTaskNotApprove extends StatefulWidget {
   @override
@@ -43,19 +44,39 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ba['sumberAduan']),
+                                    child: Row(
+                                      children: [
+                                        Text("Sumber Aduan:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ba['noAduan']),
+                                    child: Row(
+                                      children: [
+                                        Text("Nombor Aduan: ",style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                        Text(ba['noAduan'],style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                    child: Text(ba['kategori']),
+                                    child: Row(
+                                      children: [
+                                        Text("Kategori:", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text(ba['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
-                                   child: Text(ba['verified']),
+                                   child: Row(
+                                     children: [
+                                       Text("Status: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                       Text(ba['verified'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                     ],
+                                   ),
                                   ),
                                   Column(
                                     children: [

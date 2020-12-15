@@ -31,7 +31,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                     itemBuilder: (BuildContext context, int index){
                       DocumentSnapshot ba = snapshot.data.documents[index];
                       _listOfImages =[];
-                      for(int i =0; i <ba['url'].length; i++){
+                      for(int i =0; i <ba['completeTask'].length; i++){
                         _listOfImages.add(NetworkImage(ba['completeTask'][i]));
                       }
                       return Card(
@@ -85,7 +85,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                   children: [
                                     SizedBox(height: 5.0),
                                     Container(alignment: Alignment.centerLeft,
-                                      child: Text(ba['comments']),
+                                      child: Text(ba['catatan']),
                                     ),
                                   ],
                                 ),
@@ -119,7 +119,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                   height: 500,
                   padding: EdgeInsets.all(10),
                   child: Visibility(
-                    visible: (snapshot.data['catatan'].toString() == 'Tiada catatan')? true:false,
+                    visible: (snapshot.data['catatan'].toString() == 'Ulasan')? true:false,
                     child: Column(
                       children: [
                         SizedBox(height: 25.0),
@@ -140,7 +140,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                             child: Text("Hantar"),
                             onPressed: () async {
                               Firestore.instance.collection('CompleteTask').document(id).updateData({
-                                'catatan':catatan
+                                'catatan': catatan
                               }).whenComplete((){
                                 Navigator.pop(context);
                               });

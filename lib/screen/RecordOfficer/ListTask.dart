@@ -22,7 +22,12 @@ class _ListTaskState extends State<ListTask> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Senarai Tugasan"),
+          backgroundColor: Colors.redAccent,
+        ),
+    body: Container(
       child: StreamBuilder(
           stream: getUserRd(context),
           builder: (context, snapshot){
@@ -100,6 +105,7 @@ class _ListTaskState extends State<ListTask> {
                   });
               }
            }),
+       )
     );
   }
   void listAddress(String id) {
