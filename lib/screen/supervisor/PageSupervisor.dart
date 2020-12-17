@@ -24,6 +24,19 @@ class _SupervisorState extends State<Supervisor> {
         title: Text('Penyelia'),
         backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              onPressed:() async{
+                await _authSupervisor.signOut();
+                Navigator.push(context,
+                MaterialPageRoute(
+                builder: (context) => LoginScreen()));
+              })
+        ],
       ),
       body:Center(
         child: Column(
@@ -116,33 +129,6 @@ class _SupervisorState extends State<Supervisor> {
                 )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Keluar"),
-                      ],
-                    ),
-                    onPressed: () => {
-                     _authSupervisor.signOut(),
-                      Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginScreen()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                ),
-
-              ],
-            )
           ],
         ),
       )

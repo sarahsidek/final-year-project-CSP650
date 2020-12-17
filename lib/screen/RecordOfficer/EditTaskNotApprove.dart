@@ -1,8 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
 
 
 
@@ -31,54 +29,14 @@ class _EditTaskState extends State<EditTask> {
    _sumberAduan =TextEditingController(text: widget.da.data['sumberAduan']);
    _kategori = TextEditingController(text: widget.da.data['kategori']);
    myDateTime = (da.data['date']).toDate();
-   imageUrls = widget.da.data['url'];
+    imageUrls = (NetworkImage(da.data['url'])) as List<NetworkImage>;
 }
 
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
   String kategori;
   String sumberAduan;
-  List<Asset> images = List<Asset>();
-  List<String> imageUrls = <String>[];
-  Widget buildGridView() {
-    return GridView.count(
-      crossAxisCount: 2,
-      children: List.generate(images.length, (index) {
-        Asset asset = images[index];
-        return Container(
-          child: AssetThumb(
-            asset: asset,
-            width: 100,
-            height: 100,
-          ),
-        );
-      }),
-    );
-  }
-  loadAssets() async {
-    List<Asset> resultList = List<Asset>();
-    String error = 'No Error Dectected';
-
-    try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: 20,
-        enableCamera: true,
-        selectedAssets: images,
-      );
-      print(resultList.length);
-      print((await resultList[0].getThumbByteData(122, 100)));
-      print((await resultList[0].getByteData()));
-      print((await resultList[0].metadata));
-    } on Exception catch (e) {
-      error = e.toString();
-    }
-    if (!mounted) return;
-
-    setState(() {
-      images = resultList;
-      error = error;
-    });
-  }
+  List<NetworkImage> imageUrls = new List();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,15 +112,23 @@ class _EditTaskState extends State<EditTask> {
                   );
                 }).toList(),
               ),
-              RaisedButton(
-                child: Text("Pilih Gambar"),
-                color: Colors.redAccent,
-                textColor: Colors.black,
-                onPressed: loadAssets,
-              ),
-              Expanded(
-                child: buildGridView(),
-              ),
+              Container(
+                margin: EdgeInsets.all(10.0),
+                height: 200,
+                decoration: BoxDecoration(
+                    color: Colors.white
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Carousel(
+                  boxFit: BoxFit.cover,
+                  images: imageUrls,
+                  autoplay: false,
+                  indicatorBgPadding: 5.0,
+                  dotPosition: DotPosition.bottomCenter,
+                  animationCurve: Curves.fastLinearToSlowEaseIn,
+                  animationDuration: Duration(milliseconds: 2000),
+                ),
+              )
               ]
           )
       ),

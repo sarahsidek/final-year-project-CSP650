@@ -123,27 +123,15 @@ class DatabaseService{
   }
 
   // get list of task
-  Stream<List<Task>> getTask(){
-       return addTaskCollection.snapshots().map((snapshot) =>
-           snapshot.documents.map((doc) => Task.fromData(doc.data),
-           ).toList(),
-         );
+   Stream<List<Task>> getTask(){
+    if(isLoggedIn() == true){
+      return addTaskCollection.snapshots().map(
+            (snapshots) => snapshots.documents.map(
+                (doc) => Task.fromData(doc.data)
+        ).toList(),
+      );
     }
-
-  
-  // get list of task (get approve from supervisor)
-  Stream<QuerySnapshot> getApprove(){
-    if(getCurrentUser()!= null){
-      return addTaskCollection.where('verified',isEqualTo: "Sah" ).snapshots();
-    }
-  }
-
-  //get list of task (get not approval from supervisor)
-  Stream<QuerySnapshot> getNotApprove(){
-    if(getCurrentUser()!= null){
-      return addTaskCollection.where('verified',isEqualTo: "TidakSah" ).snapshots();
-    }
-  }
+   }
 
   // read the road gang
   Stream<List<RoadGang>> getRoadGang(){

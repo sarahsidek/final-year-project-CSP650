@@ -19,18 +19,36 @@ class _RecordOfficerState extends State<RecordOfficer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:   FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: Colors.redAccent,
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder:
-                (context) => AddTask()));
-          }
-      ),
       appBar: AppBar(
         title: Text('Pegawai Merekod '),
         backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
+        actions: [
+          Row(
+            children: [
+              IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                  onPressed:() async{
+                    Navigator.push(context, MaterialPageRoute(builder:
+                        (context) => AddTask()));
+                  }),
+              IconButton(
+                  icon: Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                  ),
+                  onPressed:() async{
+                    await _officer.signOut();
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginScreen()));
+                  }),
+            ],
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -95,23 +113,6 @@ class _RecordOfficerState extends State<RecordOfficer> {
                     splashColor: Colors.redAccent,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: new Text("Keluar"),
-                    onPressed: () => {
-                      _officer.signOut(),
-                      Navigator.push(context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                )
               ],
             ),
           ],

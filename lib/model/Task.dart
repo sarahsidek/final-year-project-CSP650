@@ -4,7 +4,7 @@ class Task {
   final String noAduan;
   final String sumberAduan;
   final String kategori;
-  final List<String> imageUrls;
+  final List imageUrls;
   final String kawasan;
   final String naJalan;
   final DateTime dateTime;
@@ -13,12 +13,11 @@ class Task {
   final String comments;
   final String uid;
   final String id;
-  final String emailRoadgang;
   final String kerosakan;
 
 
 
-  Task({this.kerosakan, this.kawasan, this.naJalan, this.emailRoadgang,
+  Task({this.kerosakan, this.kawasan, this.naJalan,
     this.comments,this.noAduan, this.sumberAduan, this.kategori,
     this.dateTime, this.verified, this.email, this.uid, this.id, this.imageUrls});
 
@@ -34,7 +33,6 @@ class Task {
         uid = data['uid'],
         imageUrls = data['url'],
         comments = data['comments'],
-        emailRoadgang = data['emailRoadGang'],
         kerosakan = data['kerosakan'],
         id = data['id'];
 
@@ -51,7 +49,6 @@ class Task {
       'url':imageUrls,
       'id':id,
       'comments':comments,
-      'emailRoadGang': emailRoadgang,
       'kawasan': kawasan,
       'naJalan': naJalan,
       'kerosakan': kerosakan

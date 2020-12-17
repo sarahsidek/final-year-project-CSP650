@@ -116,7 +116,6 @@ class _AddTaskState extends State<AddTask> {
             kerosakan: kerosakan,
             verified: "Dalam Proses Kelulusan",
             comments: "Tiada catatan",
-            emailRoadgang:"roadgang",
           );
            await DatabaseService().addTask(tk);
           setState(() {

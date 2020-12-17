@@ -1,6 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/RoadGang/addCompleteTask.dart';
 import 'package:fyp/shared/Loading.dart';
@@ -14,12 +13,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Senarai Tugasan "),
-          backgroundColor: Colors.redAccent,
-       ),
-    body: Container(
+    return  Container(
       child: StreamBuilder(
           stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Sah').snapshots(),
           builder: (context, snapshot){
@@ -118,7 +112,6 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                   });
                }
           }),
-       )
-    );
+       );
   }
 }

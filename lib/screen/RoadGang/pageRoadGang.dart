@@ -17,56 +17,21 @@ class _RoadGangHomeState extends State<RoadGangHome> {
         title: Text('Buruh Kakitangan'),
         backgroundColor: Colors.redAccent,
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              onPressed:() async{
+                await _authRoadGang.signOut();
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) => LoginScreen()));
+              })
+        ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("(Diterima Telah"),
-                        new Text("Diluluskan)"),
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListTaskFromSupervisor()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child:new Text("Keluar"),
-                    onPressed: () => {
-                     _authRoadGang.signOut(),
-                      Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginScreen()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
-
-    );
+      body: ListTaskFromSupervisor()
+      );
   }
 }
