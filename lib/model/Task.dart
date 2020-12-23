@@ -1,19 +1,19 @@
 
 
 class Task {
-  final String noAduan;
-  final String sumberAduan;
-  final String kategori;
-  final List imageUrls;
-  final String kawasan;
-  final String naJalan;
-  final DateTime dateTime;
-  final String verified;
-  final String email;
-  final String comments;
-  final String uid;
-  final String id;
-  final String kerosakan;
+  String noAduan;
+  String sumberAduan;
+  String kategori;
+  List<String> imageUrls;
+  String kawasan;
+  String naJalan;
+  DateTime dateTime;
+  String verified;
+  String email;
+  String comments;
+  String uid;
+  String id;
+  String kerosakan;
 
 
 

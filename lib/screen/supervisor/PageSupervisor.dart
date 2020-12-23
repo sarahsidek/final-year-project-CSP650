@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/maps/display_geolocation.dart';
 import 'package:fyp/screen/login.dart';
 import 'package:fyp/screen/supervisor/ListOfCompleteTask.dart';
 import 'package:fyp/screen/supervisor/ListOfCompleteTaskNotApprove.dart';
@@ -38,99 +39,83 @@ class _SupervisorState extends State<Supervisor> {
               })
         ],
       ),
-      body:Center(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body:GridView.count(
+        mainAxisSpacing: 15.0,
+        crossAxisSpacing: 15.0,
+        primary: false,
+        crossAxisCount: 2,
+        children: [
+          Card(
+            child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("(Pegawai Merekod)"),
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTask()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTask()));
+                  },
                 ),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("Tidak Diluluskan"),
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotApprove()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                )
+                Center(child: Text("Senarai Tugasan"))
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          Card(
+            child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("Lengkap"),
-                        new Text("(RoadGang)")
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfCompleteTask()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotApprove()));
+                  },
                 ),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("Lengkap"),
-                        new Text("Tidak Diluluskan"),
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfCompleteTaskNotApprove()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                )
+                Center(child: Text("Senarai Tugasan (Ditolak)"))
               ],
             ),
-          ],
-        ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfCompleteTask()));
+                  },
+                ),
+                Center(child: Text("Senarai Tugasan Lengkap"))
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfCompleteTaskNotApprove()));
+                  },
+                ),
+                Center(child: Text("Senarai Tugasan Lengkap (Ditolak)"))
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.location_history),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => DisplayGeolocation()));
+                  },
+                ),
+                Center(child: Text("Lokasi Tugasan Road Gang"))
+              ],
+            ),
+          ),
+        ],
       )
     );
   }

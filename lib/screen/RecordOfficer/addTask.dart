@@ -51,8 +51,8 @@ class _AddTaskState extends State<AddTask> {
   Widget buildGridView() {
     return GridView.count(
       crossAxisCount: 2,
-      children: List.generate(imageUrls.length, (index) {
-        Asset asset = imageUrls[index] as Asset;
+      children: List.generate(images.length, (index) {
+        Asset asset = images[index];
         return Container(
           child: AssetThumb(
             asset: asset,
@@ -412,7 +412,7 @@ class _AddTaskState extends State<AddTask> {
               child: Column(
                     children: <Widget>[
                       RaisedButton(
-                        child: Text("Pilih Gambar"),
+                        child: Text("Muat naik Gambar"),
                         color: Colors.redAccent,
                         textColor: Colors.black,
                         onPressed: loadAssets,

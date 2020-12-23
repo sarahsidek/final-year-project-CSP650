@@ -13,7 +13,7 @@ class ListOfTaskNotAccepted extends StatefulWidget {
 }
 final FirebaseAuth auth = FirebaseAuth.instance;
 Stream<QuerySnapshot> getUser(BuildContext context) async* {
-  final FirebaseUser rd = await auth.currentUser();
+  FirebaseUser rd = await auth.currentUser();
   yield* Firestore.instance.collection("Task").where('uid',isEqualTo: rd.uid).where("verified", isEqualTo: 'TidakSah').snapshots();
 }
 class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {

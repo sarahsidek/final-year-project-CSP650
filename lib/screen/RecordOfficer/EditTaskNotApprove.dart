@@ -1,13 +1,12 @@
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:fyp/model/Task.dart';
+import 'package:fyp/service/database.dart';
 
 class EditTask extends StatefulWidget {
- final DocumentSnapshot da;
 
-  const EditTask({Key key, this.da}) : super(key: key);
+  DocumentSnapshot da;
+ EditTask({Key key, this.da}) : super(key: key);
 
   @override
   _EditTaskState createState() => _EditTaskState(da);
@@ -16,27 +15,28 @@ class EditTask extends StatefulWidget {
 class _EditTaskState extends State<EditTask> {
   DocumentSnapshot da;
   _EditTaskState(DocumentSnapshot da){
-    this.da = da;
+  this.da = da;
   }
- TextEditingController _noAduan;
+
  TextEditingController _sumberAduan;
  TextEditingController _kategori;
-  DateTime myDateTime = DateTime.now();
+ TextEditingController _naJalan;
+ TextEditingController _kawasan;
+ DateTime myDateTime = DateTime.now();
+  final GlobalKey<FormState> _formKey = GlobalKey();
  @override
  void initState(){
    super.initState();
-   _noAduan = TextEditingController(text: widget.da.data['noAduan']);
    _sumberAduan =TextEditingController(text: widget.da.data['sumberAduan']);
    _kategori = TextEditingController(text: widget.da.data['kategori']);
    myDateTime = (da.data['date']).toDate();
-    imageUrls = (NetworkImage(da.data['url'])) as List<NetworkImage>;
 }
 
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
   String kategori;
   String sumberAduan;
-  List<NetworkImage> imageUrls = new List();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +44,11 @@ class _EditTaskState extends State<EditTask> {
           title: Text("Kemaskini Aduan"),
           backgroundColor: Colors.redAccent,
         ),
-    body: Container(
-      padding: const EdgeInsets.all(16.0),
-      child: Center(
-          child: Column(
+    body: Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SizedBox(height: 10.0),
@@ -62,13 +63,6 @@ class _EditTaskState extends State<EditTask> {
                     print(myDateTime);
                   });
                 },
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration:InputDecoration(
-                  border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5))),
-                controller: _noAduan,
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
@@ -112,28 +106,43 @@ class _EditTaskState extends State<EditTask> {
                   );
                 }).toList(),
               ),
-              Container(
-                margin: EdgeInsets.all(10.0),
-                height: 200,
-                decoration: BoxDecoration(
-                    color: Colors.white
-                ),
-                width: MediaQuery.of(context).size.width,
-                child: Carousel(
-                  boxFit: BoxFit.cover,
-                  images: imageUrls,
-                  autoplay: false,
-                  indicatorBgPadding: 5.0,
-                  dotPosition: DotPosition.bottomCenter,
-                  animationCurve: Curves.fastLinearToSlowEaseIn,
-                  animationDuration: Duration(milliseconds: 2000),
-                ),
-              )
-              ]
-          )
+              RaisedButton(
+                  color: Colors.redAccent,
+                  textColor: Colors.black,
+                  child: Text("Kemaskini"),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      DatabaseService().update(Task(
+                        dateTime: myDateTime, kategori: _kategori.text, sumberAduan: _sumberAduan.text)).then((value) async{
+                        await alertDialog(context);
+                        Navigator.pop(context);
+                      });
+                    }
+                  }
+              ),
+            ]
+        ),
       ),
-    )
+      )
     );
+  }
+  Future<bool> alertDialog( BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Tahniah'),
+            content: Text('Berjaya Kemaskini'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Ok'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
   }
 }
 

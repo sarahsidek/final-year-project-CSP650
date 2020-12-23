@@ -122,17 +122,6 @@ class DatabaseService{
     return rd;
   }
 
-  // get list of task
-   Stream<List<Task>> getTask(){
-    if(isLoggedIn() == true){
-      return addTaskCollection.snapshots().map(
-            (snapshots) => snapshots.documents.map(
-                (doc) => Task.fromData(doc.data)
-        ).toList(),
-      );
-    }
-   }
-
   // read the road gang
   Stream<List<RoadGang>> getRoadGang(){
     return roadGangCollection.snapshots().map(
@@ -151,10 +140,6 @@ class DatabaseService{
     );
   }
 
-
-
-
-
   // update profile admin
  Future updateProfile(String name, String email, String nophone) async {
     return userCollection.document(uid).updateData({
@@ -166,7 +151,11 @@ class DatabaseService{
     });
  }
 
-
+ Future updateTask(Task task) async {
+    return addTaskCollection.document(task.id).updateData(task.toJson()).whenComplete((){
+      print("Update Success!");
+    });
+ }
 
     // update data supervisor
     Future updateData(Supervisor newUser) async {
@@ -193,7 +182,8 @@ class DatabaseService{
     });
   }
 
-  Future updateTask(Task tak)async {
+  //update task
+  Future update(Task tak)async {
     return addTaskCollection.document(tak.id).updateData(
       tak.toJson()).whenComplete(() {
         print("Update Task Success!");
@@ -215,7 +205,10 @@ class DatabaseService{
       return recordOfficerCollection.document(uid).delete();
    }
 
-
+    // querydata
+   Future queryData(String queryString) async{
+    return addTaskCollection.where('noAduan', isEqualTo: queryString).getDocuments();
+   }
 
 
 

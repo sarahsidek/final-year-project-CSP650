@@ -1,3 +1,4 @@
+
 import 'package:fyp/screen/RecordOfficer/ListOfTaskAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskNotAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/ListTask.dart';
@@ -50,75 +51,56 @@ class _RecordOfficerState extends State<RecordOfficer> {
           )
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: GridView.count(
+        mainAxisSpacing: 15.0,
+        crossAxisSpacing: 15.0,
+        primary: false,
+        crossAxisCount: 2,
+        children: [
+          Card(
+            child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: new Text("Senarai Tugasan"),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
+                  },
                 ),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("(Diterima)"),
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskAccepted()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
-                )
+                Center(child: Text("Senarai Tugasan"))
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          Card(
+            child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: new MaterialButton(
-                    height: 100.0,
-                    minWidth: 150.0,
-                    color: Colors.redAccent,
-                    textColor: Colors.white,
-                    child: Column(
-                      children: [
-                        new Text("Senarai Tugasan"),
-                        new Text("(Yang Ditolak)"),
-                      ],
-                    ),
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()))
-                    },
-                    splashColor: Colors.redAccent,
-                  ),
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskAccepted()));
+                  },
                 ),
+                Center(child: Text("Senarai Tugasan (Diterima)"))
               ],
             ),
-          ],
-        ),
-      ),
-
+          ),
+          Card(
+            child: Column(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.folder),
+                  iconSize: 100,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
+                  },
+                ),
+                Center(child: Text("Senarai Tugasan (Ditolak)"))
+              ],
+            ),
+          ),
+        ],
+      )
     );
   }
 }

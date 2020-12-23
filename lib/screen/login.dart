@@ -1,5 +1,6 @@
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
 import 'package:fyp/screen/RoadGang/loginRoadGang.dart';
+import 'package:fyp/screen/searchTask.dart';
 import 'package:fyp/screen/supervisor/loginSupervisor.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/signup.dart';
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
           FlatButton(
             child: Row(
               children: <Widget>[
-                Text('Pegawai Merekod'),
+                Text('Peg. Merekod'),
               ],
             ),
             textColor: Colors.black87,
@@ -71,6 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRoadGang()));
             },
           ),
+          IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              onPressed:() async{
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) => SearchTask()));
+              })
         ],
       ),
       body: Stack(

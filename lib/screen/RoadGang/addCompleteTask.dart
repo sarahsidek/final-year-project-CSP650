@@ -285,7 +285,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                   child: Column(
                       children: <Widget>[
                         RaisedButton(
-                          child: Text("Pilih Gambar"),
+                          child: Text("Muat Naik Gambar"),
                           color: Colors.redAccent,
                           textColor: Colors.black,
                           onPressed: loadAssets,

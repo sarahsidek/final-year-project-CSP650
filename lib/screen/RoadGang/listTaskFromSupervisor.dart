@@ -113,5 +113,5 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                }
           }),
        );
-  }
+}
 }
