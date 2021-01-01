@@ -23,7 +23,7 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Colors.redAccent,
+            color: Colors.red[400],
           ),
         ),
       ),
@@ -31,7 +31,7 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: Colors.redAccent,
+              color: Colors.red[400],
             ),
           ),
           Image.asset('assets/mpbj2.png', height: 150, width: 450),

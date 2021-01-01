@@ -187,7 +187,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     child: Text("Penambaikan Semula", style: TextStyle(fontFamily: "Poppins", fontSize: 20.0, color: Colors.white),),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'TidakSah',
+                                        'verified': 'Penambaikan Semula',
                                         'catatan' : 'Ulasan'
                                       }).whenComplete((){
                                         Navigator.pop(context);

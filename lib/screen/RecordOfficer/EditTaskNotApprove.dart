@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/model/Task.dart';
-import 'package:fyp/service/database.dart';
+
 
 class EditTask extends StatefulWidget {
 
@@ -20,8 +19,6 @@ class _EditTaskState extends State<EditTask> {
 
  TextEditingController _sumberAduan;
  TextEditingController _kategori;
- TextEditingController _naJalan;
- TextEditingController _kawasan;
  DateTime myDateTime = DateTime.now();
   final GlobalKey<FormState> _formKey = GlobalKey();
  @override
@@ -36,6 +33,7 @@ class _EditTaskState extends State<EditTask> {
   List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
   String kategori;
   String sumberAduan;
+  String id;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +58,6 @@ class _EditTaskState extends State<EditTask> {
                 onChanged: (value){
                   setState(() {
                     myDateTime = value as DateTime;
-                    print(myDateTime);
                   });
                 },
               ),
@@ -112,8 +109,12 @@ class _EditTaskState extends State<EditTask> {
                   child: Text("Kemaskini"),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      DatabaseService().update(Task(
-                        dateTime: myDateTime, kategori: _kategori.text, sumberAduan: _sumberAduan.text)).then((value) async{
+                      Firestore.instance.collection("Task").document(id).updateData({
+                        'id': da.data['id'],
+                        'date': myDateTime,
+                        'kategori': _kategori.text,
+                        'sumberAduan': _sumberAduan.text
+                      }).then((value) async{
                         await alertDialog(context);
                         Navigator.pop(context);
                       });

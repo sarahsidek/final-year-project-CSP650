@@ -1,34 +1,26 @@
 class CompleteTask{
-  final DateTime time;
-  final String  coldmix;
-  final String crusherRun;
-  final String hotmix;
-  final String pasir;
-  final String catPutih;
-  final String catKuning;
-  final List<String> CompeleteimageUrls;
-  final String noAduan;
-  final String catatan;
-  final String id;
-  final String verified;
-  final String email;
-  final String sumberAduan;
-  final String kategori;
-  final String kawasan;
-  final String jalan;
+  DateTime time;
+  List<String> barang;
+  List<String> CompeleteimageUrls;
+  List<String> quantity;
+  String noAduan;
+  String catatan;
+  String id;
+  String verified;
+  String email;
+  String sumberAduan;
+  String kategori;
+  String kawasan;
+  String jalan;
 
-  CompleteTask({this.coldmix, this.crusherRun, this.hotmix, this.pasir, this.catPutih, this.catKuning,
+  CompleteTask({this.barang,
     this.kawasan, this.jalan, this.kategori, this.sumberAduan, this.email,this.verified,
-    this.time, this.CompeleteimageUrls,  this.noAduan, this.id, this.catatan});
+    this.time, this.CompeleteimageUrls,  this.noAduan, this.id, this.catatan, this.quantity});
 
   CompleteTask.fromData(Map<String, dynamic> data)
   : time = data['time'],
-    coldmix = data['coldmix'],
-    crusherRun = data['crusherRun'],
-    hotmix = data['hotmix'],
-    pasir = data['pasir'],
-    catPutih = data['catPutih'],
-    catKuning = data['catKuning'],
+    barang = data['barang'],
+    quantity =data['quantity'],
     CompeleteimageUrls = data['completeTask'],
     id = data['id'],
     noAduan = data['noAduan'],
@@ -43,12 +35,8 @@ class CompleteTask{
     Map<String , dynamic>toJson(){
        return {
          'time': time,
-         'coldmix' : coldmix,
-         'crusherRun': crusherRun,
-         'hotmix': hotmix,
-         'pasir': pasir,
-         'catPutih': catPutih,
-         'catKuning': catKuning,
+         'barang': barang,
+         'quantity': quantity,
          'completeTask': CompeleteimageUrls,
          'id': id,
          'noAduan': noAduan,

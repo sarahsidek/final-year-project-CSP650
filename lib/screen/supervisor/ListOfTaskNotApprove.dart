@@ -17,12 +17,12 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Senarai Aduan Tidak Diluluskan"),
-        backgroundColor: Colors.redAccent,
+        title: Text("Senarai Tugasan Tidak Sah",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        backgroundColor:  Colors.red[500],
       ),
       body: Container(
         child: StreamBuilder(
-            stream:Firestore.instance.collection("Task").where('verified', isEqualTo:'TidakSah').snapshots(),
+            stream:Firestore.instance.collection("Task").where('verified', isEqualTo:'Tidak Sah').snapshots(),
             builder: (context, snapshot){
               if (snapshot.hasError || !snapshot.hasData) {
                 return Loading();
@@ -37,6 +37,8 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                         _listOfImages.add(NetworkImage(ba['url'][i]));
                       }
                       return Card(
+                          margin: EdgeInsets.all(10),
+                          color: Colors.grey[400],
                           child:ListTile(
                             title: Container(
                               alignment: Alignment.centerLeft,
@@ -46,26 +48,26 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Sumber Aduan:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
+                                        Text("Sumber Aduan:", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ba['sumberAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    ]
+                                    )
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ",style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
-                                        Text(ba['noAduan'],style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
-                                      ],
-                                    ),
+                                        Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ba['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    ]
+                                    )
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Kategori:", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                        Text(ba['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text("Kategori:",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ba['kategori'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
                                   ),
@@ -73,15 +75,24 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   Container(alignment: Alignment.centerLeft,
                                    child: Row(
                                      children: [
-                                       Text("Status: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                       Text(ba['verified'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                       Text("Status: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                       Text(ba['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.green)),
                                      ],
                                    ),
                                   ),
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Text("Catatan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ba['comments'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 5.0),
                                   Column(
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.all(10.0),
                                         height: 200,
                                         decoration: BoxDecoration(
                                             color: Colors.white
@@ -102,16 +113,6 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                 ],
                               ),
                             ),
-                              subtitle: Container(
-                                child: Row(
-                                  children: [
-                                    SizedBox(height: 5.0),
-                                    Container(alignment: Alignment.centerLeft,
-                                      child: Text(ba['comments']),
-                                    ),
-                                  ],
-                                ),
-                              ),
                               onTap: () {updateComments(ba['id']);}
                           )
                       );

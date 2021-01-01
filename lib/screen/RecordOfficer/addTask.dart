@@ -174,6 +174,24 @@ class _AddTaskState extends State<AddTask> {
     "13": "PJS 6/5H",
   };
 
+  final pjs8 = {
+    "1": "PJS 8/8", "2": "PJS 8/9",
+    "3": "PJS 8/5", "4": "PJS 9/17"
+  };
+
+  final pju1a = {
+    "1": "PJU 1A/20",
+    "2": "PJU 1A/3",
+    "3": "JALAN LAGENDA PUTERA 2 ",
+    "4": "PJU 1A/20A",
+    "5":"PJU 1A/3J",
+    "6": "PJU 1A/26",
+    "7":"PJU 1A/23C",
+    "8": "PJU 1A/3H",
+    "9": "PJU 1A/5",
+  };
+
+
   void pops1(){
     for(String key in pjs1.keys){
       _naJalan.add(DropdownMenuItem<String>(

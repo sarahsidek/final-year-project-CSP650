@@ -102,8 +102,8 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                    ),
                                  ],
                                )
-                            ],
-                          ),
+                              ],
+                            ),
                             onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => AddCompleteTask(ra:ra)));
                           }

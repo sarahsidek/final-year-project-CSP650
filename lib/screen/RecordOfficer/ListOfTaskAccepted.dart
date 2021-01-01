@@ -21,8 +21,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Aduan Diterima"),
-        backgroundColor: Colors.redAccent,
+        title: Text("Aduan Diterima",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        backgroundColor:  Colors.red[500],
       ),
       body: Container(
         child: StreamBuilder(
@@ -40,9 +40,11 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                         _listOfImages.add(NetworkImage(snapshot.data.documents[index].data['url'][i]));
                       }
                       return Card(
+                          margin: EdgeInsets.all(10),
+                          color: Colors.grey[400],
                           child:ListTile(
                             title: Container(
-                              alignment: Alignment.centerLeft,
+                              alignment: Alignment(20,20),
                               child: Column(
                                 children: <Widget>[
                                   SizedBox(height: 5.0),
@@ -58,8 +60,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
-                                        Text(ca['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                                        Text("Nombor Aduan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(ca['noAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),
@@ -67,24 +69,25 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                        Text(ca['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                        Text("Status : ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(ca['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold,  color: Colors.green)),
                                       ],
                                     ),
                                   ),
                                   SizedBox(height: 5.0),
-                                  Container(alignment: Alignment.centerLeft,
+                                  Container(alignment: Alignment.topLeft,
                                     child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        Text("Status : ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(ca['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("Catatan : ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(ca['comments'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green)),
                                       ],
                                     ),
                                   ),
+                                  SizedBox(height: 5.0),
                                   Column(
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.all(10.0),
                                         height: 200,
                                         decoration: BoxDecoration(
                                             color: Colors.white
@@ -104,21 +107,6 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                   )
                                 ],
                               ),
-                            ),
-                                subtitle: Container(
-                                  child: Row(
-                                    children: [
-                                      SizedBox(height: 5.0),
-                                      Container(alignment: Alignment.centerLeft,
-                                    child: Row(
-                                      children: [
-                                        Text("Catatan : ",style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                        Text(ca['comments'],style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                      ],
-                                    ),
-                                 ),
-                               ],
-                               ),
                             ),
                               onTap: () {listAddress(ca['id']);}
                         )
@@ -146,7 +134,7 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                   return Loading();
                 } else {
                   return Container(
-                    height: 150,
+                    height: 130,
                     child: Container(
                       padding: EdgeInsets.fromLTRB(20.0, 3, 30.0, 5.0),
                       child: Column(
@@ -164,8 +152,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                       margin: EdgeInsets.only(top:26, left: 14),
                                       child: Row(
                                         children: [
-                                          Text("Kawasan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                          Text( snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text("Kawasan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text( snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),
                                     ),
@@ -174,8 +162,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                       margin: EdgeInsets.only(top:4, left: 15),
                                       child: Row(
                                         children: [
-                                          Text("Nama Jalan :", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                          Text(snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text("Nama Jalan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold,fontSize: 18)),
+                                          Text(snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),
                                     ),
@@ -184,8 +172,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                       margin: EdgeInsets.only(top:4, left: 15),
                                       child: Row(
                                         children: [
-                                          Text("Kategori : ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                          Text(snapshot.data['kategori'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text("Kategori: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text(snapshot.data['kategori'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold,fontSize: 18)),
                                         ],
                                       ),
                                     ),

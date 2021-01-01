@@ -20,7 +20,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
       ),
       body: Container(
         child: StreamBuilder(
-            stream:Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'TidakSah').snapshots(),
+            stream:Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'Penambaikan Semula').snapshots(),
             builder: (context, snapshot){
               if (snapshot.hasError || !snapshot.hasData) {
                 return Loading();

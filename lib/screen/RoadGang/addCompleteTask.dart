@@ -24,12 +24,12 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   File image;
   List<Asset> images = List<Asset>();
   List<String> imageUrls = <String>[];
-  String coldmix;
-  String crusherRun;
-  String hotmix;
-  String pasir;
-  String catKuning;
-  String catPutih;
+  List<String> barang = <String>['cat kuning', 'cat putih', 'Coldmix', 'Hotmix' ,'CrusherRun'];
+  List<String> selectBarang = [null];
+  List<String> selectQuantity =[null];
+  String quant;
+  String jenis;
+  int i = 1;
   DateTime _dateTime = DateTime.now();
   String imageUrl;
   CompleteTask ct;
@@ -98,18 +98,14 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               time: _dateTime,
               noAduan: ra.data['noAduan'],
               email: email,
+              barang: selectBarang,
+              quantity: selectQuantity,
               verified: "Dalam Proses Kelulusan",
               catatan: "Tiada Catatan",
               kawasan: ra.data['kawasan'],
               jalan: ra.data['naJalan'],
               sumberAduan: ra.data['sumberAduan'],
               kategori: ra.data['kategori'],
-              pasir: pasir,
-              coldmix: coldmix,
-              crusherRun: crusherRun,
-              hotmix: hotmix,
-              catKuning: catKuning,
-              catPutih: catPutih
           );
           await DatabaseService().addCompleteAdd(ct);
         }
@@ -132,8 +128,47 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
     return storageTaskSnapshot.ref.getDownloadURL();
   }
 
-  DocumentSnapshot ra;
+  Widget _dropdown(List<String> barang, String quantity, int index){
+    return Container(
+      child: Column(
+        children: [
+          DropdownButtonFormField(
+            hint: Text("Jenis Penambaikan"),
+            decoration: InputDecoration(
+                prefixIcon: Icon(Icons.folder),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
+            ),
+            value: selectBarang[index],
+            onChanged: (value){
+              setState(() {
+                selectBarang[index] = value;
+              });
+            },
+            items: barang.map((value){
+              return DropdownMenuItem(
+                  value: value,
+                    child: new Text(value),
+                    );
+                }).toList(),
+          ),
+          SizedBox(height: 5.0),
+          TextFormField(
+            decoration: InputDecoration(
+                labelText: "Kuantiti:",
+                prefixIcon: Icon(Icons.add),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5))),
+            keyboardType: TextInputType.number,
+            onChanged: (value) {
+              setState(() => selectQuantity[index] = value );
+            },
+          ),
+        ],
+      ),
+    );
+  }
 
+  DocumentSnapshot ra;
   _AddCompleteTaskState(DocumentSnapshot ra) {
     this.ra = ra;
   }
@@ -152,7 +187,6 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 5.0),
               Row(
                 children: [
                   Text("Sumber Aduan: ",
@@ -206,78 +240,28 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                 },
               ),
               SizedBox(height: 5.0),
-              Container(
-                 child: Column(
-                   crossAxisAlignment: CrossAxisAlignment.start,
-                   children: [
-                     Text("Jenis Bahan Penambaikan", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     Text("ColdMix:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     TextField(decoration: InputDecoration(
-                        hintText: "Jumlah:"
-                       ),
-                       onChanged: (value){
-                       setState(() {
-                         coldmix = value;
-                         });
-                       },
-                     ),
-                     SizedBox(height: 5.0),
-                     Text("Crusher Run:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     TextField(decoration: InputDecoration(
-                         hintText: "Jumlah:"
-                     ),
-                       onChanged: (value){
-                         setState(() {
-                           crusherRun = value;
-                         });
-                       },
-                     ),
-                     SizedBox(height: 5.0),
-                     Text("Hotmix:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     TextField(decoration: InputDecoration(
-                         hintText: "Jumlah:"
-                     ),
-                       onChanged: (value){
-                         setState(() {
-                           hotmix = value;
-                         });
-                       },
-                     ),
-                     SizedBox(height: 5.0),
-                     Text("Pasir:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     TextField(decoration: InputDecoration(
-                         hintText: "Jumlah:"
-                     ),
-                       onChanged: (value){
-                         setState(() {
-                           pasir = value;
-                         });
-                       },
-                     ),
-                     SizedBox(height: 5.0),
-                     Text("Cat Kuning:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     TextField(decoration: InputDecoration(
-                         hintText: "Jumlah:"
-                     ),
-                       onChanged: (value){
-                         setState(() {
-                           catKuning = value;
-                         });
-                       },
-                     ),
-                     Text("Cat Putih:", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                     TextField(decoration: InputDecoration(
-                         hintText: "Jumlah:"
-                     ),
-                       onChanged: (value){
-                         setState(() {
-                           catPutih = value;
-                         });
-                       },
-                     ),
-                   ],
-                 ),
-                ),
+              ListView.separated(
+                shrinkWrap: true,
+                itemCount: i,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _dropdown(barang, quant, index),
+                  );
+                },
+                separatorBuilder: (context, index) => Container(height: 10),
+              ),
+                InkWell(
+                  child: Text("Tambah"),
+                    onTap: () {
+                  selectBarang.add(null);
+                  selectQuantity.add(null);
+                    i ++;
+                    setState(() {
+                      selectBarang;
+                      selectQuantity;
+                    });
+                 }),
               SizedBox(height: 5.0),
               Container(
                   color: Colors.white,
@@ -317,7 +301,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                         ),
                       ]
                   )
-              ),
+              )
             ],
           ),
         ),
@@ -345,3 +329,56 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
         });
   }
 }
+
+
+
+/*@override
+void initState() {
+  super.initState();
+  barang = <String>[
+    'cat putih',
+    'cat kuning',
+    'hotmix',
+  ];
+
+}
+@override
+Widget _dropdownbutton(List<String> listbarang, int index) {
+  return Container(
+    padding: EdgeInsets.all(1),
+    width: MediaQuery.of(context).size.width,
+    decoration: BoxDecoration(
+      border: Border.all(),
+      borderRadius: BorderRadius.all(Radius.circular(15.0) //
+      ),
+    ),
+    child: DropdownButton<String>(
+      icon: Icon(Icons.arrow_drop_down),
+      hint: Text("Pilih Jenis Penambaikan"),
+      value: selectBarang[index],
+      onChanged: (barang) {
+        print(barang.toString());
+        print(index);
+        setState(() {
+          selectBarang[index] = barang;
+        });
+      },
+      items: listbarang.map((barang) {
+        return DropdownMenuItem(
+          value: barang,
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "$barang",
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    ),
+  );
+}*/

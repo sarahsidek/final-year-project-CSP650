@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/maps/display_geolocation.dart';
 import 'package:fyp/screen/login.dart';
-import 'package:fyp/screen/supervisor/ListOfCompleteTask.dart';
-import 'package:fyp/screen/supervisor/ListOfCompleteTaskNotApprove.dart';
-import 'package:fyp/screen/supervisor/ListOfTaskNotApprove.dart';
-import 'package:fyp/screen/supervisor/List_of_taskPenyelia.dart';
 import 'package:fyp/service/authSupervisor.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:fyp/screen/supervisor/ContainerRecordOfficer.dart' as first;
+import 'package:fyp/screen/supervisor/ContainerRoadGang.dart' as second;
 
 
 class Supervisor extends StatefulWidget {
@@ -17,106 +15,52 @@ class Supervisor extends StatefulWidget {
 }
 
 class _SupervisorState extends State<Supervisor> {
+
   final AuthSupervisor _authSupervisor = AuthSupervisor();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Penyelia'),
-        backgroundColor: Colors.redAccent,
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.logout,
-                color: Colors.white,
+    return DefaultTabController(
+      length: 2,
+      child:   Scaffold(
+        appBar: AppBar(
+          title: Text("Penyelia",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18,  color: Colors.black87)),
+          backgroundColor:  Colors.red[500],
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                icon: Icon(
+                  Icons.logout,
+                  color: Colors.black87,
+                ),
+                onPressed:() async{
+                  await _authSupervisor.signOut();
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
+                })
+          ],
+          bottom: TabBar(
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(0.5),
+              color: Colors.redAccent[100],
+            ),
+            tabs: [
+              Tab(
+                child: Text("Pegawai Merekod", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87)),
               ),
-              onPressed:() async{
-                await _authSupervisor.signOut();
-                Navigator.push(context,
-                MaterialPageRoute(
-                builder: (context) => LoginScreen()));
-              })
+              Tab(
+                child: Text("Road Gang",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87)),
+              )],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+           new first.ContainerRecordOfficer(),
+            new second.ContainerRoadGang()
         ],
-      ),
-      body:GridView.count(
-        mainAxisSpacing: 15.0,
-        crossAxisSpacing: 15.0,
-        primary: false,
-        crossAxisCount: 2,
-        children: [
-          Card(
-            child: Column(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTask()));
-                  },
-                ),
-                Center(child: Text("Senarai Tugasan"))
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotApprove()));
-                  },
-                ),
-                Center(child: Text("Senarai Tugasan (Ditolak)"))
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfCompleteTask()));
-                  },
-                ),
-                Center(child: Text("Senarai Tugasan Lengkap"))
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfCompleteTaskNotApprove()));
-                  },
-                ),
-                Center(child: Text("Senarai Tugasan Lengkap (Ditolak)"))
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.location_history),
-                  iconSize: 100,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => DisplayGeolocation()));
-                  },
-                ),
-                Center(child: Text("Lokasi Tugasan Road Gang"))
-              ],
-            ),
-          ),
-        ],
+        ),
       )
-    );
+    ) ;
+
   }
 }

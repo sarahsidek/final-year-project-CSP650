@@ -7,6 +7,7 @@ import 'package:fyp/screen/RecordOfficer/addTask.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/login.dart';
 import 'package:fyp/service/authRecordOfficer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RecordOfficer extends StatefulWidget {
 
@@ -21,8 +22,8 @@ class _RecordOfficerState extends State<RecordOfficer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pegawai Merekod '),
-        backgroundColor: Colors.redAccent,
+        title: Text("Pegawai Merekod",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        backgroundColor:  Colors.red[500],
         automaticallyImplyLeading: false,
         actions: [
           Row(
@@ -58,44 +59,81 @@ class _RecordOfficerState extends State<RecordOfficer> {
         crossAxisCount: 2,
         children: [
           Card(
+            margin: EdgeInsets.all(10),
+            color: Colors.white38,
             child: Column(
               children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
+                SizedBox(height: 10, width: 25,),
+                RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
                   },
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
+                      Column(
+                        children: [
+                          new Text("Senarai Semua", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                          new Text("Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Center(child: Text("Senarai Tugasan"))
               ],
             ),
           ),
           Card(
+            margin: EdgeInsets.all(10),
+            color: Colors.white38,
             child: Column(
               children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
+                SizedBox(height: 10, width: 25,),
+                RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskAccepted()));
                   },
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green[400],),
+                      Column(
+                        children: [
+                          new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                          new Text("Diterima", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Center(child: Text("Senarai Tugasan (Diterima)"))
               ],
             ),
           ),
           Card(
+            margin: EdgeInsets.all(10),
+            color: Colors.white38,
             child: Column(
               children: [
-                IconButton(
-                  icon: Icon(Icons.folder),
-                  iconSize: 100,
+                SizedBox(height: 10, width: 25,),
+                RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
                   },
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red[500],),
+                      Column(
+                        children: [
+                          new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                          new Text("Ditolak", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Center(child: Text("Senarai Tugasan (Ditolak)"))
+
               ],
             ),
           ),
