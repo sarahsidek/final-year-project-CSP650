@@ -76,7 +76,7 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                    child: Row(
                                      children: [
                                        Text("Status: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                       Text(ba['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.green)),
+                                       Text(ba['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
                                      ],
                                    ),
                                   ),
@@ -113,7 +113,6 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                 ],
                               ),
                             ),
-                              onTap: () {updateComments(ba['id']);}
                           )
                       );
                     });
@@ -121,63 +120,6 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
             }),
       ),
     );
-  }
-  void updateComments(String id) {
-     showModalBottomSheet(
-       shape: RoundedRectangleBorder(
-           borderRadius: new BorderRadius.only(
-               topLeft: const Radius.circular(10.0),
-               topRight: const Radius.circular(10.0)
-           )
-       ),
-         context: context,
-         builder: (builder){
-         return StreamBuilder(
-         stream: Firestore.instance.collection('Task').document(id).snapshots(),
-           builder: (context, snapshot) {
-             if (!snapshot.hasData) {
-               return Loading();
-             }
-             return new Container(
-               height: 500,
-               padding: EdgeInsets.all(10),
-               child: Visibility(
-                 visible: (snapshot.data['comments'].toString() == 'Tiada catatan')? true:false,
-                 child: Column(
-                   children: [
-                     SizedBox(height: 25.0),
-                     TextFormField(
-                       decoration: InputDecoration(
-                           hintText: 'Catatan',
-                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                       maxLines: 5,
-                       minLines: 3,
-                       keyboardType: TextInputType.text,
-                       onChanged: (value) {
-                         setState(() => catatan = value);
-                       },
-                     ),
-                     RaisedButton(
-                         color: Colors.redAccent,
-                         textColor: Colors.black,
-                         child: Text("Hantar"),
-                         onPressed: () async {
-                           Firestore.instance.collection('Task').document(id).updateData({
-                             'comments':catatan
-                           }).whenComplete((){
-                             Navigator.pop(context);
-                           });
-                         }
-                     ),
-                   ],
-                 ),
-               ),
-              );
-             }
-           );
-         }
-     );
-
   }
 }
 

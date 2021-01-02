@@ -13,10 +13,9 @@ class ListOfTask extends StatefulWidget {
   _ListOfTaskState createState() => _ListOfTaskState();
 }
 
-
-String id;
-
 class _ListOfTaskState extends State<ListOfTask> {
+  String id;
+  String catatan;
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
@@ -72,6 +71,15 @@ class _ListOfTaskState extends State<ListOfTask> {
                                       children: [
                                         Text("Kategori: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(document['kategori'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Text("Status: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(document['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.indigo[500])),
                                       ],
                                     ),
                                   ),
@@ -201,13 +209,9 @@ class _ListOfTaskState extends State<ListOfTask> {
                                     ),
                                     color: Colors.red[500],
                                     child: Text("Tidak Sah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
-                                    onPressed: () async {
-                                      Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'Tidak Sah'
-                                      }).whenComplete((){
-                                        Navigator.pop(context);
-                                      });
-                                    },
+                                    onPressed: ()async{
+                                      alertDialog(id);
+                                    }
                                   )
                               ),
                             ],
@@ -221,5 +225,42 @@ class _ListOfTaskState extends State<ListOfTask> {
           );
         }
     );
+  }
+  Future<bool> alertDialog( String id) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Catatan"),
+            content: Column(
+              children: [
+                TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Catatan',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                  maxLines: 5,
+                  minLines: 3,
+                  keyboardType: TextInputType.text,
+                  onChanged: (value) {
+                    setState(() => catatan = value);
+                  },
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Ok', style: TextStyle(color: Colors.red),),
+                onPressed: ()  async {
+                  Firestore.instance.collection('Task').document(id).updateData({
+                    'comments': catatan,
+                    'verified': 'Tidak Sah'
+                  }).whenComplete((){
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
   }
 }

@@ -76,7 +76,7 @@ class _ListOfTaskApproveState extends State<ListOfTaskApprove> {
                                       child: Row(
                                         children: [
                                           Text("Status: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                          Text(ap['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
+                                          Text(ap['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.green[800])),
                                         ],
                                       ),
                                     ),
