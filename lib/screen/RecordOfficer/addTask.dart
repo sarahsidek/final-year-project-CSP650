@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/model/Task.dart';
 import 'package:fyp/service/database.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 class AddTask extends StatefulWidget {
@@ -305,8 +306,8 @@ class _AddTaskState extends State<AddTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Borang Aduan'),
-        backgroundColor: Colors.redAccent,
+        title: Text("Borang Aduan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        backgroundColor:  Colors.red[500],
       ),
       body: Form(
         key: _formKey,

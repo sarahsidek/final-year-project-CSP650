@@ -18,14 +18,10 @@ class AuthRecordOfficer{
   }
 
   Future signInRecordOfficer(String email, String icnumber) async {
-    try {
+
       AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
       return _record(user);
-    }
-    catch (e) {
-      print(e.toString());
-    }
   }
 
   Future registerRecordOfficer(String name, String email, String icnumber, String nophone, String zon, String pegawaiZon) async{

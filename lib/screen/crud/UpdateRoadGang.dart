@@ -22,8 +22,6 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
   TextEditingController _name;
   TextEditingController _password;
 
-
-
   @override
   void initState(){
     super.initState();

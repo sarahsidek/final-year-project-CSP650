@@ -19,14 +19,10 @@ class AuthSupervisor{
 
 
   Future signInSupervisor(String email, String icnumber) async {
-    try {
+
       AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: icnumber);
       FirebaseUser user = result.user;
       return _newUser(user);
-    }
-    catch (e) {
-      print(e.toString());
-    }
   }
 
   Future registerSupervisor(String name, String email, String icnumber, String nophone) async{

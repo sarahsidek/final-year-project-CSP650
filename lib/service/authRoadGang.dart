@@ -19,14 +19,11 @@ class AuthRoadGang {
 
 
   Future signInRoadGang(String name, String password) async {
-    try {
+
       AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(email: name, password: password);
       FirebaseUser user = result.user;
       return _newUser(user);
-    }
-    catch (e) {
-      print(e.toString());
-    }
+
   }
 
   Future registerRoadGang(String username, String password) async{

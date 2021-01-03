@@ -2,25 +2,21 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/maps/google_maps_address.dart';
 import 'package:fyp/model/CompleteTask.dart';
 import 'package:fyp/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
-
-class AddCompleteTask extends StatefulWidget {
-
+class AddPenambaikanSemula extends StatefulWidget {
   final DocumentSnapshot ra;
 
-  AddCompleteTask({Key key, this.ra}) : super(key: key);
-
+   AddPenambaikanSemula({Key key, this.ra}) : super(key: key);
   @override
-  _AddCompleteTaskState createState() => _AddCompleteTaskState(ra);
+  _AddPenambaikanSemulaState createState() => _AddPenambaikanSemulaState(ra);
 }
 
-class _AddCompleteTaskState extends State<AddCompleteTask> {
+class _AddPenambaikanSemulaState extends State<AddPenambaikanSemula> {
+
   File image;
   List<Asset> images = List<Asset>();
   List<String> imageUrls = <String>[];
@@ -88,24 +84,20 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
         if (imageUrls.length == images.length) {
           final FirebaseUser rd = await auth.currentUser();
           final String email = rd.email;
-          String id = Firestore.instance
-              .collection("CompleteTask")
-              .document()
-              .documentID;
           ct = CompleteTask(
-              id: id,
-              CompeleteimageUrls: imageUrls,
-              time: _dateTime,
-              noAduan: ra.data['noAduan'],
-              email: email,
-              barang: selectBarang,
-              quantity: selectQuantity,
-              verified: "Dalam Proses Kelulusan",
-              catatan: "Tiada Catatan",
-              kawasan: ra.data['kawasan'],
-              jalan: ra.data['naJalan'],
-              sumberAduan: ra.data['sumberAduan'],
-              kategori: ra.data['kategori'],
+            id: id,
+            CompeleteimageUrls: imageUrls,
+            time: _dateTime,
+            noAduan: ra.data['noAduan'],
+            email: email,
+            barang: selectBarang,
+            quantity: selectQuantity,
+            verified: "Dalam Proses Kelulusan",
+            catatan: "Tiada Catatan",
+            kawasan: ra.data['kawasan'],
+            jalan: ra.data['naJalan'],
+            sumberAduan: ra.data['sumberAduan'],
+            kategori: ra.data['kategori'],
           );
           await DatabaseService().addCompleteAdd(ct);
         }
@@ -146,10 +138,10 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
             },
             items: barang.map((value){
               return DropdownMenuItem(
-                  value: value,
-                    child: new Text(value),
-                    );
-                }).toList(),
+                value: value,
+                child: new Text(value),
+              );
+            }).toList(),
           ),
           SizedBox(height: 5.0),
           TextFormField(
@@ -169,11 +161,9 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   }
 
   DocumentSnapshot ra;
-  _AddCompleteTaskState(DocumentSnapshot ra) {
+  _AddPenambaikanSemulaState(DocumentSnapshot ra) {
     this.ra = ra;
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -251,29 +241,29 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                 },
                 separatorBuilder: (context, index) => Container(height: 10),
               ),
-                SizedBox(height: 5.0,),
-                InkWell(
+              SizedBox(height: 5.0,),
+              InkWell(
                   child: Container(
                       width: 100.0,
                       height: 30.0,
                       decoration: BoxDecoration(
-                        color: Colors.redAccent,
-                        border: new Border.all(color: Colors.white70, width: 2.0),
-                        borderRadius: new BorderRadius.circular(10.0)
+                          color: Colors.redAccent,
+                          border: new Border.all(color: Colors.white70, width: 2.0),
+                          borderRadius: new BorderRadius.circular(10.0)
                       ),
                       child: Center(child: Text("Tambah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)))),
-                    customBorder: RoundedRectangleBorder(
+                  customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
-                    ),
-                    onTap: () {
-                  selectBarang.add(null);
-                  selectQuantity.add(null);
+                  ),
+                  onTap: () {
+                    selectBarang.add(null);
+                    selectQuantity.add(null);
                     i ++;
                     setState(() {
                       selectBarang;
                       selectQuantity;
                     });
-                 }),
+                  }),
               SizedBox(height: 5.0),
               Container(
                   color: Colors.white,
@@ -299,16 +289,6 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                                 alertDialog(context);
                               },
                             ),
-                            SizedBox(height: 10.0),
-                            RaisedButton(
-                              child: Text("Dapatkan lokasi anda"),
-                              color: Colors.redAccent,
-                              textColor: Colors.black87,
-                              onPressed: () async {
-                                Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => GoogleMaps(ctk: ct)));
-                              },
-                            )
                           ],
                         ),
                       ]
@@ -341,7 +321,3 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
         });
   }
 }
-
-
-
-

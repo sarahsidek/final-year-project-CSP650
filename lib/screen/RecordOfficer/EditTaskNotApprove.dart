@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class EditTask extends StatefulWidget {
@@ -26,7 +27,6 @@ class _EditTaskState extends State<EditTask> {
    super.initState();
    _sumberAduan =TextEditingController(text: widget.da.data['sumberAduan']);
    _kategori = TextEditingController(text: widget.da.data['kategori']);
-   myDateTime = (da.data['date']).toDate();
 }
 
   List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
@@ -39,8 +39,8 @@ class _EditTaskState extends State<EditTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Kemaskini Aduan"),
-          backgroundColor: Colors.redAccent,
+          title: Text("Kemaskini Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          backgroundColor:  Colors.red[500],
         ),
     body: Form(
       key: _formKey,
@@ -49,18 +49,6 @@ class _EditTaskState extends State<EditTask> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration:InputDecoration(
-                    hintText: myDateTime.toString(),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5))),
-                onChanged: (value){
-                  setState(() {
-                    myDateTime = value as DateTime;
-                  });
-                },
-              ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 hint:Text(widget.da.data['sumberAduan']),
@@ -109,12 +97,12 @@ class _EditTaskState extends State<EditTask> {
                   child: Text("Kemaskini"),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      Firestore.instance.collection("Task").document(id).updateData({
-                        'id': da.data['id'],
-                        'date': myDateTime,
-                        'kategori': _kategori.text,
-                        'sumberAduan': _sumberAduan.text
-                      }).then((value) async{
+                     Firestore.instance.collection("Task").document(da.data['id']).updateData({
+                       'kategori': _kategori.text,
+                       'sumberAduan': _sumberAduan.text,
+                       'comments':'Tiada catatan',
+                       'verified': 'Dalam Proses Kelulusan'
+                     }).then((value) async {
                         await alertDialog(context);
                         Navigator.pop(context);
                       });

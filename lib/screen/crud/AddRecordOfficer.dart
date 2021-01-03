@@ -1,5 +1,6 @@
 import 'package:fyp/service/authRecordOfficer.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddRecordOfficer extends StatefulWidget {
   @override
@@ -509,8 +510,8 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pegawai Merekod'),
-        backgroundColor: Colors.redAccent,
+        title: Text("Pegawai Merekod",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        backgroundColor:  Colors.red[500],
       ),
       body: Form(
         key: _formKey,

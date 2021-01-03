@@ -25,6 +25,8 @@ class _ListRoadGangState extends State<ListRoadGang> {
                   itemBuilder: (BuildContext context, int index){
                     RoadGang rg = snapshot.data[index];
                     return Card(
+                      color: Colors.grey[400],
+                      margin: EdgeInsets.only(left: 5.0,right: 5.0, top: 5.0,bottom: 5.0),
                       child: ListTile(
                           title: Container(
                             alignment: Alignment.centerLeft,
@@ -34,7 +36,7 @@ class _ListRoadGangState extends State<ListRoadGang> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Column(
                                     children: [
-                                      Text(rg.username, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(rg.username, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
                                 ),
@@ -46,8 +48,8 @@ class _ListRoadGangState extends State<ListRoadGang> {
                               alignment: Alignment.centerLeft,
                             child:Row(
                               children: [
-                                Text("Password: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                Text(rg.password, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                Text("Password: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                Text(rg.password, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                               ],
                             ),
                           ),

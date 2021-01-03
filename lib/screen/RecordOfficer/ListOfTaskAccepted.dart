@@ -51,8 +51,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(ca['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ca['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold,fontSize: 18)),
                                       ],
                                     ),
                                   ),
@@ -60,8 +60,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(ca['noAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("Nombor Aduan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ca['noAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
                                   ),
@@ -69,8 +69,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Status : ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(ca['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold,  color: Colors.green)),
+                                        Text("Status : ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ca['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold,  color: Colors.green, fontSize: 18)),
                                       ],
                                     ),
                                   ),
@@ -79,8 +79,8 @@ class _ListOfTaskAcceptedState extends State<ListOfTaskAccepted> {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        Text("Catatan : ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(ca['comments'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green)),
+                                        Text("Catatan : ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text(ca['comments'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green, fontSize: 18)),
                                       ],
                                     ),
                                   ),

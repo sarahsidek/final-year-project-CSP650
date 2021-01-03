@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/screen/RoadGang/pageRoadGang.dart';
 import 'package:fyp/service/authRoadGang.dart';
 import 'package:flutter/material.dart';
@@ -88,15 +89,24 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                                     'Log Masuk'
                                 ),
                                 onPressed: () async {
-                                  if( _formKey.currentState.validate()){
-                                    setState(() => loading = true);
-                                    dynamic result = await _auth.signInRoadGang(name, password);
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RoadGangHome()));
-                                    if (result == null){
-                                      setState(() {
-                                        error = 'Pastikan e-mel anda sah!';
-                                        loading = false;
-                                      });
+                                  if( _formKey.currentState.validate()) {
+                                    try {
+                                      setState(() => loading = true);
+                                      dynamic result = await _auth
+                                          .signInRoadGang(name, password);
+                                      Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) =>
+                                              RoadGangHome()));
+                                      if (result == null) {
+                                        setState(() {
+                                          error = 'Pastikan e-mel anda sah!';
+                                          loading = false;
+                                        });
+                                      }
+                                    } on AuthException catch (error){
+                                      return _buildErrorDialog(context, error.message);
+                                    } on Exception catch (error) {
+                                      return _buildErrorDialog(context, error.toString());
                                     }
                                   }
                                 },
@@ -119,5 +129,22 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
       ),
     );
   }
-
+  Future _buildErrorDialog(BuildContext context, message) {
+    return showDialog(
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Error Message'),
+          content: Text(message),
+          actions: [
+            FlatButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                })
+          ],
+        );
+      },
+      context: context,
+    );
+  }
 }

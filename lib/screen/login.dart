@@ -1,3 +1,5 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
 import 'package:fyp/screen/RoadGang/loginRoadGang.dart';
 import 'package:fyp/screen/searchTask.dart';
@@ -18,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final AuthService _auth = AuthService();
   // text field state
-  String email = '', password = '', error = '';
+  String email = '', password = '', error = '', showError = ' ';
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool loading = false;
 
@@ -61,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRecordOfficer()));
             },
           ),
+
           FlatButton(
             child: Row(
               children: <Widget>[
@@ -154,15 +157,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                     'Log Masuk'
                                 ),
                                 onPressed: () async {
-                                  if( _formKey.currentState.validate()){
-                                    setState(() => loading = true);
-                                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-                                    if (result == null){
-                                      setState(() {
-                                        error = 'Pastikan e-mel anda sah!';
-                                        loading = false;
-                                      });
+                                  if (_formKey.currentState.validate()) {
+                                    try {
+                                      setState(() => loading = true);
+                                      dynamic result = await _auth
+                                          .signInWithEmailAndPassword(
+                                          email, password);
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                                      if (result == null) {
+                                        setState(() {
+                                          error = 'Pastikan e-mel anda sah!';
+                                          loading = false;
+                                        });
+                                      }
+                                    } on AuthException catch (error){
+                                        return _buildErrorDialog(context, error.message);
+                                    } on Exception catch (error) {
+                                      return _buildErrorDialog(context, error.toString());
                                     }
                                   }
                                 },
@@ -196,6 +207,24 @@ class _LoginScreenState extends State<LoginScreen> {
           )
         ],
       ),
+    );
+  }
+  Future _buildErrorDialog(BuildContext context, message) {
+    return showDialog(
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Error Message'),
+          content: Text(message),
+          actions: [
+            FlatButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                })
+          ],
+        );
+      },
+      context: context,
     );
   }
 }

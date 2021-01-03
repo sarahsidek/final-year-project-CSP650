@@ -32,6 +32,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                 itemBuilder: (BuildContext context, int index) {
                   Supervisor sv = snapshot.data[index];
                   return Card(
+                    color: Colors.grey[400],
+                    margin: EdgeInsets.only(left: 5.0,right: 5.0, top: 5.0,bottom: 5.0),
                     child: ListTile(
                         title: Container(
                           alignment: Alignment.centerLeft,
@@ -41,8 +43,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                    Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ],
                                 ),
                               ),
@@ -50,8 +52,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                    Text(sv.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text(sv.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ],
                                 ),
                               ),
@@ -59,18 +61,19 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                    Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ],
                                 ),
                               )
+
                             ],
                           ),
                         ),
                         subtitle: Row(
                           children: [
-                            Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                            Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                            Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                           ],
                         ),
                         trailing: Row(

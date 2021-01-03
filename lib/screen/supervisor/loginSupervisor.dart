@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/screen/supervisor/PageSupervisor.dart';
 import 'package:fyp/service/authSupervisor.dart';
 
@@ -100,15 +101,23 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                                     'Log Masuk'
                                 ),
                                 onPressed: () async {
-                                  if( _formKey.currentState.validate()){
-                                    setState(() => loading = true);
-                                    dynamic result = await _auth.signInSupervisor(email, icnumber);
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Supervisor()));
-                                    if (result == null){
-                                      setState(() {
-                                        error = 'Pastikan e-mel anda sah!';
-                                        loading = false;
-                                      });
+                                  if( _formKey.currentState.validate()) {
+                                    try {
+                                      setState(() => loading = true);
+                                      dynamic result = await _auth
+                                          .signInSupervisor(email, icnumber);
+                                      Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) => Supervisor()));
+                                      if (result == null) {
+                                        setState(() {
+                                          error = 'Pastikan e-mel anda sah!';
+                                          loading = false;
+                                        });
+                                      }
+                                    } on AuthException catch (error){
+                                      return _buildErrorDialog(context, error.message);
+                                    } on Exception catch (error) {
+                                      return _buildErrorDialog(context, error.toString());
                                     }
                                   }
                                 },
@@ -131,5 +140,22 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
       ),
     );
   }
-
+  Future _buildErrorDialog(BuildContext context, message) {
+    return showDialog(
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Error Message'),
+          content: Text(message),
+          actions: [
+            FlatButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                })
+          ],
+        );
+      },
+      context: context,
+    );
+  }
 }

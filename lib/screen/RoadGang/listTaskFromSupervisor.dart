@@ -13,7 +13,12 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Senarai Tugasan (Sah)",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          backgroundColor:  Colors.red[500],
+        ),
+    body: Container(
       child: StreamBuilder(
           stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Sah').snapshots(),
           builder: (context, snapshot){
@@ -29,6 +34,8 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                       _listOfImages.add(NetworkImage(ra['url'][i]));
                     }
                     return Card(
+                        margin: EdgeInsets.all(10),
+                        color: Colors.grey[400],
                         child:ListTile(
                           title: Container(
                             alignment: Alignment.centerLeft,
@@ -47,8 +54,8 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nombor Aduan: ", style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
-                                      Text(ra['noAduan'], style: GoogleFonts.lato(fontStyle: FontStyle.italic)),
+                                      Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                 ),
@@ -56,15 +63,34 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Kategori: ", style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
-                                      Text(ra['kategori'], style: GoogleFonts.arimo(fontWeight: FontWeight.w500)),
+                                      Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                 ),
+                                SizedBox(height: 5.0),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
+                                      Text("Kategori: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['kategori'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
+                                      Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text(ra['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
                                 Column(
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.all(10.0),
                                       height: 200,
                                       decoration: BoxDecoration(
                                           color: Colors.white
@@ -85,25 +111,6 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                               ],
                             ),
                           ),
-                          subtitle: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                               Column(
-                                 children: [
-                                   SizedBox(height: 10.0),
-                                   Container(alignment: Alignment.centerLeft,
-                                     child: Row(
-                                       children: [
-                                         Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                         Text(ra['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                         Text(ra['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                       ],
-                                     ),
-                                   ),
-                                 ],
-                               )
-                              ],
-                            ),
                             onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => AddCompleteTask(ra:ra)));
                           }
@@ -112,6 +119,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                   });
                }
           }),
+       )
        );
 }
 }
