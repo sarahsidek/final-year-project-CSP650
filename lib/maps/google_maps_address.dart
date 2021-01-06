@@ -7,6 +7,7 @@ import 'package:fyp/model/CompleteTask.dart';
 import 'package:fyp/model/Location.dart';
 import 'package:fyp/service/database.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:geocoder/geocoder.dart' as geoCo;
@@ -110,8 +111,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Google Maps"),
-        backgroundColor: Colors.redAccent,
+          title: Text("Peta ",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          backgroundColor: Colors.blue[800]
       ),
       body: Stack(
         children: [
@@ -152,7 +153,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.location_searching),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.blue[800],
         onPressed: () {
         getCurrentLocation();
         },

@@ -36,7 +36,6 @@ class _AddSupervisorState extends State<AddSupervisor> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
-                  SizedBox(height: 25.0),
                   TextFormField(
                     decoration: InputDecoration(
                         hintText: 'Nama',
@@ -87,8 +86,8 @@ class _AddSupervisorState extends State<AddSupervisor> {
 
                   const SizedBox(height: 20.0),
                   RaisedButton(
-                      color: Colors.redAccent,
-                      textColor: Colors.black,
+                      color: Colors.blue[800],
+                      textColor: Colors.white,
                       child: Text("Simpan"),
                       onPressed: () async {
                         if(_formKey.currentState.validate()){

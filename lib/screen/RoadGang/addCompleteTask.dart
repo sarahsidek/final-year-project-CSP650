@@ -257,11 +257,11 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                       width: 100.0,
                       height: 30.0,
                       decoration: BoxDecoration(
-                        color: Colors.redAccent,
+                          color: Colors.blue[800],
                         border: new Border.all(color: Colors.white70, width: 2.0),
                         borderRadius: new BorderRadius.circular(10.0)
                       ),
-                      child: Center(child: Text("Tambah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)))),
+                      child: Center(child: Text("Tambah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)))),
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
                     ),
@@ -276,14 +276,14 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                  }),
               SizedBox(height: 5.0),
               Container(
-                  color: Colors.white,
+                  color: Colors.white38,
                   height: 400,
                   child: Column(
                       children: <Widget>[
                         RaisedButton(
                           child: Text("Muat Naik Gambar"),
-                          color: Colors.redAccent,
-                          textColor: Colors.black,
+                          color: Colors.blue[800],
+                          textColor: Colors.white,
                           onPressed: loadAssets,
                         ),
                         Expanded(
@@ -293,8 +293,8 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                           children: [
                             RaisedButton(
                               child: Text("Simpan"),
-                              color: Colors.redAccent,
-                              textColor: Colors.black,
+                              color: Colors.blue[800],
+                              textColor: Colors.white,
                               onPressed: () async {
                                 alertDialog(context);
                               },
@@ -302,8 +302,8 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                             SizedBox(height: 10.0),
                             RaisedButton(
                               child: Text("Dapatkan lokasi anda"),
-                              color: Colors.redAccent,
-                              textColor: Colors.black87,
+                              color: Colors.blue[800],
+                              textColor: Colors.white,
                               onPressed: () async {
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => GoogleMaps(ctk: ct)));

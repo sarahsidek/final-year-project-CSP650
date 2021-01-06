@@ -52,14 +52,14 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'Buruh: Nama Pengguna',
+                              decoration: InputDecoration(labelText: 'Buruh: Email',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.text,
                               validator: (value)
                               {
                                 if(value.isEmpty)
                                 {
-                                  return 'Pastikan nama pengguna anda sah!';
+                                  return 'Pastikan email anda sah!';
                                 }
                                 return null;
                               },

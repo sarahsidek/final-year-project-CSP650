@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/screen/login.dart';
+import 'package:fyp/screen/MainPage.dart';
 import 'package:fyp/service/authSupervisor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fyp/screen/supervisor/ContainerRecordOfficer.dart' as first;
@@ -36,7 +36,7 @@ class _SupervisorState extends State<Supervisor> {
                   await _authSupervisor.signOut();
                   Navigator.push(context,
                       MaterialPageRoute(
-                          builder: (context) => LoginScreen()));
+                          builder: (context) => MainPage()));
                 })
           ],
           bottom: TabBar(

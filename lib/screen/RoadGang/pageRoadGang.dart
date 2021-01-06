@@ -1,7 +1,8 @@
+import 'package:fyp/screen/MainPage.dart';
+import 'package:fyp/screen/RoadGang/listOfLengkap.dart';
 import 'package:fyp/screen/RoadGang/listOfPenambaikanSemula.dart';
 import 'package:fyp/screen/RoadGang/listTaskFromSupervisor.dart';
 import 'package:flutter/material.dart';
-import 'package:fyp/screen/login.dart';
 import 'package:fyp/service/authRoadGang.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +30,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
                 await _authRoadGang.signOut();
                 Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context) => LoginScreen()));
+                        builder: (context) => MainPage()));
               })
         ],
       ),
@@ -83,6 +84,32 @@ class _RoadGangHomeState extends State<RoadGangHome> {
                           children: [
                             new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                             new Text("Lengkap (Tidak Sah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Card(
+              margin: EdgeInsets.all(10),
+              color: Colors.white38,
+              child: Column(
+                children: [
+                  SizedBox(height: 10, width: 25,),
+                  RaisedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfLengkap()));
+                    },
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green,),
+                        Column(
+                          children: [
+                            new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                            new Text("Lengkap (Sah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
                       ],

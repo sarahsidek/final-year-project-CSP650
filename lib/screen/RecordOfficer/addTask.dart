@@ -432,24 +432,22 @@ class _AddTaskState extends State<AddTask> {
                     children: <Widget>[
                       RaisedButton(
                         child: Text("Muat naik Gambar"),
-                        color: Colors.redAccent,
+                        color: Colors.blue[800],
                         textColor: Colors.black,
                         onPressed: loadAssets,
                       ),
                       Expanded(
                         child: buildGridView(),
                       ),
-                      Row(
-                        children: [
-                          RaisedButton(
-                            child: Text("Simpan"),
-                            color: Colors.redAccent,
-                            textColor: Colors.black,
-                            onPressed: () async{
-                              alertDialog(context);
-                            },
-                          ),
-                        ],
+                      Center(
+                        child: RaisedButton(
+                          child: Text("Simpan"),
+                          color: Colors.blue[800],
+                          textColor: Colors.black,
+                          onPressed: () async{
+                            alertDialog(context);
+                          },
+                        ),
                       ),
                     ]
                  )

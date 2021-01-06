@@ -609,8 +609,8 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               ),
               const SizedBox(height: 20.0),
               RaisedButton(
-                  color: Colors.redAccent,
-                  textColor: Colors.black,
+                  color: Colors.blue[800],
+                  textColor: Colors.white,
                   child: Text("Kemaskini"),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {

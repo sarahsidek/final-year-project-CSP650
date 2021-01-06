@@ -70,9 +70,9 @@ flutter:
   assets:
     - assets/mpbj2.png
     - assets/admin.png
-    - assets/recordofficer.png
-    - assets/roadgang.png
     - assets/supervisor.png
+    - assets/laborers.png
+    - assets/penyelia.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

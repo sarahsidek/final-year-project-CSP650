@@ -520,7 +520,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
                     hintText: 'Name',
@@ -600,8 +599,8 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               ),
               const SizedBox(height: 20.0),
               RaisedButton(
-                  color: Colors.redAccent,
-                  textColor: Colors.black,
+                  color: Colors.blue[800],
+                  textColor: Colors.white,
                   child: Text("Simpan"),
                   onPressed: () async {
                           if(_formKey.currentState.validate()){

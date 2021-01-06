@@ -186,7 +186,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
-                                    color: Colors.red[500],
+                                    color: Colors.blue[800],
                                     child: Text("Sah",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
@@ -207,7 +207,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
-                                    color: Colors.red[500],
+                                    color: Colors.blue[800],
                                     child: Text("Tidak Sah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: ()async{
                                       alertDialog(id);

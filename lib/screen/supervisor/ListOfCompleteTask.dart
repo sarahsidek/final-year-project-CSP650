@@ -174,7 +174,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
-                                    color: Colors.redAccent,
+                                    color: Colors.blue[800],
                                     child: Text("Lengkap", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: () async {
                                       Firestore.instance.collection('CompleteTask').document(id).updateData({
@@ -195,7 +195,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
-                                    color: Colors.redAccent,
+                                    color:  Colors.blue[800],
                                     child: Text("Penambaikan Semula", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: () async {
                                       alertDialog(id);

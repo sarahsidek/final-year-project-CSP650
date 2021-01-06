@@ -119,7 +119,7 @@ class _MainPageState extends State<MainPage> {
                         child: new Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/recordofficer.png',height: 110, width: 100,),
+                            Image.asset('assets/penyelia.png',height: 110, width: 100,),
                             Column(
                               children: [
                                 new Text("Peg. Merekod", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
@@ -144,7 +144,7 @@ class _MainPageState extends State<MainPage> {
                         child: new Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/roadgang.png',height: 110, width: 100,),
+                            Image.asset('assets/laborers.png',height: 110, width: 100,),
                             Column(
                               children: [
                                 new Text("Road Gang", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),

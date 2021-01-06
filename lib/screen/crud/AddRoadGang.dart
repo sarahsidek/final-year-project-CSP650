@@ -30,14 +30,13 @@ class _AddRoadGangState extends State<AddRoadGang> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Nama Pengguna',
+                    hintText: 'Email',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
-                validator: (value) => value.isEmpty ? 'Pastikan name pengguna dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan email dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => name = value);
                 },
@@ -56,8 +55,8 @@ class _AddRoadGangState extends State<AddRoadGang> {
               ),
               const SizedBox(height: 20.0),
               RaisedButton(
-                  color: Colors.redAccent,
-                  textColor: Colors.black,
+                  color: Colors.blue[800],
+                  textColor: Colors.white,
                   child: Text("Simpan"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){

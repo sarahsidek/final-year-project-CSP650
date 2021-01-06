@@ -1,11 +1,10 @@
 
+import 'package:fyp/screen/MainPage.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskNotAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/ListTask.dart';
 import 'package:fyp/screen/RecordOfficer/addTask.dart';
-
 import 'package:flutter/material.dart';
-import 'package:fyp/screen/login.dart';
 import 'package:fyp/service/authRecordOfficer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -46,7 +45,7 @@ class _RecordOfficerState extends State<RecordOfficer> {
                     await _officer.signOut();
                     Navigator.push(context,
                         MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
+                            builder: (context) => MainPage()));
                   }),
             ],
           )

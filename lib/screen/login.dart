@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              color: Colors.blue[700]
+              color: Colors.blue[800]
           ),
         ),
         actions: <Widget>[
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-                color: Colors.blue[700]
+                color: Colors.blue[800]
             ),
           ),
           Image.asset('assets/mpbj2.png', height: 150, width: 450),
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
-                                color: Colors.blue,
+                                color: Colors.blue[800],
                                 textColor: Colors.white,
                               ),
                               RaisedButton(
@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
-                                color: Colors.blue,
+                                color: Colors.blue[800],
                                 textColor: Colors.white,
                               ),
                             ],

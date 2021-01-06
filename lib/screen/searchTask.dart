@@ -22,8 +22,8 @@ class _SearchTaskState extends State<SearchTask> {
          itemCount: snapshotData.documents.length,
          itemBuilder: (BuildContext context, int index){
            _listOfImages =[];
-           for(int i =0; i <snapshotData.documents[index].data['url'].length; i++){
-             _listOfImages.add(NetworkImage(snapshotData.documents[index].data['url'][i]));
+           for(int i =0; i <snapshotData.documents[index].data['completeTask'].length; i++){
+             _listOfImages.add(NetworkImage(snapshotData.documents[index].data['completeTask'][i]));
            }
            return Card(
              child: ListTile(
@@ -54,7 +54,16 @@ class _SearchTaskState extends State<SearchTask> {
                           children: [
                             Text("Kawasan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['kawasan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                            Text(snapshotData.documents[index].data['naJalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text(snapshotData.documents[index].data['jalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 5.0),
+                      Container(alignment: Alignment.centerLeft,
+                        child: Row(
+                          children: [
+                            Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text(snapshotData.documents[index].data['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
@@ -109,7 +118,7 @@ class _SearchTaskState extends State<SearchTask> {
          ),
          controller: search,
        ),
-       backgroundColor: Colors.redAccent,
+       backgroundColor: Colors.blue[800]
      ),
       body: isExecuted ? searchData() : Container (
         child: Center(

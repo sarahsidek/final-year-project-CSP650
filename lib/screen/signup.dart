@@ -23,12 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              gradient:  LinearGradient(
-                  colors: [
-                    Colors.blueAccent,
-                    Colors.greenAccent
-                  ]
-              )
+              color: Colors.blue[800]
           ),
         ),
       ),
@@ -36,12 +31,7 @@ class _SignupScreenState extends State<SignupScreen> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [
-                      Colors.blueAccent,
-                      Colors.greenAccent
-                    ]
-                )
+                color: Colors.blue[800]
             ),
           ),
           Center(
@@ -150,7 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            color: Colors.blue,
+                            color: Colors.blue[800],
                             textColor: Colors.white,
                           ),
                         ],
