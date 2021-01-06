@@ -511,7 +511,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Pegawai Merekod",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-        backgroundColor:  Colors.red[500],
+        backgroundColor: Colors.blue[800]
       ),
       body: Form(
         key: _formKey,

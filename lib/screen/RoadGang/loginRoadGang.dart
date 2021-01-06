@@ -23,7 +23,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Colors.redAccent,
+              color: Colors.blue[700]
           ),
         ),
       ),
@@ -32,7 +32,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
           Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.redAccent,
+                color: Colors.blue[700],
             ),
           ),
           Image.asset('assets/mpbj2.png', height: 150, width: 450),
@@ -113,7 +113,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
-                                color: Colors.redAccent,
+                                color: Colors.blue[700],
                                 textColor: Colors.white,
                               ),
                             ],

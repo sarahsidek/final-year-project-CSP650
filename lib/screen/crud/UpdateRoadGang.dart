@@ -35,7 +35,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Kemaskini Maklumat Kakitangan Buruh'),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.blue[800],
         ),
         body: Form(
           key: _formKey,

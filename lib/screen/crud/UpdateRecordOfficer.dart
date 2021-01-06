@@ -535,7 +535,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Kemaskini Maklumat Pegawai Merekod"),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.blue[800],
       ),
       body: Form(
         key: _formKey,

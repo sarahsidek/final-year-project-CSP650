@@ -28,7 +28,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Colors.redAccent,
+              color: Colors.blue[800]
           ),
         ),
       ),
@@ -37,7 +37,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
           Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: Colors.redAccent,
+                color: Colors.blue[800]
             ),
           ),
           Image.asset('assets/mpbj2.png', height: 150, width: 450),
@@ -124,7 +124,7 @@ class _LoginSupervisorState extends State<LoginSupervisor> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
-                                color: Colors.redAccent,
+                                color: Colors.blue[800],
                                 textColor: Colors.white,
                               ),
                             ],

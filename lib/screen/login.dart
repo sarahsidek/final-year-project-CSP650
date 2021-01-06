@@ -1,13 +1,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
-import 'package:fyp/screen/RoadGang/loginRoadGang.dart';
 import 'package:fyp/screen/searchTask.dart';
-import 'package:fyp/screen/supervisor/loginSupervisor.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/signup.dart';
 import 'package:fyp/service/auth.dart';
 import 'package:fyp/screen/homepage.dart';
+
 
 
 
@@ -32,53 +30,14 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              gradient:  LinearGradient(
-                  colors: [
-                    Colors.blueAccent,
-                    Colors.redAccent
-                  ]
-              )
+              color: Colors.blue[700]
           ),
         ),
         actions: <Widget>[
-          FlatButton(
-            child: Row(
-              children: <Widget>[
-                Text('Penyelia'),
-              ],
-            ),
-            textColor: Colors.black87,
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginSupervisor()));
-            },
-          ),
-          FlatButton(
-            child: Row(
-              children: <Widget>[
-                Text('Peg. Merekod'),
-              ],
-            ),
-            textColor: Colors.black87,
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRecordOfficer()));
-            },
-          ),
-
-          FlatButton(
-            child: Row(
-              children: <Widget>[
-                Text('Buruh '),
-              ],
-            ),
-            textColor: Colors.black87,
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRoadGang()));
-            },
-          ),
           IconButton(
               icon: Icon(
-                Icons.logout,
-                color: Colors.white,
+                Icons.arrow_forward_ios,
+                color: Colors.black87,
               ),
               onPressed:() async{
                 Navigator.push(context,
@@ -91,12 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [
-                      Colors.blueAccent,
-                      Colors.redAccent
-                    ]
-                )
+                color: Colors.blue[700]
             ),
           ),
           Image.asset('assets/mpbj2.png', height: 150, width: 450),

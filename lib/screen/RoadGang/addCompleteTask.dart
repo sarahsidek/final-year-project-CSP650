@@ -179,7 +179,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Tugasan Lengkap",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-        backgroundColor:  Colors.red[500],
+        backgroundColor:  Colors.blue[800],
       ),
       body: Form(
         child: SingleChildScrollView(

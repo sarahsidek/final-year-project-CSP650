@@ -1,6 +1,7 @@
 import 'package:fyp/service/authSupervisor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class AddSupervisor extends StatefulWidget {
@@ -25,8 +26,8 @@ class _AddSupervisorState extends State<AddSupervisor> {
   Widget build(BuildContext context) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Penyelia'),
-            backgroundColor: Colors.redAccent,
+            title: Text("Penyelia",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+            backgroundColor:  Colors.blue[800]
           ),
           body: Form(
             key: _formKey,

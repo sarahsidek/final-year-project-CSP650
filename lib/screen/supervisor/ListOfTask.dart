@@ -22,7 +22,7 @@ class _ListOfTaskState extends State<ListOfTask> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Senarai Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-          backgroundColor:  Colors.red[500],
+          backgroundColor:  Colors.blue[800],
         ),
      body:Container(
       child: StreamBuilder(

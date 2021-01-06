@@ -47,7 +47,7 @@ void initState(){
       return Scaffold(
           appBar: AppBar(
             title: Text('Kemaskini Maklumat Penyelia'),
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.blue[800],
           ),
           body: Form(
             key: _formKey,

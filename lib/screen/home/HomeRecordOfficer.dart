@@ -8,7 +8,7 @@ class HomeRecordOfficer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor:Colors.blue[800],
         title: Text('Pegawai Merekod'),
         actions: <Widget>[
           IconButton(

@@ -13,7 +13,7 @@ class HomeSupervisor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor:Colors.blue[800],
         title: Text('Penyelia'),
         actions: <Widget>[
           Row(

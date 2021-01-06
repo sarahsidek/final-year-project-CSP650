@@ -7,7 +7,7 @@ class HomeRoadGang extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.blue[800],
         title: Text('Buruh Kakitangan'),
         actions: <Widget>[
           IconButton(

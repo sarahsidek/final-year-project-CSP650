@@ -24,7 +24,7 @@ class _SupervisorState extends State<Supervisor> {
       child:   Scaffold(
         appBar: AppBar(
           title: Text("Penyelia",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18,  color: Colors.black87)),
-          backgroundColor:  Colors.red[500],
+          backgroundColor:  Colors.blue[800],
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
@@ -42,7 +42,7 @@ class _SupervisorState extends State<Supervisor> {
           bottom: TabBar(
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(0.5),
-              color: Colors.redAccent[100],
+              color: Colors.blue[800],
             ),
             tabs: [
               Tab(

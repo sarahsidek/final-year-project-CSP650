@@ -1,5 +1,6 @@
 import 'package:fyp/service/authRoadGang.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class AddRoadGang extends StatefulWidget {
@@ -19,8 +20,8 @@ class _AddRoadGangState extends State<AddRoadGang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kakitangan Buruh'),
-        backgroundColor: Colors.redAccent,
+        title: Text("Buruh Kakitangan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        backgroundColor:  Colors.blue[800],
       ),
       body: Form(
         key: _formKey,
