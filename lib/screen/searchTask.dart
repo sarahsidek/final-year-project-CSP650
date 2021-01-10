@@ -54,7 +54,7 @@ class _SearchTaskState extends State<SearchTask> {
                           children: [
                             Text("Kawasan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['kawasan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                            Text(snapshotData.documents[index].data['jalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text(snapshotData.documents[index].data['naJalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),

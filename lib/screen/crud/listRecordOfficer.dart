@@ -36,8 +36,8 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                      Text(rd.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text(rd.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
                                 ),
@@ -45,8 +45,8 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                      Text(rd.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text(rd.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
                                 ),
@@ -54,8 +54,8 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Zon:" , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                      Text(rd.zon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("Zon:" , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text(rd.zon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
                                 ),
@@ -63,7 +63,7 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text(rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text(rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 12)),
                                     ],
                                   ),
                                 ),

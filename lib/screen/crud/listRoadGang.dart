@@ -36,7 +36,7 @@ class _ListRoadGangState extends State<ListRoadGang> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Column(
                                     children: [
-                                      Text(rg.username, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text(rg.username, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
                                 ),
@@ -48,8 +48,8 @@ class _ListRoadGangState extends State<ListRoadGang> {
                               alignment: Alignment.centerLeft,
                             child:Row(
                               children: [
-                                Text("Password: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                Text(rg.password, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                Text("Password: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                Text(rg.password, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                               ],
                             ),
                           ),

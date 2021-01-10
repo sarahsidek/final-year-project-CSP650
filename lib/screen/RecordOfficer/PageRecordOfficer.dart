@@ -58,11 +58,10 @@ class _RecordOfficerState extends State<RecordOfficer> {
         crossAxisCount: 2,
         children: [
           Card(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(20),
             color: Colors.white38,
             child: Column(
               children: [
-                SizedBox(height: 10, width: 25,),
                 RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
@@ -84,11 +83,10 @@ class _RecordOfficerState extends State<RecordOfficer> {
             ),
           ),
           Card(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(20),
             color: Colors.white38,
             child: Column(
               children: [
-                SizedBox(height: 10, width: 25,),
                 RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskAccepted()));
@@ -110,11 +108,10 @@ class _RecordOfficerState extends State<RecordOfficer> {
             ),
           ),
           Card(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(20),
             color: Colors.white38,
             child: Column(
               children: [
-                SizedBox(height: 10, width: 25,),
                 RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
@@ -132,7 +129,6 @@ class _RecordOfficerState extends State<RecordOfficer> {
                     ],
                   ),
                 ),
-
               ],
             ),
           ),

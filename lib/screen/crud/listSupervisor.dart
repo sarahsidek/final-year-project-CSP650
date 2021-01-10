@@ -43,8 +43,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                    Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
                               ),
@@ -52,8 +52,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                    Text(sv.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text(sv.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
                               ),
@@ -61,8 +61,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                    Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
                               )
@@ -72,8 +72,8 @@ class _ListSupervisorState extends State<ListSupervisor> {
                         ),
                         subtitle: Row(
                           children: [
-                            Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                            Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                            Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                            Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
                         trailing: Row(

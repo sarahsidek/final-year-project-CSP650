@@ -46,22 +46,28 @@ class _MainPageState extends State<MainPage> {
           ),
           Image.asset('assets/mpbj2.png', height: 110, width: 450),
           Container(
-            margin: EdgeInsets.only(top: 120,left: 50),
-             child:  new Text("Tracing Work Task Mobile Application", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+            margin: EdgeInsets.only(top: 120),
+             child:  Center(
+               child: Column(
+                 children: [
+                   new Text("Tracing Work Task Majlis", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+                   new Text("Bandaraya Petaling Jaya ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+                 ],
+               ),
+             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 150),
+            margin: EdgeInsets.only(top: 180),
             child: GridView.count(
               crossAxisSpacing: 15.0,
               primary: false,
               crossAxisCount: 2,
               children: [
               Card(
-                margin: EdgeInsets.all(15),
+                margin: EdgeInsets.all(30),
                 color: Colors.white38,
                 child: Column(
                   children: [
-                    SizedBox(height: 15, width: 25,),
                     RaisedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -82,11 +88,10 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
                 Card(
-                  margin: EdgeInsets.all(15),
+                  margin: EdgeInsets.all(30),
                   color: Colors.white38,
                   child: Column(
                     children: [
-                      SizedBox(height: 15, width: 25,),
                       RaisedButton(
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginSupervisor()));
@@ -107,11 +112,10 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Card(
-                  margin: EdgeInsets.all(15),
+                  margin: EdgeInsets.all(30),
                   color: Colors.white38,
                   child: Column(
                     children: [
-                      SizedBox(height: 15, width: 25,),
                       RaisedButton(
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRecordOfficer()));
@@ -132,11 +136,10 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Card(
-                  margin: EdgeInsets.all(15),
+                  margin: EdgeInsets.all(30),
                   color: Colors.white38,
                   child: Column(
                     children: [
-                      SizedBox(height: 15, width: 25,),
                       RaisedButton(
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRoadGang()));

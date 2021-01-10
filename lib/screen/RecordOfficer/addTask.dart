@@ -316,7 +316,6 @@ class _AddTaskState extends State<AddTask> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
                     labelText: "Pilih Tarikh",
