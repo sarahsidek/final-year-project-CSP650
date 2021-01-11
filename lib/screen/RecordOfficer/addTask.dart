@@ -316,16 +316,23 @@ class _AddTaskState extends State<AddTask> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
                     labelText: "Pilih Tarikh",
                     prefixIcon: Icon(Icons.calendar_today),
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 readOnly: true,
-                onChanged: (value){
-                  setState(() {
-                    _dateTime = value as DateTime;
+                onTap: (){
+                  showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2021),
+                    lastDate: DateTime(2222)
+                  ).then((value) {
+                    setState(() {
+                      _dateTime = value;
+                    });
                   });
                 },
               ),

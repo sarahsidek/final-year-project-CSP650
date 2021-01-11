@@ -57,77 +57,53 @@ class _RecordOfficerState extends State<RecordOfficer> {
         primary: false,
         crossAxisCount: 2,
         children: [
-          Card(
-            margin: EdgeInsets.all(20),
-            color: Colors.white38,
-            child: Column(
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
+            },
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
-                  },
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
-                      Column(
-                        children: [
-                          new Text("Senarai Semua", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                          new Text("Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        ],
-                      ),
-                    ],
-                  ),
+                new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
+                Column(
+                  children: [
+                    new Text("Senarai Semua", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                  ],
                 ),
               ],
             ),
           ),
-          Card(
-            margin: EdgeInsets.all(20),
-            color: Colors.white38,
-            child: Column(
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskAccepted()));
+            },
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskAccepted()));
-                  },
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green[400],),
-                      Column(
-                        children: [
-                          new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                          new Text("Diterima", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        ],
-                      ),
-                    ],
-                  ),
+                new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green[400],),
+                Column(
+                  children: [
+                    new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("Diterima", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                  ],
                 ),
               ],
             ),
           ),
-          Card(
-            margin: EdgeInsets.all(20),
-            color: Colors.white38,
-            child: Column(
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
+            },
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
-                  },
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red[500],),
-                      Column(
-                        children: [
-                          new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                          new Text("Ditolak", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        ],
-                      ),
-                    ],
-                  ),
+                new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red[500],),
+                Column(
+                  children: [
+                    new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("Ditolak", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                  ],
                 ),
               ],
             ),

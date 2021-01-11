@@ -232,10 +232,16 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.datetime,
-                onChanged: (value) {
-                  setState(() {
-                    _dateTime = value as DateTime;
+                onTap: (){
+                  showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2021),
+                      lastDate: DateTime(2222)
+                  ).then((value) {
+                    setState(() {
+                      _dateTime = value;
+                    });
                   });
                 },
               ),

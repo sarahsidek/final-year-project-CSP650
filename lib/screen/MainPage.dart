@@ -44,7 +44,9 @@ class _MainPageState extends State<MainPage> {
                 color: Colors.blue[800]
             ),
           ),
-          Image.asset('assets/mpbj2.png', height: 110, width: 450),
+          Container(
+
+              child: Image.asset('assets/mpbj2.png', height: 100, width: 450)),
           Container(
             margin: EdgeInsets.only(top: 120),
              child:  Center(
@@ -57,106 +59,87 @@ class _MainPageState extends State<MainPage> {
              ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 180),
+            margin: EdgeInsets.only(top: 200),
             child: GridView.count(
               crossAxisSpacing: 15.0,
+              mainAxisSpacing: 10,
               primary: false,
               crossAxisCount: 2,
               children: [
-              Card(
-                margin: EdgeInsets.all(30),
-                color: Colors.white38,
-                child: Column(
-                  children: [
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                      },
-                      child: new Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                         Image.asset('assets/admin.png',height: 110, width: 100,),
-                          Column(
-                            children: [
-                              new Text("Admin", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                            ],
-                          ),
-                        ],
-                      ),
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/admin.png',height: 100, width: 100,),
+                        Column(
+                          children: [
+                            new Text("Admin", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-                Card(
-                  margin: EdgeInsets.all(30),
-                  color: Colors.white38,
-                  child: Column(
-                    children: [
-                      RaisedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginSupervisor()));
-                        },
-                        child: new Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/supervisor.png',height: 110, width: 100,),
-                            Column(
-                              children: [
-                                new Text("Penyelia", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-                Card(
-                  margin: EdgeInsets.all(30),
-                  color: Colors.white38,
-                  child: Column(
-                    children: [
-                      RaisedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRecordOfficer()));
-                        },
-                        child: new Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginSupervisor()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/supervisor.png',height: 110, width: 100,),
+                        Column(
                           children: [
-                            Image.asset('assets/penyelia.png',height: 110, width: 100,),
-                            Column(
-                              children: [
-                                new Text("Peg. Merekod", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                              ],
-                            ),
+                            new Text("Penyelia", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-                Card(
-                  margin: EdgeInsets.all(30),
-                  color: Colors.white38,
-                  child: Column(
-                    children: [
-                      RaisedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRoadGang()));
-                        },
-                        child: new Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRecordOfficer()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/penyelia.png',height: 110, width: 100,),
+                        Column(
                           children: [
-                            Image.asset('assets/laborers.png',height: 110, width: 100,),
-                            Column(
-                              children: [
-                                new Text("Road Gang", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                              ],
-                            ),
+                            new Text("Peg. Merekod", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginRoadGang()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/laborers.png',height: 110, width: 100,),
+                        Column(
+                          children: [
+                            new Text("Road Gang", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
              ]

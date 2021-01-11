@@ -40,80 +40,53 @@ class _RoadGangHomeState extends State<RoadGangHome> {
           primary: false,
           crossAxisCount: 2,
           children: [
-      Card(
-      margin: EdgeInsets.all(10),
-      color: Colors.white38,
-      child: Column(
-        children: [
-          SizedBox(height: 10, width: 25,),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ListTaskFromSupervisor()));
-            },
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
-                Column(
-                  children: [
-                    new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                    new Text("Penyelia", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      ),
-            Card(
-              margin: EdgeInsets.all(10),
-              color: Colors.white38,
-              child: Column(
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListTaskFromSupervisor()));
+              },
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 10, width: 25,),
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfPenambaikanSemula()));
-                    },
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red,),
-                        Column(
-                          children: [
-                            new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                            new Text("Lengkap (Tidak Sah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                          ],
-                        ),
-                      ],
-                    ),
+                  new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
+                  Column(
+                    children: [
+                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("Penyelia", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    ],
                   ),
                 ],
               ),
             ),
-            Card(
-              margin: EdgeInsets.all(10),
-              color: Colors.white38,
-              child: Column(
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfPenambaikanSemula()));
+              },
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 10, width: 25,),
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfLengkap()));
-                    },
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green,),
-                        Column(
-                          children: [
-                            new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                            new Text("Lengkap (Sah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                          ],
-                        ),
-                      ],
-                    ),
+                  new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red,),
+                  Column(
+                    children: [
+                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("Lengkap (TidakSah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfLengkap()));
+              },
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green,),
+                  Column(
+                    children: [
+                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("Lengkap (Sah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    ],
                   ),
                 ],
               ),
