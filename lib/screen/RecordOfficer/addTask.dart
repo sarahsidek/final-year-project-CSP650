@@ -9,6 +9,7 @@ import 'package:fyp/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
+
 class AddTask extends StatefulWidget {
 
 
@@ -20,13 +21,13 @@ class _AddTaskState extends State<AddTask> {
 
   // text field state
   DateTime _dateTime = DateTime.now();
+
   String noAduan;
   String kerosakan;
   String imageUrl;
   String landmark;
   String kategori;
   String sumberAduan;
-
   File image;
   Task tk;
   List<Asset> images = List<Asset>();
@@ -43,7 +44,7 @@ class _AddTaskState extends State<AddTask> {
   String _selectKawasan;
   String _selectNamaJalan;
   bool disableDrop = true;
-
+  
   @override
   void initState() {
     super.initState();
@@ -323,18 +324,12 @@ class _AddTaskState extends State<AddTask> {
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 readOnly: true,
-                onTap: (){
-                  showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2021),
-                    lastDate: DateTime(2222)
-                  ).then((value) {
-                    setState(() {
-                      _dateTime = value;
-                    });
+                 onChanged: (value){
+                  setState(() {
+                    _dateTime = value as DateTime;
+                    print(_dateTime);
                   });
-                },
+                 },
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
@@ -452,6 +447,7 @@ class _AddTaskState extends State<AddTask> {
                           textColor: Colors.black,
                           onPressed: () async{
                             alertDialog(context);
+
                           },
                         ),
                       ),
@@ -477,7 +473,7 @@ class _AddTaskState extends State<AddTask> {
                 child: Text('Ok'),
                 onPressed: () async {
                   uploadImage(_dateTime, sumberAduan, noAduan, kategori, id);
-                  Navigator.pop(context);
+
                 },
               ),
             ],

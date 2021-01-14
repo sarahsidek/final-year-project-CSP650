@@ -21,16 +21,26 @@ class _SearchTaskState extends State<SearchTask> {
        return ListView.builder(
          itemCount: snapshotData.documents.length,
          itemBuilder: (BuildContext context, int index){
+           DateTime myDatetime = (snapshotData.documents[index].data['time']).toDate();
            _listOfImages =[];
            for(int i =0; i <snapshotData.documents[index].data['completeTask'].length; i++){
              _listOfImages.add(NetworkImage(snapshotData.documents[index].data['completeTask'][i]));
            }
+
            return Card(
              child: ListTile(
                 title: Container(
                   alignment: Alignment.centerLeft,
                   child: Column(
                     children: [
+                      Container(alignment: Alignment.centerLeft,
+                        child: Row(
+                          children: [
+                            Text("$myDatetime ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+
+                          ],
+                        ),
+                      ),
                       Container(alignment: Alignment.centerLeft,
                         child: Row(
                           children: [

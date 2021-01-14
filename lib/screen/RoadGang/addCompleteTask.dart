@@ -10,6 +10,8 @@ import 'package:fyp/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
+
+
 class AddCompleteTask extends StatefulWidget {
 
   final DocumentSnapshot ra;
@@ -232,18 +234,11 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5))),
-                onTap: (){
-                  showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2021),
-                      lastDate: DateTime(2222)
-                  ).then((value) {
-                    setState(() {
-                      _dateTime = value;
-                    });
+                 onChanged: (value){
+                  setState(() {
+                    _dateTime = value as DateTime;
                   });
-                },
+                 },
               ),
               SizedBox(height: 5.0),
               ListView.separated(
