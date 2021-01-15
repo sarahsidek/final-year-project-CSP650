@@ -307,7 +307,7 @@ class _AddTaskState extends State<AddTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Borang Aduan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("Borang Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Form(
@@ -333,8 +333,8 @@ class _AddTaskState extends State<AddTask> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Sumber Aduan'),
                 decoration: InputDecoration(
+                    labelText: "Sumber Aduan",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -355,6 +355,7 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
+                  labelText: "Nombor Aduan",
                     hintText: 'Nombor Aduan ',
                     prefixIcon: Icon(Icons.confirmation_number_sharp),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -366,8 +367,8 @@ class _AddTaskState extends State<AddTask> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Lokasi: Kawasan'),
                 decoration: InputDecoration(
+                  labelText: "Lokasi Kawasan",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -383,8 +384,8 @@ class _AddTaskState extends State<AddTask> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Nama Jalan'),
                 decoration: InputDecoration(
+                  labelText: "Nama Jalan",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -395,8 +396,8 @@ class _AddTaskState extends State<AddTask> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('Kategori'),
                 decoration: InputDecoration(
+                  labelText: "Kategori",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -417,8 +418,8 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: "Kerosakan",
-                    prefixIcon: Icon(Icons.add_location),
+                    labelText: "Kerosakan",
+                    prefixIcon: Icon(Icons.home_repair_service),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
                 onChanged: (value) {
@@ -431,24 +432,32 @@ class _AddTaskState extends State<AddTask> {
               height: 400,
               child: Column(
                     children: <Widget>[
-                      RaisedButton(
-                        child: Text("Muat naik Gambar"),
-                        color: Colors.blue[800],
-                        textColor: Colors.black,
-                        onPressed: loadAssets,
+                      SizedBox(
+                        height: 40,
+                        width: 150,
+                        child: RaisedButton(
+                          child: Text("Muat naik Gambar"),
+                          color: Colors.blue[800],
+                          textColor: Colors.black,
+                          onPressed: loadAssets,
+                        ),
                       ),
                       Expanded(
                         child: buildGridView(),
                       ),
                       Center(
-                        child: RaisedButton(
-                          child: Text("Simpan"),
-                          color: Colors.blue[800],
-                          textColor: Colors.black,
-                          onPressed: () async{
-                            alertDialog(context);
+                        child: SizedBox(
+                          height: 40,
+                          width: 150,
+                          child: RaisedButton(
+                            child: Text("Simpan"),
+                            color: Colors.blue[800],
+                            textColor: Colors.black,
+                            onPressed: () async{
+                              alertDialog(context);
 
-                          },
+                            },
+                          ),
                         ),
                       ),
                     ]

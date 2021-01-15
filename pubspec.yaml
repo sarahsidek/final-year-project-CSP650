@@ -75,6 +75,7 @@ flutter:
     - assets/supervisor.png
     - assets/laborers.png
     - assets/penyelia.png
+    - assets/user_manual.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -38,7 +38,7 @@ class _AddSupervisorState extends State<AddSupervisor> {
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Nama',
+                        labelText: "Nama",
                         prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.text,
@@ -50,11 +50,11 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'No Kad Pengenalan',
+                        labelText: "No Kad Pengenalan",
                         prefixIcon: Icon(Icons.perm_contact_calendar),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
-                    validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'Pastikan Kad Pengenalan dilengkapkan!': null,
                     onChanged: (value) {
                       setState(() => uniqueID = value);
                     },
@@ -62,7 +62,7 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'E-mel',
+                        labelText: "E-mel",
                         prefixIcon: Icon(Icons.email),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.emailAddress,
@@ -74,7 +74,7 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Nombor Telefon',
+                        labelText: "Nombor Telefon",
                         prefixIcon: Icon(Icons.phone),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,

@@ -60,10 +60,11 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                   ),
                                 ),
                                 SizedBox(height: 5.0),
-                                Container(alignment: Alignment.centerLeft,
-                                  child: Row(
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Column(
                                     children: [
-                                      Text(rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 12)),
+                                      Text("Pegawai Zon: " + rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
                                 ),

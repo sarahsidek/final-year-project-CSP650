@@ -108,6 +108,23 @@ class _RecordOfficerState extends State<RecordOfficer> {
               ],
             ),
           ),
+          RaisedButton(
+            onPressed: () {
+             //Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotAccepted()));
+            },
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                new Icon(Icons.book,  size: 110),
+                Column(
+                  children: [
+                    new Text("Panduan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("Pengguna", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       )
     );

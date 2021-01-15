@@ -25,7 +25,7 @@ class _ListTaskState extends State<ListTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("Senarai Semua Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
           backgroundColor:  Colors.blue[800]
         ),
     body: Container(

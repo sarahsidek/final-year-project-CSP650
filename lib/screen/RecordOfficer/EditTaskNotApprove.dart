@@ -53,6 +53,7 @@ class _EditTaskState extends State<EditTask> {
               DropdownButtonFormField(
                 hint:Text(widget.da.data['sumberAduan']),
                 decoration: InputDecoration(
+                    labelText: "Sumber Aduan",
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,
@@ -74,6 +75,7 @@ class _EditTaskState extends State<EditTask> {
               DropdownButtonFormField(
                 hint:Text(widget.da.data['kategori']),
                 decoration: InputDecoration(
+                    labelText: "Kategori",
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,

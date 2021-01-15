@@ -58,40 +58,42 @@ void initState(){
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Nama',
+                        labelText: "Nama",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.text,
+                    validator: (value) => value.isEmpty ? 'Pastikan nama dilengkapkan!': null,
                     controller: _name,
                   ),
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'E-mel',
+                        labelText: "No kad Pengenalan",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    keyboardType: TextInputType.number,
+                    validator: (value) => value.isEmpty ? 'Pastikan Kad Pengenalan dilengkapkan!': null,
+                    controller: _icnumber,
+                  ),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: "E-mel",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.emailAddress,
+                    validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
                     controller: _email,
-
                   ),
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'Nombor Telefon',
+                        labelText: "Nombor Telefon",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
+                    validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
                     controller: _nophone,
-
-                  ),
-                  SizedBox(height: 10.0),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: 'No kad Pengenalan',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                    keyboardType: TextInputType.number,
-                    controller: _icnumber,
                   ),
                   const SizedBox(height: 20.0),
                   RaisedButton(

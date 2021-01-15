@@ -46,21 +46,22 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
               children: <Widget>[
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'Nama',
+                      labelText: "E-mel",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
                   controller: _name,
                 ),
                 SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
-                      hintText: 'E-mel',
+                      labelText: "Kata Laluan",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (value) => value.isEmpty ? 'Pastikan kata laluan dilengkapkan!': null,
                   controller: _password,
-
                 ),
                 const SizedBox(height: 20.0),
                 RaisedButton(

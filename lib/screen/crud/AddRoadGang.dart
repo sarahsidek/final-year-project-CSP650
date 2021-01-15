@@ -32,11 +32,12 @@ class _AddRoadGangState extends State<AddRoadGang> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Email',
+                  labelText: "E-mel",
+                    hintText: 'E-mel',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
-                validator: (value) => value.isEmpty ? 'Pastikan email dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => name = value);
                 },
@@ -44,11 +45,12 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Password',
-                    prefixIcon: Icon(Icons.person),
+                  labelText: "Kata Laluan",
+                    hintText: 'Kata Laluan',
+                    prefixIcon: Icon(Icons.vpn_key),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.visiblePassword,
-                validator: (value) => value.isEmpty ? 'Pastikan password dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan kata laluan dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => password = value);
                 },

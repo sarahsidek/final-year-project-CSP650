@@ -546,43 +546,48 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Nama',
+                    labelText: "Nama",
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
+                validator: (value) => value.isEmpty ? 'Pastikan nama dilengkapkan!': null,
                 controller: _name,
               ),
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'E-mel',
-                    prefixIcon: Icon(Icons.email),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.emailAddress,
-                controller: _email,
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Nombor Telefon',
-                    prefixIcon: Icon(Icons.phone),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                keyboardType: TextInputType.number,
-                controller: _nophone,
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'No kad Pengenalan',
+                    labelText: 'No kad Pengenalan',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
                 controller: _icnumber,
               ),
               SizedBox(height: 10.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'E-mel',
+                    prefixIcon: Icon(Icons.email),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) => value.isEmpty ? 'Pastikan No Kad Pengenalan dilengkapkan!': null,
+                controller: _email,
+              ),
+              SizedBox(height: 10.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Nombor Telefon',
+                    prefixIcon: Icon(Icons.phone),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+                keyboardType: TextInputType.number,
+                validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
+                controller: _nophone,
+              ),
+
+              SizedBox(height: 10.0),
               DropdownButtonFormField(
                 hint:Text(widget.rd.zon),
                 decoration: InputDecoration(
+                    labelText: "Zon",
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,
@@ -599,6 +604,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               DropdownButtonFormField(
                   hint:Text(widget.rd.pegawaiZon),
                   decoration: InputDecoration(
+                      labelText: "Pegawai Zon",
                       prefixIcon: Icon(Icons.person),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                   ),

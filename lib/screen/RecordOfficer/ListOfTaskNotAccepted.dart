@@ -22,7 +22,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Aduan Ditolak",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("Senarai Tugasan Ditolak",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
           backgroundColor:  Colors.blue[800],
         ),
       body: Container(

@@ -522,7 +522,8 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    hintText: 'Name',
+                    labelText: "Nama",
+                    hintText: 'Nama',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
@@ -534,11 +535,12 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
+                    labelText: "No Kad Pengenalan",
                     hintText: 'No Kad Pengenalan ',
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
-                validator: (value) => value.isEmpty ? 'Pastikan Unik ID dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'Pastikan No Kad Pengenalan dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => icnumber = value);
                 },
@@ -546,6 +548,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
+                    labelText: "E-mel",
                     hintText: 'E-mel',
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -558,6 +561,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
+                    labelText: "Nombor Telefon",
                     hintText: 'Nombor Telefon',
                     prefixIcon: Icon(Icons.phone),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -572,6 +576,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               DropdownButtonFormField(
                     hint:Text('Zon'),
                     decoration: InputDecoration(
+                      labelText: "Zon",
                       prefixIcon: Icon(Icons.add_location),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                     ),
@@ -589,6 +594,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               DropdownButtonFormField(
                 hint:Text('Pegawai Zon'),
                 decoration: InputDecoration(
+                    labelText: "Pegawai Zon",
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
