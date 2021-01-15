@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
 import 'package:fyp/screen/RoadGang/loginRoadGang.dart';
@@ -46,15 +47,19 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Container(
-
-              child: Image.asset('assets/mpbj2.png', height: 100, width: 450)),
+              child: Column(
+                  children: [
+                  Image.asset('assets/mpbj2.png', height: 120, width: 450)
+          ],
+          )
+          ),
           Container(
-            margin: EdgeInsets.only(top: 120),
+            margin: EdgeInsets.only(top: 130),
              child:  Center(
                child: Column(
                  children: [
-                   new Text("Tracing Work Task Majlis", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-                   new Text("Bandaraya Petaling Jaya ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+                   new Text("Pemantauan Tugasan Kerja ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+                   new Text("Jabatan Kejuruteraan ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
                  ],
                ),
              ),

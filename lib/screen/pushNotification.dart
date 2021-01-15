@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 
 class PushNotificationService{
    final FirebaseMessaging _fcm = FirebaseMessaging();
@@ -20,6 +22,14 @@ class PushNotificationService{
          print("onResume: $message");
        },
      );
+     _fcm.getToken().then((String token){
+         if(token != null){
+           Firestore.instance.collection("Supervisor").document('uid').collection("Token").document(token).setData({
+             'id': token,
+           });
+         }
+         print(token);
+     });
    }
 
 

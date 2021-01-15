@@ -1,10 +1,9 @@
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp/screen/searchTask.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/signup.dart';
 import 'package:fyp/service/auth.dart';
 import 'package:fyp/screen/homepage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -77,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               {
                                 if(value.isEmpty || !value.contains('@'))
                                 {
-                                  return 'E-mel tidak sah!';
+                                  return "Pastikan email dilengkapkan!";
                                 }
                                 return null;
                               },
@@ -95,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             {
                               if(value.isEmpty || value.length<=5)
                               {
-                                return 'Kata Laluan tidak sah!';
+                                return 'Pastikan kata laluan dilengkapkan!';
                               }
                               return null;
                             },
@@ -104,51 +103,58 @@ class _LoginScreenState extends State<LoginScreen> {
                               setState(() => password = value);
                             },
                           ),
+                          SizedBox(height: 10,),
                           Column(
                             children: <Widget>[
-                              RaisedButton(
-                                child: Text(
-                                    'Log Masuk'
-                                ),
-                                onPressed: () async {
-                                  if (_formKey.currentState.validate()) {
-                                    try {
-                                      setState(() => loading = true);
-                                      dynamic result = await _auth
-                                          .signInWithEmailAndPassword(
-                                          email, password);
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-                                      if (result == null) {
+                              SizedBox(
+                                height: 40,
+                                width: 100,
+                                child: RaisedButton(
+                                  child: Text("Log Masuk", style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.white)),
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      try {
+                                        setState(() => loading = true);
+                                        dynamic result = await _auth
+                                            .signInWithEmailAndPassword(
+                                            email, password);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                                        if (result == null) {
+                                          setState(() {
+                                            error = 'Pastikan e-mel anda sah!';
+                                            loading = false;
+                                          });
+                                        }
+                                      } catch (e){
                                         setState(() {
-                                          error = 'Pastikan e-mel anda sah!';
-                                          loading = false;
+                                          showError = "Kata laluan tidak sah atau pengguna tidak mempunyai kata laluan";
                                         });
+                                        return _buildErrorDialog(context,showError);
                                       }
-                                    } on AuthException catch (error){
-                                        return _buildErrorDialog(context, error.message);
-                                    } on Exception catch (error) {
-                                      return _buildErrorDialog(context, error.toString());
                                     }
-                                  }
-                                },
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  color: Colors.blue[800],
+                                  textColor: Colors.white,
                                 ),
-                                color: Colors.blue[800],
-                                textColor: Colors.white,
                               ),
-                              RaisedButton(
-                                child: Text(
-                                    'Daftar'
+                              SizedBox(height: 10,),
+                              SizedBox(
+                                height: 40,
+                                width: 100,
+                                child: RaisedButton(
+                                  child: Text('Daftar', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.white)),
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  color: Colors.blue[800],
+                                  textColor: Colors.white,
                                 ),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));
-                                },
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                color: Colors.blue[800],
-                                textColor: Colors.white,
                               ),
                             ],
                           )
@@ -167,11 +173,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return showDialog(
       builder: (context) {
         return AlertDialog(
-          title: Text('Error Message'),
-          content: Text(message),
+          title: Text('Harap Maaf', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.red)),
+          content: Text("$message", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
           actions: [
             FlatButton(
-                child: Text('Cancel'),
+                child: Text('Batal', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.of(context).pop();
                 })
