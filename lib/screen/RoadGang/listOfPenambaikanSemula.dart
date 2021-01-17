@@ -16,12 +16,12 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Tugasan Lengkap (Ditolak)",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("SENARAI TUGASAN LENGKAP DITOLAK",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800]
         ),
        body:Container(
       child: StreamBuilder(
-          stream: Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'Penambaikan Semula').snapshots(),
+          stream: Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'PENAMBAIKAN SEMULA').snapshots(),
           builder: (context, snapshot){
             if (snapshot.hasError || !snapshot.hasData) {
               return Loading();
@@ -46,7 +46,7 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Sumber Aduan: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("SUMBER ADUAN: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                         Text(paa['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       ],
                                     ),
@@ -55,7 +55,7 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("NOMBOR ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                         Text(paa['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       ],
                                     ),
@@ -64,7 +64,7 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("LOKASI: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                         Text(paa['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                         Text(paa['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       ],
@@ -74,7 +74,7 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Kategori: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("KATEGORI: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                         Text(paa['kategori'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       ],
                                     ),
@@ -83,7 +83,7 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                         Text(paa['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       ],
                                     ),

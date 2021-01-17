@@ -26,7 +26,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   File image;
   List<Asset> images = List<Asset>();
   List<String> imageUrls = <String>[];
-  List<String> barang = <String>['cat kuning', 'cat putih', 'Coldmix', 'Hotmix' ,'CrusherRun'];
+  List<String> barang = <String>['CAT KUNING (TIN)', 'CAT PUTIH (TIN)', 'COLDMIX (BAG) ', 'HOTMIX (TONNE)' ,'CRUSHERRUN(TONNE)'];
   List<String> selectBarang = [null];
   List<String> selectQuantity =[null];
   String quant;
@@ -102,7 +102,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               email: email,
               barang: selectBarang,
               quantity: selectQuantity,
-              verified: "Dalam Proses Kelulusan",
+              verified: "DALAM PROSES KELULUSAN",
               catatan: "Tiada Catatan",
               kawasan: ra.data['kawasan'],
               jalan: ra.data['naJalan'],
@@ -135,8 +135,8 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
       child: Column(
         children: [
           DropdownButtonFormField(
-            hint: Text("Jenis Penambaikan"),
             decoration: InputDecoration(
+              labelText: 'JENIS PEBNAMBAIKAN',
                 prefixIcon: Icon(Icons.folder),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
             ),
@@ -156,7 +156,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
           SizedBox(height: 5.0),
           TextFormField(
             decoration: InputDecoration(
-                labelText: "Kuantiti:",
+                labelText: "KUANTITI",
                 prefixIcon: Icon(Icons.add),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5))),
@@ -180,7 +180,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tugasan Lengkap",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("BORANG TUGASAN LENGKAP",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Form(
@@ -191,7 +191,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
             children: [
               Row(
                 children: [
-                  Text("Sumber Aduan: ",
+                  Text("SUMBER ADUAN: ",
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                   Text(ra.data['sumberAduan'],
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
@@ -200,7 +200,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Nombor Aduan: ",
+                  Text("NOMBOR ADUAN: ",
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                   Text(ra.data['noAduan'],
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
@@ -209,7 +209,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Lokasi: " + " ",
+                  Text("LOKASI: " + " ",
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                   Text(ra.data['kawasan'],
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
@@ -220,7 +220,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               SizedBox(height: 5.0),
               Row(
                 children: [
-                  Text("Kerosakan ",
+                  Text("KEROSAKAN: ",
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                   Text(ra.data['kerosakan'],
                       style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
@@ -229,7 +229,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               SizedBox(height: 5.0),
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: "Pilih Tarikh Penambaikan : ",
+                    labelText: "PILIH TARIKH PENAMBAIKAN: ",
                     prefixIcon: Icon(Icons.calendar_today),
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(
@@ -254,17 +254,20 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               ),
                 SizedBox(height: 5.0,),
                 InkWell(
-                  child: Container(
-                      width: 100.0,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                          color: Colors.blue[800],
-                        border: new Border.all(color: Colors.white70, width: 2.0),
-                        borderRadius: new BorderRadius.circular(10.0)
-                      ),
-                      child: Center(child: Text("Tambah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)))),
+                  child: SizedBox(
+                    height: 40,
+                    width: 180,
+                    child: Container(
+                        width: 100.0,
+                        height: 30.0,
+                        decoration: BoxDecoration(
+                            color: Colors.blue[800],
+                          borderRadius: new BorderRadius.circular(2.0)
+                        ),
+                        child: Center(child: Text("TAMBAH", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white)))),
+                  ),
                     customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(2)
                     ),
                     onTap: () {
                   selectBarang.add(null);
@@ -281,34 +284,46 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                   height: 400,
                   child: Column(
                       children: <Widget>[
-                        RaisedButton(
-                          child: Text("Muat Naik Gambar"),
-                          color: Colors.blue[800],
-                          textColor: Colors.white,
-                          onPressed: loadAssets,
+                        SizedBox(
+                          height: 40,
+                          width: 180,
+                          child: RaisedButton(
+                            child: Text("MUAT NAIK GAMBAR", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white)),
+                            color: Colors.blue[800],
+                            textColor: Colors.white,
+                            onPressed: loadAssets,
+                          ),
                         ),
                         Expanded(
                           child: buildGridView(),
                         ),
                         Column(
                           children: [
-                            RaisedButton(
-                              child: Text("Simpan"),
-                              color: Colors.blue[800],
-                              textColor: Colors.white,
-                              onPressed: () async {
-                                alertDialog(context);
-                              },
+                            SizedBox(
+                              height: 40,
+                              width: 180,
+                              child: RaisedButton(
+                                child: Text("SIMPAN", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white)),
+                                color: Colors.blue[800],
+                                textColor: Colors.white,
+                                onPressed: () async {
+                                  alertDialog(context);
+                                },
+                              ),
                             ),
                             SizedBox(height: 10.0),
-                            RaisedButton(
-                              child: Text("Dapatkan lokasi anda"),
-                              color: Colors.blue[800],
-                              textColor: Colors.white,
-                              onPressed: () async {
-                                Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => GoogleMaps(ctk: ct)));
-                              },
+                            SizedBox(
+                              height: 40,
+                              width: 180,
+                              child: RaisedButton(
+                                child: Text("DAPATKAN LOKASI ANDA", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white)),
+                                color: Colors.blue[800],
+                                textColor: Colors.white,
+                                onPressed: () async {
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => GoogleMaps(ctk: ct)));
+                                },
+                              ),
                             )
                           ],
                         ),

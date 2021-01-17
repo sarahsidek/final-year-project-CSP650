@@ -20,7 +20,7 @@ class _AddRoadGangState extends State<AddRoadGang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Buruh Kakitangan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("BURUH KAKITANGAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Form(
@@ -32,12 +32,12 @@ class _AddRoadGangState extends State<AddRoadGang> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: "E-mel",
-                    hintText: 'E-mel',
+                  labelText: "E-MEL",
+                    hintText: 'E-MEL',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
-                validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'PASTIKAN E-MEL DILENGKAPKAN!': null,
                 onChanged: (value) {
                   setState(() => name = value);
                 },
@@ -45,12 +45,12 @@ class _AddRoadGangState extends State<AddRoadGang> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: "Kata Laluan",
-                    hintText: 'Kata Laluan',
+                  labelText: "KATA LALUAN",
+                    hintText: 'KATA LALUAN',
                     prefixIcon: Icon(Icons.vpn_key),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.visiblePassword,
-                validator: (value) => value.isEmpty ? 'Pastikan kata laluan dilengkapkan!': null,
+                validator: (value) => value.isEmpty ? 'PASTIKAN KATA LALUAN DILENGKAPKAN!': null,
                 onChanged: (value) {
                   setState(() => password = value);
                 },
@@ -59,7 +59,7 @@ class _AddRoadGangState extends State<AddRoadGang> {
               RaisedButton(
                   color: Colors.blue[800],
                   textColor: Colors.white,
-                  child: Text("Simpan"),
+                  child: Text("SIMPAN"),
                   onPressed: () async {
                     if(_formKey.currentState.validate()){
                       _authRoadGang.registerRoadGang(name, password).then((value) async{
@@ -80,11 +80,11 @@ class _AddRoadGangState extends State<AddRoadGang> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Tahniah'),
-            content: Text('Berjaya Hantar'),
+            title: Text('TAHNIAH'),
+            content: Text('BERJAYA HANTAR'),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () {
                   Navigator.pop(context);
                 },

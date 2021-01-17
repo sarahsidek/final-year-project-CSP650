@@ -16,12 +16,12 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Senarai Tugasan Lengkap (Tidak Sah)",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("SENARAI TUGASAN LENGKAP DITOLAK",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Container(
         child: StreamBuilder(
-            stream:Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'Penambaikan Semula').snapshots(),
+            stream:Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'PENAMBAIKAN SEMULA').snapshots(),
             builder: (context, snapshot){
               if (snapshot.hasError || !snapshot.hasData) {
                 return Loading();
@@ -47,7 +47,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                     Container(alignment: Alignment.centerLeft,
                                       child: Row(
                                         children: [
-                                          Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                           Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),
@@ -56,7 +56,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                     Container(alignment: Alignment.centerLeft,
                                       child: Row(
                                         children: [
-                                          Text("Nombor Aduan: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text("NOMBOR ADUAN: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                           Text(ba['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),
@@ -65,7 +65,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                     Container(alignment: Alignment.centerLeft,
                                       child: Row(
                                         children: [
-                                          Text("Kategori: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text("KATEGORI: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                           Text(ba['kategori'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),
@@ -74,7 +74,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                     Container(alignment: Alignment.centerLeft,
                                       child: Row(
                                         children: [
-                                          Text("Status: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text("STATUS: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                           Text(ba['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
                                         ],
                                       ),
@@ -83,7 +83,7 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                     Container(alignment: Alignment.centerLeft,
                                       child: Row(
                                         children: [
-                                          Text("Catatan: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text("CATATAN: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                           Text(ba['catatan'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),

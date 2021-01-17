@@ -17,7 +17,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Buruh",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("BURUH",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
         backgroundColor:  Colors.blue[800],
         automaticallyImplyLeading: false,
         actions: [
@@ -50,8 +50,8 @@ class _RoadGangHomeState extends State<RoadGangHome> {
                   new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
                   Column(
                     children: [
-                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                      new Text("Penyelia", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("PENYELIA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],
@@ -67,8 +67,8 @@ class _RoadGangHomeState extends State<RoadGangHome> {
                   new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red,),
                   Column(
                     children: [
-                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                      new Text("Lengkap (TidakSah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("LENGKAP DITOLAK", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],
@@ -84,8 +84,8 @@ class _RoadGangHomeState extends State<RoadGangHome> {
                   new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green,),
                   Column(
                     children: [
-                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                      new Text("Lengkap (Sah)", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("LENGKAP DITERIMA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],

@@ -29,8 +29,8 @@ class _EditTaskState extends State<EditTask> {
    _kategori = TextEditingController(text: widget.da.data['kategori']);
 }
 
-  List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
-  List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
+  List <String> sumber = <String> ['SISTEM ADUAN MBPJ', 'SISTEM ADUAN WAZE', 'SISTEM ADUAN UTILITI'];
+  List <String> kate = <String> ['SEGERA', 'PEMBAIKAN BIASA'];
   String kategori;
   String sumberAduan;
   String id;
@@ -39,7 +39,7 @@ class _EditTaskState extends State<EditTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Kemaskini Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("KEMASKINI TUGASAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800],
         ),
     body: Form(
@@ -53,7 +53,7 @@ class _EditTaskState extends State<EditTask> {
               DropdownButtonFormField(
                 hint:Text(widget.da.data['sumberAduan']),
                 decoration: InputDecoration(
-                    labelText: "Sumber Aduan",
+                    labelText: "SUMBER ADUAN",
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,
@@ -75,7 +75,7 @@ class _EditTaskState extends State<EditTask> {
               DropdownButtonFormField(
                 hint:Text(widget.da.data['kategori']),
                 decoration: InputDecoration(
-                    labelText: "Kategori",
+                    labelText: "KATEGORI",
                     prefixIcon: Icon(Icons.perm_contact_calendar),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 isExpanded: true,
@@ -96,14 +96,14 @@ class _EditTaskState extends State<EditTask> {
               RaisedButton(
                   color:Colors.blue[800],
                   textColor:Colors.white,
-                  child: Text("Kemaskini"),
+                  child: Text("KEMASKINI"),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
                      Firestore.instance.collection("Task").document(da.data['id']).updateData({
                        'kategori': _kategori.text,
                        'sumberAduan': _sumberAduan.text,
                        'comments':'Tiada catatan',
-                       'verified': 'Dalam Proses Kelulusan'
+                       'verified': 'DALAM PROSES KELULUSAN'
                      }).then((value) async {
                         await alertDialog(context);
                         Navigator.pop(context);

@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fyp/model/Task.dart';
+import 'package:fyp/screen/RecordOfficer/ListTask.dart';
 import 'package:fyp/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
@@ -33,8 +35,8 @@ class _AddTaskState extends State<AddTask> {
   List<Asset> images = List<Asset>();
   List<String> imageUrls = <String>[];
   String error = "No error Detected";
-  List <String> sumber = <String> ['Sistem Aduan MBPJ', 'Sistem Aduan Waze', 'Sistem Aduan Utiliti'];
-  List <String> kate = <String> ['Segera', 'Pembaikan Biasa'];
+  List <String> sumber = <String> ['SISTEM ADUAN MBPJ', 'SISTEM ADUAN WAZE', 'SISTEM ADUAN UTILITI'];
+  List <String> kate = <String> ['SEGERA', 'PEMBAIKAN BIASA'];
   List<String> kawasan = <String>
   ['PJS 1', 'PJS 2','PJS 3', 'PJS 4','PJS 5','PJS 6', 'PJS 8',
    'PJU 1A', 'PJU 2', 'PJU 3', 'PJU 4', 'PJU 5', 'PJU 6','PJU 7', 'PJU 8', 'PJU 9', 'PJU 10',];
@@ -115,8 +117,8 @@ class _AddTaskState extends State<AddTask> {
             imageUrls: imageUrls,
             kawasan: value,
             naJalan: value1,
-            kerosakan: kerosakan,
-            verified: "Dalam Proses Kelulusan",
+            kerosakan: kerosakan.toUpperCase(),
+            verified: "DALAM PROSES KELULUSAN",
             comments: "Tiada catatan",
           );
            await DatabaseService().addTask(tk);
@@ -307,7 +309,7 @@ class _AddTaskState extends State<AddTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Borang Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("BORANG TUGASAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Form(
@@ -319,7 +321,7 @@ class _AddTaskState extends State<AddTask> {
             children: <Widget>[
               TextField(
                 decoration: InputDecoration(
-                    labelText: "Pilih Tarikh",
+                    labelText: "PILIH TARIKH",
                     prefixIcon: Icon(Icons.calendar_today),
                     hintText: _dateTime.toString(),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
@@ -334,7 +336,7 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 decoration: InputDecoration(
-                    labelText: "Sumber Aduan",
+                    labelText: "SUMBER ADUAN",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -355,20 +357,21 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: "Nombor Aduan",
-                    hintText: 'Nombor Aduan ',
+                  labelText: "NOMBOR ADUAN",
+                    hintText: 'NOMBOR ADUAN ',
                     prefixIcon: Icon(Icons.confirmation_number_sharp),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.number,
                 validator: (value) => value.isEmpty ? 'Pastikan nombor Aduan dilengkapkan!': null,
                 onChanged: (value) {
                   setState(() => noAduan = value );
+
                 },
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 decoration: InputDecoration(
-                  labelText: "Lokasi Kawasan",
+                  labelText: "LOKASI KAWASAN",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -385,7 +388,7 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 decoration: InputDecoration(
-                  labelText: "Nama Jalan",
+                  labelText: "NAMA JALAN",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -397,7 +400,7 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 decoration: InputDecoration(
-                  labelText: "Kategori",
+                  labelText: "KATEGORI",
                     prefixIcon: Icon(Icons.folder),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))
                 ),
@@ -418,7 +421,7 @@ class _AddTaskState extends State<AddTask> {
               SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: "Kerosakan",
+                    labelText: "KEROSAKAN",
                     prefixIcon: Icon(Icons.home_repair_service),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                 keyboardType: TextInputType.text,
@@ -434,9 +437,9 @@ class _AddTaskState extends State<AddTask> {
                     children: <Widget>[
                       SizedBox(
                         height: 40,
-                        width: 150,
+                        width: 180,
                         child: RaisedButton(
-                          child: Text("Muat naik Gambar"),
+                          child: Text("MUAT NAIK GAMBAR", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white)),
                           color: Colors.blue[800],
                           textColor: Colors.black,
                           onPressed: loadAssets,
@@ -448,9 +451,9 @@ class _AddTaskState extends State<AddTask> {
                       Center(
                         child: SizedBox(
                           height: 40,
-                          width: 150,
+                          width: 180,
                           child: RaisedButton(
-                            child: Text("Simpan"),
+                            child: Text("SIMPAN", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white)),
                             color: Colors.blue[800],
                             textColor: Colors.black,
                             onPressed: () async{
@@ -475,14 +478,14 @@ class _AddTaskState extends State<AddTask> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Tahniah'),
-            content: Text('Berjaya Kemaskini'),
+            title: Text('TAHNIAH'),
+            content: Text('BERJAYA SIMPAN'),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () async {
                   uploadImage(_dateTime, sumberAduan, noAduan, kategori, id);
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ListTask()));
                 },
               ),
             ],

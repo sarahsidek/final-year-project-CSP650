@@ -14,7 +14,7 @@ class HomeSupervisor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:Colors.blue[800],
-        title: Text('Penyelia'),
+        title: Text('PENYELIA'),
         actions: <Widget>[
           Row(
             children: [

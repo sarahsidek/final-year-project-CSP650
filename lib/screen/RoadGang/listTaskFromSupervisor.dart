@@ -15,12 +15,12 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Tugasan (Sah)",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("SENARAI TUGASAN PENYELIA",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800],
         ),
     body: Container(
       child: StreamBuilder(
-          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Sah').snapshots(),
+          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'SAH').snapshots(),
           builder: (context, snapshot){
             if (snapshot.hasError || !snapshot.hasData) {
               return Loading();
@@ -45,7 +45,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Sumber Aduan: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text("SUMBER ADUAN: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       Text(ra['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -54,7 +54,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text("NOMBOR ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       Text(ra['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -63,7 +63,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Lokasi: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text("LOKASI: " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       Text(ra['kawasan'] + " " ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       Text(ra['naJalan'] ,style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
@@ -73,7 +73,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Kategori: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text("KATEGORI: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       Text(ra['kategori'],style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -82,7 +82,7 @@ class _ListTaskFromSupervisorState extends State<ListTaskFromSupervisor> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                      Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                       Text(ra['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                                     ],
                                   ),

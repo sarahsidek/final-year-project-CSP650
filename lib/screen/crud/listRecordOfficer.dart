@@ -36,7 +36,7 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text("NAMA: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                       Text(rd.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
@@ -45,7 +45,14 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text("NOMBOR KAD PENGENALAN: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
                                       Text(rd.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
@@ -54,7 +61,7 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Zon:" , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text("ZON:" , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                       Text(rd.zon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
@@ -64,7 +71,16 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
                                   alignment: Alignment.centerLeft,
                                   child: Column(
                                     children: [
-                                      Text("Pegawai Zon: " + rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                      Text("PEGAWAI ZON: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Column(
+                                    children: [
+                                      Text(rd.pegawaiZon, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
                                 ),
@@ -104,17 +120,17 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Perhatian!'),
-            content: Text('Adakah anda mahu menghapuskan? '),
+            title: Text('PERHATIAN!'),
+            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? '),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ya', style: TextStyle(color: Colors.red),),
+                child: Text('YA', style: TextStyle(color: Colors.red),),
                 onPressed: ()  async {
                   DatabaseService().deleteRecordOfficer(id);
                 },
               ),
               FlatButton(
-                child: Text("Tidak"),
+                child: Text("TIDAK"),
                 onPressed: () {
                   Navigator.pop(context);
                 },

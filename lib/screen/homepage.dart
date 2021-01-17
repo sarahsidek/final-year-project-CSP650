@@ -41,18 +41,18 @@ class _HomeState extends State<Home> {
                 items: [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.supervised_user_circle),
-                    label: ('Penyelia'),
+                    label: ('PENYELIA'),
                     backgroundColor: Colors.blueAccent,
 
                   ),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.person),
-                      label: ('Buruh kakitangan'),
+                      label: ('BURUH'),
                       backgroundColor: Colors.redAccent
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.person),
-                    label: ('Pegawai merekod'),
+                    label: ('PEGAWAI MEREKOD'),
                     backgroundColor: Colors.orangeAccent,
                   ),
                 ],

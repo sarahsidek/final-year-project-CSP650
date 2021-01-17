@@ -1,7 +1,5 @@
 import 'package:fyp/model/Supervisor.dart';
-
 import 'package:fyp/service/database.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +44,7 @@ void initState(){
     Widget build(BuildContext context) {
       return Scaffold(
           appBar: AppBar(
-            title: Text('Kemaskini Maklumat Penyelia'),
+            title: Text('KEMASKINI MAKLUMAT PENYELIA'),
             backgroundColor: Colors.blue[800],
           ),
           body: Form(
@@ -58,51 +56,51 @@ void initState(){
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "Nama",
+                        labelText: "NAMA",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.text,
-                    validator: (value) => value.isEmpty ? 'Pastikan nama dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN NAMA DILENGKAPKAN!': null,
                     controller: _name,
                   ),
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "No kad Pengenalan",
+                        labelText: "NOMBOR KAD PENGENALAN",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
-                    validator: (value) => value.isEmpty ? 'Pastikan Kad Pengenalan dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN NOMBOR KAD PENGENALAN DILENGKAPKAN!': null,
                     controller: _icnumber,
                   ),
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "E-mel",
+                        labelText: "E-MEL",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.emailAddress,
-                    validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN E-MEL DILENGKAPKAN!': null,
                     controller: _email,
                   ),
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "Nombor Telefon",
+                        labelText: "NOMBOR TELEFON",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
-                    validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN NOMBOR TELEFON DILENGKAPKAN!': null,
                     controller: _nophone,
                   ),
                   const SizedBox(height: 20.0),
                   RaisedButton(
                       color: Colors.blue[800],
                       textColor: Colors.white,
-                      child: Text( "Kemaskini"),
+                      child: Text( "KEMASKINI"),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          DatabaseService().updateData(Supervisor(name: _name.text, email: _email.text, nophone: _nophone.text,
+                          DatabaseService().updateData(Supervisor(name: _name.text.toUpperCase(), email: _email.text, nophone: _nophone.text,
                               icnumber: _icnumber.text, uid: sv.uid)).then((value) async{
                                 print(sv.uid);
                                 await alertDialog(context);
@@ -122,11 +120,11 @@ void initState(){
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Tahniah'),
-            content: Text('Berjaya Kemaskini'),
+            title: Text('TAHNIAH'),
+            content: Text('BERJAYA KEMASKINI'),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () {
                   Navigator.pop(context);
                 },

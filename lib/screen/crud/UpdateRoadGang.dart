@@ -34,7 +34,7 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Kemaskini Maklumat Kakitangan Buruh'),
+          title: Text('KEMASKINI MAKLUMAT KAKITANGAN BURUH'),
           backgroundColor: Colors.blue[800],
         ),
         body: Form(
@@ -46,28 +46,28 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
               children: <Widget>[
                 TextFormField(
                   decoration: InputDecoration(
-                      labelText: "E-mel",
+                      labelText: "E-MEL",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
+                  validator: (value) => value.isEmpty ? 'PASTIKAN E-MEL DILENGKAPKAN!': null,
                   controller: _name,
                 ),
                 SizedBox(height: 10.0),
                 TextFormField(
                   decoration: InputDecoration(
-                      labelText: "Kata Laluan",
+                      labelText: "KATA LALUAN",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5))),
                   keyboardType: TextInputType.visiblePassword,
-                  validator: (value) => value.isEmpty ? 'Pastikan kata laluan dilengkapkan!': null,
+                  validator: (value) => value.isEmpty ? 'PASTIKAN KATA LALUAN DILENGKAPKAN!': null,
                   controller: _password,
                 ),
                 const SizedBox(height: 20.0),
                 RaisedButton(
                     color: Colors.blue[800],
                     textColor: Colors.white,
-                    child: Text( "Kemaskini"),
+                    child: Text( "KEMASKINI"),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         DatabaseService().updateData1(RoadGang(username: _name.text, password: _password.text, uid: rg.uid)).then((value) async{
@@ -89,11 +89,11 @@ class _UpdateRoadGangState extends State<UpdateRoadGang> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Tahniah'),
-            content: Text('Berjaya Kemaskini'),
+            title: Text('TAHNIAH'),
+            content: Text('BERJAYA KEMASKINI'),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () {
                   Navigator.pop(context);
                 },

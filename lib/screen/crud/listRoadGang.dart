@@ -36,6 +36,13 @@ class _ListRoadGangState extends State<ListRoadGang> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Column(
                                     children: [
+                                      Text("E-MEL", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    ],
+                                  ),
+                                ),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Column(
+                                    children: [
                                       Text(rg.username, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     ],
                                   ),
@@ -48,7 +55,7 @@ class _ListRoadGangState extends State<ListRoadGang> {
                               alignment: Alignment.centerLeft,
                             child:Row(
                               children: [
-                                Text("Password: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                Text("KATA LALUAN: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                 Text(rg.password, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                               ],
                             ),
@@ -86,17 +93,17 @@ class _ListRoadGangState extends State<ListRoadGang> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Perhatian!'),
-            content: Text('Adakah anda mahu menghapuskan?'),
+            title: Text('PERHATIAN!'),
+            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? '),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ya', style: TextStyle(color: Colors.red),),
+                child: Text('YA', style: TextStyle(color: Colors.red),),
                 onPressed: ()  async {
                   DatabaseService().deleteRoadGang(id);
                 },
               ),
               FlatButton(
-                child: Text("Tidak"),
+                child: Text("TIDAK"),
                 onPressed: () {
                   Navigator.pop(context);
                 },

@@ -30,8 +30,8 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
                   new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
                   Column(
                     children: [
-                      new Text("Senarai Semua", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                      new Text("Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("SENARAI SEMUA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],
@@ -47,8 +47,8 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
                   new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green[400],),
                   Column(
                     children: [
-                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                      new Text("Diterima", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("DITERIMA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],
@@ -64,8 +64,25 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
                   new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red[500],),
                   Column(
                     children: [
-                      new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                      new Text("Ditolak", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                      new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("DITOLAK", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListOfTaskNotApprove()));
+              },
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  new Icon(Icons.book,  size: 110),
+                  Column(
+                    children: [
+                      new Text("PANDUAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("PENGGUNA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],

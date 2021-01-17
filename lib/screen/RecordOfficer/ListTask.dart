@@ -25,7 +25,7 @@ class _ListTaskState extends State<ListTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Semua Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("SENARAI SEMUA TUGASAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800]
         ),
     body: Container(
@@ -55,7 +55,14 @@ class _ListTaskState extends State<ListTask> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
                                       Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
@@ -64,7 +71,7 @@ class _ListTaskState extends State<ListTask> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("NOMBOR ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(ba['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
@@ -73,7 +80,16 @@ class _ListTaskState extends State<ListTask> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("KATEGORI: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text(ba['kategori'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
+                                      Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(ba['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
@@ -146,7 +162,7 @@ class _ListTaskState extends State<ListTask> {
                                               margin: EdgeInsets.only(top:26, left: 14),
                                               child: Row(
                                                 children: [
-                                                  Text("Kawasan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                                  Text("KAWASAN: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                                   Text( snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                                 ],
                                               ),
@@ -156,7 +172,7 @@ class _ListTaskState extends State<ListTask> {
                                               margin: EdgeInsets.only(top:4, left: 15),
                                               child: Row(
                                                 children: [
-                                                  Text("Nama Jalan: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                                  Text("NAMA JALAN: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                                   Text(snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                                 ],
                                               ),
@@ -166,8 +182,16 @@ class _ListTaskState extends State<ListTask> {
                                               margin: EdgeInsets.only(top:4, left: 15),
                                               child: Row(
                                                 children: [
-                                                  Text("Kategori: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                                  Text(snapshot.data['kategori'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                                  Text("KEROSAKAN: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 220,
+                                              margin: EdgeInsets.only(top:4, left: 15),
+                                              child: Row(
+                                                children: [
+                                                  Text(snapshot.data['kerosakan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                                 ],
                                               ),
                                             ),

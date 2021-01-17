@@ -43,7 +43,7 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Nama: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text("NAMA: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
@@ -52,7 +52,7 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Email: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text("E-MEL: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     Text(sv.email, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
@@ -61,20 +61,29 @@ class _ListSupervisorState extends State<ListSupervisor> {
                               Container(alignment: Alignment.centerLeft,
                                 child: Row(
                                   children: [
-                                    Text("Nombor Telefon: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text("NOMBOR TELEFON: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                     Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
+                              ),
+                              SizedBox(height: 5.0),
+                              Container(alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
+                                    Text("NOMBOR KAD PENGENALAN:" , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 5.0),
+                              Container(alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
+                                    Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  ],
+                                ),
                               )
-
                             ],
                           ),
-                        ),
-                        subtitle: Row(
-                          children: [
-                            Text("Nombor IC: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
-                            Text(sv.icnumber, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
-                          ],
                         ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -109,17 +118,17 @@ class _ListSupervisorState extends State<ListSupervisor> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Perhatian!'),
-            content: Text('Adakah anda mahu menghapuskan?'),
+            title: Text('PERHATIAN!'),
+            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? '),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ya', style: TextStyle(color: Colors.red),),
+                child: Text('YA', style: TextStyle(color: Colors.red),),
                 onPressed: ()  async {
                   DatabaseService().deleteSupervisor(id);
                 },
               ),
               FlatButton(
-                child: Text("Tidak"),
+                child: Text("TIDAK"),
                 onPressed: () {
                   Navigator.pop(context);
                 },

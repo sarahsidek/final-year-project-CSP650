@@ -17,12 +17,12 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Senarai Tugasan Tidak Sah",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("SENARAI TUGASAN DITOLAK",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Container(
         child: StreamBuilder(
-            stream:Firestore.instance.collection("Task").where('verified', isEqualTo:'Tidak Sah').snapshots(),
+            stream:Firestore.instance.collection("Task").where('verified', isEqualTo:'TIDAK SAH').snapshots(),
             builder: (context, snapshot){
               if (snapshot.hasError || !snapshot.hasData) {
                 return Loading();
@@ -48,16 +48,23 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Sumber Aduan:", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                        Text(ba['sumberAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ]
                                     )
                                   ),
                                   SizedBox(height: 5.0),
                                   Container(alignment: Alignment.centerLeft,
+                                      child: Row(
+                                          children: [
+                                            Text(ba['sumberAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          ]
+                                      )
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("NOMBOR ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(ba['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ]
                                     )
@@ -66,7 +73,7 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Kategori:",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("KATEGORI:",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(ba['kategori'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
@@ -75,7 +82,7 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   Container(alignment: Alignment.centerLeft,
                                    child: Row(
                                      children: [
-                                       Text("Status: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                       Text("STATUS: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                        Text(ba['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
                                      ],
                                    ),
@@ -84,7 +91,7 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Catatan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("CATATAN: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(ba['comments'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),

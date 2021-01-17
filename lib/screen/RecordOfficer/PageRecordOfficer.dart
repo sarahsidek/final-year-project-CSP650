@@ -21,7 +21,7 @@ class _RecordOfficerState extends State<RecordOfficer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pegawai Merekod",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("PEGAWAI MEREKOD",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
         backgroundColor:  Colors.blue[800],
         automaticallyImplyLeading: false,
         actions: [
@@ -67,8 +67,8 @@ class _RecordOfficerState extends State<RecordOfficer> {
                 new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
                 Column(
                   children: [
-                    new Text("Senarai Semua", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                    new Text("Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("SENARAI SEMUA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                    new Text("TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                   ],
                 ),
               ],
@@ -84,8 +84,8 @@ class _RecordOfficerState extends State<RecordOfficer> {
                 new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green[400],),
                 Column(
                   children: [
-                    new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                    new Text("Diterima", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                    new Text("DITERIMA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                   ],
                 ),
               ],
@@ -101,8 +101,8 @@ class _RecordOfficerState extends State<RecordOfficer> {
                 new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red[500],),
                 Column(
                   children: [
-                    new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                    new Text("Ditolak", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                    new Text("DITOLAK", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                   ],
                 ),
               ],
@@ -118,8 +118,8 @@ class _RecordOfficerState extends State<RecordOfficer> {
                 new Icon(Icons.book,  size: 110),
                 Column(
                   children: [
-                    new Text("Panduan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                    new Text("Pengguna", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                    new Text("PANDUAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                    new Text("PENGGUNA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                   ],
                 ),
               ],

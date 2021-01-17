@@ -21,12 +21,12 @@ class _ListOfTaskState extends State<ListOfTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Tugasan",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("SENARAI SEMUA TUGASAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800],
         ),
      body:Container(
       child: StreamBuilder(
-          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'Dalam Proses Kelulusan').snapshots(),
+          stream: Firestore.instance.collection("Task").where('verified', isEqualTo:'DALAM PROSES KELULUSAN').snapshots(),
           builder: (context, snapshot){
             if(snapshot.hasError || !snapshot.hasData){
               return Loading();
@@ -175,23 +175,23 @@ class _ListOfTaskState extends State<ListOfTask> {
                         ),
                         SizedBox(height:5.0),
                         Visibility(
-                          visible: (snapshot.data['verified'].toString() == 'Dalam Proses Kelulusan')? true : false,
+                          visible: (snapshot.data['verified'].toString() == 'DALAM PROSES KELULUSAN')? true : false,
                           child: Column(
                             children: <Widget>[
                               SizedBox(
                                   height: 55.0,
-                                  width: 330.0,
+                                  width: 280.0,
                                   child: RaisedButton(
                                     elevation: 0.0,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color: Colors.blue[800],
-                                    child: Text("Sah",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
+                                    child: Text("SAH",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: () async {
                                       Firestore.instance.collection('Task').document(id).updateData({
-                                        'verified': 'Sah',
-                                        'comments' : 'Lengkap'
+                                        'verified': 'SAH',
+                                        'comments' : 'LENGKAP'
                                       }).whenComplete((){
                                         Navigator.pop(context);
                                       });
@@ -201,14 +201,14 @@ class _ListOfTaskState extends State<ListOfTask> {
                               SizedBox(height: 10.0),
                               SizedBox(
                                   height: 55.0,
-                                  width: 330.0,
+                                  width: 280.0,
                                   child: RaisedButton(
                                     elevation: 0.0,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color: Colors.blue[800],
-                                    child: Text("Tidak Sah", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
+                                    child: Text("TIDAK SAH", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: ()async{
                                       alertDialog(id);
                                     }
@@ -231,14 +231,14 @@ class _ListOfTaskState extends State<ListOfTask> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Catatan"),
+            title: Text("CATATAN"),
             content: Column(
               children: [
                 TextField(
                   decoration: InputDecoration(
-                      hintText: 'Catatan',
+                      hintText: 'CATATAN',
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                  maxLines: 5,
+                  maxLines: 3,
                   minLines: 3,
                   keyboardType: TextInputType.text,
                   onChanged: (value) {
@@ -252,8 +252,8 @@ class _ListOfTaskState extends State<ListOfTask> {
                 child: Text('Ok', style: TextStyle(color: Colors.red),),
                 onPressed: ()  async {
                   Firestore.instance.collection('Task').document(id).updateData({
-                    'comments': catatan,
-                    'verified': 'Tidak Sah'
+                    'comments': catatan.toUpperCase(),
+                    'verified': 'TIDAK SAH'
                   }).whenComplete((){
                     Navigator.pop(context);
                   });

@@ -14,7 +14,7 @@ class ListOfTaskNotAccepted extends StatefulWidget {
 final FirebaseAuth auth = FirebaseAuth.instance;
 Stream<QuerySnapshot> getUser(BuildContext context) async* {
   FirebaseUser rd = await auth.currentUser();
-  yield* Firestore.instance.collection("Task").where('uid',isEqualTo: rd.uid).where("verified", isEqualTo: 'Tidak Sah').snapshots();
+  yield* Firestore.instance.collection("Task").where('uid',isEqualTo: rd.uid).where("verified", isEqualTo: 'TIDAK SAH').snapshots();
 }
 class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
   List<NetworkImage> _listOfImages = <NetworkImage>[];
@@ -22,7 +22,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Tugasan Ditolak",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("SENARAI TUGASAN DITOLAK",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800],
         ),
       body: Container(
@@ -52,7 +52,13 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    ],
+                                  ),
+                                ),
+                                Container(alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
                                       Text(da['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold,fontSize: 18)),
                                     ],
                                   ),
@@ -61,7 +67,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Nombor Aduan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("NOMBOR ADUAN: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(da['noAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
@@ -70,7 +76,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Kategori: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("KATEGORI: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(da['kategori'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
@@ -79,7 +85,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Lokasi: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("LOKASI: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(da['kawasan'] + " " + da['naJalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                     ],
                                   ),
@@ -88,7 +94,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(da['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18,  color: Colors.red)),
                                     ],
                                   ),
@@ -97,7 +103,7 @@ class _ListOfTaskNotAcceptedState extends State<ListOfTaskNotAccepted> {
                                 Container(alignment: Alignment.centerLeft,
                                   child: Row(
                                     children: [
-                                      Text("Catatan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                      Text("CATATAN: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       Text(da['comments'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
                                     ],
                                   ),

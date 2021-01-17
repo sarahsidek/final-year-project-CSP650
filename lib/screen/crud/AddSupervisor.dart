@@ -1,3 +1,4 @@
+
 import 'package:fyp/service/authSupervisor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _AddSupervisorState extends State<AddSupervisor> {
   Widget build(BuildContext context) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("Penyelia",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+            title: Text("PENYELIA",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
             backgroundColor:  Colors.blue[800]
           ),
           body: Form(
@@ -38,11 +39,12 @@ class _AddSupervisorState extends State<AddSupervisor> {
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "Nama",
+                        labelText: "NAMA",
+                        hintText: 'NAMA',
                         prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.text,
-                    validator: (value) => value.isEmpty ? 'Pastikan nama dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN NAMA DILENGKAPKAN!': null,
                     onChanged: (value) {
                       setState(() => name = value);
                     },
@@ -50,11 +52,12 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "No Kad Pengenalan",
+                        labelText: "NOMBOR KAD PENGENALAN",
+                        hintText: 'NOMBOR KAD PENGENALAN ',
                         prefixIcon: Icon(Icons.perm_contact_calendar),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
-                    validator: (value) => value.isEmpty ? 'Pastikan Kad Pengenalan dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN NOMBOR KAD PENGENALAN DILENGKAPKAN!': null,
                     onChanged: (value) {
                       setState(() => uniqueID = value);
                     },
@@ -62,11 +65,12 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "E-mel",
+                        labelText: "E-MEL",
+                        hintText: 'E-MEL',
                         prefixIcon: Icon(Icons.email),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.emailAddress,
-                    validator: (value) => value.isEmpty ? 'Pastikan e-mel dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN E-MEL DILENGKAPKAN!': null,
                     onChanged: (value) {
                       setState(() => email = value);
                     },
@@ -74,11 +78,12 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: "Nombor Telefon",
+                        labelText: "NOMBOR TELEFON",
+                        hintText: 'NOMBOR TELEFON',
                         prefixIcon: Icon(Icons.phone),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     keyboardType: TextInputType.number,
-                    validator: (value) => value.isEmpty ? 'Pastikan nombor telefon dilengkapkan!': null,
+                    validator: (value) => value.isEmpty ? 'PASTIKAN NOMBOR TELEFON DILENGKAPKAN!': null,
                     onChanged: (value) {
                       setState(() => phone = value);
                     },
@@ -88,10 +93,10 @@ class _AddSupervisorState extends State<AddSupervisor> {
                   RaisedButton(
                       color: Colors.blue[800],
                       textColor: Colors.white,
-                      child: Text("Simpan"),
+                      child: Text("SIMPAN"),
                       onPressed: () async {
                         if(_formKey.currentState.validate()){
-                            _auth.registerSupervisor(name, email, uniqueID, phone).then((value) async{
+                            _auth.registerSupervisor(name.toUpperCase(), email, uniqueID, phone).then((value) async{
                             await alertDialog(context);
                             Navigator.pop(context);
                           });
@@ -110,11 +115,11 @@ class _AddSupervisorState extends State<AddSupervisor> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Tahniah'),
-            content: Text('Berjaya Hantar'),
+            title: Text('TAHNIAH'),
+            content: Text('BERJAYA HANTAR'),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () {
                   Navigator.pop(context);
                 },

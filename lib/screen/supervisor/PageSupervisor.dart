@@ -23,7 +23,7 @@ class _SupervisorState extends State<Supervisor> {
       length: 2,
       child:   Scaffold(
         appBar: AppBar(
-          title: Text("Penyelia",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18,  color: Colors.black87)),
+          title: Text("PENYELIA",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18,  color: Colors.black87)),
           backgroundColor:  Colors.blue[800],
           automaticallyImplyLeading: false,
           actions: [
@@ -46,10 +46,10 @@ class _SupervisorState extends State<Supervisor> {
             ),
             tabs: [
               Tab(
-                child: Text("Pegawai Merekod", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87)),
+                child: Text("PEGAWAI MEREKOD", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black87)),
               ),
               Tab(
-                child: Text("Road Gang",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87)),
+                child: Text("ROAD GANG",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black87)),
               )],
           ),
         ),

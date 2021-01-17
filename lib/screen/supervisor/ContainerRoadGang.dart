@@ -31,8 +31,8 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                     new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
                     Column(
                       children: [
-                        new Text("Senarai Semua", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        new Text("Tugasan Lengkap", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                        new Text("LENGKAP", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
                   ],
@@ -48,8 +48,8 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                     new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green[400],),
                     Column(
                       children: [
-                        new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        new Text("Lengkap Diterima", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                        new Text("LENGKAP DITERIMA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
                   ],
@@ -65,8 +65,8 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                     new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red[500],),
                     Column(
                       children: [
-                        new Text("Senarai Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        new Text("Lengkap Ditolak", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                        new Text("LENGKAP DITOLAK", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
                   ],
@@ -82,8 +82,8 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                     new Icon(Icons.location_history,  size: 110, color: Colors.black87,),
                     Column(
                       children: [
-                        new Text("Lokasi Tugasan", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
-                        new Text("Lengkap", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                        new Text("LOKASI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                        new Text("LENGKAP", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                       ],
                     ),
                   ],

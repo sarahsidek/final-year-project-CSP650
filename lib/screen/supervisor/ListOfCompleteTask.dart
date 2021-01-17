@@ -2,6 +2,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/screen/supervisor/detailsCompletedTask.dart';
 import 'package:fyp/shared/Loading.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,12 +19,12 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Senarai Tugasan Lengkap",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("SENARAI SEMUA TUGASAN LENGKAP",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800],
         ),
       body: Container(
       child: StreamBuilder(
-          stream: Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'Dalam Proses Kelulusan').snapshots(),
+          stream: Firestore.instance.collection("CompleteTask").where('verified', isEqualTo:'DALAM PROSES KELULUSAN').snapshots(),
           builder: (context, snapshot){
             if(snapshot.hasError || !snapshot.hasData){
               return Loading();
@@ -48,8 +49,8 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                        Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
+                                        Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
                                       ],
                                     ),
                                   ),
@@ -57,8 +58,8 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                        Text(document['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("NOMBOR ADUAN: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
+                                        Text(document['noAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
                                       ],
                                     ),
                                   ),
@@ -66,8 +67,8 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Kategori: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                        Text(document['kategori'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("KATEGORI: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
+                                        Text(document['kategori'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
                                       ],
                                     ),
                                   ),
@@ -75,8 +76,8 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Status: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                        Text(document['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.indigo[500])),
+                                        Text("STATUS: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
+                                        Text(document['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.indigo[500])),
                                       ],
                                     ),
                                   ),
@@ -104,7 +105,19 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                 ],
                               ),
                             ),
-                            onTap: () {verifyTask(document['id']);}
+                            onTap: () {verifyTask(document['id']);},
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                    icon: Icon(Icons.description),
+                                    color: Colors.black,
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsCompleteTask(document: document)));
+                                    }
+                                ),
+                              ],
+                            )
                         )
                     );
                   }
@@ -149,12 +162,12 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     alignment: Alignment.topLeft,
                                     width: 220,
                                     margin: EdgeInsets.only(top:26, left: 14),
-                                    child: Text("Kawasan: "+ snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    child: Text("KAWASAN: "+ snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ),
                                   Container(
                                     width: 220,
                                     margin: EdgeInsets.only(top:4, left: 15),
-                                    child: Text("Nama Jalan: " + snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    child: Text("NAMA JALAN: " + snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ),
                                 ],
                               ),
@@ -163,7 +176,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                         ),
                         SizedBox(height: 10),
                         Visibility(
-                          visible: (snapshot.data['verified'].toString() == 'Dalam Proses Kelulusan')? true : false,
+                          visible: (snapshot.data['verified'].toString() == 'DALAM PROSES KELULUSAN')? true : false,
                           child: Column(
                             children: <Widget>[
                               SizedBox(
@@ -175,10 +188,10 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color: Colors.blue[800],
-                                    child: Text("Lengkap", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
+                                    child: Text("LENGKAP", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: () async {
                                       Firestore.instance.collection('CompleteTask').document(id).updateData({
-                                        'verified': 'Lengkap',
+                                        'verified': 'LENGKAP',
                                         'catatan' : 'Tiada Catatan'
                                       }).whenComplete((){
                                         Navigator.pop(context);
@@ -196,7 +209,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                         borderRadius: BorderRadius.circular(2.0)
                                     ),
                                     color:  Colors.blue[800],
-                                    child: Text("Penambaikan Semula", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
+                                    child: Text("PENAMBAIKAN SEMULA", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
                                     onPressed: () async {
                                       alertDialog(id);
                                     },
@@ -219,28 +232,32 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Catatan"),
+            title: Text("CATATAN"),
             content: Column(
               children: [
                 TextField(
                     decoration: InputDecoration(
-                        hintText: 'Catatan',
+                      labelText:'CATATAN',
+                        hintText: 'CATATAN',
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
                     maxLines: 5,
                     minLines: 3,
                     keyboardType: TextInputType.text,
                     onChanged: (value) {
                       setState(() => catatan = value);
+                      TextEditingValue(
+                        text: value.toUpperCase()
+                      );
                     },
                   ),
               ],
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok', style: TextStyle(color: Colors.red),),
+                child: Text('OK', style: TextStyle(color: Colors.red),),
                 onPressed: () async {
                   Firestore.instance.collection('CompleteTask').document(id).updateData({
-                    'verified': 'Penambaikan Semula',
+                    'verified': 'PENAMBAIKAN SEMULA',
                     'catatan' : catatan
                   }).whenComplete((){
                     Navigator.pop(context);

@@ -66,17 +66,17 @@ class _GoogleMapsState extends State<GoogleMaps> {
       addressLocation = firstAddress.addressLine;
       String id = Firestore.instance.collection("Location").document().documentID;
       loc = LocationTask(
+        completeTaskID: ctk.id,
         email: ctk.email,
         docId: id,
-       address: addressLocation,
-       position: firePoint.geoPoint,
+        address: addressLocation,
+        position: firePoint.geoPoint,
         noAduan: ctk.noAduan,
         kategori: ctk.kategori,
-        kawasan: ctk.kawasan,
-        naJalan: ctk.jalan,
+        barang: ctk.barang,
+        quantity: ctk.quantity
       );
-       DatabaseService().addlocation(loc);
-
+      DatabaseService().addlocation(loc);
       if (_streamSubscription != null) {
         _streamSubscription.cancel();
       }
