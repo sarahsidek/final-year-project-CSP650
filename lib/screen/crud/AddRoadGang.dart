@@ -20,7 +20,7 @@ class _AddRoadGangState extends State<AddRoadGang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BURUH KAKITANGAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("BURUH",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
         backgroundColor:  Colors.blue[800],
       ),
       body: Form(

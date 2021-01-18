@@ -603,7 +603,7 @@ class _UpdateRecordOfficerState extends State<UpdateRecordOfficer> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                  hint:Text(widget.rd.pegawaiZon),
+
                   decoration: InputDecoration(
                       labelText: "PEGAWAI ZON",
                       prefixIcon: Icon(Icons.person),

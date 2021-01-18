@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/service/auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class SignupScreen extends StatefulWidget {
@@ -120,28 +121,30 @@ class _SignupScreenState extends State<SignupScreen> {
                           SizedBox(
                             height: 15,
                           ),
-                          RaisedButton(
-                            child: Text(
-                                'Daftar'
-                            ),
-                            onPressed: ()  async {
-                              if(_formKey.currentState.validate()){
-                                setState(() => loading = true);
-                                dynamic result = await _auth.registerWithEmailandPassword(name, email, password, confrimpass, nophone);
-                                Navigator.pop(context);
-                                if(result == null){
-                                  setState(() {
-                                    error = 'Log masuk tidak sah!';
-                                    loading = false;
-                                  });
+                          SizedBox(
+                            height: 40,
+                            width: 100,
+                            child: RaisedButton(
+                              child: Text('Daftar', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.white)),
+                              onPressed: ()  async {
+                                if(_formKey.currentState.validate()){
+                                  setState(() => loading = true);
+                                  dynamic result = await _auth.registerWithEmailandPassword(name, email, password, confrimpass, nophone);
+                                  Navigator.pop(context);
+                                  if(result == null){
+                                    setState(() {
+                                      error = 'Log masuk tidak sah!';
+                                      loading = false;
+                                    });
+                                  }
                                 }
-                              }
-                            },
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              color: Colors.blue[800],
+                              textColor: Colors.white,
                             ),
-                            color: Colors.blue[800],
-                            textColor: Colors.white,
                           ),
                         ],
                       )

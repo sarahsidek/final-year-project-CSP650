@@ -3,6 +3,7 @@ import 'package:fyp/screen/crud/listSupervisor.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/crud/AddSupervisor.dart';
 import 'package:fyp/service/auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -14,7 +15,7 @@ class HomeSupervisor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:Colors.blue[800],
-        title: Text('PENYELIA'),
+        title: Text('PENYELIA',style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 16)),
         actions: <Widget>[
           Row(
             children: [

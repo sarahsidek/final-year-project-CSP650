@@ -578,7 +578,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
 
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                    hint:Text('ZON'),
                     decoration: InputDecoration(
                       labelText: "ZON",
                       prefixIcon: Icon(Icons.add_location),
@@ -596,7 +595,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
               ),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
-                hint:Text('PEGAWAI ZON'),
                 decoration: InputDecoration(
                     labelText: "PEGAWAI ZON",
                     prefixIcon: Icon(Icons.person),

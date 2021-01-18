@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fyp/screen/RecordOfficer/loginRecordOfficer.dart';
 import 'package:fyp/screen/RoadGang/loginRoadGang.dart';
 import 'package:fyp/screen/login.dart';
-import 'package:fyp/screen/pushNotification.dart';
 import 'package:fyp/screen/searchTask.dart';
 import 'package:fyp/screen/supervisor/loginSupervisor.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,8 +57,8 @@ class _MainPageState extends State<MainPage> {
              child:  Center(
                child: Column(
                  children: [
-                   new Text("Pemantauan Tugasan Kerja ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-                   new Text("Jabatan Kejuruteraan ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+                   new Text("PEMANTAUAN TUGASAN KERJA ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+                   new Text("JABATAN KEJURUTERAAN ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
                  ],
                ),
              ),
@@ -84,7 +83,7 @@ class _MainPageState extends State<MainPage> {
                         Image.asset('assets/admin.png',height: 100, width: 100,),
                         Column(
                           children: [
-                            new Text("Admin", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                            new Text("ADMIN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
                       ],
@@ -103,7 +102,7 @@ class _MainPageState extends State<MainPage> {
                         Image.asset('assets/supervisor.png',height: 110, width: 100,),
                         Column(
                           children: [
-                            new Text("Penyelia", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                            new Text("PENYELIA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
                       ],
@@ -122,7 +121,7 @@ class _MainPageState extends State<MainPage> {
                         Image.asset('assets/penyelia.png',height: 110, width: 100,),
                         Column(
                           children: [
-                            new Text("Peg. Merekod", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                            new Text("PEG. MEREKOD", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
                       ],
@@ -141,7 +140,7 @@ class _MainPageState extends State<MainPage> {
                         Image.asset('assets/laborers.png',height: 110, width: 100,),
                         Column(
                           children: [
-                            new Text("Road Gang", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                            new Text("ROAD GANG", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
                           ],
                         ),
                       ],
