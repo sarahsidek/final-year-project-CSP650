@@ -120,12 +120,96 @@ class _ListOfTaskNotApproveState extends State<ListOfTaskNotApprove> {
                                 ],
                               ),
                             ),
+                              onTap: () {listAddress(ba['id']);}
                           )
                       );
                     });
               }
             }),
       ),
+    );
+  }
+  void listAddress(String id) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(10.0),
+                topRight: const Radius.circular(10.0)
+            )
+        ),
+        context: context,
+        builder: (builder){
+          return StreamBuilder(
+              stream:Firestore.instance.collection("Task").document(id).snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Loading();
+                } else {
+                  return Container(
+                    height: 150,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(20.0, 3, 30.0, 5.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.topLeft,
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:26, left: 14),
+                                      child: Row(
+                                        children: [
+                                          Text("KAWASAN: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text( snapshot.data['kawasan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:4, left: 15),
+                                      child: Row(
+                                        children: [
+                                          Text("NAMA JALAN: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                          Text(snapshot.data['naJalan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:4, left: 15),
+                                      child: Row(
+                                        children: [
+                                          Text("KEROSAKAN: ", textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 220,
+                                      margin: EdgeInsets.only(top:4, left: 15),
+                                      child: Row(
+                                        children: [
+                                          Text(snapshot.data['kerosakan'], textAlign: TextAlign.left,style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              }
+          );
+        }
     );
   }
 }

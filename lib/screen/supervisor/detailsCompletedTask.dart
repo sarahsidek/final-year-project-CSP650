@@ -24,8 +24,8 @@ class _DetailsCompleteTaskState extends State<DetailsCompleteTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Maklumat Terperinci", style: GoogleFonts.andika(
-            fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("MAKLUMAT LOKASI ROAD GANG", style: GoogleFonts.andika(
+            fontWeight: FontWeight.bold, fontSize: 14)),
         backgroundColor: Colors.blue[800],
       ),
         body: Container(
@@ -39,10 +39,6 @@ class _DetailsCompleteTaskState extends State<DetailsCompleteTask> {
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (BuildContext context, int index){
                     DocumentSnapshot dt = snapshot.data.documents[index];
-                    List<String> barang = List.from(dt['barang']);
-                    List<String> quantity = List.from(dt['quantity']);
-                    barang.sort();
-                    quantity.sort();
                     return Card(
                       margin: EdgeInsets.all(10),
                       color: Colors.grey[400],
@@ -55,22 +51,15 @@ class _DetailsCompleteTaskState extends State<DetailsCompleteTask> {
                                 alignment: Alignment.centerLeft,
                                 child: Column(
                                   children: [
-                                    Text("Alamat: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text("ALAMAT LOKASI ROAD GANG SEMASA: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20)),
                                   ],
                                 ),
                               ),
                               Container(
+                                alignment: Alignment.centerLeft,
                                 child: Column(
                                   children: [
-                                    Text(dt['address'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: Column(
-                                  children: [
-                                   Text("$barang", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
-                                    Text("$quantity", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                    Text(dt['address'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 20)),
                                   ],
                                 ),
                               ),

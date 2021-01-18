@@ -37,14 +37,13 @@ class _SearchTaskState extends State<SearchTask> {
                         child: Row(
                           children: [
                             Text("$myDatetime ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-
                           ],
                         ),
                       ),
                       Container(alignment: Alignment.centerLeft,
                         child: Row(
                           children: [
-                            Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -53,7 +52,7 @@ class _SearchTaskState extends State<SearchTask> {
                       Container(alignment: Alignment.centerLeft,
                         child: Row(
                           children: [
-                            Text("Nombor Aduan: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+                            Text("NOMBOR ADUAN: ", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['noAduan'], style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -62,7 +61,7 @@ class _SearchTaskState extends State<SearchTask> {
                       Container(alignment: Alignment.centerLeft,
                         child: Row(
                           children: [
-                            Text("Kawasan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text("KAWASAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['kawasan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['naJalan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                           ],
@@ -72,7 +71,7 @@ class _SearchTaskState extends State<SearchTask> {
                       Container(alignment: Alignment.centerLeft,
                         child: Row(
                           children: [
-                            Text("Status: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                            Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                             Text(snapshotData.documents[index].data['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -123,7 +122,7 @@ class _SearchTaskState extends State<SearchTask> {
        title: TextField(
          style: TextStyle(color: Colors.white),
          decoration: InputDecoration(
-           hintText:"Carian...",
+           hintText:"CARIAN...",
            hintStyle: TextStyle(color: Colors.white)
          ),
          controller: search,
@@ -132,7 +131,7 @@ class _SearchTaskState extends State<SearchTask> {
      ),
       body: isExecuted ? searchData() : Container (
         child: Center(
-          child: Text('Search any aduan', style: TextStyle(
+          child: Text('CARIAN TIADA DALAM LAPORAN', style: TextStyle(
             color: Colors.white)
           ),),
         ),

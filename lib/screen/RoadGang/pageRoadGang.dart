@@ -47,7 +47,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.black,),
+                  Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black87,),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -64,7 +64,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.red,),
+                  Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.red[900],),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -81,11 +81,28 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  new Icon(Icons.list_alt_sharp,  size: 110, color: Colors.green,),
+                  Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.green[900],),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                       new Text("LENGKAP DITERIMA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                //Navigator.push(context, MaterialPageRoute(builder: (context) => UserManualRecordOfficer()));
+              },
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/user_manual.png',height: 100, width: 100,),
+                  Column(
+                    children: [
+                      new Text("PANDUAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
+                      new Text("PENGGUNA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
                 ],

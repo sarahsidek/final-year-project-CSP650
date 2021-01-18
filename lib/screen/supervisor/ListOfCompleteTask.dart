@@ -110,10 +110,10 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 IconButton(
-                                    icon: Icon(Icons.description),
+                                    icon: Icon(Icons.location_history),
                                     color: Colors.black,
                                     onPressed: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsCompleteTask(document: document)));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsCompleteTask(document: document)));
                                     }
                                 ),
                               ],
@@ -245,16 +245,13 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                     keyboardType: TextInputType.text,
                     onChanged: (value) {
                       setState(() => catatan = value);
-                      TextEditingValue(
-                        text: value.toUpperCase()
-                      );
                     },
                   ),
               ],
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('OK', style: TextStyle(color: Colors.red),),
+                child: Text('OK', style: TextStyle(color: Colors.black87),),
                 onPressed: () async {
                   Firestore.instance.collection('CompleteTask').document(id).updateData({
                     'verified': 'PENAMBAIKAN SEMULA',
@@ -268,5 +265,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
           );
         });
   }
+
+
 }
 

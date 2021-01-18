@@ -51,7 +51,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Sumber Aduan: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(document['sumberAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
@@ -60,7 +60,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Nombor Aduan: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("NOMBOR ADUAN: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(document['noAduan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
@@ -69,7 +69,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Kategori: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("KATEGORI: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(document['kategori'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
@@ -78,7 +78,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Status: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("STATUS: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(document['verified'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.indigo[500])),
                                       ],
                                     ),
@@ -87,7 +87,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                                   Container(alignment: Alignment.centerLeft,
                                     child: Row(
                                       children: [
-                                        Text("Email: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        Text("E-MEL: ",  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         Text(document['email'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                       ],
                                     ),
@@ -161,12 +161,12 @@ class _ListOfTaskState extends State<ListOfTask> {
                                     alignment: Alignment.topLeft,
                                     width: 220,
                                     margin: EdgeInsets.only(top:26, left: 14),
-                                    child: Text("Kawasan: "+ snapshot.data['kawasan'], textAlign: TextAlign.left, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    child: Text("KAWASAN: "+ snapshot.data['kawasan'], textAlign: TextAlign.left, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ),
                                   Container(
                                     width: 220,
                                     margin: EdgeInsets.only(top:4, left: 15),
-                                    child: Text("Nama Jalan: " + snapshot.data['naJalan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    child: Text("NAMA JALAN: " + snapshot.data['naJalan'],  style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                   ),
                                 ],
                               ),
@@ -180,7 +180,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                             children: <Widget>[
                               SizedBox(
                                   height: 55.0,
-                                  width: 280.0,
+                                  width: 330.0,
                                   child: RaisedButton(
                                     elevation: 0.0,
                                     shape: RoundedRectangleBorder(
@@ -201,7 +201,7 @@ class _ListOfTaskState extends State<ListOfTask> {
                               SizedBox(height: 10.0),
                               SizedBox(
                                   height: 55.0,
-                                  width: 280.0,
+                                  width: 330.0,
                                   child: RaisedButton(
                                     elevation: 0.0,
                                     shape: RoundedRectangleBorder(
@@ -249,7 +249,7 @@ class _ListOfTaskState extends State<ListOfTask> {
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok', style: TextStyle(color: Colors.red),),
+                child: Text('Ok', style: TextStyle(color: Colors.black87),),
                 onPressed: ()  async {
                   Firestore.instance.collection('Task').document(id).updateData({
                     'comments': catatan.toUpperCase(),
