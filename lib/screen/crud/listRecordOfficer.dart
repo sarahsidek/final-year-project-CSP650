@@ -1,5 +1,6 @@
 import 'package:fyp/model/RecordOfficer.dart';
 import 'package:fyp/screen/crud/UpdateRecordOfficer.dart';
+import 'package:fyp/screen/homepage.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
@@ -120,19 +121,22 @@ class _ListRecordOfficerState extends State<ListRecordOfficer> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('PERHATIAN!'),
-            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? '),
+            title: Text('PERHATIAN!', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? ', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
-                child: Text('YA', style: TextStyle(color: Colors.red),),
+                child: Text('YA', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.red[900])),
                 onPressed: ()  async {
                   DatabaseService().deleteRecordOfficer(id);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Home()));
                 },
               ),
               FlatButton(
-                child: Text("TIDAK"),
+                child: Text("TIDAK", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Home()));
                 },
               )
             ],

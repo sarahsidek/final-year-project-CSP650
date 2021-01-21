@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/screen/RecordOfficer/ListTask.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -122,13 +123,14 @@ class _EditTaskState extends State<EditTask> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Tahniah'),
-            content: Text('Berjaya Kemaskini'),
+            title: Text('TAHNIAH', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+            content: Text('BERJAYA KEMASKINI', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
-                child: Text('Ok'),
+                child: Text('OK'),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => ListTask()));
                 },
               ),
             ],

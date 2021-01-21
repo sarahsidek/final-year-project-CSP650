@@ -9,7 +9,7 @@ class HomeRoadGang extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[800],
-        title: Text('BURUH',style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 16)),
+        title: Text('ROAD GANG',style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 16)),
         actions: <Widget>[
           IconButton(
               icon: Icon(

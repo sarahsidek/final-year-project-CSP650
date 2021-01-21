@@ -17,7 +17,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BURUH",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("ROAD GANG",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
         backgroundColor:  Colors.blue[800],
         automaticallyImplyLeading: false,
         actions: [

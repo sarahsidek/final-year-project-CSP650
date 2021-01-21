@@ -1,8 +1,9 @@
-
 import 'package:fyp/service/authSupervisor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../homepage.dart';
 
 
 class AddSupervisor extends StatefulWidget {
@@ -27,7 +28,7 @@ class _AddSupervisorState extends State<AddSupervisor> {
   Widget build(BuildContext context) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("PENYELIA",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+            title: Text("PENYELIA",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 16)),
             backgroundColor:  Colors.blue[800]
           ),
           body: Form(
@@ -115,13 +116,14 @@ class _AddSupervisorState extends State<AddSupervisor> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('TAHNIAH'),
-            content: Text('BERJAYA HANTAR'),
+            title: Text('TAHNIAH', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+            content: Text('BERJAYA SIMPAN', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
                 child: Text('OK'),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Home()));
                 },
               ),
             ],

@@ -52,14 +52,14 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                         children: <Widget>[
                           //email
                           TextFormField(
-                              decoration: InputDecoration(labelText: 'Buruh: Email',
+                              decoration: InputDecoration(labelText: 'Buruh: E-mel',
                                   prefixIcon: Icon(Icons.person)),
                               keyboardType: TextInputType.text,
                               validator: (value)
                               {
                                 if(value.isEmpty)
                                 {
-                                  return 'Pastikan email dilengkapkan!';
+                                  return 'Pastikan e-mel dilengkapkan!';
                                 }
                                 return null;
                               },
@@ -95,9 +95,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                                         setState(() => loading = true);
                                         dynamic result = await _auth
                                             .signInRoadGang(name, password);
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context) =>
-                                                RoadGangHome()));
+                                       _buildErrorDialog1(context);
                                         if (result == null) {
                                           setState(() {
                                             error = 'Pastikan e-mel anda sah!';
@@ -143,6 +141,26 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
                 child: Text('Batal', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.of(context).pop();
+                })
+          ],
+        );
+      },
+      context: context,
+    );
+  }
+  Future _buildErrorDialog1(BuildContext context) {
+    return showDialog(
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Tahniah!', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+          content: Text("Anda Berjaya Masuk!", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+          actions: [
+            FlatButton(
+                child: Text('Okay', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) =>
+                          RoadGangHome()));
                 })
           ],
         );

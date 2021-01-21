@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/screen/login.dart';
 import 'package:fyp/service/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,7 +42,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   borderRadius: BorderRadius.circular(10.0)
               ),
               child: Container(
-                height: 360,
+                height: 400,
                 width: 300,
                 padding: EdgeInsets.all(16),
                 child: Form(
@@ -51,7 +52,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: <Widget>[
                           //full name
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Name penuh',
+                            decoration: InputDecoration(labelText: 'Name Penuh',
                                 prefixIcon: Icon(Icons.person)),
                             keyboardType: TextInputType.text,
                             validator: (value) => value.isEmpty ? 'Pastikan nama penuh dilengkapkan!': null,
@@ -109,7 +110,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           //confirmation password
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'kata laluan pengesahan',
+                            decoration: InputDecoration(labelText: 'Kata Laluan Pengesahan',
                                 prefixIcon: Icon(Icons.vpn_key)),
                             obscureText: true,
                             validator: (value) => value.isEmpty ? 'Pastikan kata laluan pengesahan dilengkapkan!' : null,
@@ -130,7 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 if(_formKey.currentState.validate()){
                                   setState(() => loading = true);
                                   dynamic result = await _auth.registerWithEmailandPassword(name, email, password, confrimpass, nophone);
-                                  Navigator.pop(context);
+                                  _buildErrorDialog1(context);
                                   if(result == null){
                                     setState(() {
                                       error = 'Log masuk tidak sah!';
@@ -155,6 +156,24 @@ class _SignupScreenState extends State<SignupScreen> {
           )
         ],
       ),
+    );
+  }
+  Future _buildErrorDialog1(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Tahniah!', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+          content: Text("Berjaya Daftar", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+          actions: [
+            FlatButton(
+                child: Text('Ok', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                })
+          ],
+        );
+      },
     );
   }
 }

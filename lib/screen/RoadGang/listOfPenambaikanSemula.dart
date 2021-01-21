@@ -84,7 +84,7 @@ class _ListOfPenambaikanSemulaState extends State<ListOfPenambaikanSemula> {
                                     child: Row(
                                       children: [
                                         Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                        Text(paa['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                        Text(paa['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.red[800])),
                                       ],
                                     ),
                                   ),

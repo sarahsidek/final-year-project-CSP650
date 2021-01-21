@@ -1,4 +1,5 @@
 import 'package:fyp/model/Supervisor.dart';
+import 'package:fyp/screen/homepage.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/shared/Loading.dart';
@@ -44,6 +45,12 @@ class _ListSupervisorState extends State<ListSupervisor> {
                                 child: Row(
                                   children: [
                                     Text("NAMA: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  ],
+                                ),
+                              ),
+                              Container(alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
                                     Text(sv.name, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
@@ -62,6 +69,12 @@ class _ListSupervisorState extends State<ListSupervisor> {
                                 child: Row(
                                   children: [
                                     Text("NOMBOR TELEFON: " , style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  ],
+                                ),
+                              ),
+                              Container(alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
                                     Text(sv.nophone, style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 15)),
                                   ],
                                 ),
@@ -118,20 +131,23 @@ class _ListSupervisorState extends State<ListSupervisor> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('PERHATIAN!'),
-            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? '),
+            title: Text('PERHATIAN!', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+            content: Text('ADAKAH ANDA MAHU MENGHAPUSKAN? ', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
-                child: Text('YA', style: TextStyle(color: Colors.red),),
+                child: Text('YA', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.red[900])),
                 onPressed: ()  async {
                   DatabaseService().deleteSupervisor(id);
-                },
-              ),
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => Home()));
+                  },
+                ),
               FlatButton(
-                child: Text("TIDAK"),
+                child: Text("TIDAK", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 onPressed: () {
-                  Navigator.pop(context);
-                },
+                   Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Home()));
+                       },
               )
             ],
           );

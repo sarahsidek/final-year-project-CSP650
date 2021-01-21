@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         dynamic result = await _auth
                                             .signInWithEmailAndPassword(
                                             email, password);
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                                        _buildErrorDialog1(context);
                                         if (result == null) {
                                           setState(() {
                                             error = 'Pastikan e-mel anda sah!';
@@ -171,6 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
   Future _buildErrorDialog(BuildContext context, message) {
     return showDialog(
+      context: context,
       builder: (context) {
         return AlertDialog(
           title: Text('Harap Maaf', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.red)),
@@ -184,7 +185,24 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         );
       },
+    );
+  }
+  Future _buildErrorDialog1(BuildContext context) {
+    return showDialog(
       context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Tahniah!', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+          content: Text("Anda Berjaya Masuk!", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+          actions: [
+            FlatButton(
+                child: Text('Ok', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                })
+          ],
+        );
+      },
     );
   }
 }

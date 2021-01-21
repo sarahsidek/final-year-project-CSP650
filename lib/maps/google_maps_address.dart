@@ -111,7 +111,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Peta ",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Text("PETA ",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
           backgroundColor: Colors.blue[800]
       ),
       body: Stack(
@@ -129,7 +129,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
           ),
           Positioned(
             child: Container(
-                height: 100,
+                height: 150,
                 margin: EdgeInsets.all(15.0),
                 padding: EdgeInsets.all(3.0),
                 decoration: BoxDecoration(
@@ -138,7 +138,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
                 child: Column(
                   children: [
                     Container(
-                      child: Text("Lokasi Anda:" + "$addressLocation", style: TextStyle(color: Colors.black87,
+                      child: Text("LOKASI ANDA:" + "$addressLocation", style: TextStyle(color: Colors.black87,
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0,
                       ),

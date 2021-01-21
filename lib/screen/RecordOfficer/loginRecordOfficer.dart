@@ -95,9 +95,7 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
                                         setState(() => loading = true);
                                         dynamic result = await _officer
                                             .signInRecordOfficer(email, icnumber);
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context) =>
-                                                RecordOfficer()));
+                                      _buildErrorDialog1(context);
                                         if (result == null) {
                                           setState(() {
                                             error = 'Pastikan e-mel anda sah!';
@@ -143,6 +141,26 @@ class _LoginRecordOfficerState extends State<LoginRecordOfficer> {
                 child: Text('Batal', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.of(context).pop();
+                })
+          ],
+        );
+      },
+      context: context,
+    );
+  }
+  Future _buildErrorDialog1(BuildContext context) {
+    return showDialog(
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Tahniah!', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+          content: Text("Anda Berjaya Masuk!", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+          actions: [
+            FlatButton(
+                child: Text('Ok', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) =>
+                          RecordOfficer()));
                 })
           ],
         );

@@ -83,7 +83,7 @@ class _ListOfLengkapState extends State<ListOfLengkap> {
                                       child: Row(
                                         children: [
                                           Text("STATUS: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
-                                          Text(paa['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                                          Text(paa['verified'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[800])),
                                         ],
                                       ),
                                     ),

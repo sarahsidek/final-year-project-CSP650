@@ -2,6 +2,9 @@ import 'package:fyp/model/Supervisor.dart';
 import 'package:fyp/service/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../homepage.dart';
 
 
 
@@ -44,7 +47,7 @@ void initState(){
     Widget build(BuildContext context) {
       return Scaffold(
           appBar: AppBar(
-            title: Text('KEMASKINI MAKLUMAT PENYELIA'),
+            title: Text('KEMASKINI MAKLUMAT PENYELIA',style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 16)),
             backgroundColor: Colors.blue[800],
           ),
           body: Form(
@@ -120,13 +123,14 @@ void initState(){
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('TAHNIAH'),
-            content: Text('BERJAYA KEMASKINI'),
+            title: Text('TAHNIAH', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+            content: Text('BERJAYA KEMASKINI', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
                 child: Text('OK'),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Home()));
                 },
               ),
             ],

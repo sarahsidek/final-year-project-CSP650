@@ -48,6 +48,12 @@ class _ListOfCompleteTaskNotApproveState extends State<ListOfCompleteTaskNotAppr
                                       child: Row(
                                         children: [
                                           Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(alignment: Alignment.centerLeft,
+                                      child: Row(
+                                        children: [
                                           Text(ba['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                         ],
                                       ),

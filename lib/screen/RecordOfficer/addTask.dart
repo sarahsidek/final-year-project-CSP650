@@ -478,8 +478,8 @@ class _AddTaskState extends State<AddTask> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('TAHNIAH'),
-            content: Text('BERJAYA SIMPAN'),
+            title: Text('TAHNIAH', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+            content: Text('BERJAYA SIMPAN', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
                 child: Text('OK'),

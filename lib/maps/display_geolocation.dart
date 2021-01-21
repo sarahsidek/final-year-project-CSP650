@@ -19,7 +19,7 @@ class _DisplayGeolocationState extends State<DisplayGeolocation> {
     final Marker marker = Marker(
         markerId: markerId,
         position: LatLng(specify['position'].latitude, specify['position'].longitude),
-        infoWindow: InfoWindow(title: "Aduan Disini", snippet: specify['address'])
+        infoWindow: InfoWindow(title: "NOMBOR ADUAN: "+ specify['noAduan'], snippet: specify['address'])
     );
     setState(() {
       markers[markerId] = marker;

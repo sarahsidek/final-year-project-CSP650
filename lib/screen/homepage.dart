@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
                   ),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.person),
-                      label: ('BURUH'),
+                      label: ('ROAD GANG'),
                       backgroundColor: Colors.redAccent
                   ),
                   BottomNavigationBarItem(

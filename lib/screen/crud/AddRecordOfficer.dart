@@ -511,7 +511,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PEGAWAI MEREKOD",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
+        title: Text("PEGAWAI MEREKOD",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 16)),
         backgroundColor: Colors.blue[800]
       ),
       body: Form(
@@ -630,8 +630,8 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('TAHNIAH'),
-            content: Text('BERJAYA HANTAR'),
+            title: Text('TAHNIAH', style: GoogleFonts.asap(fontWeight: FontWeight.bold, color: Colors.green[900])),
+            content: Text('BERJAYA HANTAR', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
             actions: <Widget>[
               FlatButton(
                 child: Text('OK'),

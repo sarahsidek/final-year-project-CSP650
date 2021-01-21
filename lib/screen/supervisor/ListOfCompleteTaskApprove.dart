@@ -48,8 +48,14 @@ class _ListOfCompleteTaskApproveState extends State<ListOfCompleteTaskApprove> {
                                     child: Row(
                                       children: [
                                         Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
-                                        Text(ap['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
                                      ]
+                                    ),
+                                  ),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Row(
+                                        children: [
+                                          Text(ap['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18)),
+                                        ]
                                     ),
                                   ),
                                   SizedBox(height: 5.0),
@@ -111,4 +117,5 @@ class _ListOfCompleteTaskApproveState extends State<ListOfCompleteTaskApprove> {
       ),
     );
   }
+
 }

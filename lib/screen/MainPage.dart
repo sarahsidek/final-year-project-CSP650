@@ -57,9 +57,9 @@ class _MainPageState extends State<MainPage> {
              child:  Center(
                child: Column(
                  children: [
-                   new Text("PEMANTAUAN TUGASAN KERJA ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-                   new Text("JABATAN KEJURUTERAAN ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18)),
-                 ],
+                   new Text("PEMANTAUAN TUGASAN KERJA ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black)),
+                   new Text("JABATAN KEJURUTERAAN ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black)),
+                 ]
                ),
              ),
           ),
@@ -83,7 +83,7 @@ class _MainPageState extends State<MainPage> {
                         Image.asset('assets/admin.png',height: 100, width: 100,),
                         Column(
                           children: [
-                            new Text("ADMIN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15)),
+                            new Text("ADMIN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black87)),
                           ],
                         ),
                       ],

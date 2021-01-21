@@ -50,6 +50,12 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     child: Row(
                                       children: [
                                         Text("SUMBER ADUAN: ", style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
                                         Text(document['sumberAduan'], style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
                                       ],
                                     ),
@@ -77,6 +83,12 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                                     child: Row(
                                       children: [
                                         Text("STATUS: ",style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16)),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
                                         Text(document['verified'],style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.indigo[500])),
                                       ],
                                     ),
@@ -255,7 +267,7 @@ class _ListOfCompleteTaskState extends State<ListOfCompleteTask> {
                 onPressed: () async {
                   Firestore.instance.collection('CompleteTask').document(id).updateData({
                     'verified': 'PENAMBAIKAN SEMULA',
-                    'catatan' : catatan
+                    'catatan' : catatan.toUpperCase()
                   }).whenComplete((){
                     Navigator.pop(context);
                   });
