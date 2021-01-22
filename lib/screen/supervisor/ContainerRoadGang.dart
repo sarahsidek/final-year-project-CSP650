@@ -28,7 +28,7 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/listcompletedworktask.png',height: 100, width: 100),
+                    Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listcompletedworktask.png',height: 100, width: 100)),
                     Column(
                       children: [
                         new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -45,7 +45,7 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.green[900],),
+                    Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.green[900],)),
                     Column(
                       children: [
                         new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -62,7 +62,7 @@ class _ContainerRoadGangState extends State<ContainerRoadGang> {
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.red[900],),
+                    Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.red[900],)),
                     Column(
                       children: [
                         new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),

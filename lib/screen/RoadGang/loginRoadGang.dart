@@ -156,7 +156,7 @@ class _LoginRoadGangState extends State<LoginRoadGang> {
           content: Text("Anda Berjaya Masuk!", style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
           actions: [
             FlatButton(
-                child: Text('Okay', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
+                child: Text('Ok', style: GoogleFonts.asap(fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) =>

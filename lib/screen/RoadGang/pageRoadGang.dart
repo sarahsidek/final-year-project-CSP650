@@ -3,6 +3,7 @@ import 'package:fyp/screen/RoadGang/listOfLengkap.dart';
 import 'package:fyp/screen/RoadGang/listOfPenambaikanSemula.dart';
 import 'package:fyp/screen/RoadGang/listTaskFromSupervisor.dart';
 import 'package:flutter/material.dart';
+import 'package:fyp/screen/RoadGang/usermanual_roadgang.dart';
 import 'package:fyp/service/authRoadGang.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -47,7 +48,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black87,),
+                  Container( margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black87,)),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -64,7 +65,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.red[900],),
+                  Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.red[900],)),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -81,7 +82,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.green[900],),
+                  Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listcompletedworktask.png',height: 100, width: 100, color: Colors.green[900],)),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -92,8 +93,7 @@ class _RoadGangHomeState extends State<RoadGangHome> {
               ),
             ),
             RaisedButton(
-              onPressed: () {
-                //Navigator.push(context, MaterialPageRoute(builder: (context) => UserManualRecordOfficer()));
+              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => UserManualRoadGang()));
               },
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,

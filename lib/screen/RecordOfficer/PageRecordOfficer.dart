@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:fyp/screen/MainPage.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskAccepted.dart';
 import 'package:fyp/screen/RecordOfficer/ListOfTaskNotAccepted.dart';
@@ -65,8 +66,9 @@ class _RecordOfficerState extends State<RecordOfficer> {
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black87,),
+                Container(margin: EdgeInsets.only(left:20) ,child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black, )),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     new Text("SENARAI SEMUA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
                     new Text("TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -82,7 +84,7 @@ class _RecordOfficerState extends State<RecordOfficer> {
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.green[900],),
+                Container(margin: EdgeInsets.only(left:20),child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.green[900],)),
                 Column(
                   children: [
                     new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -99,7 +101,7 @@ class _RecordOfficerState extends State<RecordOfficer> {
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.red[900],),
+                Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.red[900],)),
                 Column(
                   children: [
                     new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),

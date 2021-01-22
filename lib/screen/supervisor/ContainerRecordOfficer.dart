@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/screen/supervisor/ListOfTaskApprove.dart';
 import 'package:fyp/screen/supervisor/ListOfTaskNotApprove.dart';
 import 'package:fyp/screen/supervisor/ListOfTask.dart';
+import 'package:fyp/screen/supervisor/usermanual_supervisor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ContainerRecordOfficer extends StatefulWidget {
@@ -27,7 +29,7 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black87,),
+                  Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.black87,)),
                   Column(
                     children: [
                       new Text("SENARAI SEMUA", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -44,7 +46,7 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.green[900],),
+                  Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.green[900],)),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -61,7 +63,7 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.red[900],),
+                  Container(margin: EdgeInsets.only(left: 20),child: Image.asset('assets/listworktask1.png',height: 100, width: 100, color: Colors.red[900],)),
                   Column(
                     children: [
                       new Text("SENARAI TUGASAN", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -73,7 +75,7 @@ class _ContainerRecordOfficerState extends State<ContainerRecordOfficer> {
             ),
             RaisedButton(
               onPressed: () {
-                //Navigator.push(context, MaterialPageRoute(builder: (context) => UserManualRecordOfficer()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => UsermanualSupervisor()));
               },
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
