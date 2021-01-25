@@ -18,19 +18,13 @@ class _UserManualRoadGangState extends State<UserManualRoadGang> {
           child: Container(
               child: Column(
                 children:[
-                  Container(
-                    alignment: Alignment.center,
-                    child:  Image.asset("assets/9.png", height: 370, width: 290, fit: BoxFit.cover,),
-                  ),
+                  SizedBox(child: Image.asset("assets/9.png", height: 370, width: 290, fit: BoxFit.cover)),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(" 1. Sila klik button ini untuk pergi ke halaman senarai tugasan penyelia ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
                   ),
                   SizedBox(height: 15.0,),
-                  Container(
-                    margin: EdgeInsets.only(left: 50, right: 60),
-                    child:Image.asset("assets/10(1).png", height: 370, width: 290, fit: BoxFit.cover,),
-                  ),
+                  SizedBox( child:Image.asset("assets/10(1).png", height: 370, width: 290, fit: BoxFit.cover,)),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -40,10 +34,7 @@ class _UserManualRoadGangState extends State<UserManualRoadGang> {
                     ),
                   ),
                   SizedBox(height: 15.0,),
-                  Container(
-                    margin: EdgeInsets.only(left: 58),
-                    child:Image.asset("assets/10(2).png", height: 350, width: 300, fit: BoxFit.cover,),
-                  ),
+                  SizedBox(  child:Container(margin: EdgeInsets.only(left: 45),child: Image.asset("assets/10(2).png", height: 370, width: 290, fit: BoxFit.cover,)),),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -57,10 +48,8 @@ class _UserManualRoadGangState extends State<UserManualRoadGang> {
                     ),
                   ),
                   SizedBox(height: 15.0,),
-                  Container(
-                    margin: EdgeInsets.only(left: 58),
-                    child:Image.asset("assets/11(1).png", height: 350, width: 300, fit: BoxFit.cover,),
-                  ),
+                  SizedBox(child:Container(margin: EdgeInsets.only(left: 40),child: Image.asset("assets/11(1).png", height: 370, width: 290, fit: BoxFit.cover,))),
+
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -71,10 +60,7 @@ class _UserManualRoadGangState extends State<UserManualRoadGang> {
                     ),
                   ),
                   SizedBox(height: 15.0,),
-                  Container(
-                    margin: EdgeInsets.only(left: 100),
-                    child:Image.asset("assets/11(2).png", height: 380, width: 300, fit: BoxFit.cover,),
-                  ),
+                  SizedBox(  child:Image.asset("assets/11(2).png", height: 380, width: 300, fit: BoxFit.cover,),),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -84,10 +70,7 @@ class _UserManualRoadGangState extends State<UserManualRoadGang> {
                     ),
                   ),
                   SizedBox(height: 15.0,),
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child:Image.asset("assets/12(1).png", height: 450, width: 250, fit: BoxFit.cover,),
-                  ),
+                  SizedBox( child:Image.asset("assets/12(1).png", height: 450, width: 250, fit: BoxFit.cover,)),
                   Container(
                   margin: EdgeInsets.only(left: 40),
                     child: Column(

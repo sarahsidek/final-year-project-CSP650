@@ -319,20 +319,9 @@ class _AddTaskState extends State<AddTask> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                    labelText: "PILIH TARIKH",
-                    prefixIcon: Icon(Icons.calendar_today),
-                    hintText: _dateTime.toString(),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
-                readOnly: true,
-                 onChanged: (value){
-                  setState(() {
-                    _dateTime = value as DateTime;
-                    print(_dateTime);
-                  });
-                 },
-              ),
+              Container(
+                  margin: EdgeInsets.only(right: 88),
+                  child: Text("TARIKH: "+ _dateTime.toString(), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 decoration: InputDecoration(

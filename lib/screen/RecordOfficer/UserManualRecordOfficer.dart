@@ -27,11 +27,14 @@ class _UserManualRecordOfficerState extends State<UserManualRecordOfficer> {
                  SizedBox(height: 15.0,),
                  SizedBox(child: Container(margin: EdgeInsets.only(right: 70),child: Image.asset("assets/2.png", height: 370, width: 250, fit: BoxFit.cover,))),
                  Container(
+                   alignment: Alignment.centerLeft,
+                   child:Text(" 2. Tarikh ini akan dijana secara automatik", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
+                 ),
+                 Container(
                    color: Colors.white70,
-                   alignment: Alignment.topCenter,
+                   alignment: Alignment.centerLeft,
                    child: Column(
                      children: [
-                       Text(" 2. Sila isi pilih tarikh berdasarkan hari bekerja. Tarikh ini wajib diisi. ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14), maxLines: 5,),
                        Text(" 3. Sila pilih tiga jenis sumber aduan sama ada SISTEM ADUAN MBPJ, SISTEM ADUAN WAZE atau SISTEM ADUAN UTILITI. Sumber aduan ini wajib diisi. ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14), maxLines: 5,),
                        Text(" 4. Sila isi nombor aduan berdasarkan jenis sumber aduan. Nombor aduan ini wajib diisi.", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14), maxLines: 5,),
                        Text(" 5. Sila  pilih lokasi kawasan tugasan sama ada PJS 1, PJS 2 dan sebagainya. Lokasi ini wajib diisi. ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14), maxLines: 5,),

@@ -227,19 +227,9 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
                 ],
               ),
               SizedBox(height: 5.0),
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: "PILIH TARIKH PENAMBAIKAN: ",
-                    prefixIcon: Icon(Icons.calendar_today),
-                    hintText: _dateTime.toString(),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5))),
-                 onChanged: (value){
-                  setState(() {
-                    _dateTime = value as DateTime;
-                  });
-                 },
-              ),
+              Container(
+                  margin: EdgeInsets.only(right: 88),
+                  child: Text("TARIKH: "+ _dateTime.toString(), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
               SizedBox(height: 5.0),
               ListView.separated(
                 shrinkWrap: true,

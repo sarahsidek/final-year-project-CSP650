@@ -21,13 +21,13 @@ class _UsermanualSupervisorState extends State<UsermanualSupervisor> {
                     alignment: Alignment.centerLeft,
                     child: Text("PENGESAHAN TUGASAN UNTUK PEGAWAI MEREKOD ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14), maxLines: 5,),
                   ),
-                  SizedBox(child: Container(margin:EdgeInsets.only(right: 40),child: Image.asset("assets/3.png", height:400, width: 310, fit: BoxFit.cover,))),
+                  SizedBox(child: Container(margin:EdgeInsets.only(right: 50),child: Image.asset("assets/3.png", height:400, width: 310, fit: BoxFit.cover,))),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(" 1. Sila klik ikon ini untuk pergi ke halaman senarai semua tugasan  ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
                   ),
                   SizedBox(height: 15.0),
-                  SizedBox(child: Container(margin: EdgeInsets.only(right: 70),child: Image.asset("assets/4(1).png", height: 400, width: 320, fit: BoxFit.cover,))),
+                  SizedBox(child: Container(margin: EdgeInsets.only(right: 60),child: Image.asset("assets/4(1).png", height: 400, width: 320, fit: BoxFit.cover,))),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -62,7 +62,7 @@ class _UsermanualSupervisorState extends State<UsermanualSupervisor> {
                     alignment: Alignment.centerLeft,
                     child: Text("PENGESAHAN TUGASAN UNTUK ROAD GANG ", style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14), maxLines: 5,),
                   ),
-                  SizedBox(child: Container(margin: EdgeInsets.only(right: 80),child: Image.asset("assets/6.png", height: 400, width: 310, fit: BoxFit.cover,))),
+                  SizedBox(child: Container(margin: EdgeInsets.only(right: 70),child: Image.asset("assets/6.png", height: 400, width: 310, fit: BoxFit.cover,))),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
