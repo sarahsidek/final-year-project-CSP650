@@ -32,7 +32,7 @@ class _AddTaskState extends State<AddTask> {
   String sumberAduan;
   File image;
   Task tk;
-  List<Asset> images = List<Asset>();
+  List<Asset> images = List();
   List<String> imageUrls = <String>[];
   String error = "No error Detected";
   List <String> sumber = <String> ['SISTEM ADUAN MBPJ', 'SISTEM ADUAN WAZE', 'SISTEM ADUAN UTILITI'];
@@ -42,7 +42,7 @@ class _AddTaskState extends State<AddTask> {
    'PJU 1A', 'PJU 2', 'PJU 3', 'PJU 4', 'PJU 5', 'PJU 6','PJU 7', 'PJU 8', 'PJU 9', 'PJU 10',];
   String value = " ";
   String value1 = " ";
-  List<DropdownMenuItem<String>> _naJalan = List();
+  List<DropdownMenuItem<String>> _naJalan;
   String _selectKawasan;
   String _selectNamaJalan;
   bool disableDrop = true;
@@ -70,7 +70,7 @@ class _AddTaskState extends State<AddTask> {
 
 
   loadAssets() async {
-    List<Asset> resultList = List<Asset>();
+    List<Asset> resultList = images;
     String error = 'No Error Dectected';
 
     try {
@@ -320,7 +320,7 @@ class _AddTaskState extends State<AddTask> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(right: 88),
+                  margin: EdgeInsets.only(right: 60),
                   child: Text("TARIKH: "+ _dateTime.toString(), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
               SizedBox(height: 10.0),
               DropdownButtonFormField(

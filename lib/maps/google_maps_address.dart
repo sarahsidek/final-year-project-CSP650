@@ -35,7 +35,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
   String addressLocation;
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(4.2105, 101.9758),
-    zoom: 18.00,
+    zoom: 10.00,
   );
 
   void updateMarker(LocationData newLocalData) {
