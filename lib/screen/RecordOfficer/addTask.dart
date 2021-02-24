@@ -9,6 +9,7 @@ import 'package:fyp/model/Task.dart';
 import 'package:fyp/screen/RecordOfficer/ListTask.dart';
 import 'package:fyp/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 
@@ -23,7 +24,6 @@ class _AddTaskState extends State<AddTask> {
 
   // text field state
   DateTime _dateTime = DateTime.now();
-
   String noAduan;
   String kerosakan;
   String imageUrl;
@@ -39,9 +39,9 @@ class _AddTaskState extends State<AddTask> {
   List <String> kate = <String> ['SEGERA', 'PEMBAIKAN BIASA'];
   List<String> kawasan = <String>
   ['PJS 1', 'PJS 2','PJS 3', 'PJS 4','PJS 5','PJS 6', 'PJS 8',
-   'PJU 1A', 'PJU 2', 'PJU 3', 'PJU 4', 'PJU 5', 'PJU 6','PJU 7', 'PJU 8', 'PJU 9', 'PJU 10',];
-  String value = " ";
-  String value1 = " ";
+   'PJU 1A',  'PJU 1', 'PJU 2', 'PJU 3', 'PJU 5', 'PJU 6','PJU 7', 'PJU 8', 'PJU 9', 'PJU 10',];
+  String value = "PJS 1";
+  String value1 = "PJS 1/1";
   List<DropdownMenuItem<String>> _naJalan;
   String _selectKawasan;
   String _selectNamaJalan;
@@ -184,18 +184,75 @@ class _AddTaskState extends State<AddTask> {
   };
 
   final pju1a = {
-    "1": "PJU 1A/20",
-    "2": "PJU 1A/3",
-    "3": "JALAN LAGENDA PUTERA 2 ",
-    "4": "PJU 1A/20A",
-    "5":"PJU 1A/3J",
-    "6": "PJU 1A/26",
-    "7":"PJU 1A/23C",
-    "8": "PJU 1A/3H",
-    "9": "PJU 1A/5",
+    "1": "PJU 1A/1", "2": "PJU 1A/2", "3": "PJU 1A/3", "4": "PJU 1A/3H",
+    "5": "PJU 1A/3J", "6": "PJU 1A/4", "7": "PJU 1A/41", "8": "PJU 1A/4A",
+    "9": "PJU 1A/41B", "10": "PJU 1A/42", "11": "PJU 1A/46", "12": "PJU 1A/5",
+    "13": "PJU 1A/7", "14": "PJU 1A/23C", "15": "PJU 1A/44", "16": "PJU 1A/50",
+    "17": "PJU 1A/50B", "18": "PJU 1A/54", "19": "JALAN LAGENDA PUTERA 2",
+    "20": "PERSIARAN TROPICANA", "21": "JALAN BUKIT MAYANG EMAS",
   };
 
+  final pju1 ={
+    "1": "PJU 1/17",
+    "2": "PJU 1/46G",
+    "3": "JALAN BUKIT MAYANG EMAS",
+  };
+  final pju2 ={
+    "1": "PJU 1A/5A",
+    "2": "PJU 1A/10",
+    "3": "PJU 1A/14",
+    "4": "PJU 1A/5",
+  };
 
+  final pju3 = {
+    "1": "PJU 3/1", "2": "PJU 3/2", "3": "PJU 3/3", "4": "PJU 3/4",
+    "5": "PJU 3/5", "6": "PJU 3/6", "7": "PJU 3/7", "8": "PJU 3/8",
+    "9": "PJU 3/9", "10": "JALAN PJU 3/16C", "11": "JALAN PJU 3/18", "12": "JALAN TROPICANA SELATAN",
+    "13": "JALAN TROPICANA UTARA", "14": "PERSIARAN DAMANSARA INDAH", "15": "JALAN TROPICANA UTAMA", "16": "PERSIARAN TROPICANA",
+    "17": "PERSIARAN DAMANSARA INDAH",
+  };
+
+  final pju5 = {
+    "1": "PJU 5/1", "2": "PJU 5/2", "3": "PJU 5/3", "4": "PJU 5/4",
+    "5": "PJU 5/5", "6": "PJU 5/6", "7": "PJU 5/7", "8": "PJU 5/8",
+    "9": "PJU 5/9", "10": "PJU 5/10", "11": "PJU 5/11", "12": "PJU 5/12",
+    "13": "PJU 5/13", "14": "PJU 5/14", "15": "PJU 5/15", "16": "PJU 5/16",
+    "17": "PJU 5/17", "18": "PJU 5/18", "19": "PJU 5/19", "20": "PJU 5/20",
+    "21": "PJU 5/21",
+  };
+
+  final pju6 = {
+    "1":"PJU 6/1", "2":"PJU 6/2", "3":"PJU 6/3",
+    "4":"PJU 6/4", "5":"PJU 6/5", "6":"PJU 6/6",
+    "7":"PJU 6/7", "8":"PJU 6/8", "9":"PJU 6/9",
+  };
+
+  final pju7 = {
+    "1":"PJU 7/1", "2":"PJU 7/2", "3":"PJU 7/3",
+    "4":"PJU 7/4", "5":"PJU 7/5", "6":"PJU 7/6",
+    "7":"PJU 7/7", "8":"PJU 7/8",
+  };
+
+  final pju8 = {
+    "1":"PJU 8/1", "2":"PJU 8/2", "3":"PJU 8/3",
+    "4":"PJU 8/4", "5":"PJU 8/5", "6":"PJU 8/6",
+    "7":"PJU 8/7", "8":"PJU 8/8",
+  };
+
+  final pju9 = {
+    "1":"PERSIARAN CEMARA", "2":"PERSIARAN MERANTI", "3":"PERSIARAN ARA",
+    "4":"PERSIARAN INDUSTRI", "5":"PERSIARAN UTAMA", "6":"PERSIARAN ANGSANA",
+    "7":"PERSIARAN PERDANA", "8":"PERSIARAN DAGANG", "9": "PERSIARAN MARGOSA",
+    "10": "PERSIARAN KENANGA",
+  };
+
+  final pju10 = {
+    "1": "PJU 10/1", "2": "PJU 10/2", "3": "PJU 10/3", "4": "PJU 10/4",
+    "5": "PJU 10/5", "6": "PJU 10/6", "7": "PJU 10/7", "8": "PJU 10/8",
+    "9": "PJU 10/9", "10": "PJU 10/10", "11": "PJU 10/11", "12": "PJU 10/12",
+    "13": "PJU 10/13", "14": "PJU 10/14", "15": "PJU 10/15", "16": "PJU 10/16",
+    "17": "PJU 10/17", "18": "PJU 10/18", "19": "PJU 10/19",
+  };
   void pops1(){
     for(String key in pjs1.keys){
       _naJalan.add(DropdownMenuItem<String>(
@@ -266,30 +323,202 @@ class _AddTaskState extends State<AddTask> {
       );
     }
   }
+
+  void pops7(){
+    for(String key in pjs8.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pjs8[key],
+        child: Text(
+            pjs8[key]
+        ),
+      ),
+      );
+    }
+  }
+
+  void pops8(){
+    for(String key in pju1a.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju1a[key],
+        child: Text(
+            pju1a[key]
+        ),
+      ),
+      );
+    }
+  }
+
+  void pops9(){
+    for(String key in pju1.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju1[key],
+        child: Text(
+            pju1[key]
+        ),
+      ),
+      );
+    }
+  }
+
+  void pops10(){
+    for(String key in pju2.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju2[key],
+        child: Text(
+            pju2[key]
+        ),
+      ),
+      );
+    }
+  }
+
+  void pops11(){
+    for(String key in pju3.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju3[key],
+        child: Text(
+            pju3[key]
+        ),
+      ),
+      );
+    }
+  }
+  void pops12(){
+    for(String key in pju5.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju5[key],
+        child: Text(
+            pju5[key]
+        ),
+      ),
+      );
+    }
+  }
+
+  void pops13(){
+    for(String key in pju6.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju6[key],
+        child: Text(
+            pju6[key]
+        ),
+      ),
+      );
+    }
+  }
+  void pops14(){
+    for(String key in pju7.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju7[key],
+        child: Text(
+            pju7[key]
+        ),
+      ),
+      );
+    }
+  }
+
+  void pops15(){
+    for(String key in pju8.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju8[key],
+        child: Text(
+            pju8[key]
+        ),
+      ),
+      );
+    }
+  }
+  void pops16(){
+    for(String key in pju9.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju9[key],
+        child: Text(
+            pju9[key]
+        ),
+      ),
+      );
+    }
+  }
+  void pops17(){
+    for(String key in pju10.keys){
+      _naJalan.add(DropdownMenuItem<String>(
+        value: pju10[key],
+        child: Text(
+            pju10[key]
+        ),
+      ),
+      );
+    }
+  }
     void onChange(_selectKawasan) {
     if(_selectKawasan == "PJS 1"){
       _naJalan = [];
       pops1();
     }
-    if(_selectKawasan == "PJS 2"){
+    else if(_selectKawasan == "PJS 2"){
       _naJalan = [];
       pops2();
     }
-    if(_selectKawasan == "PJS 3"){
+    else if(_selectKawasan == "PJS 3"){
       _naJalan = [];
       pops3();
     }
-    if(_selectKawasan == "PJS 4"){
+    else if(_selectKawasan == "PJS 4"){
       _naJalan = [];
       pops4();
     }
-    if(_selectKawasan == "PJS 5"){
+    else if(_selectKawasan == "PJS 5"){
       _naJalan = [];
       pops5();
     }
-    if(_selectKawasan == "PJS 6"){
+    else if(_selectKawasan == "PJS 6"){
       _naJalan = [];
       pops6();
+    }
+    else if(_selectKawasan == "PJS 8"){
+      _naJalan = [];
+      pops7();
+    }
+    else if(_selectKawasan == "PJU 1A"){
+      _naJalan = [];
+      pops8();
+    }
+    else if(_selectKawasan == "PJU 1"){
+      _naJalan = [];
+      pops9();
+    }
+    else if(_selectKawasan == "PJU 2"){
+      _naJalan = [];
+      pops10();
+    }
+    else if(_selectKawasan == "PJU 3"){
+      _naJalan = [];
+      pops11();
+    }
+    else if(_selectKawasan == "PJU 5"){
+      _naJalan = [];
+      pops12();
+    }
+    else if(_selectKawasan == "PJU 6"){
+      _naJalan = [];
+      pops13();
+    }
+    else if(_selectKawasan == "PJU 7"){
+      _naJalan = [];
+      pops14();
+    }
+    else if(_selectKawasan == "PJU 8"){
+      _naJalan = [];
+      pops15();
+    }
+    else if(_selectKawasan == "PJU 9"){
+      _naJalan = [];
+      pops16();
+    }
+    else if(_selectKawasan == "PJU 10"){
+      _naJalan = [];
+      pops17();
     }
       setState(() {
         value = _selectKawasan;
@@ -320,8 +549,8 @@ class _AddTaskState extends State<AddTask> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(right: 60),
-                  child: Text("TARIKH: "+ _dateTime.toString(), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
+                  margin: EdgeInsets.only(right: 220),
+                  child: Text("TARIKH: "+ DateFormat("dd-MM-yyyy").format(_dateTime), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
               SizedBox(height: 10.0),
               DropdownButtonFormField(
                 decoration: InputDecoration(

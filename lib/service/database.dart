@@ -209,7 +209,10 @@ class DatabaseService{
    Future queryData(String queryString) async{
     return addCompleteTaskCollection.where('noAduan', isEqualTo: queryString).getDocuments();
    }
-
+ 
+   Future searchDate (String query1) async {
+    return addTaskCollection.where('date', isEqualTo: query1).getDocuments();
+   }
 
 
 

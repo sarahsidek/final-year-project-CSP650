@@ -169,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  Future _buildErrorDialog(BuildContext context, message) {
+  _buildErrorDialog(BuildContext context, message) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -187,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
     );
   }
-  Future _buildErrorDialog1(BuildContext context) {
+  _buildErrorDialog1(BuildContext context) {
     return showDialog(
       context: context,
       builder: (context) {

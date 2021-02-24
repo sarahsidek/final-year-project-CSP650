@@ -25,6 +25,9 @@ class _ListTaskState extends State<ListTask> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+            actions: [
+              IconButton(icon: Icon(Icons.search), onPressed: (){})
+            ],
           title: Text("SENARAI SEMUA TUGASAN",style: GoogleFonts.andika(fontWeight: FontWeight.bold, fontSize: 14)),
           backgroundColor:  Colors.blue[800]
         ),

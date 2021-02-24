@@ -22,91 +22,67 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
   List<String> noZon = <String> ['ZON 1', 'ZON 2', 'ZON 3', 'ZON 4', 'ZON 5', 'ZON 6', 'ZON 7', 'ZON 8', 'ZON 9',
                                   'ZON 10', 'ZON 11', 'ZON 12', 'ZON 13', 'ZON 14', 'ZON 15', 'ZON 16', 'ZON 17', 'ZON 18',
                                   'ZON 19', 'ZON 20', 'ZON 21', 'ZON 22', 'ZON 23', 'ZON 24',];
-  List<DropdownMenuItem<String>> _naPeg = List();
+  List<DropdownMenuItem<String>> _naPeg = [];
   bool disableDrop = true;
   final zon1 = {
     "1": "JEFRI IZMIL BIN ABDUL SAMAT",
-    "2": "MOHAMAD RATNO KARNO BIN KASRO"
+    "2": "MOHAMAD RATNO KARNO BIN KASRO",
   };
 
   final zon2 = {
-    "1": "NURUL AZREEN BINTI ROSNI"
+    "3": "NURUL AZREEN BINTI ROSNI"
   };
 
   final zon3 = {
-    "1": "MOHAMAD RATNO KARNO BIN KASRO"
+    "4": "MOHAMAD RATNO KARNO BIN KASRO"
   };
 
   final zon4 = {
-    "1": "MUHAMMAD IZZHAR BIN KHAIRUDIN",
-    "2": "AMINUL RASYID BIN HUSIN"
+    "5": "MUHAMMAD IZZHAR BIN KHAIRUDIN",
+    "6": "AMINUL RASYID BIN HUSIN"
   };
 
   final zon5 = {
-    "1": "MUHAMAD NIKMAN BIN HAMDAN"
-  };
-
-  final zon6 = {
-    "1": "MUHAMAD NIKMAN BIN HAMDAN"
+    "7": "MUHAMAD NIKMAN BIN HAMDAN"
   };
 
   final zon7 = {
-    "1": "MUHAMMAD IZZHAR BIN KHAIRUDIN"
+    "9": "MUHAMMAD IZZHAR BIN KHAIRUDIN"
   };
 
   final zon8 = {
-    "1": "NURUL HIDAYU BINTI SAHRONI"
-  };
-
-  final zon9 = {
-    "1": "NURUL HIDAYU BINTI SAHRONI"
+    "10": "NURUL HIDAYU BINTI SAHRONI"
   };
 
   final zon10 = {
-    "1": "AQILAH BINTI ALIAS"
+    "12": "AQILAH BINTI ALIAS"
   };
 
-  final zon11 = {
-    "1": "AQILAH BINTI ALIAS"
-  };
 
   final zon12 = {
-    "1": "SHAIPU AL BAHRI BIN MOHAMAD"
-  };
-  final zon13 = {
-    "1": "SHAIPU AL BAHRI BIN MOHAMAD"
+    "14": "SHAIPU AL BAHRI BIN MOHAMAD"
   };
   final zon14 = {
-    "1": "MUHAMAD AZAD BIN ZAINAL"
+    "16": "MUHAMAD AZAD BIN ZAINAL"
   };
   final zon15 = {
-    "1": "MOHD AKMAL HAKIM BIN AB HALIM"
-  }; final zon16 = {
-    "1": "MOHD AKMAL HAKIM BIN AB HALIM"
+    "17": "MOHD AKMAL HAKIM BIN AB HALIM"
   }; final zon17 = {
-    "1": "NORZALINA BINTI ABDUL WAHAB"
-  };
-  final zon18 = {
-    "1": "NORZALINA BINTI ABDUL WAHAB"
+    "19": "NORZALINA BINTI ABDUL WAHAB"
   };
   final zon19 = {
-    "1": "SYARIFUDDIN BIN MUSTAKIM"
-  };
-  final zon20 = {
-    "1": "SYARIFUDDIN BIN MUSTAKIM"
-  };
-  final zon21 = {
-    "1": "NURIZZATUL ASHIQIN BINTI AZMAN"
+    "21": "SYARIFUDDIN BIN MUSTAKIM"
   };
 
-  final zon22 = {
-    "1": "NURIZZATUL ASHIQIN BINTI AZMAN"
+  final zon21 = {
+    "23": "NURIZZATUL ASHIQIN BINTI AZMAN"
   };
+
   final zon23 = {
-    "1": "AMINUL RASYID BIN HUSIN"
+    "25": "AMINUL RASYID BIN HUSIN"
   };
   final zon24 = {
-    "1": "MAZIAN BINTI AHMAD TERMIZI"
+    "26": "MAZIAN BINTI AHMAD TERMIZI"
   };
 
   void z1(){
@@ -170,18 +146,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     }
   }
 
-  void z6(){
-    for(String key in zon6.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon6[key],
-        child: Text(
-            zon6[key]
-        ),
-      ),
-      );
-    }
-  }
-
 
   void z7(){
     for(String key in zon7.keys){
@@ -208,18 +172,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     }
   }
 
-  void z9(){
-    for(String key in zon9.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon9[key],
-        child: Text(
-            zon9[key]
-         ),
-        ),
-      );
-    }
-  }
-
   void z10(){
     for(String key in zon10.keys){
       _naPeg.add(DropdownMenuItem<String>(
@@ -232,17 +184,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     }
   }
 
-  void z11(){
-    for(String key in zon11.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon11[key],
-        child: Text(
-            zon11[key]
-        ),
-      ),
-      );
-    }
-  }
 
   void z12(){
     for(String key in zon12.keys){
@@ -256,17 +197,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     }
   }
 
-  void z13(){
-    for(String key in zon13.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon13[key],
-        child: Text(
-            zon13[key]
-        ),
-      ),
-      );
-    }
-  }
 
   void z14(){
     for(String key in zon14.keys){
@@ -292,17 +222,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     }
   }
 
-  void z16(){
-    for(String key in zon16.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon16[key],
-        child: Text(
-            zon16[key]
-        ),
-      ),
-      );
-    }
-  }
 
   void z17(){
     for(String key in zon17.keys){
@@ -316,17 +235,6 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
     }
   }
 
-  void z18(){
-    for(String key in zon18.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon18[key],
-        child: Text(
-            zon18[key]
-        ),
-      ),
-      );
-    }
-  }
   void z19(){
     for(String key in zon19.keys){
       _naPeg.add(DropdownMenuItem<String>(
@@ -338,17 +246,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
       );
     }
   }
-  void z20(){
-    for(String key in zon20.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon20[key],
-        child: Text(
-            zon20[key]
-        ),
-      ),
-      );
-    }
-  }
+
   void z21(){
     for(String key in zon21.keys){
       _naPeg.add(DropdownMenuItem<String>(
@@ -360,17 +258,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
       );
     }
   }
-  void z22(){
-    for(String key in zon22.keys){
-      _naPeg.add(DropdownMenuItem<String>(
-        value: zon22[key],
-        child: Text(
-            zon22[key]
-        ),
-      ),
-      );
-    }
-  }
+
   void z23(){
     for(String key in zon23.keys){
       _naPeg.add(DropdownMenuItem<String>(
@@ -418,7 +306,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 6"){
      _naPeg = [];
-     z6();
+     z5();
    }
    if (selectZon ==  "ZON 7"){
      _naPeg = [];
@@ -430,7 +318,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 9"){
      _naPeg = [];
-     z9();
+     z8();
    }
    if (selectZon ==  "ZON 10"){
      _naPeg = [];
@@ -438,7 +326,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 11"){
      _naPeg = [];
-     z11();
+     z10();
    }
    if (selectZon ==  "ZON 12"){
      _naPeg = [];
@@ -446,7 +334,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 13"){
      _naPeg = [];
-     z13();
+     z12();
    }
    if (selectZon ==  "ZON 14"){
      _naPeg = [];
@@ -454,11 +342,11 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 15"){
      _naPeg = [];
-     z15();
+     z14();
    }
    if (selectZon ==  "ZON 16"){
      _naPeg = [];
-     z16();
+     z15();
    }
    if (selectZon ==  "ZON 17"){
      _naPeg = [];
@@ -466,7 +354,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 18"){
      _naPeg = [];
-     z18();
+     z17();
    }
    if (selectZon ==  "ZON 19"){
      _naPeg = [];
@@ -474,7 +362,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 20"){
      _naPeg = [];
-     z20();
+     z19();
    }
    if (selectZon ==  "ZON 21"){
      _naPeg = [];
@@ -482,7 +370,7 @@ class _AddRecordOfficerState extends State<AddRecordOfficer> {
    }
    if (selectZon ==  "ZON 22"){
      _naPeg = [];
-     z22();
+     z21();
    }
    if (selectZon ==  "ZON 23"){
      _naPeg = [];

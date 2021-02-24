@@ -8,6 +8,7 @@ import 'package:fyp/maps/google_maps_address.dart';
 import 'package:fyp/model/CompleteTask.dart';
 import 'package:fyp/service/database.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 
@@ -229,7 +230,7 @@ class _AddCompleteTaskState extends State<AddCompleteTask> {
               SizedBox(height: 5.0),
               Container(
                   margin: EdgeInsets.only(right: 88),
-                  child: Text("TARIKH: "+ _dateTime.toString(), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
+                  child: Text("TARIKH: "+ DateFormat("dd-MM-yyyy").format(_dateTime), style: GoogleFonts.asap(fontWeight: FontWeight.bold, fontSize: 18))),
               SizedBox(height: 5.0),
               ListView.separated(
                 shrinkWrap: true,

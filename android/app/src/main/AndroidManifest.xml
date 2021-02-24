@@ -14,6 +14,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="fyp"
         android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true">
 
         <receiver android:name=".GeofenceBroadcastReceiver"/>
